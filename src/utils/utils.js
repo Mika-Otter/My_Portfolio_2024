@@ -1,20 +1,18 @@
-Array.prototype.parse2D = function () {
+export function parse2D(array) {
     const rows = [];
-    for (let i = 0; i < this.length; i += 100) {
-        rows.push(this.slice(i, i + 100));
+    for (let i = 0; i < array.length; i += 100) {
+        rows.push(array.slice(i, i + 100));
     }
 
     return rows;
-};
+}
 
-Array.prototype.createObjectsFrom2D = function ({
-    CollisionBlock,
-    blockValue,
-    limitValue,
-    precedentHeight,
-}) {
+export function createObjectsFrom2D(
+    array,
+    { CollisionBlock, blockValue, limitValue, precedentHeight }
+) {
     const objects = [];
-    this.forEach((row, y) => {
+    array.forEach((row, y) => {
         row.forEach((symbol, x) => {
             if (symbol === blockValue || symbol === limitValue) {
                 objects.push(
@@ -30,12 +28,12 @@ Array.prototype.createObjectsFrom2D = function ({
     });
 
     return objects;
-};
+}
 
-Array.prototype.calculateHeight = function (collisionBlock) {
+export function calculateHeight(array, collisionBlock) {
     let ArrayHeight = 0;
-    for (let i = 0; i < this.length; i++) {
+    for (let i = 0; i < array.length; i++) {
         ArrayHeight++;
     }
     return ArrayHeight * 28.8;
-};
+}

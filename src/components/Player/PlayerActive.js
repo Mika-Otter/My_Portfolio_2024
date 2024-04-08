@@ -1,8 +1,15 @@
 import { Player } from "./Player";
-import { newLevel } from "../../main";
 
 export class ActivePlayer extends Player {
-    constructor({ collisionBlocks, doors, canvas, collisionBlocksList, keysTab, lastKeysTab }) {
+    constructor({
+        collisionBlocks,
+        doors,
+        canvas,
+        collisionBlocksList,
+        keysTab,
+        lastKeysTab,
+        newLevel,
+    }) {
         super({ collisionBlocks });
         this.canvas = canvas;
         this.collisionBlocksList = collisionBlocksList;
@@ -14,6 +21,7 @@ export class ActivePlayer extends Player {
         this.level = newLevel;
 
         this.doors = doors;
+        this.newLevel = newLevel;
     }
 
     // UPDATE PLAYER____________________________________________________________________
