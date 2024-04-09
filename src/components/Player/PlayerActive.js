@@ -8,20 +8,21 @@ export class ActivePlayer extends Player {
         collisionBlocksList,
         keysTab,
         lastKeysTab,
-        newLevel,
+        mapRow,
+        setMapRow,
     }) {
         super({ collisionBlocks });
         this.canvas = canvas;
-        this.collisionBlocksList = collisionBlocksList;
         this.keysTab = keysTab;
         this.lastKeysTab = lastKeysTab;
         this.canvas = canvas;
         this.moving = false;
         this.collisionBlocksList = collisionBlocksList;
-        this.level = newLevel;
+        this.level = mapRow;
 
         this.doors = doors;
-        this.newLevel = newLevel;
+        this.mapRow = mapRow;
+        this.setMapRow = setMapRow;
     }
 
     // UPDATE PLAYER____________________________________________________________________
@@ -72,17 +73,17 @@ export class ActivePlayer extends Player {
         if (
             this.position.y + this.height >
                 this.collisionBlocks[this.collisionBlocks.length - 1].position.y &&
-            newLevel.level < 5
+            this.mapRow.row < 5
         ) {
-            newLevel.level++;
-            this.collisionBlocks = this.collisionBlocksList[newLevel.level];
+            this.setMapRow((prev) => ({ ...prev, row: prev.row + 1, precedentRow: prev.row }));
+            this.collisionBlocks = this.collisionBlocksList[this.mapRow.row];
         }
     }
 
     changeLevelByTheTop() {
-        if (this.position.y < this.collisionBlocks[0].position.y && newLevel.level > 0) {
-            newLevel.level--;
-            this.collisionBlocks = this.collisionBlocksList[newLevel.level];
+        if (this.position.y < this.collisionBlocks[0].position.y && this.mapRow.row > 0) {
+            this.setMapRow((prev) => ({ ...prev, row: prev.row - 1, precedentRow: prev.row }));
+            this.collisionBlocks = this.collisionBlocksList[this.mapRow.row];
         }
     }
 
