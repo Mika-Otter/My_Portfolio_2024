@@ -1,7 +1,7 @@
 import { parseCollisions, changeLevel } from "./CollisionLevel";
 import { HandleInput } from "./InputManager";
-import { Door } from "../components/Environnement/Door";
-import { ActivePlayer } from "../components/Player/PlayerActive";
+import { Door } from "../components/Game/Environnement/Door";
+import { ActivePlayer } from "../components/Game/Player/PlayerActive";
 import Background from "../Background";
 
 // Initialisation d'autres éléments du jeu, comme la classe Player, Background, etc.

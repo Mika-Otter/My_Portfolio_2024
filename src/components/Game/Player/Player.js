@@ -25,6 +25,7 @@ export class Player {
     draw(context) {
         context.fillStyle = "red";
         context.fillRect(this.position.x, this.position.y, this.width, this.height);
+        // console.log(this.velocity.y);
     }
 
     update({ camera, canvas }) {
@@ -112,7 +113,6 @@ export class Player {
 
     //CAMERA MANAGE____________________________________________________________________
     updateCameraBox({ camera }) {
-        console.log(this.scale);
         if (this.position.y + 400 * this.scale > this.backgroundHeight) {
             this.cameraBox = {
                 position: {
@@ -157,6 +157,7 @@ export class Player {
     shouldPanCameraToTheTop({ camera }) {
         if (this.cameraBox.position.y <= Math.abs(camera.position.y)) {
             camera.position.y -= this.velocity.y;
+            window.scrollBy(0, camera.position.y);
         }
     }
     shouldPanCameraToTheBottom({ camera, canvas }) {
@@ -165,6 +166,8 @@ export class Player {
 
         if (bottomSideCamera >= canvasSize + Math.abs(camera.position.y)) {
             camera.position.y -= this.velocity.y;
+            console.log(camera.position.y);
+            window.scrollBy(0, this.velocity.y);
         }
     }
 }

@@ -1,8 +1,8 @@
 import { useRef, useEffect } from "react";
 import { initializeGame } from "../gameLogic/GameIntializer";
 import Background from "../Background";
-import { Door } from "./Environnement/Door";
-import { ActivePlayer } from "./Player/PlayerActive";
+import { Door } from "./Game/Environnement/Door";
+import { ActivePlayer } from "./Game/Player/PlayerActive";
 import { parseCollisions } from "../gameLogic/CollisionLevel";
 import { HandleInput } from "../gameLogic/InputManager";
 import { gameAnimate } from "../gameLogic/GameAnimate";
@@ -54,6 +54,8 @@ export default function Canvas({ setMapRow }) {
             overlay,
             mainChangeLevel,
         });
+
+        console.log(background.height, "hello hello");
     }, []);
 
     return <canvas ref={canvasRef} />;

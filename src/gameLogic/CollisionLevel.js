@@ -5,7 +5,7 @@ import {
     collisionsLevel4,
     collisionsLevel5,
 } from "../data/collisions";
-import { CollisionBlock } from "../components/Environnement/CollisionBlock";
+import { CollisionBlock } from "../components/Game/Environnement/CollisionBlock";
 import { parse2D, calculateHeight, createObjectsFrom2D } from "../utils/utils";
 
 export function parseCollisions(background) {
