@@ -6,11 +6,15 @@ import { ActivePlayer } from "./Game/Player/PlayerActive";
 import { parseCollisions } from "../gameLogic/CollisionLevel";
 import { HandleInput } from "../gameLogic/InputManager";
 import { gameAnimate } from "../gameLogic/GameAnimate";
+import { useBackgroundHeight, useSetBackgroundHeight } from "../context/BackgroundHeightContext";
 
 export default function Canvas({ setMapRow }) {
     const canvasRef = useRef(null);
+    const backgroundHeight = useBackgroundHeight();
+    const setBackgroundHeight = useSetBackgroundHeight();
 
     useEffect(() => {
+        window.scrollBy(0, -100);
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
 
@@ -54,8 +58,7 @@ export default function Canvas({ setMapRow }) {
             overlay,
             mainChangeLevel,
         });
-
-        console.log(background.height, "hello hello");
+        setBackgroundHeight(background.height);
     }, []);
 
     return <canvas ref={canvasRef} />;

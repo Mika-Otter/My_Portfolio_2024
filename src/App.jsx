@@ -2,20 +2,21 @@ import { useEffect, useState } from "react";
 import Canvas from "./components/Canvas";
 import "./assets/styles/global.scss";
 import Title from "./components/Title/Title";
-import { BackgroundHeightProvider } from "./context/BackgroundHeightContext";
+import { BackgroundHeightProvider, useBackgroundHeight } from "./context/BackgroundHeightContext";
+import BigBox from "./components/BigBox";
 
 export default function App() {
     const [mapRow, setMapRow] = useState({ row: 0, precedentRow: 0 });
-    const {setBackgroundHeight}
+    const backgroundHeight = useBackgroundHeight();
 
     return (
         <>
             <BackgroundHeightProvider>
-                <main>
+                <BigBox backgroundheight={backgroundHeight}>
                     <div className="canvas">
                         <Canvas mapRow={mapRow} setMapRow={setMapRow} />
                     </div>
-                    <section>
+                    <section className="main__section">
                         <div className="title">
                             <Title />
                         </div>
@@ -24,7 +25,7 @@ export default function App() {
                             <div className="content__box"></div>
                         </div>
                     </section>
-                </main>
+                </BigBox>
             </BackgroundHeightProvider>
         </>
     );
