@@ -11,7 +11,7 @@ export class Player {
         };
 
         this.scale = background.width / background.originalWidth;
-
+        this.backgroundHeight = background.height; //background aspectRation
         this.width = 40 * this.scale;
         this.height = 80 * this.scale;
         this.bottom = this.position.y + this.height;
@@ -112,7 +112,8 @@ export class Player {
 
     //CAMERA MANAGE____________________________________________________________________
     updateCameraBox({ camera }) {
-        if (this.position.y + 350 > 9300 * this.scale) {
+        console.log(this.scale);
+        if (this.position.y + 400 * this.scale > this.backgroundHeight) {
             this.cameraBox = {
                 position: {
                     x: this.position.x - 600,
@@ -121,7 +122,7 @@ export class Player {
                 width: 1200 * this.scale,
                 height: 400 * this.scale,
             };
-            camera.position.y = -7655 * this.scale;
+            camera.position.y = -this.backgroundHeight * 0.84;
         } else {
             this.cameraBox = {
                 position: {
