@@ -2,21 +2,19 @@
 import { changeLevel } from "./CollisionLevel";
 
 export function gameAnimate({
-    player,
-    keysTab,
-    lastKeysTab,
+    ctx,
+    canvas,
     camera,
     doors,
+    player,
     background,
     currentCollisionLevel,
-    canvas,
-    ctx,
-    newLevel,
-    i,
+    overlay,
+    mainChangeLevel,
 }) {
     function animate() {
         requestAnimationFrame(animate);
-        changeLevel(currentCollisionLevel, newLevel, i);
+        mainChangeLevel();
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -35,7 +33,6 @@ export function gameAnimate({
         });
 
         background.draw(ctx);
-
         currentCollisionLevel.forEach((collisionBlock) => {
             collisionBlock.draw(ctx);
         });
@@ -48,5 +45,5 @@ export function gameAnimate({
         ctx.restore();
     }
 
-    animate();
+    background.onload = animate(0);
 }
