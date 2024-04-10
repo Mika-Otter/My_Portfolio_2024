@@ -119,7 +119,7 @@ export class Player {
                 width: 1200,
                 height: 400,
             };
-            camera.position.y = -7615;
+            camera.position.y = -7735;
         } else {
             this.cameraBox = {
                 position: {

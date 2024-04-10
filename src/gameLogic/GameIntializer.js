@@ -5,8 +5,8 @@ import { ActivePlayer } from "../components/Player/PlayerActive";
 import Background from "../Background";
 
 // Initialisation d'autres éléments du jeu, comme la classe Player, Background, etc.
-export function initializeGame(canvas, newLevel) {
-    // Déclarer les variables
+export function initializeGame(canvas) {
+    let mapRow = { row: 0, precedentRow: 0 };
     let background;
     let doors;
     let overlay = {
@@ -21,6 +21,7 @@ export function initializeGame(canvas, newLevel) {
                 background = new Background({
                     position: { x: 0, y: 0 },
                     imageSrc: "./src/assets/img/MAPTILED3.png",
+                    canvas,
                 });
                 doors = [
                     new Door({
@@ -32,13 +33,13 @@ export function initializeGame(canvas, newLevel) {
                         overlay,
                     }),
                 ];
-                player.doors = doors;
             },
         },
         2: {
             init: () => {},
         },
     };
+    RoomsLevels[RoomLevel].init();
 
     const keysTab = [];
     const lastKeysTab = [""];
@@ -57,7 +58,7 @@ export function initializeGame(canvas, newLevel) {
         keysTab,
         lastKeysTab,
         overlay,
-        newLevel,
+        mapRow,
     });
     const input = new HandleInput(keysTab, lastKeysTab);
 
@@ -68,7 +69,6 @@ export function initializeGame(canvas, newLevel) {
         },
     };
 
-    RoomsLevels[RoomLevel].init();
     doors = player.doors;
 
     // Retourner les éléments initialisés
@@ -81,11 +81,11 @@ export function initializeGame(canvas, newLevel) {
         background,
         currentCollisionLevel,
         collisionBlocksList,
-        newLevel,
         i,
         RoomLevel,
         RoomsLevels,
         input,
         overlay,
+        mapRow,
     };
 }

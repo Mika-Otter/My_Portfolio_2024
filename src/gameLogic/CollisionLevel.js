@@ -22,10 +22,10 @@ export function parseCollisions(background) {
 
     const collisionBlocksLevel1 = createObjectsFrom2D(parsedCollisionsLevel1, {
         CollisionBlock: CollisionBlock,
-        background: background,
         blockValue: 1,
         limitValue: 2,
         precedentHeight: 0,
+        background: background,
     });
 
     const collisionBlocksLevel2 = createObjectsFrom2D(parsedCollisionsLevel2, {

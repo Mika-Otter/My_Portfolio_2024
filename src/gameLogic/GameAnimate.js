@@ -32,7 +32,7 @@ export function gameAnimate({
             camera,
         });
 
-        background.draw(ctx);
+        background.draw(ctx, canvas);
         currentCollisionLevel.forEach((collisionBlock) => {
             collisionBlock.draw(ctx);
         });

@@ -9,18 +9,22 @@ export function parse2D(array) {
 
 export function createObjectsFrom2D(
     array,
-    { CollisionBlock, blockValue, limitValue, precedentHeight }
+    { CollisionBlock, blockValue, limitValue, precedentHeight, background }
 ) {
     const objects = [];
+    const scale = background.width / background.originalWidth;
+    console.log(scale);
     array.forEach((row, y) => {
         row.forEach((symbol, x) => {
             if (symbol === blockValue || symbol === limitValue) {
                 objects.push(
                     new CollisionBlock({
                         position: {
-                            x: x * 28.8,
-                            y: y * 28.8 + precedentHeight,
+                            x: x * 28.8 * scale, // 28.8 = 16 * 180% ZOOM
+                            y: y * 28.8 * scale + precedentHeight,
                         },
+                        width: 28.8 * scale,
+                        height: 28.8 * scale,
                     })
                 );
             }
