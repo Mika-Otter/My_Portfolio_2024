@@ -19,7 +19,7 @@ export function initializeGame(canvas) {
         1: {
             init: () => {
                 background = new Background({
-                    position: { x: 0, y: 0 },
+                    position: { x: 0, y: 5 },
                     imageSrc: "./src/assets/img/MAPTILED3.png",
                     canvas,
                 });

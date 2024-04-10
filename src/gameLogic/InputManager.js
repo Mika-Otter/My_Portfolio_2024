@@ -1,5 +1,22 @@
 export class HandleInput {
     constructor(keysTab, lastKeysTab) {
+        window.addEventListener("wheel", function (event) {
+            if (event.deltaY < 0 && keysTab.indexOf("q") == -1) {
+                console.log("scrolling up");
+                keysTab.unshift("q");
+
+                this.setTimeout(() => {
+                    keysTab.splice(keysTab.indexOf("q"), 1);
+                }, 500);
+            } else if (event.deltaY > 0 && keysTab.indexOf("d") == -1) {
+                console.log("scrolling down");
+                keysTab.unshift("d");
+                this.setTimeout(() => {
+                    keysTab.splice(keysTab.indexOf("d"), 1);
+                }, 500);
+            }
+        });
+
         window.addEventListener("keydown", (e) => {
             switch (e.key) {
                 case "q":
