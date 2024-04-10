@@ -6,12 +6,13 @@ import { ActivePlayer } from "./Player/PlayerActive";
 import { parseCollisions } from "../gameLogic/CollisionLevel";
 import { HandleInput } from "../gameLogic/InputManager";
 
-export default function Canvas({ mapRow, setMapRow }) {
+export default function Canvas({ setMapRow }) {
     const canvasRef = useRef(null);
 
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
+        let mapRow = { row: 0, precedentRow: 0 };
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -76,7 +77,6 @@ export default function Canvas({ mapRow, setMapRow }) {
             lastKeysTab,
             overlay,
             mapRow,
-            setMapRow,
         });
         const input = new HandleInput(keysTab, lastKeysTab);
 
