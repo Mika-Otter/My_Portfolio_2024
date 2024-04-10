@@ -15,10 +15,10 @@ export function parseCollisions(background) {
     const parsedCollisionsLevel4 = parse2D(collisionsLevel4); // 74 rows
     const parsedCollisionsLevel5 = parse2D(collisionsLevel5); // 78 rows
 
-    const heightParsedLevel1 = calculateHeight(parsedCollisionsLevel1);
-    const heightParsedLevel2 = calculateHeight(parsedCollisionsLevel2);
-    const heightParsedLevel3 = calculateHeight(parsedCollisionsLevel3);
-    const heightParsedLevel4 = calculateHeight(parsedCollisionsLevel4);
+    const heightParsedLevel1 = calculateHeight(parsedCollisionsLevel1, background);
+    const heightParsedLevel2 = calculateHeight(parsedCollisionsLevel2, background);
+    const heightParsedLevel3 = calculateHeight(parsedCollisionsLevel3, background);
+    const heightParsedLevel4 = calculateHeight(parsedCollisionsLevel4, background);
 
     const collisionBlocksLevel1 = createObjectsFrom2D(parsedCollisionsLevel1, {
         CollisionBlock: CollisionBlock,

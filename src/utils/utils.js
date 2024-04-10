@@ -34,10 +34,11 @@ export function createObjectsFrom2D(
     return objects;
 }
 
-export function calculateHeight(array, collisionBlock) {
+export function calculateHeight(array, background) {
+    const scale = background.width / background.originalWidth;
     let ArrayHeight = 0;
     for (let i = 0; i < array.length; i++) {
         ArrayHeight++;
     }
-    return ArrayHeight * 28.8;
+    return ArrayHeight * 28.8 * scale;
 }

@@ -1,5 +1,5 @@
 export class Player {
-    constructor({ collisionBlocks = [] }) {
+    constructor({ collisionBlocks = [], background }) {
         this.position = {
             x: 100,
             y: 100,
@@ -10,11 +10,13 @@ export class Player {
             y: 0,
         };
 
-        this.width = 30;
-        this.height = 70;
+        this.scale = background.width / background.originalWidth;
+
+        this.width = 40 * this.scale;
+        this.height = 80 * this.scale;
         this.bottom = this.position.y + this.height;
 
-        this.gravity = 0.2;
+        this.gravity = 0.2 * this.scale;
 
         this.collisionBlocks = collisionBlocks;
         this.jumping = false;
@@ -26,7 +28,7 @@ export class Player {
     }
 
     update({ camera, canvas }) {
-        this.position.x += this.velocity.x;
+        this.position.x += this.velocity.x * this.scale;
         this.checkForHorizontalCollision();
 
         //apply gravity
@@ -110,24 +112,24 @@ export class Player {
 
     //CAMERA MANAGE____________________________________________________________________
     updateCameraBox({ camera }) {
-        if (this.position.y + 350 > 9000) {
+        if (this.position.y + 350 > 9300 * this.scale) {
             this.cameraBox = {
                 position: {
                     x: this.position.x - 600,
                     y: this.position.y - 400,
                 },
-                width: 1200,
-                height: 400,
+                width: 1200 * this.scale,
+                height: 400 * this.scale,
             };
-            camera.position.y = -7735;
+            camera.position.y = -7655 * this.scale;
         } else {
             this.cameraBox = {
                 position: {
-                    x: this.position.x - 600,
-                    y: this.position.y - 400,
+                    x: this.position.x - 600 * this.scale,
+                    y: this.position.y - 400 * this.scale,
                 },
-                width: 1200,
-                height: 800,
+                width: 1200 * this.scale,
+                height: 800 * this.scale,
             };
         }
     }

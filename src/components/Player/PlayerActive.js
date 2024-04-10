@@ -3,6 +3,7 @@ import { Player } from "./Player";
 export class ActivePlayer extends Player {
     constructor({
         collisionBlocks,
+        background,
         doors,
         canvas,
         collisionBlocksList,
@@ -10,7 +11,7 @@ export class ActivePlayer extends Player {
         lastKeysTab,
         mapRow,
     }) {
-        super({ collisionBlocks });
+        super({ collisionBlocks, background });
         this.canvas = canvas;
         this.keysTab = keysTab;
         this.lastKeysTab = lastKeysTab;
@@ -49,7 +50,7 @@ export class ActivePlayer extends Player {
         if (this.preventInput) return;
         if (this.keysTab.includes(" ") && !this.collidedTop) {
             if (this.velocity.y === 0) {
-                this.velocity.y = -15;
+                this.velocity.y = -15 * this.scale;
                 this.jumping = true;
             }
         }
