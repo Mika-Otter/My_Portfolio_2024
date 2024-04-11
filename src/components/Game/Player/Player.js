@@ -119,7 +119,7 @@ export class Player {
                     x: this.position.x - 600,
                     y: this.position.y - 400,
                 },
-                width: 1200 * this.scale,
+                width: 0 * this.scale,
                 height: 400 * this.scale,
             };
             camera.position.y = -this.backgroundHeight * 0.84;
@@ -130,7 +130,7 @@ export class Player {
                     x: this.position.x - 600 * this.scale,
                     y: this.position.y - 400 * this.scale,
                 },
-                width: 1200 * this.scale,
+                width: 0 * this.scale,
                 height: 800 * this.scale,
             };
         }

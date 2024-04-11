@@ -1,0 +1,65 @@
+@import "../../assets/styles/theme.scss";
+
+.projects {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+
+    &__title {
+        z-index: 10;
+        margin: 0;
+        padding: 0;
+        top: -14%;
+        left: 10%;
+        position: absolute;
+        font-family: "OktaNeue-Bold";
+        font-size: 4rem;
+        color: rgb(5, 22, 34);
+    }
+}
+
+.content {
+    // border: 3px solid red;
+    border-radius: 33px;
+    height: 75%;
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.396);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+
+    &__picture {
+        img {
+            width: 80%;
+        }
+        // border: 2px solid blue;
+
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 33px 0px 0px 33px;
+    }
+
+    &__projects {
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        li {
+            border: 1px solid black;
+            list-style: none;
+            color: rgb(5, 22, 34);
+            height: 30px;
+            font-family: "OktaNeue-Regular";
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 0.2px;
+        }
+    }
+}

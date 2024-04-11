@@ -4,6 +4,7 @@ import "./assets/styles/global.scss";
 import Title from "./components/Title/Title";
 import { BackgroundHeightProvider, useBackgroundHeight } from "./context/BackgroundHeightContext";
 import BigBox from "./components/BigBox";
+import Projects from "./components/Projects/Projects";
 
 export default function App() {
     const [mapRow, setMapRow] = useState({ row: 0, precedentRow: 0 });
@@ -22,7 +23,7 @@ export default function App() {
                         </div>
                         <div className="wrapper"></div>
                         <div className="content">
-                            <div className="content__box"></div>
+                            <Projects />
                         </div>
                     </section>
                 </BigBox>
