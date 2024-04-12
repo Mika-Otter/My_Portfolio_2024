@@ -8,6 +8,7 @@
     height: 100%;
     width: 100%;
     position: relative;
+    border: 2px solid green;
 
     &__box {
         width: 85%;
@@ -17,9 +18,10 @@
         z-index: 1;
         h2 {
             margin: 0;
-            margin-top: -3rem;
+            margin-top: -4rem;
             font-family: "OktaNeue-Regular";
             font-size: 6rem;
+            color: rgba(232, 230, 230, 0.935);
             // border: 2px solid green;
         }
 
@@ -42,15 +44,22 @@
                     position: relative;
                     width: 100%;
                     height: 80%;
-                }
-                img {
-                    // border: 2px solid pink;
-                    position: absolute;
-                    top: 5%;
-                    left: 10%;
-                    width: 80%;
-                    height: 0px;
-                    transition: 0.5s;
+                    &__img {
+                        // border: 2px solid red;
+                        width: 100%;
+                        position: absolute;
+                        top: 17%;
+                        left: 10%;
+                        width: 75%;
+                        object-fit: cover;
+                        overflow: hidden;
+                        background-color: black;
+                        img {
+                            // border: 2px solid pink;
+                            width: 100%;
+                            transition: 0.5s;
+                        }
+                    }
                 }
             }
             &__text {
@@ -111,8 +120,8 @@
 
                     .liHover {
                         font-size: 18px;
-                        background-color: rgb(190, 182, 182);
-                        color: white;
+                        background-color: rgb(255, 252, 252);
+                        color: rgb(16, 11, 11);
                         -webkit-clip-path: polygon(
                             25% 0,
                             100% 0,

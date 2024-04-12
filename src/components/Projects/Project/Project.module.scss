@@ -1,0 +1,98 @@
+.project {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: #f8f8f8dc;
+    z-index: 100;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    clip-path: polygon(5% 0, 95% 0, 100% 9%, 100% 91%, 95% 100%, 5% 100%, 0 91%, 0 9%);
+    display: flex;
+
+    &__pic {
+        width: 60%;
+        height: 100%;
+        // border: 2px solid blue;
+        display: flex;
+        flex-direction: column;
+        margin-left: 2rem;
+        align-items: center;
+        flex-direction: center;
+
+        &__title {
+            // border: 2px solid green;
+            width: 70%;
+            height: 7.5rem;
+            // line-height: 0.05;
+            font-family: "Nacelle";
+            font-style: bold;
+            font-size: 2.5rem;
+            margin: 0;
+            padding: 0;
+        }
+        &__box {
+            width: 100%;
+            // border: 2px solid purple;
+            height: 70%;
+            display: flex;
+            justify-content: center;
+
+            &__ctn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 80%;
+                object-fit: cover;
+                // border: 2px solid red;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    &__content {
+        width: 40%;
+        // border: 2px solid orange;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
+
+        p {
+            font-family: "OktaNeue-Light";
+            font-size: 16px;
+            width: 74%;
+            margin: 0;
+            // border: 2px solid blue;
+        }
+
+        h3 {
+            font-family: "OktaNeue-Regular";
+            font-size: 20px;
+            margin: 0;
+        }
+
+        // span {
+        //     font-family: "OktaNeue-Bold";
+        //     font-size: 18px;
+        // }
+
+        &__year__text {
+            width: 74%;
+            display: flex;
+            justify-content: space-between;
+            p {
+                font-size: 16px;
+                text-align: right;
+                line-height: 2.4;
+            }
+            &__ask {
+                line-height: 2;
+                font-size: 18px;
+                font-family: "OktaNeue-Bold";
+            }
+        }
+    }
+}

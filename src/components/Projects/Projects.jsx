@@ -6,6 +6,7 @@ import { CrossSVG } from "../SVG/CrossSVG";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import Project from "./Project/Project";
 
 export default function Projects() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,6 +22,13 @@ export default function Projects() {
             alt: "ArchiTest",
         },
         {
+            title: "Booball ",
+            text: "  Small Game with a boo",
+            year: "2023",
+            url: "./fake-project-booball.png",
+            alt: "Booball",
+        },
+        {
             title: "DNSEP2021 ",
             text: "  Art diploma exhibition",
             year: "2024",
@@ -34,13 +42,7 @@ export default function Projects() {
             url: "./fake-project-typpov.png",
             alt: "Typpov",
         },
-        {
-            title: "Booball ",
-            text: "  Small Game with a boo",
-            year: "2023",
-            url: "./fake-project-booball.png",
-            alt: "Booball",
-        },
+
         {
             title: "Platform Game ",
             text: "  Personal Game",
@@ -87,13 +89,18 @@ export default function Projects() {
         if (currentElement !== undefined) {
             parentElement.appendChild(currentElement);
             gsap.set(currentElement, { height: "0%" });
-            gsap.to(currentElement, { height: "80%" });
+            gsap.to(currentElement, {
+                height: "80%",
+                duration: 2,
+                ease: "power2.inOut",
+                scrub: true,
+            });
         }
     }, [currentIndex]);
 
     useEffect(() => {
         if (!isHover) {
-            intervalRef.current = setInterval(moveHover, 6000);
+            intervalRef.current = setInterval(moveHover, 9000);
         }
         return () => clearInterval(intervalRef.current);
     }, [isHover]);
@@ -111,13 +118,18 @@ export default function Projects() {
                         <div className={s.projects__box__content__view}>
                             <div className={s.projects__box__content__view__ctn}>
                                 {items.map((item, index) => (
-                                    <img
-                                        src={item.url}
-                                        alt={item.alt}
-                                        key={index}
-                                        // style={{ zIndex: items.length - index }}
+                                    <div
+                                        className={s.projects__box__content__view__ctn__img}
                                         ref={viewRefs.current[index]}
-                                    />
+                                        key={index}
+                                    >
+                                        <img
+                                            src={item.url}
+                                            alt={item.alt}
+
+                                            // style={{ zIndex: items.length - index }}
+                                        />
+                                    </div>
                                 ))}
                             </div>
                         </div>
@@ -177,6 +189,7 @@ export default function Projects() {
                         <CrossSVG />
                     </div>
                 </div>
+                <Project />
             </section>
         </>
     );
