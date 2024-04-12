@@ -38,10 +38,19 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    // border: 2px solid green;
+                    position: relative;
+                    width: 100%;
+                    height: 80%;
                 }
                 img {
                     // border: 2px solid pink;
+                    position: absolute;
+                    top: 5%;
+                    left: 10%;
                     width: 80%;
+                    height: 0px;
+                    transition: 0.5s;
                 }
             }
             &__text {
@@ -82,18 +91,38 @@
                         display: flex;
                         justify-content: space-between;
                         font-family: "Nacelle-Regular";
-                        font-size: 17px;
+                        font-size: 15px;
                         color: black;
                         background-color: "transparent";
-                        span {
+                    }
+                    &__project {
+                        display: flex;
+                        gap: 10px;
+                        &__text {
+                            margin: 0;
+                            font-family: "OktaNeue-Light";
+                            line-height: 0.9;
+                        }
+                        &__year {
                             margin-right: 1.3rem;
                             font-weight: 700;
                         }
                     }
-                    li:hover {
+
+                    .liHover {
                         font-size: 18px;
-                        background-color: black;
+                        background-color: rgb(190, 182, 182);
                         color: white;
+                        -webkit-clip-path: polygon(
+                            25% 0,
+                            100% 0,
+                            100% 100%,
+                            75% 100%,
+                            0 100%,
+                            0 30%,
+                            2% 0
+                        );
+                        clip-path: polygon(25% 0, 100% 0, 100% 100%, 75% 100%, 0 100%, 0 30%, 2% 0);
                     }
                 }
             }

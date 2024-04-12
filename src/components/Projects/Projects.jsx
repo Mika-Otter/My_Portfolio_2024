@@ -1,10 +1,107 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import s from "./Projects.module.scss";
 import { ProjectsBoxSVG } from "../SVG/ProjectsBoxSVG";
 import { GoToExpSVG } from "../SVG/GoToExpSVG";
 import { CrossSVG } from "../SVG/CrossSVG";
 
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
 export default function Projects() {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isHover, setIsHover] = useState(false);
+    const intervalRef = useRef();
+
+    const items = [
+        {
+            title: "ArchiTest ",
+            text: "  Personal Project",
+            year: "2024",
+            url: "./fake-project-archi.png",
+            alt: "ArchiTest",
+        },
+        {
+            title: "DNSEP2021 ",
+            text: "  Art diploma exhibition",
+            year: "2024",
+            url: "./fake-project-dnsep2021.png",
+            alt: "DNSEP2021",
+        },
+        {
+            title: "Typpov ",
+            text: "  Ri7 Final Exam Project, typographie tool",
+            year: "2024",
+            url: "./fake-project-typpov.png",
+            alt: "Typpov",
+        },
+        {
+            title: "Booball ",
+            text: "  Small Game with a boo",
+            year: "2023",
+            url: "./fake-project-booball.png",
+            alt: "Booball",
+        },
+        {
+            title: "Platform Game ",
+            text: "  Personal Game",
+            year: "2023",
+            url: "./fake-project-platform.png",
+        },
+        {
+            title: "UNEXPECTEDStudio ",
+            text: "  Design",
+            year: "2023",
+            url: "./fake-project-unexpected.png",
+            alt: "UnexpectedStudio",
+        },
+        {
+            title: "Various Game ",
+            text: "  Morpion, Puissance4, Pendu, Labyrinth",
+            year: "2023",
+            url: "./fake-project-variousgame.png",
+            alt: "Various Games",
+        },
+    ];
+    const viewRefs = useRef(items.map(() => React.createRef()));
+
+    const handleMouseEnter = (e, index) => {
+        setCurrentIndex(index);
+        setIsHover(true);
+    };
+
+    const moveHover = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
+    };
+    const handleMouseLeave = (e, index) => {
+        setCurrentIndex(index);
+        setIsHover(false);
+    };
+
+    useGSAP(() => {
+        const currentElement = viewRefs.current[currentIndex].current;
+        const parentElement = currentElement.parentElement;
+        const lastChild = parentElement.lastChild;
+
+        console.log(currentElement);
+
+        if (currentElement !== undefined) {
+            parentElement.appendChild(currentElement);
+            gsap.set(currentElement, { height: "0%" });
+            gsap.to(currentElement, { height: "80%" });
+        }
+    }, [currentIndex]);
+
+    useEffect(() => {
+        if (!isHover) {
+            intervalRef.current = setInterval(moveHover, 6000);
+        }
+        return () => clearInterval(intervalRef.current);
+    }, [isHover]);
+
+    useEffect(() => {
+        console.log(currentIndex);
+    }, [currentIndex]);
+
     return (
         <>
             <section className={s.projects}>
@@ -13,7 +110,15 @@ export default function Projects() {
                     <div className={s.projects__box__content}>
                         <div className={s.projects__box__content__view}>
                             <div className={s.projects__box__content__view__ctn}>
-                                <img src="./fake-project.png" alt="fake" />
+                                {items.map((item, index) => (
+                                    <img
+                                        src={item.url}
+                                        alt={item.alt}
+                                        key={index}
+                                        // style={{ zIndex: items.length - index }}
+                                        ref={viewRefs.current[index]}
+                                    />
+                                ))}
                             </div>
                         </div>
                         <div className={s.projects__box__content__text}>
@@ -25,26 +130,36 @@ export default function Projects() {
                             </div>
                             <div className={s.projects__box__content__text__projects}>
                                 <ul>
-                                    <li>
-                                        ArchiTest - Personnal Project <span>2024</span>
-                                    </li>
-                                    <li>
-                                        DNSEP2021 - Art diploma exhibition <span>2024</span>
-                                    </li>
-                                    <li>
-                                        Typpov - Ri7 Final Exam Project, typographie tool{" "}
-                                        <span>2024</span>
-                                    </li>
-                                    <li>
-                                        Booball - Small Game with a boo <span>2023</span>
-                                    </li>
-                                    <li>
-                                        Platform Game - Personnal Game <span>2023</span>
-                                    </li>
-                                    <li>
-                                        Various Game - Morpion, Puissance4, Pendu, Labyrinth{" "}
-                                        <span>2023</span>
-                                    </li>
+                                    {items.map((item, index) => (
+                                        <li
+                                            key={index}
+                                            className={index === currentIndex ? s.liHover : ""}
+                                            onMouseEnter={(e) => handleMouseEnter(e, index)}
+                                            onMouseLeave={(e) => handleMouseLeave(e, index)}
+                                        >
+                                            <div
+                                                className={
+                                                    s.projects__box__content__text__projects__project
+                                                }
+                                            >
+                                                {item.title}
+                                                <span
+                                                    className={
+                                                        s.projects__box__content__text__projects__project__text
+                                                    }
+                                                >
+                                                    {item.text}
+                                                </span>
+                                            </div>
+                                            <span
+                                                className={
+                                                    s.projects__box__content__text__projects__project__year
+                                                }
+                                            >
+                                                {item.year}
+                                            </span>
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                         </div>
