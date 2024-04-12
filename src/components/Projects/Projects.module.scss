@@ -120,6 +120,21 @@
             right: 12.8%;
             // border: 2px solid blue;
         }
+
+        &__svgCross__one,
+        &__svgCross__two {
+            position: absolute;
+            // border: 2px solid red;
+        }
+
+        &__svgCross__one {
+            top: 4vw;
+            right: -0.9%;
+        }
+        &__svgCross__two {
+            bottom: 6.3vw;
+            left: -0.9%;
+        }
     }
 
     &__title {

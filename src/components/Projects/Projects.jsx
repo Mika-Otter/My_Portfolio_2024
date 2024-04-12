@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Projects.module.scss";
 import { ProjectsBoxSVG } from "../SVG/ProjectsBoxSVG";
 import { GoToExpSVG } from "../SVG/GoToExpSVG";
+import { CrossSVG } from "../SVG/CrossSVG";
 
 export default function Projects() {
     return (
@@ -53,6 +54,12 @@ export default function Projects() {
                     </div>
                     <div className={s.projects__box__svgGoToExp}>
                         <GoToExpSVG />
+                    </div>
+                    <div className={s.projects__box__svgCross__one}>
+                        <CrossSVG />
+                    </div>
+                    <div className={s.projects__box__svgCross__two}>
+                        <CrossSVG />
                     </div>
                 </div>
             </section>
