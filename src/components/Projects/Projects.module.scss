@@ -9,6 +9,18 @@
     width: 100%;
     position: relative;
 
+    &__box {
+        // border: 2px solid red;
+        width: 82%;
+        display: flex;
+        margin-top: -2rem;
+        background-color: #f8f8f8dc;
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+
+        clip-path: url(#projectMask);
+    }
+
     &__title {
         z-index: 10;
         margin: 0;
