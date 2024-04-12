@@ -10,15 +10,116 @@
     position: relative;
 
     &__box {
+        width: 85%;
+        position: relative;
+        height: 90%;
         // border: 2px solid red;
-        width: 82%;
-        display: flex;
-        margin-top: -2rem;
-        background-color: #f8f8f8dc;
-        -webkit-backdrop-filter: blur(20px);
-        backdrop-filter: blur(20px);
+        z-index: 1;
+        h2 {
+            margin: 0;
+            margin-top: -3rem;
+            font-family: "OktaNeue-Regular";
+            font-size: 6rem;
+            // border: 2px solid green;
+        }
 
-        clip-path: url(#projectMask);
+        &__content {
+            // border: 2px solid blue;
+            height: 70%;
+            display: flex;
+
+            &__view {
+                width: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                // border: 2px solid purple;
+                &__ctn {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                img {
+                    // border: 2px solid pink;
+                    width: 80%;
+                }
+            }
+            &__text {
+                // border: 2px solid black;
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+
+                &__banner {
+                    display: flex;
+                    width: 90%;
+                    height: 2.4rem;
+                    margin-top: 3%;
+                    // border: 2px solid orange;
+                    justify-content: space-between;
+                    font-family: "OktaNeue-Regular";
+                    font-size: 1.5rem;
+                    border-bottom: 2px solid black;
+
+                    &__year {
+                        margin-right: 1rem;
+                    }
+                }
+                &__projects {
+                    ul {
+                        padding: 0;
+                        margin: 0;
+                        margin-top: 1rem;
+                    }
+                    li {
+                        box-sizing: border-box;
+                        cursor: pointer;
+                        padding-bottom: 4px;
+                        padding-top: 7px;
+                        padding-left: 15px;
+                        width: 90%;
+                        list-style: none;
+                        display: flex;
+                        justify-content: space-between;
+                        font-family: "Nacelle-Regular";
+                        font-size: 17px;
+                        color: black;
+                        background-color: "transparent";
+                        span {
+                            margin-right: 1.3rem;
+                            font-weight: 700;
+                        }
+                    }
+                    li:hover {
+                        font-size: 18px;
+                        background-color: black;
+                        color: white;
+                    }
+                }
+            }
+        }
+
+        &__svgProjectBox {
+            position: absolute;
+            z-index: -1;
+            top: 15%;
+            // border: 2px solid red;
+            width: 100%;
+            display: flex;
+            margin-top: -2rem;
+            background-color: #f8f8f8dc;
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+
+            clip-path: url(#projectMask);
+        }
+
+        &__svgGoToExp {
+            position: absolute;
+            bottom: 12.3%;
+            right: 12.8%;
+            // border: 2px solid blue;
+        }
     }
 
     &__title {
