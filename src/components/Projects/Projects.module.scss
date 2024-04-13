@@ -7,8 +7,9 @@
     align-items: center;
     height: 100%;
     width: 100%;
-    position: relative;
-    border: 2px solid green;
+    position: absolute;
+    top: 0;
+    // border: 2px solid green;
 
     &__box {
         width: 85%;
@@ -77,8 +78,10 @@
                     justify-content: space-between;
                     font-family: "OktaNeue-Regular";
                     font-size: 1.5rem;
-                    border-bottom: 2px solid black;
-
+                    border-bottom: 1px solid black;
+                    &__project {
+                        margin-left: 1rem;
+                    }
                     &__year {
                         margin-right: 1rem;
                     }

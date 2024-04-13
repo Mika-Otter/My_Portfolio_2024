@@ -24,13 +24,24 @@ export default function Projects() {
             year: "2024",
             url: "./fake-project-archi.png",
             alt: "ArchiTest",
+            text:
+                "I created a portfolio for Antoine Lichtenberg, a former architect who is now moving" +
+                " into film decoration. I enjoyed continuing to explore GSAP and responding to a first concrete project," +
+                " for a client who had a wish and desires that I had to follow. I'm very excited to be working for inspiring people. ",
+            techno: "React, GSAP",
+            client: "Antoine Lichtenberg Decorator",
         },
         {
             title: "Booball ",
             smalltext: "  Small Game with a boo",
-            year: "2023",
+            year: "2024",
             url: "./fake-project-booball.png",
             alt: "Booball",
+            text:
+                "When I learnt about canvas elements in html, I made this little animation." +
+                " Basically just a decorative element. Later, I had the idea of turning it into a simple, fun game.",
+            techno: "Javascript POO, canvas html element",
+            client: "Personnal",
         },
         {
             title: "DNSEP2021 ",
@@ -52,6 +63,13 @@ export default function Projects() {
             year: "2024",
             url: "./fake-project-typpov.png",
             alt: "Typpov",
+            text:
+                " I had to do a project for my degree at Ri7. I was engulfed in a multitude of folders where I stored" +
+                " all my typefaces. But it was a bloody mess. So I had the idea of developing a tool to classify fonts. And" +
+                " also to test them from different angles. You can create an account, log in and upload your favourite" +
+                " fonts. I still have many ideas for features to develop, but for the moment I'm concentrating on my projects in Three.js. ",
+            techno: "React, GSAP, Node.js, MySQL, Prisma, JWT",
+            client: "School Project",
         },
 
         {
@@ -59,13 +77,22 @@ export default function Projects() {
             smalltext: "  Personal Game",
             year: "2023",
             url: "./fake-project-platform.png",
+            alt: "Platform Game",
+            text: "While learning OOP in JS, I created a little platform game. I learned a lot thanks to Frank Laboratory on youtube. ",
+            techno: "Javascript POO, canvas html element",
+            client: "Personnal",
         },
         {
             title: "UNEXPECTEDStudio ",
             smalltext: "  Design",
             year: "2023",
             url: "./fake-project-unexpected.png",
-            alt: "UnexpectedStudio",
+            alt: "UNEXPECTEDStudio",
+            text:
+                "I produced a proposal for the redesign of the Unexpected Studio website. I followed their graphic guidelines" +
+                " to come up with something that suited their world and the market. I loved working on a real project.  ",
+            techno: "Figma, Adobe Illustrator, Adobe Photoshop",
+            client: "Personnal project to be sent to UNEXPECTEDStudio ",
         },
         {
             title: "Various Game ",
@@ -73,6 +100,12 @@ export default function Projects() {
             year: "2023",
             url: "./fake-project-variousgame.png",
             alt: "Various Games",
+            text:
+                "A series of little games that helped me learn the basics of Javascript at the Ri7 school." +
+                " The maze is coded in PHP, I couldn't stand the constant refreshes so I used SQL queries. Without realising it, I had just" +
+                " created my first API. Although it was pointless, it was a great learning experience. ",
+            techno: "Javascript, PHP",
+            client: "School Project",
         },
     ];
     const viewRefs = useRef(items.map(() => React.createRef()));
@@ -161,7 +194,9 @@ export default function Projects() {
                         </div>
                         <div className={s.projects__box__content__text}>
                             <div className={s.projects__box__content__text__banner}>
-                                <span>PROJECT</span>
+                                <span className={s.projects__box__content__text__banner__project}>
+                                    PROJECT
+                                </span>
                                 <span className={s.projects__box__content__text__banner__year}>
                                     YEAR
                                 </span>
@@ -221,6 +256,7 @@ export default function Projects() {
                         item={items[currentIndex]}
                         closeProject={closeProject}
                         nextProject={nextProject}
+                        isProjectOpen={isProjectOpen}
                     />
                 )}
             </section>
