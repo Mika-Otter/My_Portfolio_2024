@@ -13,7 +13,7 @@ export function createObjectsFrom2D(
 ) {
     const objects = [];
     const scale = background.width / background.originalWidth;
-    console.log(scale);
+    // console.log(scale);
     array.forEach((row, y) => {
         row.forEach((symbol, x) => {
             if (symbol === blockValue || symbol === limitValue) {

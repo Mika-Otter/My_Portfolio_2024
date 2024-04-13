@@ -167,7 +167,7 @@ export class Player {
 
         if (bottomSideCamera >= canvasSize + Math.abs(camera.position.y)) {
             camera.position.y -= this.velocity.y;
-            console.log(camera.position.y);
+            // console.log(camera.position.y);
             window.scrollBy(0, this.velocity.y * this.scale);
         }
     }

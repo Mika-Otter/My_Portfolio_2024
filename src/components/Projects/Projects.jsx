@@ -6,38 +6,49 @@ import { CrossSVG } from "../SVG/CrossSVG";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/all";
 import Project from "./Project/Project";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Projects() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isHover, setIsHover] = useState(false);
+    const [isProjectOpen, setIsProjectOpen] = useState(false);
     const intervalRef = useRef();
 
     const items = [
         {
             title: "ArchiTest ",
-            text: "  Personal Project",
+            smalltext: "  Personal Project",
             year: "2024",
             url: "./fake-project-archi.png",
             alt: "ArchiTest",
         },
         {
             title: "Booball ",
-            text: "  Small Game with a boo",
+            smalltext: "  Small Game with a boo",
             year: "2023",
             url: "./fake-project-booball.png",
             alt: "Booball",
         },
         {
             title: "DNSEP2021 ",
-            text: "  Art diploma exhibition",
+            smalltext: "  Art diploma exhibition",
             year: "2024",
             url: "./fake-project-dnsep2021.png",
             alt: "DNSEP2021",
+            text:
+                " DNSEP 2021 is a website who summarize my practice in art school. " +
+                "More precisely my exibition-diploma in June 2021." +
+                " I had fun to use GSAP and have again a lot of idea for improve that. Currently stopped" +
+                "for progress with other sites.",
+            techno: "React, GSAP",
+            client: "Personnal",
         },
         {
             title: "Typpov ",
-            text: "  Ri7 Final Exam Project, typographie tool",
+            smalltext: "  Ri7 Final Exam Project, typographie tool",
             year: "2024",
             url: "./fake-project-typpov.png",
             alt: "Typpov",
@@ -45,26 +56,34 @@ export default function Projects() {
 
         {
             title: "Platform Game ",
-            text: "  Personal Game",
+            smalltext: "  Personal Game",
             year: "2023",
             url: "./fake-project-platform.png",
         },
         {
             title: "UNEXPECTEDStudio ",
-            text: "  Design",
+            smalltext: "  Design",
             year: "2023",
             url: "./fake-project-unexpected.png",
             alt: "UnexpectedStudio",
         },
         {
             title: "Various Game ",
-            text: "  Morpion, Puissance4, Pendu, Labyrinth",
+            smalltext: "  Morpion, Puissance4, Pendu, Labyrinth",
             year: "2023",
             url: "./fake-project-variousgame.png",
             alt: "Various Games",
         },
     ];
     const viewRefs = useRef(items.map(() => React.createRef()));
+
+    const openProject = () => {
+        setIsProjectOpen(true);
+    };
+
+    const closeProject = () => {
+        setIsProjectOpen(false);
+    };
 
     const handleMouseEnter = (e, index) => {
         setCurrentIndex(index);
@@ -79,12 +98,20 @@ export default function Projects() {
         setIsHover(false);
     };
 
+    const nextProject = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
+    };
+
+    useEffect(() => {
+        console.log(isProjectOpen);
+    }, [isProjectOpen]);
+
     useGSAP(() => {
         const currentElement = viewRefs.current[currentIndex].current;
         const parentElement = currentElement.parentElement;
         const lastChild = parentElement.lastChild;
 
-        console.log(currentElement);
+        // console.log(currentElement);
 
         if (currentElement !== undefined) {
             parentElement.appendChild(currentElement);
@@ -93,17 +120,16 @@ export default function Projects() {
                 height: "80%",
                 duration: 2,
                 ease: "power2.inOut",
-                scrub: true,
             });
         }
     }, [currentIndex]);
 
     useEffect(() => {
-        if (!isHover) {
+        if (!isHover && !isProjectOpen) {
             intervalRef.current = setInterval(moveHover, 9000);
         }
         return () => clearInterval(intervalRef.current);
-    }, [isHover]);
+    }, [isHover, isProjectOpen]);
 
     useEffect(() => {
         console.log(currentIndex);
@@ -148,6 +174,7 @@ export default function Projects() {
                                             className={index === currentIndex ? s.liHover : ""}
                                             onMouseEnter={(e) => handleMouseEnter(e, index)}
                                             onMouseLeave={(e) => handleMouseLeave(e, index)}
+                                            onClick={() => openProject()}
                                         >
                                             <div
                                                 className={
@@ -160,7 +187,7 @@ export default function Projects() {
                                                         s.projects__box__content__text__projects__project__text
                                                     }
                                                 >
-                                                    {item.text}
+                                                    {item.smalltext}
                                                 </span>
                                             </div>
                                             <span
@@ -189,7 +216,13 @@ export default function Projects() {
                         <CrossSVG />
                     </div>
                 </div>
-                <Project />
+                {isProjectOpen && (
+                    <Project
+                        item={items[currentIndex]}
+                        closeProject={closeProject}
+                        nextProject={nextProject}
+                    />
+                )}
             </section>
         </>
     );
