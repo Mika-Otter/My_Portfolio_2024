@@ -10,8 +10,8 @@
     &__first,
     &__second {
         font-family: "Nacelle-Regular";
-        color: white;
-        mix-blend-mode: difference;
+        color: rgb(34, 39, 55);
+        // mix-blend-mode: difference;
         font-size: 11rem;
         margin: 0;
     }
@@ -26,8 +26,8 @@
     flex-direction: column;
     font-family: "OktaNeue-Regular";
     font-size: 1.5rem;
-    color: white;
-    mix-blend-mode: difference;
+    color: rgb(34, 39, 55);
+    // mix-blend-mode: difference;
     // border: 2px solid blue;
     margin-top: -3%;
     margin-left: 1rem;

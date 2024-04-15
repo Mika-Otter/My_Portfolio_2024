@@ -4,8 +4,8 @@
     position: fixed;
     top: 1rem;
     right: 3rem;
-    mix-blend-mode: exclusion;
-    color: white;
+    // mix-blend-mode: exclusion;
+
     font-family: "OktaNeue-Regular";
     font-size: 1.3rem;
 
@@ -20,15 +20,19 @@
     }
 
     &__view {
-        color: white;
+        color: rgb(27, 24, 24);
+        transition: 0.3s ease-in-out;
     }
     &__viewOff {
-        color: rgba(255, 255, 255, 0.328);
+        color: rgba(79, 76, 76, 0.842);
+        transition: 0.3s ease-in-out;
     }
     &__playOff {
-        color: rgba(255, 255, 255, 0.328);
+        color: rgba(164, 160, 160, 0.608);
+        transition: 0.3s ease-in-out;
     }
     &__play {
-        color: white;
+        color: rgb(27, 24, 24);
+        transition: 0.3s ease-in-out;
     }
 }
