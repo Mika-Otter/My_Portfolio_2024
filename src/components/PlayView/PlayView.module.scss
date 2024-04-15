@@ -1,0 +1,11 @@
+.playView {
+    z-index: 1000;
+    display: flex;
+    position: fixed;
+    top: 3rem;
+    right: 3rem;
+
+    button {
+        cursor: pointer;
+    }
+}

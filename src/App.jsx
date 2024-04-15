@@ -7,6 +7,7 @@ import BigBox from "./components/BigBox";
 import Projects from "./components/Projects/Projects";
 import Navbar from "./components/Navbar/Navbar";
 import Logo from "./components/Logo/Logo";
+import PlayView from "./components/PlayView/PlayView";
 
 export default function App() {
     const [mapRow, setMapRow] = useState({ row: 0, precedentRow: 0 });
@@ -14,6 +15,7 @@ export default function App() {
 
     return (
         <>
+            <PlayView />
             <Logo />
             <Navbar />
             <BackgroundHeightProvider>
