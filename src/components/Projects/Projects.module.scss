@@ -15,16 +15,17 @@
         width: 85%;
         aspect-ratio: 2.53;
         position: relative;
+        margin-top: -4rem;
+        // border: 2px solid red;q
 
-        // border: 2px solid red;
-        z-index: 1;
         h2 {
             position: absolute;
             margin: 0;
-            top: -9vw;
+            top: -8.5vw;
             font-family: "OktaNeue-Regular";
             font-size: 6rem;
-            color: rgba(232, 230, 230, 0.935);
+            color: white;
+            mix-blend-mode: difference;
             // border: 2px solid green;
         }
 
@@ -150,7 +151,7 @@
             width: 100%;
             display: flex;
 
-            background-color: #f8f8f8dc;
+            background-color: rgba(255, 255, 255, 0.494);
             -webkit-backdrop-filter: blur(20px);
             backdrop-filter: blur(20px);
 
@@ -162,6 +163,10 @@
             width: 30%;
             bottom: -1vw;
             right: 15.3vw;
+            background-color: rgba(8, 8, 8, 0.778);
+            -webkit-backdrop-filter: blur(13px);
+            backdrop-filter: blur(13px);
+            clip-path: url(#gotoexpMask);
             // border: 2px solid blue;
         }
 

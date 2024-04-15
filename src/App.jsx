@@ -6,6 +6,7 @@ import { BackgroundHeightProvider, useBackgroundHeight } from "./context/Backgro
 import BigBox from "./components/BigBox";
 import Projects from "./components/Projects/Projects";
 import Navbar from "./components/Navbar/Navbar";
+import Logo from "./components/Logo/Logo";
 
 export default function App() {
     const [mapRow, setMapRow] = useState({ row: 0, precedentRow: 0 });
@@ -13,6 +14,7 @@ export default function App() {
 
     return (
         <>
+            <Logo />
             <Navbar />
             <BackgroundHeightProvider>
                 <BigBox backgroundheight={backgroundHeight}>
