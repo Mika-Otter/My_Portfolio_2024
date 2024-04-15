@@ -1,3 +1,5 @@
+import { Sprite } from "../../../gameLogic/Sprite";
+
 export class Player {
     constructor({ collisionBlocks = [], background }) {
         this.position = {
@@ -20,11 +22,15 @@ export class Player {
 
         this.collisionBlocks = collisionBlocks;
         this.jumping = false;
+
+        this.sprite = new Sprite("../../../../sprite/Sprite-Hobit-Full.png");
+        this.SPRITE_NAME = "IDLE_R";
     }
 
     draw(context) {
-        context.fillStyle = "red";
+        context.fillStyle = "transparent";
         context.fillRect(this.position.x, this.position.y, this.width, this.height);
+        this.sprite.draw(context, this);
         // console.log(this.velocity.y);
     }
 

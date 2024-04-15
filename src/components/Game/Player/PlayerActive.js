@@ -24,11 +24,26 @@ export class ActivePlayer extends Player {
         this.mapRow = mapRow;
     }
 
+    setState() {
+        if (this.keysTab[0] === "q") {
+            this.SPRITE_NAME = "RUN_L";
+        } else if (this.velocity.x === 0 && this.lastKeysTab[0] === "q") {
+            this.SPRITE_NAME = "IDLE_L";
+        }
+
+        if (this.keysTab[0] === "d") {
+            this.SPRITE_NAME = "RUN_R";
+        } else if (this.velocity.x === 0 && this.lastKeysTab[0] === "d") {
+            this.SPRITE_NAME = "IDLE_R";
+        }
+    }
     // UPDATE PLAYER____________________________________________________________________
     updatePlayer({ background, context, canvas, camera }) {
         this.handleMovement({ canvas, camera, background });
         this.updateCameraBox({ camera });
         this.update({ camera, canvas });
+        this.setState();
+        this.sprite.update(this.SPRITE_NAME);
 
         context.fillStyle = "transparent";
         context.fillRect(

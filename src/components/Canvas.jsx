@@ -27,7 +27,7 @@ export default function Canvas({ setMapRow, isPlayed }) {
         } else {
             handler.initializeKeyListener();
         }
-
+        console.log(lastKeysTab);
         return () => {
             if (handler) {
                 handler.removeListeners();

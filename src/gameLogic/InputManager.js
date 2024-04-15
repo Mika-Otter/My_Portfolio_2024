@@ -13,6 +13,7 @@ export class HandleInput {
 
                 setTimeout(() => {
                     this.keysTab.splice(this.keysTab.indexOf("q"), 1);
+                    this.lastKeysTab.splice(0, 1, "q");
                 }, 500);
             } else if (event.deltaY > 0 && this.keysTab.indexOf("d") == -1) {
                 console.log("scrolling down");
@@ -20,6 +21,7 @@ export class HandleInput {
 
                 setTimeout(() => {
                     this.keysTab.splice(this.keysTab.indexOf("d"), 1);
+                    this.lastKeysTab.splice(0, 1, "d");
                 }, 500);
             }
         };
@@ -34,7 +36,7 @@ export class HandleInput {
                 case "q":
                     if (this.keysTab.indexOf("q") == -1) {
                         this.keysTab.unshift("q");
-                        console.log(this.keysTab);
+                        console.log(this.lastKeysTab);
                     }
                     break;
                 case "d":
@@ -85,6 +87,9 @@ export class HandleInput {
 
     removeListeners() {
         this.keysTab[0] = "";
+        this.lastKeysTab[0] = "";
+
+        console.log(this.lastKeysTab);
         if (!this.isPlayed) {
             window.removeEventListener("wheel", this.wheelListener);
         } else {
