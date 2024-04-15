@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { initializeGame } from "../gameLogic/GameIntializer";
 import Background from "../Background";
 import { Door } from "./Game/Environnement/Door";
@@ -8,10 +8,33 @@ import { HandleInput } from "../gameLogic/InputManager";
 import { gameAnimate } from "../gameLogic/GameAnimate";
 import { useBackgroundHeight, useSetBackgroundHeight } from "../context/BackgroundHeightContext";
 
-export default function Canvas({ setMapRow }) {
+export default function Canvas({ setMapRow, isPlayed }) {
     const canvasRef = useRef(null);
     const backgroundHeight = useBackgroundHeight();
     const setBackgroundHeight = useSetBackgroundHeight();
+    const [keysTab, setKeysTab] = useState([]);
+    const lastKeysTab = [""];
+    const [inputHandler, setInputHandler] = useState(null);
+    let handler;
+
+    useEffect(() => {
+        handler = new HandleInput(keysTab, lastKeysTab, isPlayed);
+        setInputHandler(handler);
+
+        // Appeler les méthodes d'initialisation après la création de l'instance HandleInput
+        if (!isPlayed) {
+            handler.initializeWheelListener();
+        } else {
+            console.log("coucouo");
+            handler.initializeKeyListener();
+        }
+
+        return () => {
+            if (handler) {
+                handler.removeListeners();
+            }
+        };
+    }, [isPlayed]);
 
     useEffect(() => {
         window.scrollBy(0, -100);
@@ -23,8 +46,6 @@ export default function Canvas({ setMapRow }) {
 
         let {
             player,
-            keysTab,
-            lastKeysTab,
             camera,
             doors,
             background,
@@ -33,10 +54,9 @@ export default function Canvas({ setMapRow }) {
             i,
             RoomLevel,
             RoomsLevels,
-            input,
             overlay,
             mapRow,
-        } = initializeGame(canvas);
+        } = initializeGame(canvas, keysTab, lastKeysTab);
 
         function mainChangeLevel() {
             if (mapRow.row > mapRow.precedentRow) {

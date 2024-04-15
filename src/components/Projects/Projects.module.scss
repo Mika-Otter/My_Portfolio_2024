@@ -15,16 +15,18 @@
         width: 85%;
         aspect-ratio: 2.53;
         position: relative;
-        margin-top: -4rem;
+        margin-top: -7rem;
         // border: 2px solid red;q
 
         h2 {
             position: absolute;
             margin: 0;
-            top: -8.5vw;
+            top: -3.5vw;
             font-family: "OktaNeue-Regular";
-            font-size: 6rem;
+            font-size: 70px;
             color: white;
+            // backdrop-filter: blur(13px);
+            // -webkit-backdrop-filter: blur(13px);
             mix-blend-mode: difference;
             // border: 2px solid green;
         }
@@ -76,11 +78,11 @@
                     display: flex;
                     width: 90%;
                     height: 2.4rem;
-                    margin-top: 3%;
+                    margin-top: 3rem;
                     // border: 2px solid orange;
                     justify-content: space-between;
                     font-family: "OktaNeue-Regular";
-                    font-size: 1.5rem;
+                    font-size: 1.4rem;
                     border-bottom: 1px solid black;
                     &__project {
                         margin-left: 1rem;
@@ -93,7 +95,7 @@
                     ul {
                         padding: 0;
                         margin: 0;
-                        margin-top: 1rem;
+                        margin-top: 0.5rem;
                     }
                     li {
                         box-sizing: border-box;
@@ -113,7 +115,9 @@
                     &__project {
                         display: flex;
                         gap: 10px;
+                        text-transform: uppercase;
                         &__text {
+                            text-transform: initial;
                             margin: 0;
                             font-family: "OktaNeue-Light";
                             line-height: 0.9;

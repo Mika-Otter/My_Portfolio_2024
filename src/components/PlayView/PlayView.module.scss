@@ -1,11 +1,28 @@
 .playView {
-    z-index: 1000;
+    z-index: 1;
     display: flex;
     position: fixed;
-    top: 3rem;
+    top: 1rem;
     right: 3rem;
+    mix-blend-mode: exclusion;
+    color: white;
+    font-family: "OktaNeue-Regular";
+    font-size: 1.3rem;
 
     button {
+        font-family: "OktaNeue-Regular";
+        font-size: 1.3rem;
         cursor: pointer;
+        border: none;
+        background-color: transparent;
+
+        mix-blend-mode: difference;
+    }
+
+    &__view {
+        color: white;
+    }
+    &__play {
+        color: rgba(255, 255, 255, 0.328);
     }
 }

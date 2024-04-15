@@ -2,15 +2,17 @@
 
 .title {
     width: 94%;
-    margin-left: 6%;
-    margin-top: 3rem;
+    margin-left: 7%;
+    margin-top: 1rem;
     // border: 2px solid red;
     display: flex;
     flex-wrap: wrap;
     &__first,
     &__second {
         font-family: "Nacelle-Regular";
-        font-size: 12rem;
+        color: white;
+        mix-blend-mode: difference;
+        font-size: 11rem;
         margin: 0;
     }
     &__second {
@@ -24,6 +26,8 @@
     flex-direction: column;
     font-family: "OktaNeue-Regular";
     font-size: 1.5rem;
+    color: white;
+    mix-blend-mode: difference;
     // border: 2px solid blue;
     margin-top: -3%;
     margin-left: 1rem;

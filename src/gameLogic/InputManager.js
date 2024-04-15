@@ -1,78 +1,94 @@
 export class HandleInput {
-    constructor(keysTab, lastKeysTab) {
-        window.addEventListener("wheel", function (event) {
-            if (event.deltaY < 0 && keysTab.indexOf("q") == -1) {
+    constructor(keysTab, lastKeysTab, isPlayed) {
+        this.keysTab = keysTab;
+        this.lastKeysTab = lastKeysTab;
+        this.isPlayed = isPlayed;
+    }
+
+    initializeWheelListener() {
+        this.wheelListener = (event) => {
+            if (event.deltaY < 0 && this.keysTab.indexOf("q") == -1) {
                 console.log("scrolling up");
-                keysTab.unshift("q");
+                this.keysTab.unshift("q");
 
-                this.setTimeout(() => {
-                    keysTab.splice(keysTab.indexOf("q"), 1);
+                setTimeout(() => {
+                    this.keysTab.splice(this.keysTab.indexOf("q"), 1);
                 }, 500);
-            } else if (event.deltaY > 0 && keysTab.indexOf("d") == -1) {
+            } else if (event.deltaY > 0 && this.keysTab.indexOf("d") == -1) {
                 console.log("scrolling down");
-                keysTab.unshift("d");
-                this.setTimeout(() => {
-                    keysTab.splice(keysTab.indexOf("d"), 1);
+                this.keysTab.unshift("d");
+
+                setTimeout(() => {
+                    this.keysTab.splice(this.keysTab.indexOf("d"), 1);
                 }, 500);
             }
-        });
+        };
 
-        window.addEventListener("keydown", (e) => {
-            switch (e.key) {
+        window.addEventListener("wheel", this.wheelListener);
+    }
+
+    initializeKeyListener() {
+        console.log("yoooooo");
+        this.keydownListener = (event) => {
+            switch (event.key) {
                 case "q":
-                    if (keysTab.indexOf("q") == -1) {
-                        keysTab.unshift("q");
+                    if (this.keysTab.indexOf("q") == -1) {
+                        this.keysTab.unshift("q");
+                        console.log(this.keysTab);
                     }
-
                     break;
                 case "d":
-                    if (keysTab.indexOf("d") == -1) {
-                        keysTab.unshift("d");
+                    if (this.keysTab.indexOf("d") == -1) {
+                        this.keysTab.unshift("d");
                     }
-
                     break;
                 case " ":
-                    e.preventDefault();
-                    if (keysTab.indexOf(" ") == -1) {
-                        keysTab.push(" ");
+                    event.preventDefault();
+                    if (this.keysTab.indexOf(" ") == -1) {
+                        this.keysTab.push(" ");
                     }
-
                     break;
                 case "z":
-                    if (keysTab.indexOf("z") == -1) {
-                        keysTab.push("z");
+                    if (this.keysTab.indexOf("z") == -1) {
+                        this.keysTab.push("z");
                     }
-
                     break;
             }
-        });
+        };
 
-        window.addEventListener("keyup", (e) => {
-            switch (e.key) {
+        this.keyupListener = (event) => {
+            switch (event.key) {
                 case "q":
-                    keysTab.splice(keysTab.indexOf("q"), 1);
-                    lastKeysTab.splice(0, 1, "q");
-
+                    this.keysTab.splice(this.keysTab.indexOf("q"), 1);
+                    this.lastKeysTab.splice(0, 1, "q");
                     break;
                 case "d":
-                    keysTab.splice(keysTab.indexOf("d"), 1);
-                    lastKeysTab.splice(0, 1, "d");
-
+                    this.keysTab.splice(this.keysTab.indexOf("d"), 1);
+                    this.lastKeysTab.splice(0, 1, "d");
                     break;
                 case " ":
-                    keysTab.splice(keysTab.indexOf(" "), 1);
-                    lastKeysTab.splice(0, 1, " ");
-
+                    this.keysTab.splice(this.keysTab.indexOf(" "), 1);
+                    this.lastKeysTab.splice(0, 1, " ");
                     break;
-
                 case "z":
-                    keysTab.splice(keysTab.indexOf("z"), 1);
-                    lastKeysTab.splice(0, 1, "z");
-
+                    this.keysTab.splice(this.keysTab.indexOf("z"), 1);
+                    this.lastKeysTab.splice(0, 1, "z");
                     break;
                 default:
-                    lastKeysTab[0] = "";
+                    this.lastKeysTab[0] = "";
             }
-        });
+        };
+
+        window.addEventListener("keydown", this.keydownListener);
+        window.addEventListener("keyup", this.keyupListener);
+    }
+
+    removeListeners() {
+        if (!this.isPlayed) {
+            window.removeEventListener("wheel", this.wheelListener);
+        } else {
+            window.removeEventListener("keydown", this.keydownListener);
+            window.removeEventListener("keyup", this.keyupListener);
+        }
     }
 }

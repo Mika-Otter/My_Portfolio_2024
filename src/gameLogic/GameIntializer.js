@@ -5,7 +5,7 @@ import { ActivePlayer } from "../components/Game/Player/PlayerActive";
 import Background from "../Background";
 
 // Initialisation d'autres éléments du jeu, comme la classe Player, Background, etc.
-export function initializeGame(canvas) {
+export function initializeGame(canvas, keysTab, lastKeysTab) {
     let mapRow = { row: 0, precedentRow: 0 };
     let background;
     let doors;
@@ -41,9 +41,6 @@ export function initializeGame(canvas) {
     };
     RoomsLevels[RoomLevel].init();
 
-    const keysTab = [];
-    const lastKeysTab = [""];
-
     let i = 0;
     const collisionBlocksList = parseCollisions(background);
     let currentCollisionLevel = collisionBlocksList[i];
@@ -61,7 +58,6 @@ export function initializeGame(canvas) {
         overlay,
         mapRow,
     });
-    const input = new HandleInput(keysTab, lastKeysTab);
 
     const camera = {
         position: {
@@ -75,8 +71,6 @@ export function initializeGame(canvas) {
     // Retourner les éléments initialisés
     return {
         player,
-        keysTab,
-        lastKeysTab,
         camera,
         doors,
         background,
@@ -85,7 +79,6 @@ export function initializeGame(canvas) {
         i,
         RoomLevel,
         RoomsLevels,
-        input,
         overlay,
         mapRow,
     };

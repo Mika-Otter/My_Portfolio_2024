@@ -83,7 +83,7 @@ export default function Projects() {
             client: "Personnal",
         },
         {
-            title: "UNEXPECTEDStudio ",
+            title: "UNEXPECTED Studio ",
             smalltext: "  Design",
             year: "2023",
             url: "./fake-project-unexpected.png",

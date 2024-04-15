@@ -12,16 +12,24 @@ import PlayView from "./components/PlayView/PlayView";
 export default function App() {
     const [mapRow, setMapRow] = useState({ row: 0, precedentRow: 0 });
     const backgroundHeight = useBackgroundHeight();
+    const [isPlayed, setIsPlayed] = useState(false);
+
+    const playMode = () => {
+        setIsPlayed(true);
+    };
+    const viewMode = () => {
+        setIsPlayed(false);
+    };
 
     return (
         <>
-            <PlayView />
+            <PlayView playMode={playMode} viewMode={viewMode} />
             <Logo />
             <Navbar />
             <BackgroundHeightProvider>
                 <BigBox backgroundheight={backgroundHeight}>
                     <div className="canvas">
-                        <Canvas mapRow={mapRow} setMapRow={setMapRow} />
+                        <Canvas mapRow={mapRow} setMapRow={setMapRow} isPlayed={isPlayed} />
                     </div>
                     <section className="main__section">
                         <div className="title">

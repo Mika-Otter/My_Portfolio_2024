@@ -11,30 +11,34 @@
     align-items: center;
     gap: 10px;
     font-family: "OktaNeue-Regular";
-    font-size: 20px;
+    font-size: 17px;
 
-    &__logo {
-        position: relative;
-        mix-blend-mode: darken;
-        margin-top: 5px;
-        width: 13%;
-        border: 2px solid red;
-        // border: 2px solid purple;q
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        // background-color: blue;
+    // &__logo {
+    //     cursor: pointer;
+    //     position: relative;
+    //     mix-blend-mode: darken;
+    //     margin-top: 5px;
+    //     width: 13%;
+    //     border: 2px solid red;
+    //     // border: 2px solid purple;q
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    //     // background-color: blue;
 
-        img {
-            width: 50px;
-            height: 50px;
-        }
-    }
+    //     img {
+    //         width: 50px;
+    //         height: 50px;
+    //     }
+    // }
     &__menu {
+        cursor: pointer;
         mix-blend-mode: normal;
         width: 35px;
         height: 100px;
         background-color: rgba(255, 255, 255, 0.494);
+        display: flex;
+        align-items: center;
 
         clip-path: polygon(0 0, 100% 0, 100% 90%, 75% 100%, 0 100%);
         -webkit-backdrop-filter: blur(13px);
@@ -43,10 +47,13 @@
         transform: rotate(180deg);
 
         span {
-            padding-top: 7px;
+            padding-top: 9px;
         }
     }
     &__letstalk {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
         width: 35px;
         height: 150px;
         background-color: rgba(8, 8, 8, 0.778);
@@ -57,7 +64,7 @@
         writing-mode: vertical-rl;
         transform: rotate(180deg);
         span {
-            padding-top: 7px;
+            padding-top: 9px;
         }
     }
 
