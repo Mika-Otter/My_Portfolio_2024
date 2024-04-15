@@ -22,7 +22,13 @@
     &__view {
         color: white;
     }
-    &__play {
+    &__viewOff {
         color: rgba(255, 255, 255, 0.328);
+    }
+    &__playOff {
+        color: rgba(255, 255, 255, 0.328);
+    }
+    &__play {
+        color: white;
     }
 }

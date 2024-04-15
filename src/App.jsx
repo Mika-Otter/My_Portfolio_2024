@@ -23,7 +23,7 @@ export default function App() {
 
     return (
         <>
-            <PlayView playMode={playMode} viewMode={viewMode} />
+            <PlayView playMode={playMode} viewMode={viewMode} isPlayed={isPlayed} />
             <Logo />
             <Navbar />
             <BackgroundHeightProvider>
