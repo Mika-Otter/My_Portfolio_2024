@@ -19,11 +19,11 @@ export default function Projects() {
 
     const items = [
         {
-            title: "ArchiTest ",
-            smalltext: "  Personal Project",
+            title: "Antoine Lichtenberg ",
+            smalltext: "  Decorator",
             year: "2024",
             url: "./fake-project-archi.png",
-            alt: "ArchiTest",
+            alt: "Antoine Lichtenberg",
             text:
                 "I created a portfolio for Antoine Lichtenberg, a former architect who is now moving" +
                 " into film decoration. I enjoyed continuing to explore GSAP and responding to a first concrete project," +
@@ -242,7 +242,7 @@ export default function Projects() {
                         <ProjectsBoxSVG width="100%" />
                     </div>
                     <div className={s.projects__box__svgGoToExp}>
-                        <GoToExpSVG />
+                        <GoToExpSVG width="100%" />
                     </div>
                     <div className={s.projects__box__svgCross__one}>
                         <CrossSVG />

@@ -1,6 +1,13 @@
 import * as React from "react";
 export const GoToExpSVG = (props) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width={473} height={72} fill="none" {...props}>
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 473 72"
+        preserveAspectRatio="xMaxYMin"
+        className="responsive-svg"
+        fill="none"
+        {...props}
+    >
         <path fill="#151815" d="M473 0v56.126L454.869 72H0V59.993L59.957 0H473Z" />
         <path
             fill="#fff"
