@@ -25,7 +25,6 @@ export default function Canvas({ setMapRow, isPlayed }) {
         if (!isPlayed) {
             handler.initializeWheelListener();
         } else {
-            console.log("coucouo");
             handler.initializeKeyListener();
         }
 
