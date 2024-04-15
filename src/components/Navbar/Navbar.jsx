@@ -5,15 +5,23 @@ import { LetsTalkBoxSVG } from "../SVG/LetsTalkBoxSVG";
 import { LogoSVG } from "../SVG/LogoSVG";
 import Logo from "../Logo/Logo";
 import { SoundSVG } from "../SVG/SoundSVG";
+import { MenuIconSVG } from "../SVG/MenuIconSVG";
+import { ArrowLetsTalkSVG } from "../SVG/ArrowLetsTalksSVG";
 
 export default function Navbar() {
     return (
         <div className={s.navbar}>
             <div className={s.navbar__menu}>
-                <span>MENU</span>
+                <span>MENU</span>{" "}
+                <div className={s.navbar__menu__icone}>
+                    <MenuIconSVG />
+                </div>
             </div>
             <div className={s.navbar__letstalk}>
                 <span>LET'S TALK</span>
+                <div className={s.navbar__letstalk__icone}>
+                    <ArrowLetsTalkSVG />
+                </div>
             </div>
             <div className={s.navbar__sound}>
                 <SoundSVG />

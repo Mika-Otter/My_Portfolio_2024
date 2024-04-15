@@ -1,7 +1,7 @@
 @import "../../assets/styles/theme.scss";
 .navbar {
     position: fixed;
-    z-index: 10;
+    z-index: 1000;
     top: 10%;
     left: 9px;
     // border: 2px solid red;
@@ -35,10 +35,11 @@
         cursor: pointer;
         mix-blend-mode: normal;
         width: 35px;
-        height: 100px;
+        height: 90px;
         background-color: rgba(255, 255, 255, 0.494);
         display: flex;
         align-items: center;
+        justify-content: space-between;
 
         clip-path: polygon(0 0, 100% 0, 100% 90%, 75% 100%, 0 100%);
         -webkit-backdrop-filter: blur(13px);
@@ -49,14 +50,24 @@
         span {
             padding-top: 9px;
         }
+
+        &__icone {
+            width: 15px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 9px;
+            margin-right: 2px;
+            // border: 2px solid red;
+        }
     }
     &__letstalk {
         cursor: pointer;
         display: flex;
         align-items: center;
+        justify-content: space-between;
         width: 35px;
-        height: 150px;
-        background-color: rgba(8, 8, 8, 0.778);
+        height: 130px;
+        background-color: rgba(8, 8, 8, 0.856);
         color: white;
         clip-path: polygon(0 0, 100% 0, 100% 93%, 75% 100%, 0 100%);
         -webkit-backdrop-filter: blur(13px);
@@ -65,6 +76,15 @@
         transform: rotate(180deg);
         span {
             padding-top: 9px;
+        }
+        &__icone {
+            width: 15px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 9px;
+            margin-right: 2px;
+            transform: rotate(180deg);
+            // border: 2px solid red;
         }
     }
 

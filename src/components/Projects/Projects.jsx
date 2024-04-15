@@ -172,7 +172,7 @@ export default function Projects() {
         <>
             <section className={s.projects}>
                 <div className={s.projects__box}>
-                    <h2>VIEW PROJECTS</h2>
+                    <h2>Projects</h2>
                     <div className={s.projects__box__content}>
                         <div className={s.projects__box__content__view}>
                             <div className={s.projects__box__content__view__ctn}>
