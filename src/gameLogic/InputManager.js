@@ -84,6 +84,7 @@ export class HandleInput {
     }
 
     removeListeners() {
+        this.keysTab[0] = "";
         if (!this.isPlayed) {
             window.removeEventListener("wheel", this.wheelListener);
         } else {

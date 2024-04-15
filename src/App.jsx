@@ -36,9 +36,7 @@ export default function App() {
                             <Title />
                         </div>
                         <div className="wrapper"></div>
-                        <div className="content">
-                            <Projects />
-                        </div>
+                        <div className="content">{!isPlayed && <Projects />}</div>
                     </section>
                 </BigBox>
             </BackgroundHeightProvider>

@@ -13,7 +13,7 @@ export default function Canvas({ setMapRow, isPlayed }) {
     const backgroundHeight = useBackgroundHeight();
     const setBackgroundHeight = useSetBackgroundHeight();
     const [keysTab, setKeysTab] = useState([]);
-    const lastKeysTab = [""];
+    let lastKeysTab = [""];
     const [inputHandler, setInputHandler] = useState(null);
     let handler;
 
