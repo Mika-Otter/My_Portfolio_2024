@@ -9,6 +9,7 @@ import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/all";
 import Project from "./Project/Project";
 import { ArrowSVG } from "../SVG/ArrowSVG";
+import Video from "../Video/Video";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -48,7 +49,7 @@ export default function Projects() {
             title: "DNSEP2021 ",
             smalltext: "  Art diploma exhibition",
             year: "2024",
-            url: "./fake-project-dnsep2021.png",
+            url: "./video/DNSEP.mp4",
             alt: "DNSEP2021",
             text:
                 " DNSEP 2021 is a website who summarize my practice in art school. " +
@@ -62,7 +63,7 @@ export default function Projects() {
             title: "Typpov ",
             smalltext: "  Ri7 Final Exam Project, typographie tool",
             year: "2024",
-            url: "./fake-project-typpov.png",
+            url: "./video/Typpov-Low.mp4",
             alt: "Typpov",
             text:
                 " I had to do a project for my degree at Ri7. I was engulfed in a multitude of folders where I stored" +
@@ -77,7 +78,7 @@ export default function Projects() {
             title: "Platform Game ",
             smalltext: "  Personal Game",
             year: "2023",
-            url: "./fake-project-platform.png",
+            url: "./video/Platform.mp4",
             alt: "Platform Game",
             text: "While learning OOP in JS, I created a little platform game. I learned a lot thanks to Frank Laboratory on youtube. ",
             techno: "Javascript POO, canvas html element",
@@ -87,7 +88,7 @@ export default function Projects() {
             title: "UNEXPECTED Studio ",
             smalltext: "  Design",
             year: "2023",
-            url: "./fake-project-unexpected.png",
+            url: "./video/UnexpectedStudio.mp4",
             alt: "UNEXPECTEDStudio",
             text:
                 "I produced a proposal for the redesign of the Unexpected Studio website. I followed their graphic guidelines" +
@@ -99,7 +100,7 @@ export default function Projects() {
             title: "Various Game ",
             smalltext: "  Morpion, Puissance4, Pendu, Labyrinth",
             year: "2023",
-            url: "./fake-project-variousgame.png",
+            url: "./video/VariousGame.mp4",
             alt: "Various Games",
             text:
                 "A series of little games that helped me learn the basics of Javascript at the Ri7 school." +
@@ -151,7 +152,7 @@ export default function Projects() {
             parentElement.appendChild(currentElement);
             gsap.set(currentElement, { height: "0%" });
             gsap.to(currentElement, {
-                height: "80%",
+                height: "100%",
                 duration: 2,
                 ease: "power2.inOut",
             });
@@ -184,11 +185,10 @@ export default function Projects() {
                                         ref={viewRefs.current[index]}
                                         key={index}
                                     >
-                                        <img
+                                        <Video
                                             src={item.url}
-                                            alt={item.alt}
-
-                                            // style={{ zIndex: items.length - index }}
+                                            index={index}
+                                            currentIndex={currentIndex}
                                         />
                                     </div>
                                 ))}
