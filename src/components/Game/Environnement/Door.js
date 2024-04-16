@@ -22,7 +22,6 @@ export class Door {
 
         this.overlay = overlay;
         this.onComplete = () => {
-            console.log("completed animation");
             gsap.to(this.overlay, {
                 opacity: 1,
             });

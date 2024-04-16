@@ -8,7 +8,7 @@ import { HandleInput } from "../gameLogic/InputManager";
 import { gameAnimate } from "../gameLogic/GameAnimate";
 import { useBackgroundHeight, useSetBackgroundHeight } from "../context/BackgroundHeightContext";
 
-export default function Canvas({ setMapRow, isPlayed }) {
+export default function Canvas({ setMapRow, isPlayed, toExp }) {
     const canvasRef = useRef(null);
     const backgroundHeight = useBackgroundHeight();
     const setBackgroundHeight = useSetBackgroundHeight();
@@ -55,7 +55,7 @@ export default function Canvas({ setMapRow, isPlayed }) {
             RoomsLevels,
             overlay,
             mapRow,
-        } = initializeGame(canvas, keysTab, lastKeysTab);
+        } = initializeGame(canvas, keysTab, lastKeysTab, toExp);
 
         function mainChangeLevel() {
             if (mapRow.row > mapRow.precedentRow) {
@@ -65,7 +65,9 @@ export default function Canvas({ setMapRow, isPlayed }) {
                 }
             }
         }
-
+        if (toExp) {
+            player.goToExp();
+        }
         gameAnimate({
             ctx,
             canvas,
@@ -78,7 +80,7 @@ export default function Canvas({ setMapRow, isPlayed }) {
             mainChangeLevel,
         });
         setBackgroundHeight(background.height);
-    }, []);
+    }, [toExp]);
 
     return <canvas ref={canvasRef} />;
 }

@@ -22,6 +22,7 @@ export class ActivePlayer extends Player {
 
         this.doors = doors;
         this.mapRow = mapRow;
+        this.toExp = false;
     }
 
     setState() {
@@ -36,6 +37,10 @@ export class ActivePlayer extends Player {
         } else if (this.velocity.x === 0 && this.lastKeysTab[0] === "d") {
             this.SPRITE_NAME = "IDLE_R";
         }
+    }
+
+    goToExp() {
+        this.toExp = true;
     }
     // UPDATE PLAYER____________________________________________________________________
     updatePlayer({ background, context, canvas, camera }) {
@@ -54,6 +59,8 @@ export class ActivePlayer extends Player {
         );
         this.changeLevelByTheBottom();
         this.changeLevelByTheTop();
+
+        console.log(this.toExp);
 
         if (this.keysTab.includes("z")) {
             this.enterInDoor();
@@ -108,10 +115,11 @@ export class ActivePlayer extends Player {
         for (let i = 0; i < this.doors.length; i++) {
             const door = this.doors[i];
             if (
-                this.position.x + this.width <= door.position.x + door.width &&
-                this.position.x - 3 >= door.position.x &&
-                this.position.y <= door.position.y + door.height &&
-                this.position.y + this.height >= door.position.y
+                (this.position.x + this.width <= door.position.x + door.width &&
+                    this.position.x - 3 >= door.position.x &&
+                    this.position.y <= door.position.y + door.height &&
+                    this.position.y + this.height >= door.position.y) ||
+                this.toExp
             ) {
                 this.preventInput = true;
                 door.play();

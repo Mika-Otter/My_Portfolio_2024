@@ -13,10 +13,11 @@ import Video from "../Video/Video";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-export default function Projects() {
+export default function Projects({ goToExp }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isHover, setIsHover] = useState(false);
     const [isProjectOpen, setIsProjectOpen] = useState(false);
+
     const intervalRef = useRef();
 
     const items = [
@@ -246,7 +247,7 @@ export default function Projects() {
                     <div className={s.projects__box__svgGoToExp}>
                         <GoToExpSVG width="100%" />
                     </div>
-                    <div className={s.projects__box__goToExp}>
+                    <div className={s.projects__box__goToExp} onClick={() => goToExp()}>
                         <span> GO TO EXPERIMENTAL</span>
                         <div className={s.projects__box__goToExp__arrow}>
                             <ArrowSVG color={"#fff"} />

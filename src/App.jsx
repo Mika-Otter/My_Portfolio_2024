@@ -13,12 +13,18 @@ export default function App() {
     const [mapRow, setMapRow] = useState({ row: 0, precedentRow: 0 });
     const backgroundHeight = useBackgroundHeight();
     const [isPlayed, setIsPlayed] = useState(false);
+    const [toExp, setToExp] = useState(false);
 
     const playMode = () => {
         setIsPlayed(true);
     };
     const viewMode = () => {
         setIsPlayed(false);
+    };
+
+    const goToExp = () => {
+        setToExp(true);
+        console.log("YOOOOOOO");
     };
 
     return (
@@ -29,14 +35,19 @@ export default function App() {
             <BackgroundHeightProvider>
                 <BigBox backgroundheight={backgroundHeight}>
                     <div className="canvas">
-                        <Canvas mapRow={mapRow} setMapRow={setMapRow} isPlayed={isPlayed} />
+                        <Canvas
+                            mapRow={mapRow}
+                            setMapRow={setMapRow}
+                            isPlayed={isPlayed}
+                            toExp={toExp}
+                        />
                     </div>
                     <section className="main__section">
                         <div className="title">
                             <Title />
                         </div>
                         <div className="wrapper"></div>
-                        <div className="content">{!isPlayed && <Projects />}</div>
+                        <div className="content">{!isPlayed && <Projects goToExp={goToExp} />}</div>
                     </section>
                 </BigBox>
             </BackgroundHeightProvider>
