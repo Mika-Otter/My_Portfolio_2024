@@ -13,7 +13,7 @@ export class HandleInput {
                 this.keysTab.unshift("q");
 
                 setTimeout(() => {
-                    this.keysTab[0] = "";
+                    this.keysTab.splice(this.keysTab.indexOf("q"), 1);
                     this.lastKeysTab.splice(0, 1, "q");
                 }, 500);
                 console.log("scroooll ", this.keysTab, this.lastKeysTab);
@@ -21,7 +21,7 @@ export class HandleInput {
                 this.keysTab.unshift("d");
 
                 setTimeout(() => {
-                    this.keysTab[0] = "";
+                    this.keysTab.splice(this.keysTab.indexOf("d"), 1);
                     this.lastKeysTab.splice(0, 1, "d");
                 }, 500);
 
