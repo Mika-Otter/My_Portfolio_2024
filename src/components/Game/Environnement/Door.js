@@ -1,3 +1,5 @@
+import gsap from "gsap";
+
 export class Door {
     constructor({ position, imageSrc, frameRate = 1, loop = true, autoplay = true, overlay }) {
         this.position = position;
