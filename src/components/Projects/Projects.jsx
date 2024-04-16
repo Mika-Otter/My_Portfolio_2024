@@ -264,7 +264,8 @@ export default function Projects() {
                         item={items[currentIndex]}
                         closeProject={closeProject}
                         nextProject={nextProject}
-                        isProjectOpen={isProjectOpen}
+                        index={currentIndex}
+                        currentIndex={currentIndex}
                     />
                 )}
             </section>

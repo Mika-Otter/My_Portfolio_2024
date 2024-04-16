@@ -5,8 +5,9 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { CrossSVG } from "../../SVG/CrossSVG";
 import { ArrowSVG } from "../../SVG/ArrowSVG";
+import Video from "../../Video/Video";
 
-export default function Project({ item, closeProject, nextProject, isProjectOpen }) {
+export default function Project({ item, closeProject, nextProject, index, currentIndex }) {
     const projectWrapperRef = useRef();
     const [closing, setClosing] = useState(false);
     const timelineRef = useRef();
@@ -52,7 +53,7 @@ export default function Project({ item, closeProject, nextProject, isProjectOpen
                         </div>
                         <div className={s.project__pic__box}>
                             <div className={s.project__pic__box__ctn}>
-                                <img src={item.url} alt={item.alt} />
+                                <Video src={item.url} index={index} currentIndex={currentIndex} />
                                 <button type="button">LIVE SITE ●</button>
                             </div>
                         </div>
