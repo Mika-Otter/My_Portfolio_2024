@@ -9,6 +9,7 @@ export function initializeGame(canvas, keysTab, lastKeysTab) {
     let mapRow = { row: 0, precedentRow: 0 };
     let background;
     let doors;
+    let scale;
     let overlay = {
         opacity: 0,
     };
@@ -23,9 +24,11 @@ export function initializeGame(canvas, keysTab, lastKeysTab) {
                     imageSrc: "./src/assets/img/MAPTILED3.png",
                     canvas,
                 });
+                scale = background.width / background.originalWidth;
+                console.log("yoooooooooooo", scale);
                 doors = [
                     new Door({
-                        position: { x: 1376 * 1.8, y: 4959 * 1.8 + 50 }, // x * 1.8, y * 1.8 for ZOOM 180% + adjusment
+                        position: { x: 2506 * scale, y: 8900 * scale }, // x * 1.8, y * 1.8 for ZOOM 180% + adjusment
                         imageSrc: "./src/assets/sprite-door/doorOpen.png",
                         frameRate: 5,
                         loop: false,
