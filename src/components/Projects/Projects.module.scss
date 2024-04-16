@@ -57,7 +57,7 @@
             display: flex;
 
             &__view {
-                width: 45%;
+                width: 47%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -78,7 +78,7 @@
                         top: 16%;
                         left: 10%;
                         width: 80%;
-                        // height: 70%;
+                        height: 70%;
                         object-fit: cover;
                         overflow: hidden;
                         // background-color: black;
@@ -92,7 +92,7 @@
             }
             &__text {
                 // border: 2px solid black;
-                width: 55%;
+                width: 53%;
                 display: flex;
                 flex-direction: column;
 
@@ -107,7 +107,7 @@
                     font-size: 1.2rem;
                     border-bottom: 1px solid black;
                     &__project {
-                        margin-left: 3rem;
+                        margin-left: 1rem;
                         font-size: 25px;
                     }
                     &__year {
@@ -154,7 +154,8 @@
                         }
                         &__year {
                             margin-right: 1.3rem;
-                            font-weight: 600;
+                            font-weight: 500;
+                            font-family: "VCR_OSD";
                         }
                     }
 
