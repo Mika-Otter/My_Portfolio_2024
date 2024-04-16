@@ -15,24 +15,40 @@
         width: 85%;
         aspect-ratio: 2.53;
         position: relative;
-        margin-top: -4rem;
+        margin-top: -6rem;
         // border: 2px solid red;q
-
-        h2 {
+        &__title {
             position: absolute;
-            margin: 0;
-            left: 3rem;
-            top: -5.6vw;
-            text-transform: uppercase;
-            font-family: "Nacelle-Regular";
-            font-size: 105px;
-            width: 200%;
-            color: white;
-            // color: rgba(220, 220, 220, 0.753);
-            // backdrop-filter: blur(13px);
-            // -webkit-backdrop-filter: blur(13px);
-            mix-blend-mode: difference;
-            // border: 2px solid green;
+            left: 9rem;
+            top: -2.6vw;
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            height: 13%;
+
+            width: 35%;
+            background-color: rgba(244, 244, 244, 0.459);
+            -webkit-backdrop-filter: blur(13px);
+            backdrop-filter: blur(13px);
+
+            clip-path: url(#gotoexpMask);
+            transform: rotate(180deg);
+            h2 {
+                margin: 0;
+                margin-right: 20px;
+                margin-top: 5px;
+                text-transform: uppercase;
+                font-family: "OktaNeue-Regular";
+                font-size: 25px;
+                transform: rotate(180deg);
+                color: rgba(255, 255, 255, 0.448);
+
+                // color: rgba(220, 220, 220, 0.753);
+                // backdrop-filter: blur(13px);
+                // -webkit-backdrop-filter: blur(13px);
+                // mix-blend-mode: difference;
+                // border: 2px solid green;
+            }
         }
 
         &__content {
@@ -41,7 +57,7 @@
             display: flex;
 
             &__view {
-                width: 50%;
+                width: 45%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -53,17 +69,19 @@
                     // border: 2px solid green;
                     position: relative;
                     width: 100%;
-                    height: 70%;
+                    height: 58%;
+                    margin-top: -2rem;
                     &__img {
                         // border: 2px solid red;
+                        clip-path: polygon(0 0, 100% 0, 100% 93%, 95% 100%, 0 100%);
                         position: absolute;
                         top: 16%;
                         left: 10%;
                         width: 80%;
-                        height: 80%;
+                        // height: 70%;
                         object-fit: cover;
                         overflow: hidden;
-                        background-color: black;
+                        // background-color: black;
                         img {
                             // border: 2px solid pink;
                             width: 100%;
@@ -74,24 +92,26 @@
             }
             &__text {
                 // border: 2px solid black;
-                width: 50%;
+                width: 55%;
                 display: flex;
                 flex-direction: column;
 
                 &__banner {
                     display: flex;
-                    width: 90%;
-                    height: 2.4rem;
-                    margin-top: 5rem;
+                    width: 95%;
+                    height: 2.5rem;
+                    margin-top: 3rem;
                     // border: 2px solid orange;
                     justify-content: space-between;
-                    font-family: "OktaNeue-Regular";
+                    font-family: "VCR_OSD";
                     font-size: 1.2rem;
                     border-bottom: 1px solid black;
                     &__project {
-                        margin-left: 1rem;
+                        margin-left: 3rem;
+                        font-size: 25px;
                     }
                     &__year {
+                        font-size: 25px;
                         margin-right: 1rem;
                     }
                 }
@@ -99,20 +119,28 @@
                     ul {
                         padding: 0;
                         margin: 0;
-                        margin-top: 1.5rem;
+                        padding-top: 1rem;
+                        height: 120%;
+                        width: 95%;
+                        // margin-top: 1.5rem;
+                        border: 1px solid black;
                     }
                     li {
                         box-sizing: border-box;
+                        height: 33px;
                         cursor: pointer;
-                        padding-bottom: 4px;
+                        padding-bottom: 8px;
                         padding-top: 7px;
                         padding-left: 15px;
-                        width: 90%;
+                        width: 100%;
                         list-style: none;
                         display: flex;
                         justify-content: space-between;
-                        font-family: "Nacelle-Regular";
-                        font-size: 15px;
+
+                        align-items: center;
+                        font-family: "Right_Grotesk";
+                        letter-spacing: 1px;
+                        font-size: 16px;
                         color: black;
                         background-color: "transparent";
                     }
@@ -121,34 +149,31 @@
                         gap: 10px;
                         text-transform: uppercase;
                         &__text {
-                            // text-transform: initial;
+                            text-transform: initial;
                             margin: 0;
-                            font-family: "OktaNeue-Regular";
-                            font-size: 14px;
-                            line-height: 1;
                         }
                         &__year {
                             margin-right: 1.3rem;
-                            font-weight: 700;
+                            font-weight: 600;
                         }
                     }
 
                     .liHover {
-                        font-size: 18px;
+                        // font-size: 18px;
                         // mix-blend-mode: difference;
-                        background-color: rgba(14, 13, 13, 0.753);
-                        color: rgb(233, 232, 232);
+                        background-color: rgba(14, 13, 13, 0.946);
+                        color: rgb(255, 255, 255);
 
-                        -webkit-clip-path: polygon(
-                            25% 0,
-                            100% 0,
-                            100% 100%,
-                            75% 100%,
-                            0 100%,
-                            0 30%,
-                            2% 0
-                        );
-                        clip-path: polygon(25% 0, 100% 0, 100% 100%, 75% 100%, 0 100%, 0 30%, 2% 0);
+                        // -webkit-clip-path: polygon(
+                        //     25% 0,
+                        //     100% 0,
+                        //     100% 100%,
+                        //     75% 100%,
+                        //     0 100%,
+                        //     0 30%,
+                        //     2% 0
+                        // );
+                        // clip-path: polygon(25% 0, 100% 0, 100% 100%, 75% 100%, 0 100%, 0 30%, 2% 0);
                     }
                 }
             }
@@ -174,11 +199,31 @@
             width: 30%;
             bottom: -0.7vw;
             right: 16.7vw;
-            background-color: rgba(8, 8, 8, 0.778);
+            background-color: rgba(8, 8, 8, 0.864);
             -webkit-backdrop-filter: blur(13px);
             backdrop-filter: blur(13px);
             clip-path: url(#gotoexpMask);
             // border: 2px solid blue;
+        }
+        &__goToExp {
+            cursor: pointer;
+            margin: 0;
+            position: absolute;
+            color: white;
+            bottom: 0.2vw;
+            right: 18.7vw;
+            // border: 2px solid red;
+            font-family: "VCR_OSD";
+            font-size: 24px;
+            width: 23%;
+            display: flex;
+            justify-content: space-between;
+            span {
+                margin: 0;
+            }
+            &__arrow {
+                width: 25px;
+            }
         }
 
         &__svgCross__one,

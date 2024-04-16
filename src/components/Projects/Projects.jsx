@@ -8,6 +8,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/all";
 import Project from "./Project/Project";
+import { ArrowSVG } from "../SVG/ArrowSVG";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -172,7 +173,8 @@ export default function Projects() {
         <>
             <section className={s.projects}>
                 <div className={s.projects__box}>
-                    <h2>Projects</h2>
+                    {/* <div className={s.projects__box__title}><h2>Projects</h2> </div> */}
+
                     <div className={s.projects__box__content}>
                         <div className={s.projects__box__content__view}>
                             <div className={s.projects__box__content__view__ctn}>
@@ -243,6 +245,12 @@ export default function Projects() {
                     </div>
                     <div className={s.projects__box__svgGoToExp}>
                         <GoToExpSVG width="100%" />
+                    </div>
+                    <div className={s.projects__box__goToExp}>
+                        <span> GO TO EXPERIMENTAL</span>
+                        <div className={s.projects__box__goToExp__arrow}>
+                            <ArrowSVG color={"#fff"} />
+                        </div>
                     </div>
                     <div className={s.projects__box__svgCross__one}>
                         <CrossSVG />

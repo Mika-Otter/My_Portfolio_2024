@@ -10,27 +10,10 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    font-family: "OktaNeue-Regular";
-    font-size: 17px;
+    font-family: "Right_Grotesk_Bold";
+    letter-spacing: 1px;
+    font-size: 18px;
 
-    // &__logo {
-    //     cursor: pointer;
-    //     position: relative;
-    //     mix-blend-mode: darken;
-    //     margin-top: 5px;
-    //     width: 13%;
-    //     border: 2px solid red;
-    //     // border: 2px solid purple;q
-    //     display: flex;
-    //     align-items: center;
-    //     justify-content: center;
-    //     // background-color: blue;
-
-    //     img {
-    //         width: 50px;
-    //         height: 50px;
-    //     }
-    // }
     &__menu {
         cursor: pointer;
         mix-blend-mode: normal;
@@ -66,7 +49,7 @@
         align-items: center;
         justify-content: space-between;
         width: 35px;
-        height: 130px;
+        height: 150px;
         background-color: rgba(8, 8, 8, 0.856);
         color: white;
         clip-path: polygon(0 0, 100% 0, 100% 93%, 75% 100%, 0 100%);
@@ -91,6 +74,10 @@
     &__sound {
         background-color: rgba(255, 255, 255, 0.494);
         width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         padding: 2.5px;
         -webkit-backdrop-filter: blur(13px);
         backdrop-filter: blur(13px);
