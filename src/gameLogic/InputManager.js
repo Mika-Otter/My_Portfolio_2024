@@ -6,23 +6,26 @@ export class HandleInput {
     }
 
     initializeWheelListener() {
+        this.lastKeysTab[0] = [""];
+        this.keysTab[0] = "";
         this.wheelListener = (event) => {
             if (event.deltaY < 0 && this.keysTab.indexOf("q") == -1) {
-                console.log("scrolling up");
                 this.keysTab.unshift("q");
 
                 setTimeout(() => {
-                    this.keysTab.splice(this.keysTab.indexOf("q"), 1);
+                    this.keysTab[0] = "";
                     this.lastKeysTab.splice(0, 1, "q");
                 }, 500);
+                console.log("scroooll ", this.keysTab, this.lastKeysTab);
             } else if (event.deltaY > 0 && this.keysTab.indexOf("d") == -1) {
-                console.log("scrolling down");
                 this.keysTab.unshift("d");
 
                 setTimeout(() => {
-                    this.keysTab.splice(this.keysTab.indexOf("d"), 1);
+                    this.keysTab[0] = "";
                     this.lastKeysTab.splice(0, 1, "d");
                 }, 500);
+
+                console.log("scroooll ", this.keysTab, this.lastKeysTab);
             }
         };
 
@@ -30,19 +33,19 @@ export class HandleInput {
     }
 
     initializeKeyListener() {
-        console.log("yoooooo");
         this.keydownListener = (event) => {
             switch (event.key) {
                 case "q":
                     if (this.keysTab.indexOf("q") == -1) {
                         this.keysTab.unshift("q");
-                        console.log(this.lastKeysTab);
                     }
+
                     break;
                 case "d":
                     if (this.keysTab.indexOf("d") == -1) {
                         this.keysTab.unshift("d");
                     }
+                    console.log("moove ", this.keysTab, this.lastKeysTab);
                     break;
                 case " ":
                     event.preventDefault();
@@ -67,6 +70,7 @@ export class HandleInput {
                 case "d":
                     this.keysTab.splice(this.keysTab.indexOf("d"), 1);
                     this.lastKeysTab.splice(0, 1, "d");
+                    console.log("keyup ", this.keysTab, this.lastKeysTab);
                     break;
                 case " ":
                     this.keysTab.splice(this.keysTab.indexOf(" "), 1);
@@ -86,10 +90,9 @@ export class HandleInput {
     }
 
     removeListeners() {
-        this.keysTab[0] = "";
-        this.lastKeysTab[0] = "";
+        this.lastKeysTab[0] = this.keysTab[0];
+        this.keysTab = [];
 
-        console.log(this.lastKeysTab);
         if (!this.isPlayed) {
             window.removeEventListener("wheel", this.wheelListener);
         } else {

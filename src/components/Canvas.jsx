@@ -13,9 +13,10 @@ export default function Canvas({ setMapRow, isPlayed }) {
     const backgroundHeight = useBackgroundHeight();
     const setBackgroundHeight = useSetBackgroundHeight();
     const [keysTab, setKeysTab] = useState([]);
-    let lastKeysTab = [""];
+    const [lastKeysTab, setLastKeysTab] = useState([""]);
     const [inputHandler, setInputHandler] = useState(null);
     let handler;
+    const [firstGame, setFirstGame] = useState(true);
 
     useEffect(() => {
         handler = new HandleInput(keysTab, lastKeysTab, isPlayed);
@@ -27,7 +28,6 @@ export default function Canvas({ setMapRow, isPlayed }) {
         } else {
             handler.initializeKeyListener();
         }
-        console.log(lastKeysTab);
         return () => {
             if (handler) {
                 handler.removeListeners();

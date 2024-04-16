@@ -53,7 +53,7 @@ export default function Project({ item, closeProject, nextProject, isProjectOpen
                         <div className={s.project__pic__box}>
                             <div className={s.project__pic__box__ctn}>
                                 <img src={item.url} alt={item.alt} />
-                                <button type="button">LIVE SITE</button>
+                                <button type="button">LIVE SITE ●</button>
                             </div>
                         </div>
                     </div>
