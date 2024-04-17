@@ -10,6 +10,7 @@ export class ActivePlayer extends Player {
         keysTab,
         lastKeysTab,
         mapRow,
+        toExp,
     }) {
         super({ collisionBlocks, background });
         this.canvas = canvas;
@@ -22,7 +23,7 @@ export class ActivePlayer extends Player {
 
         this.doors = doors;
         this.mapRow = mapRow;
-        this.toExp = false;
+        this.toExp = toExp;
     }
 
     setState() {
@@ -37,10 +38,6 @@ export class ActivePlayer extends Player {
         } else if (this.velocity.x === 0 && this.lastKeysTab[0] === "d") {
             this.SPRITE_NAME = "IDLE_R";
         }
-    }
-
-    goToExp() {
-        this.toExp = true;
     }
     // UPDATE PLAYER____________________________________________________________________
     updatePlayer({ background, context, canvas, camera }) {
@@ -60,7 +57,7 @@ export class ActivePlayer extends Player {
         this.changeLevelByTheBottom();
         this.changeLevelByTheTop();
 
-        console.log(this.toExp);
+        // console.log(this.toExp);
 
         if (this.keysTab.includes("z")) {
             this.enterInDoor();

@@ -5,7 +5,7 @@ import { ActivePlayer } from "../components/Game/Player/PlayerActive";
 import Background from "../Background";
 
 // Initialisation d'autres éléments du jeu, comme la classe Player, Background, etc.
-export function initializeGame(canvas, keysTab, lastKeysTab) {
+export function initializeGame(canvas, keysTab, lastKeysTab, toExp) {
     let mapRow = { row: 0, precedentRow: 0 };
     let background;
     let doors;
@@ -60,6 +60,7 @@ export function initializeGame(canvas, keysTab, lastKeysTab) {
         lastKeysTab,
         overlay,
         mapRow,
+        toExp,
     });
 
     const camera = {

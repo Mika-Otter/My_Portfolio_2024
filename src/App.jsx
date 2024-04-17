@@ -24,9 +24,10 @@ export default function App() {
 
     const goToExp = () => {
         setToExp(true);
-        console.log("YOOOOOOO");
     };
-
+    useEffect(() => {
+        console.log("yoooo", toExp);
+    }, [toExp]);
     return (
         <>
             <PlayView playMode={playMode} viewMode={viewMode} isPlayed={isPlayed} />

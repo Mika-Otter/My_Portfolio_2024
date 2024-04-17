@@ -17,6 +17,7 @@ export default function Canvas({ setMapRow, isPlayed, toExp }) {
     const [inputHandler, setInputHandler] = useState(null);
     let handler;
     const [firstGame, setFirstGame] = useState(true);
+    const [player, setPlayer] = useState(null);
 
     useEffect(() => {
         handler = new HandleInput(keysTab, lastKeysTab, isPlayed);
@@ -65,9 +66,12 @@ export default function Canvas({ setMapRow, isPlayed, toExp }) {
                 }
             }
         }
+
         if (toExp) {
-            player.goToExp();
+            // player.goToExp()
+            player.enterInDoor();
         }
+
         gameAnimate({
             ctx,
             canvas,
