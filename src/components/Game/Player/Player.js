@@ -119,25 +119,25 @@ export class Player {
 
     //CAMERA MANAGE____________________________________________________________________
     updateCameraBox({ camera }) {
-        if (this.position.y + 400 * this.scale > this.backgroundHeight) {
+        if (this.position.y + 10 * this.scale > this.backgroundHeight) {
             this.cameraBox = {
                 position: {
                     x: this.position.x - 600,
-                    y: this.position.y - 400,
+                    y: this.position.y - 100,
                 },
                 width: 0 * this.scale,
-                height: 400 * this.scale,
+                height: 100 * this.scale,
             };
             camera.position.y = -this.backgroundHeight * 0.84;
-            window.scrollBy(0, 100);
+            window.scrollBy(0, 50);
         } else {
             this.cameraBox = {
                 position: {
                     x: this.position.x - 600 * this.scale,
-                    y: this.position.y - 400 * this.scale,
+                    y: this.position.y - 100 * this.scale,
                 },
                 width: 0 * this.scale,
-                height: 800 * this.scale,
+                height: 200 * this.scale,
             };
         }
     }
