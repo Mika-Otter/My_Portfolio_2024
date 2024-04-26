@@ -4,68 +4,65 @@ import {
     collisionsLevel3,
     collisionsLevel4,
     collisionsLevel5,
-} from "../data/collisions";
+} from "../data/collisions-test";
 import { CollisionBlock } from "../components/Game/Environnement/CollisionBlock";
 import { parse2D, calculateHeight, createObjectsFrom2D } from "../utils/utils";
 
 export function parseCollisions(background) {
     const parsedCollisionsLevel1 = parse2D(collisionsLevel1); // 56 rows
-    const parsedCollisionsLevel2 = parse2D(collisionsLevel2); // 56 rows
-    const parsedCollisionsLevel3 = parse2D(collisionsLevel3); // 52 rows
-    const parsedCollisionsLevel4 = parse2D(collisionsLevel4); // 74 rows
-    const parsedCollisionsLevel5 = parse2D(collisionsLevel5); // 78 rows
+    // const parsedCollisionsLevel2 = parse2D(collisionsLevel2); // 56 rows
+    // const parsedCollisionsLevel3 = parse2D(collisionsLevel3); // 52 rows
+    // const parsedCollisionsLevel4 = parse2D(collisionsLevel4); // 74 rows
+    // const parsedCollisionsLevel5 = parse2D(collisionsLevel5); // 78 rows
 
     const heightParsedLevel1 = calculateHeight(parsedCollisionsLevel1, background);
-    const heightParsedLevel2 = calculateHeight(parsedCollisionsLevel2, background);
-    const heightParsedLevel3 = calculateHeight(parsedCollisionsLevel3, background);
-    const heightParsedLevel4 = calculateHeight(parsedCollisionsLevel4, background);
+    // const heightParsedLevel2 = calculateHeight(parsedCollisionsLevel2, background);
+    // const heightParsedLevel3 = calculateHeight(parsedCollisionsLevel3, background);
+    // const heightParsedLevel4 = calculateHeight(parsedCollisionsLevel4, background);
 
     const collisionBlocksLevel1 = createObjectsFrom2D(parsedCollisionsLevel1, {
         CollisionBlock: CollisionBlock,
-        blockValue: 1,
-        limitValue: 2,
+        blockValue: 139,
+        limitValue: 1,
         precedentHeight: 0,
         background: background,
     });
 
-    const collisionBlocksLevel2 = createObjectsFrom2D(parsedCollisionsLevel2, {
-        CollisionBlock: CollisionBlock,
-        background: background,
-        blockValue: 2,
-        limitValue: 3,
-        precedentHeight: heightParsedLevel1,
-    });
-    const collisionBlocksLevel3 = createObjectsFrom2D(parsedCollisionsLevel3, {
-        CollisionBlock: CollisionBlock,
-        background: background,
-        blockValue: 3,
-        limitValue: 1,
-        precedentHeight: heightParsedLevel1 + heightParsedLevel2,
-    });
-    const collisionBlocksLevel4 = createObjectsFrom2D(parsedCollisionsLevel4, {
-        CollisionBlock: CollisionBlock,
-        background: background,
-        blockValue: 4,
-        limitValue: 2,
-        precedentHeight: heightParsedLevel1 + heightParsedLevel2 + heightParsedLevel3,
-    });
-    const collisionBlocksLevel5 = createObjectsFrom2D(parsedCollisionsLevel5, {
-        CollisionBlock: CollisionBlock,
-        background: background,
-        blockValue: 1,
-        limitValue: 4,
-        precedentHeight:
-            heightParsedLevel1 + heightParsedLevel2 + heightParsedLevel3 + heightParsedLevel4,
-    });
+    //     const collisionBlocksLevel2 = createObjectsFrom2D(parsedCollisionsLevel2, {
+    //         CollisionBlock: CollisionBlock,
+    //         background: background,
+    //         blockValue: 2,
+    //         limitValue: 3,
+    //         precedentHeight: heightParsedLevel1,
+    //     });
+    //     const collisionBlocksLevel3 = createObjectsFrom2D(parsedCollisionsLevel3, {
+    //         CollisionBlock: CollisionBlock,
+    //         background: background,
+    //         blockValue: 3,
+    //         limitValue: 1,
+    //         precedentHeight: heightParsedLevel1 + heightParsedLevel2,
+    //     });
+    //     const collisionBlocksLevel4 = createObjectsFrom2D(parsedCollisionsLevel4, {
+    //         CollisionBlock: CollisionBlock,
+    //         background: background,
+    //         blockValue: 4,
+    //         limitValue: 2,
+    //         precedentHeight: heightParsedLevel1 + heightParsedLevel2 + heightParsedLevel3,
+    //     });
+    //     const collisionBlocksLevel5 = createObjectsFrom2D(parsedCollisionsLevel5, {
+    //         CollisionBlock: CollisionBlock,
+    //         background: background,
+    //         blockValue: 1,
+    //         limitValue: 4,
+    //         precedentHeight:
+    //             heightParsedLevel1 + heightParsedLevel2 + heightParsedLevel3 + heightParsedLevel4,
+    //     });
 
-    const collisionBlocksList = [
-        collisionBlocksLevel1,
-        collisionBlocksLevel2,
-        collisionBlocksLevel3,
-        collisionBlocksLevel4,
-        collisionBlocksLevel5,
-    ];
-
+    const collisionBlocksList = [collisionBlocksLevel1];
+    //         collisionBlocksLevel2,
+    //         collisionBlocksLevel3,
+    //         collisionBlocksLevel4,
+    //         collisionBlocksLevel5,
     return collisionBlocksList;
 }
 

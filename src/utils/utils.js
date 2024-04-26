@@ -1,7 +1,7 @@
 export function parse2D(array) {
     const rows = [];
-    for (let i = 0; i < array.length; i += 100) {
-        rows.push(array.slice(i, i + 100));
+    for (let i = 0; i < array.length; i += 50) {
+        rows.push(array.slice(i, i + 50));
     }
 
     return rows;
@@ -20,11 +20,11 @@ export function createObjectsFrom2D(
                 objects.push(
                     new CollisionBlock({
                         position: {
-                            x: x * 28.8 * scale, // 28.8 = 16 * 180% ZOOM
-                            y: y * 28.8 * scale + precedentHeight,
+                            x: x * 32 * scale, // 128 = 32 * 400% ZOOM
+                            y: y * 32 * scale + precedentHeight,
                         },
-                        width: 28.8 * scale,
-                        height: 28.8 * scale,
+                        width: 32 * scale,
+                        height: 32 * scale,
                     })
                 );
             }
