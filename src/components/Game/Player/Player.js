@@ -25,6 +25,7 @@ export class Player {
 
         this.sprite = new Sprite("../../../../sprite/Sprite-Hobit-Full.png");
         this.SPRITE_NAME = "IDLE_R";
+        this.scrolledToBottom = false;
     }
 
     draw(context) {
@@ -163,7 +164,6 @@ export class Player {
     shouldPanCameraToTheTop({ camera }) {
         if (this.cameraBox.position.y <= Math.abs(camera.position.y)) {
             camera.position.y -= this.velocity.y;
-            window.scrollBy(0, this.velocity.y * 0.4);
         }
     }
     shouldPanCameraToTheBottom({ camera, canvas }) {
@@ -172,8 +172,12 @@ export class Player {
 
         if (bottomSideCamera >= canvasSize + Math.abs(camera.position.y)) {
             camera.position.y -= this.velocity.y;
-            // console.log(camera.position.y);
-            window.scrollBy(0, this.velocity.y * 0.4);
+            if (!this.scrolledToBottom) {
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: "smooth",
+                });
+            }
         }
     }
 }

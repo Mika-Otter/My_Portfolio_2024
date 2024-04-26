@@ -75,10 +75,10 @@ export class ActivePlayer extends Player {
         }
 
         if (this.keysTab[0] === "d" && !this.collidedRight) {
-            this.velocity.x = 4.5;
+            this.velocity.x = 3.5;
             this.shouldPanCameraToTheLeft({ canvas, camera, background });
         } else if (this.keysTab[0] === "q" && !this.collidedLeft && this.position.x > 0) {
-            this.velocity.x = -4.5;
+            this.velocity.x = -3.5;
             this.shouldPanCameraToTheRight({ camera });
         } else {
             this.velocity.x = 0;
