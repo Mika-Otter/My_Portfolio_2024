@@ -69,7 +69,7 @@ export class ActivePlayer extends Player {
         if (this.preventInput) return;
         if (this.keysTab.includes(" ") && !this.collidedTop) {
             if (this.velocity.y === 0) {
-                this.velocity.y = -15 * this.scale;
+                this.velocity.y = -11 * this.scale;
                 this.jumping = true;
             }
         }

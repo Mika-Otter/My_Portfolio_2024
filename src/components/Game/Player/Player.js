@@ -119,25 +119,24 @@ export class Player {
 
     //CAMERA MANAGE____________________________________________________________________
     updateCameraBox({ camera }) {
-        if (this.position.y + 10 * this.scale > this.backgroundHeight) {
+        if (this.position.y + 300 * this.scale > this.backgroundHeight) {
             this.cameraBox = {
                 position: {
                     x: this.position.x - 600,
-                    y: this.position.y - 100,
+                    y: this.position.y - 200,
                 },
                 width: 0 * this.scale,
                 height: 100 * this.scale,
             };
-            camera.position.y = -this.backgroundHeight * 0.84;
-            window.scrollBy(0, 50);
+            camera.position.y = -this.backgroundHeight * 0.85;
         } else {
             this.cameraBox = {
                 position: {
                     x: this.position.x - 600 * this.scale,
-                    y: this.position.y - 100 * this.scale,
+                    y: this.position.y - 200 * this.scale,
                 },
                 width: 0 * this.scale,
-                height: 200 * this.scale,
+                height: 400 * this.scale,
             };
         }
     }
@@ -164,7 +163,7 @@ export class Player {
     shouldPanCameraToTheTop({ camera }) {
         if (this.cameraBox.position.y <= Math.abs(camera.position.y)) {
             camera.position.y -= this.velocity.y;
-            window.scrollBy(0, this.velocity.y * this.scale - 0.3);
+            window.scrollBy(0, this.velocity.y * 0.4);
         }
     }
     shouldPanCameraToTheBottom({ camera, canvas }) {
@@ -174,7 +173,7 @@ export class Player {
         if (bottomSideCamera >= canvasSize + Math.abs(camera.position.y)) {
             camera.position.y -= this.velocity.y;
             // console.log(camera.position.y);
-            window.scrollBy(0, this.velocity.y * this.scale);
+            window.scrollBy(0, this.velocity.y * 0.4);
         }
     }
 }
