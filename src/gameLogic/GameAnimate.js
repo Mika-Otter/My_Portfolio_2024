@@ -26,7 +26,7 @@ export function gameAnimate({
         });
         player.draw(ctx);
         player.updatePlayer({
-            background: background,
+            background,
             context: ctx,
             canvas,
             camera,

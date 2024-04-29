@@ -35,7 +35,7 @@ export class Player {
         // console.log(this.velocity.y);
     }
 
-    update({ camera, canvas }) {
+    update({ camera, canvas, background }) {
         this.position.x += this.velocity.x * this.scale;
         this.checkForHorizontalCollision();
 
@@ -51,6 +51,12 @@ export class Player {
         }
         if (this.velocity.y < 0) {
             this.shouldPanCameraToTheTop({ camera });
+        }
+        if (this.velocity.x > 0) {
+            this.shouldPanCameraToTheLeft({ camera, canvas, background });
+        }
+        if (this.velocity.x < 0) {
+            this.shouldPanCameraToTheRight({ camera });
         }
     }
 
@@ -123,20 +129,20 @@ export class Player {
         if (this.position.y + 300 * this.scale > this.backgroundHeight) {
             this.cameraBox = {
                 position: {
-                    x: this.position.x - 600,
+                    x: this.position.x - 250,
                     y: this.position.y - 200,
                 },
-                width: 0 * this.scale,
+                width: 500 * this.scale,
                 height: 100 * this.scale,
             };
             camera.position.y = -this.backgroundHeight * 0.85;
         } else {
             this.cameraBox = {
                 position: {
-                    x: this.position.x - 600 * this.scale,
+                    x: this.position.x - 250 * this.scale,
                     y: this.position.y - 200 * this.scale,
                 },
-                width: 0 * this.scale,
+                width: 500 * this.scale,
                 height: 400 * this.scale,
             };
         }

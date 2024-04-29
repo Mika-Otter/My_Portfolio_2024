@@ -43,7 +43,7 @@ export class ActivePlayer extends Player {
     updatePlayer({ background, context, canvas, camera }) {
         this.handleMovement({ canvas, camera, background });
         this.updateCameraBox({ camera });
-        this.update({ camera, canvas });
+        this.update({ camera, canvas, background });
         this.setState();
         this.sprite.update(this.SPRITE_NAME);
 
@@ -75,10 +75,10 @@ export class ActivePlayer extends Player {
         }
 
         if (this.keysTab[0] === "d" && !this.collidedRight) {
-            this.velocity.x = 3.5;
+            this.velocity.x = 3.7;
             this.shouldPanCameraToTheLeft({ canvas, camera, background });
         } else if (this.keysTab[0] === "q" && !this.collidedLeft && this.position.x > 0) {
-            this.velocity.x = -3.5;
+            this.velocity.x = -3.7;
             this.shouldPanCameraToTheRight({ camera });
         } else {
             this.velocity.x = 0;

@@ -52,7 +52,7 @@ export function initializeGame(canvas, keysTab, lastKeysTab, toExp) {
 
     const player = new ActivePlayer({
         collisionBlocks: currentCollisionLevel,
-        background: background,
+        background,
         doors,
         canvas,
         collisionBlocksList,
