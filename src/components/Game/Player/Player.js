@@ -1,7 +1,7 @@
 import { Sprite } from "../../../gameLogic/Sprite";
 
 export class Player {
-    constructor({ collisionBlocks = [], background }) {
+    constructor({ collisionBlocks = [], background, scale }) {
         this.position = {
             x: 100,
             y: 100,
@@ -129,21 +129,21 @@ export class Player {
         if (this.position.y + 300 * this.scale > this.backgroundHeight) {
             this.cameraBox = {
                 position: {
-                    x: this.position.x - 250,
-                    y: this.position.y - 200,
+                    x: this.position.x - 350,
+                    y: this.position.y - 250,
                 },
-                width: 500 * this.scale,
-                height: 100 * this.scale,
+                width: 700 * this.scale,
+                height: 500 * this.scale,
             };
             camera.position.y = -this.backgroundHeight * 0.85;
         } else {
             this.cameraBox = {
                 position: {
-                    x: this.position.x - 250 * this.scale,
-                    y: this.position.y - 200 * this.scale,
+                    x: this.position.x - 350 * this.scale,
+                    y: this.position.y - 250 * this.scale,
                 },
-                width: 500 * this.scale,
-                height: 400 * this.scale,
+                width: 700 * this.scale,
+                height: 500 * this.scale,
             };
         }
     }

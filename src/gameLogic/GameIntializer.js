@@ -2,7 +2,7 @@ import { parseCollisions, changeLevel } from "./CollisionLevel";
 import { HandleInput } from "./InputManager";
 import { Door } from "../components/Game/Environnement/Door";
 import { ActivePlayer } from "../components/Game/Player/PlayerActive";
-import Background from "../Background";
+import Background from "../components/Game/Environnement/Background";
 
 // Initialisation d'autres éléments du jeu, comme la classe Player, Background, etc.
 export function initializeGame(canvas, keysTab, lastKeysTab, toExp) {
@@ -21,7 +21,7 @@ export function initializeGame(canvas, keysTab, lastKeysTab, toExp) {
             init: () => {
                 background = new Background({
                     position: { x: 0, y: 5 },
-                    imageSrc: "./src/assets/img/map-test2.png",
+                    imageSrc: "./src/assets/img/map-test3.png",
                     canvas,
                 });
                 scale = background.width / background.originalWidth;
@@ -61,6 +61,7 @@ export function initializeGame(canvas, keysTab, lastKeysTab, toExp) {
         overlay,
         mapRow,
         toExp,
+        scale,
     });
 
     const camera = {

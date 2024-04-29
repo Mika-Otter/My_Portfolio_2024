@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import { initializeGame } from "../gameLogic/GameIntializer";
-import Background from "../Background";
+import Background from "./Game/Environnement/Background";
 import { Door } from "./Game/Environnement/Door";
 import { ActivePlayer } from "./Game/Player/PlayerActive";
 import { parseCollisions } from "../gameLogic/CollisionLevel";
