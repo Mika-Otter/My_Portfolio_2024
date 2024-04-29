@@ -1,7 +1,7 @@
 export function parse2D(array) {
     const rows = [];
-    for (let i = 0; i < array.length; i += 50) {
-        rows.push(array.slice(i, i + 50));
+    for (let i = 0; i < array.length; i += 70) {
+        rows.push(array.slice(i, i + 70));
     }
 
     return rows;
