@@ -24,6 +24,11 @@ export function gameAnimate({
         doors.forEach((door) => {
             door.draw(ctx);
         });
+
+        background.draw(ctx, canvas);
+        currentCollisionLevel.forEach((collisionBlock) => {
+            collisionBlock.draw(ctx);
+        });
         player.draw(ctx);
         player.updatePlayer({
             background,
@@ -31,16 +36,10 @@ export function gameAnimate({
             canvas,
             camera,
         });
-
-        background.draw(ctx, canvas);
-        currentCollisionLevel.forEach((collisionBlock) => {
-            collisionBlock.draw(ctx);
-        });
-
         ctx.restore();
         ctx.save();
         ctx.globalAlpha = overlay.opacity;
-        ctx.fillStyle = "black";
+        ctx.fillStyle = "transparent";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.restore();
     }

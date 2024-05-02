@@ -4,10 +4,9 @@ export default class Background {
         this.image = new Image();
         this.image.src = imageSrc;
         this.originalWidth = 70 * 32; // Largeur originale de l'image
-        this.aspectRatio = 70 / 188;
-        this.width = canvas.width * 1.5;
-        this.height = this.width / this.aspectRatio;
-        // Rapport d'aspect de votre image originale (largeur / hauteur)
+        this.aspectRatio = 70 / 180;
+        this.width = canvas.width;
+        this.height = this.width / this.aspectRatio; // ratio
     }
 
     draw(context, canvas) {
