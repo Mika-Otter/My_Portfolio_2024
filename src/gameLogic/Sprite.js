@@ -13,17 +13,17 @@ export class Sprite {
 
         //slow down the animation
         this.gameFrame = 0;
-        this.staggerFrames = 30;
+        this.staggerFrames = 20;
 
         this.spriteAnimations = [];
         this.animationStates = [
             {
                 name: "IDLE_R",
-                frames: 4,
+                frames: 28,
             },
             {
                 name: "IDLE_L",
-                frames: 4,
+                frames: 28,
             },
             {
                 name: "RUN_R",
@@ -52,7 +52,7 @@ export class Sprite {
 
     draw(context, player) {
         this.spriteX = player.position.x - 32;
-        this.spriteY = player.position.y - 32;
+        this.spriteY = player.position.y - 40;
 
         context.drawImage(
             this.image,
@@ -62,8 +62,8 @@ export class Sprite {
             this.spriteHeight,
             this.spriteX,
             this.spriteY,
-            110,
-            110
+            120,
+            120
         );
     }
 

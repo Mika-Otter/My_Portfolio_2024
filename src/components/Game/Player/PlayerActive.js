@@ -28,13 +28,13 @@ export class ActivePlayer extends Player {
 
     setState() {
         if (this.keysTab[0] === "q") {
-            this.SPRITE_NAME = "RUN_L";
+            this.SPRITE_NAME = "IDLE_L"; //RUN_L
         } else if (this.velocity.x === 0 && this.lastKeysTab[0] === "q") {
             this.SPRITE_NAME = "IDLE_L";
         }
 
         if (this.keysTab[0] === "d") {
-            this.SPRITE_NAME = "RUN_R";
+            this.SPRITE_NAME = "IDLE_R"; //RUN__R
         } else if (this.velocity.x === 0 && this.lastKeysTab[0] === "d") {
             this.SPRITE_NAME = "IDLE_R";
         }
@@ -69,7 +69,7 @@ export class ActivePlayer extends Player {
         if (this.preventInput) return;
         if (this.keysTab.includes(" ") && !this.collidedTop) {
             if (this.velocity.y === 0) {
-                this.velocity.y = -14 * this.scale;
+                this.velocity.y = -13 * this.scale;
                 this.jumping = true;
             }
         }

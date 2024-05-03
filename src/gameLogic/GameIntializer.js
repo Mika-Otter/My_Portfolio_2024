@@ -21,7 +21,7 @@ export function initializeGame(canvas, keysTab, lastKeysTab, toExp) {
             init: () => {
                 background = new Background({
                     position: { x: 0, y: 5 },
-                    imageSrc: "./src/assets/img/new-map.png",
+                    imageSrc: "./src/assets/img/new-map-2.jpg",
                     canvas,
                 });
                 scale = background.width / background.originalWidth;
