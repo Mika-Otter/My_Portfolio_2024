@@ -15,6 +15,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Projects({ goToExp }) {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [lastIndex, setLastIndex] = useState(0);
     const [isHover, setIsHover] = useState(false);
     const [isProjectOpen, setIsProjectOpen] = useState(false);
 
@@ -33,6 +34,7 @@ export default function Projects({ goToExp }) {
                 " for a client who had a wish and desires that I had to follow. I'm very excited to be working for inspiring people. ",
             techno: "React, GSAP",
             client: "Antoine Lichtenberg Decorator",
+            type: "website",
         },
         {
             title: "Booball ",
@@ -45,6 +47,7 @@ export default function Projects({ goToExp }) {
                 " Basically just a decorative element. Later, I had the idea of turning it into a simple, fun game.",
             techno: "Javascript POO, canvas html element",
             client: "Personnal",
+            type: "game",
         },
         {
             title: "DNSEP2021 ",
@@ -59,6 +62,7 @@ export default function Projects({ goToExp }) {
                 "for progress with other sites.",
             techno: "React, GSAP",
             client: "Personnal",
+            type: "website",
         },
         {
             title: "Typpov ",
@@ -73,6 +77,7 @@ export default function Projects({ goToExp }) {
                 " fonts. I still have many ideas for features to develop, but for the moment I'm concentrating on my projects in Three.js. ",
             techno: "React, GSAP, Node.js, MySQL, Prisma, JWT",
             client: "School Project",
+            type: "website",
         },
 
         {
@@ -84,6 +89,7 @@ export default function Projects({ goToExp }) {
             text: "While learning OOP in JS, I created a little platform game. I learned a lot thanks to Frank Laboratory on youtube. ",
             techno: "Javascript POO, canvas html element",
             client: "Personnal",
+            type: "game",
         },
         {
             title: "UNEXPECTED Studio ",
@@ -96,6 +102,7 @@ export default function Projects({ goToExp }) {
                 " to come up with something that suited their world and the market. I loved working on a real project.  ",
             techno: "Figma, Adobe Illustrator, Adobe Photoshop",
             client: "Personnal project to be sent to UNEXPECTEDStudio ",
+            type: "website",
         },
         {
             title: "Various Game ",
@@ -109,6 +116,7 @@ export default function Projects({ goToExp }) {
                 " created my first API. Although it was pointless, it was a great learning experience. ",
             techno: "Javascript, PHP",
             client: "School Project",
+            type: "game",
         },
     ];
     const viewRefs = useRef(items.map(() => React.createRef()));
@@ -142,22 +150,37 @@ export default function Projects({ goToExp }) {
         console.log(isProjectOpen);
     }, [isProjectOpen]);
 
+    useEffect(() => {
+        setLastIndex(currentIndex);
+    }, [currentIndex]);
+
     useGSAP(() => {
         const currentElement = viewRefs.current[currentIndex].current;
+        const lastElement = viewRefs.current[lastIndex].current;
         const parentElement = currentElement.parentElement;
-        const lastChild = parentElement.lastChild;
+        const random = Math.floor(Math.random() * 10) + 40;
 
         // console.log(currentElement);
 
-        if (currentElement !== undefined) {
-            parentElement.appendChild(currentElement);
-            gsap.set(currentElement, { height: "0%" });
-            gsap.to(currentElement, {
-                height: "100%",
-                duration: 2,
-                ease: "power2.inOut",
-            });
-        }
+        viewRefs.current.forEach((ref, index) => {
+            if (index !== currentIndex)
+                gsap.set(ref.current, {
+                    height: "0%",
+                    opacity: 0,
+                });
+            if (index === currentIndex) {
+                parentElement.appendChild(currentElement);
+                gsap.set(currentElement, {
+                    left: `${random}%`,
+                    right: `${random}%`,
+                    top: `${random}%`,
+                });
+                gsap.to(currentElement, {
+                    height: `${random}%`,
+                    // opacity: 1,
+                });
+            }
+        });
     }, [currentIndex]);
 
     useEffect(() => {
@@ -168,13 +191,14 @@ export default function Projects({ goToExp }) {
     }, [isHover, isProjectOpen]);
 
     useEffect(() => {
-        console.log(currentIndex);
+        console.log(currentIndex, "and last index :", lastIndex);
     }, [currentIndex]);
 
     return (
         <>
             <section className={s.projects}>
                 <div className={s.projects__box}>
+                    <h2>All projects</h2>
                     {/* <div className={s.projects__box__title}><h2>Projects</h2> </div> */}
 
                     <div className={s.projects__box__content}>
@@ -195,69 +219,87 @@ export default function Projects({ goToExp }) {
                                 ))}
                             </div>
                         </div>
-                        <div className={s.projects__box__content__text}>
-                            <div className={s.projects__box__content__text__banner}>
-                                <span className={s.projects__box__content__text__banner__project}>
-                                    PROJECT
-                                </span>
-                                <span className={s.projects__box__content__text__banner__year}>
-                                    YEAR
-                                </span>
-                            </div>
-                            <div className={s.projects__box__content__text__projects}>
-                                <ul>
-                                    {items.map((item, index) => (
-                                        <li
-                                            key={index}
-                                            className={index === currentIndex ? s.liHover : ""}
-                                            onMouseEnter={(e) => handleMouseEnter(e, index)}
-                                            onMouseLeave={(e) => handleMouseLeave(e, index)}
-                                            onClick={() => openProject()}
+                        <div className={s.projects__box__content__games}>
+                            {items.map((item, index) =>
+                                item.type === "game" ? (
+                                    <li
+                                        key={index}
+                                        className={index === currentIndex ? s.liHover : ""}
+                                        onMouseEnter={(e) => handleMouseEnter(e, index)}
+                                        onMouseLeave={(e) => handleMouseLeave(e, index)}
+                                        onClick={() => openProject()}
+                                    >
+                                        <div
+                                            className={
+                                                s.projects__box__content__text__projects__project
+                                            }
                                         >
-                                            <div
-                                                className={
-                                                    s.projects__box__content__text__projects__project
-                                                }
-                                            >
-                                                {item.title}
-                                                <span
-                                                    className={
-                                                        s.projects__box__content__text__projects__project__text
-                                                    }
-                                                >
-                                                    {item.smalltext}
-                                                </span>
-                                            </div>
+                                            {item.title}
                                             <span
                                                 className={
-                                                    s.projects__box__content__text__projects__project__year
+                                                    s.projects__box__content__text__projects__project__text
                                                 }
                                             >
-                                                {item.year}
+                                                {item.smalltext}
                                             </span>
-                                        </li>
-                                    ))}
+                                        </div>
+                                        <span
+                                            className={
+                                                s.projects__box__content__text__projects__project__year
+                                            }
+                                        >
+                                            {item.year}
+                                        </span>
+                                    </li>
+                                ) : null
+                            )}
+                        </div>
+                        <div className={s.projects__box__content__text}>
+                            <div className={s.projects__box__content__text__banner}></div>
+                            <div className={s.projects__box__content__text__projects}>
+                                <ul>
+                                    {items.map((item, index) =>
+                                        item.type === "website" ? (
+                                            <li
+                                                key={index}
+                                                className={index === currentIndex ? s.liHover : ""}
+                                                onMouseEnter={(e) => handleMouseEnter(e, index)}
+                                                onMouseLeave={(e) => handleMouseLeave(e, index)}
+                                                onClick={() => openProject()}
+                                            >
+                                                <div
+                                                    className={
+                                                        s.projects__box__content__text__projects__project
+                                                    }
+                                                >
+                                                    {item.title}
+                                                    <span
+                                                        className={
+                                                            s.projects__box__content__text__projects__project__text
+                                                        }
+                                                    >
+                                                        {item.smalltext}
+                                                    </span>
+                                                </div>
+                                                <span
+                                                    className={
+                                                        s.projects__box__content__text__projects__project__year
+                                                    }
+                                                >
+                                                    {item.year}
+                                                </span>
+                                            </li>
+                                        ) : null
+                                    )}
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div className={s.projects__box__svgProjectBox}>
-                        <ProjectsBoxSVG width="100%" />
-                    </div>
-                    <div className={s.projects__box__svgGoToExp}>
-                        <GoToExpSVG width="100%" />
-                    </div>
                     <div className={s.projects__box__goToExp} onClick={() => goToExp()}>
-                        <span> GO TO EXPERIMENTAL</span>
+                        <span> NEXT LEVEL </span>
                         <div className={s.projects__box__goToExp__arrow}>
-                            <ArrowSVG color={"#fff"} />
+                            <ArrowSVG color={"#091429"} />
                         </div>
-                    </div>
-                    <div className={s.projects__box__svgCross__one}>
-                        <CrossSVG />
-                    </div>
-                    <div className={s.projects__box__svgCross__two}>
-                        <CrossSVG />
                     </div>
                 </div>
                 {isProjectOpen && (

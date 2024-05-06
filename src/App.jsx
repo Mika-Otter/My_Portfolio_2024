@@ -26,8 +26,8 @@ export default function App() {
         setToExp(true);
     };
     useEffect(() => {
-        console.log("yoooo", toExp);
-    }, [toExp]);
+        console.log(window.innerHeight, window.innerWidth);
+    }, []);
     return (
         <>
             <PlayView playMode={playMode} viewMode={viewMode} isPlayed={isPlayed} />
