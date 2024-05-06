@@ -28,13 +28,13 @@ export class ActivePlayer extends Player {
 
     setState() {
         if (this.keysTab[0] === "q") {
-            this.SPRITE_NAME = "IDLE_L"; //RUN_L
+            this.SPRITE_NAME = "RUN_L"; //RUN_L
         } else if (this.velocity.x === 0 && this.lastKeysTab[0] === "q") {
             this.SPRITE_NAME = "IDLE_L";
         }
 
         if (this.keysTab[0] === "d") {
-            this.SPRITE_NAME = "IDLE_R"; //RUN__R
+            this.SPRITE_NAME = "RUN_R"; //RUN__R
         } else if (this.velocity.x === 0 && this.lastKeysTab[0] === "d") {
             this.SPRITE_NAME = "IDLE_R";
         }

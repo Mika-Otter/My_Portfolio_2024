@@ -27,11 +27,11 @@ export class Sprite {
             },
             {
                 name: "RUN_R",
-                frames: 10,
+                frames: 27,
             },
             {
                 name: "RUN_L",
-                frames: 10,
+                frames: 27,
             },
         ];
 
