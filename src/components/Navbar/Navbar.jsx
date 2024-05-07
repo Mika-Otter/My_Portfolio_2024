@@ -18,10 +18,8 @@ export default function Navbar() {
                 </div>
             </div>
             <div className={s.navbar__letstalk}>
-                <span>LET'S TALK</span>
-                <div className={s.navbar__letstalk__icone}>
-                    <ArrowLetsTalkSVG />
-                </div>
+                <span>CONTACT</span>
+                <div className={s.navbar__letstalk__icone}>{/* <ArrowLetsTalkSVG /> */}</div>
             </div>
             <div className={s.navbar__sound}>
                 <SoundSVG />

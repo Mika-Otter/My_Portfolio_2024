@@ -2,38 +2,39 @@
 .navbar {
     position: fixed;
     z-index: 1000;
-    top: 10%;
-    left: 9px;
+    top: 8%;
+    left: 10px;
     // border: 2px solid red;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    font-family: "Right_Grotesk_Bold";
+    font-family: "Nacelle";
+    font-weight: 600;
     letter-spacing: 1px;
-    font-size: 18px;
+    font-size: 15px;
+    line-height: 3;
 
     &__menu {
         cursor: pointer;
         mix-blend-mode: normal;
         width: 35px;
         height: 90px;
-        background-color: rgba(255, 255, 255, 0.494);
+        background-color: rgba(251, 247, 247, 0.935);
         display: flex;
         align-items: center;
         justify-content: space-between;
 
-        clip-path: polygon(0 0, 100% 0, 100% 90%, 75% 100%, 0 100%);
+        // clip-path: polygon(0 0, 100% 0, 100% 90%, 75% 100%, 0 100%);
         -webkit-backdrop-filter: blur(13px);
         backdrop-filter: blur(13px);
         writing-mode: vertical-rl;
         transform: rotate(180deg);
-
         span {
             padding-top: 9px;
+            padding-right: 3px;
         }
-
         &__icone {
             width: 15px;
             display: flex;
@@ -44,18 +45,22 @@
         }
     }
     &__letstalk {
+        span {
+            padding-right: 3px;
+        }
         cursor: pointer;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         width: 35px;
-        height: 150px;
+        height: 110px;
         background-color: rgba(8, 8, 8, 0.856);
         color: white;
-        clip-path: polygon(0 0, 100% 0, 100% 93%, 75% 100%, 0 100%);
+        // clip-path: polygon(0 0, 100% 0, 100% 93%, 75% 100%, 0 100%);
         -webkit-backdrop-filter: blur(13px);
         backdrop-filter: blur(13px);
         writing-mode: vertical-rl;
+
         transform: rotate(180deg);
         span {
             padding-top: 9px;
@@ -72,7 +77,7 @@
     }
 
     &__sound {
-        background-color: rgba(255, 255, 255, 0.494);
+        background-color: rgba(251, 247, 247, 0.935);
         width: 30px;
         height: 30px;
         display: flex;

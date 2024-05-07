@@ -158,7 +158,11 @@ export default function Projects({ goToExp }) {
         const currentElement = viewRefs.current[currentIndex].current;
         const lastElement = viewRefs.current[lastIndex].current;
         const parentElement = currentElement.parentElement;
-        const random = Math.floor(Math.random() * 10) + 40;
+        const randomLarge = Math.floor(Math.random() * 50) + 5;
+        const randomTop = Math.floor(Math.random() * 50);
+        const randomWidth = Math.floor(Math.random() * 20) + 40;
+        const height = randomWidth / 0.9;
+        // const randomHeight = Math.floor(Math.random() * 15) + 35;
 
         // console.log(currentElement);
 
@@ -171,13 +175,15 @@ export default function Projects({ goToExp }) {
             if (index === currentIndex) {
                 parentElement.appendChild(currentElement);
                 gsap.set(currentElement, {
-                    left: `${random}%`,
-                    right: `${random}%`,
-                    top: `${random}%`,
+                    left: `${randomLarge}%`,
+                    top: `${randomTop}%`,
+                    height: "0%",
+                    width: `${randomWidth}%`,
+                    opacity: 1,
                 });
                 gsap.to(currentElement, {
-                    height: `${random}%`,
-                    // opacity: 1,
+                    height: `${height}%`,
+                    duration: 0.8,
                 });
             }
         });

@@ -2,7 +2,7 @@
 
 .title {
     width: 94%;
-    margin-left: 7%;
+    margin-left: 8%;
     margin-top: 1rem;
     // border: 2px solid red;
     display: flex;
@@ -14,6 +14,7 @@
         color: rgb(34, 39, 55);
         // mix-blend-mode: difference;
         font-size: 11rem;
+        font-weight: 300;
         margin: 0;
     }
     &__second {
