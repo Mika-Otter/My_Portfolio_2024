@@ -12,14 +12,15 @@ export default function Navbar() {
     return (
         <div className={s.navbar}>
             <div className={s.navbar__menu}>
-                <span>MENU</span>{" "}
-                <div className={s.navbar__menu__icone}>
+                <span>MENU</span>
+                {/* <div className={s.navbar__menu__icone}>
                     <MenuIconSVG />
-                </div>
+                </div> */}
             </div>
             <div className={s.navbar__letstalk}>
-                <span>CONTACT</span>
+                <span>CONTACT </span>
                 <div className={s.navbar__letstalk__icone}>{/* <ArrowLetsTalkSVG /> */}</div>
+                <span>/</span>
             </div>
             <div className={s.navbar__sound}>
                 <SoundSVG />

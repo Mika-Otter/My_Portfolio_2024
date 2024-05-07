@@ -2,33 +2,38 @@
 .navbar {
     position: fixed;
     z-index: 1000;
-    top: 8%;
-    left: 10px;
+    top: 5px;
+    z-index: 1;
+    left: 7px;
     // border: 2px solid red;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    // gap: 10px;
     font-family: "Nacelle";
     font-weight: 600;
     letter-spacing: 1px;
     font-size: 15px;
     line-height: 3;
+    height: 260px;
+    width: 42px;
+    background-color: rgba(251, 247, 247, 0.835);
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px);
 
     &__menu {
         cursor: pointer;
         mix-blend-mode: normal;
-        width: 35px;
-        height: 90px;
-        background-color: rgba(251, 247, 247, 0.935);
+        width: 42px;
+        height: 120px;
+
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-start;
 
         // clip-path: polygon(0 0, 100% 0, 100% 90%, 75% 100%, 0 100%);
-        -webkit-backdrop-filter: blur(13px);
-        backdrop-filter: blur(13px);
+
         writing-mode: vertical-rl;
         transform: rotate(180deg);
         span {
@@ -36,11 +41,14 @@
             padding-right: 3px;
         }
         &__icone {
-            width: 15px;
+            width: 11px;
             display: flex;
             align-items: center;
             margin-bottom: 9px;
+            margin-top: 3px;
             margin-right: 2px;
+
+            // transform: rotate(45deg);
             // border: 2px solid red;
         }
     }
@@ -52,13 +60,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 35px;
-        height: 110px;
-        background-color: rgba(8, 8, 8, 0.856);
-        color: white;
+        width: 42px;
+        height: 130px;
+        // background-color: rgba(8, 8, 8, 0.856);
+        color: rgb(23, 23, 23);
         // clip-path: polygon(0 0, 100% 0, 100% 93%, 75% 100%, 0 100%);
-        -webkit-backdrop-filter: blur(13px);
-        backdrop-filter: blur(13px);
         writing-mode: vertical-rl;
 
         transform: rotate(180deg);
@@ -77,14 +83,12 @@
     }
 
     &__sound {
-        background-color: rgba(251, 247, 247, 0.935);
-        width: 30px;
+        width: 28px;
         height: 30px;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 2.5px;
-        -webkit-backdrop-filter: blur(13px);
-        backdrop-filter: blur(13px);
+        padding: 5px;
+        padding-right: 1px;
     }
 }

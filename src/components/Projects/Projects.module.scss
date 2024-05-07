@@ -12,10 +12,10 @@
     // border: 2px solid green;
 
     h2 {
-        font-family: Nacelle;
+        font-family: "NeueMontreal-Medium";
         text-transform: uppercase;
-        font-size: 20px;
-        font-weight: 600;
+        font-size: 30px;
+        font-weight: 200;
         // border: 2px solid red;
         text-align: center;
         margin: 0;
@@ -30,7 +30,7 @@
         margin-top: -4.5%;
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
-        background-color: #faf9f9f4;
+        background-color: #fffffdf4;
 
         &__content {
             // border: 2px solid blue;
@@ -40,7 +40,7 @@
 
             &__games {
                 position: absolute;
-                bottom: 0;
+                bottom: 30px;
                 left: 10%;
                 // border: 2px solid green;
                 width: 40%;
@@ -64,17 +64,19 @@
                     justify-content: space-between;
 
                     align-items: center;
-                    font-family: "Nacelle";
+                    font-family: "NeueMontreal-Regular";
                     font-weight: 300;
-                    font-size: 15px;
+                    font-size: 16px;
                     color: #091429;
                     background-color: "transparent";
+                    transition: 0.2s ease-in-out;
                 }
                 .liHover {
                     // font-size: 18px;
                     // mix-blend-mode: difference;
                     // background-color: rgba(14, 13, 13, 0.946);
                     color: rgb(157, 151, 148);
+                    transition: 0.2s ease-in-out;
                 }
             }
             &__view {
@@ -138,11 +140,12 @@
                         justify-content: space-between;
 
                         align-items: center;
-                        font-family: "Nacelle";
-                        font-size: 15px;
+                        font-family: "NeueMontreal-Regular";
                         font-weight: 300;
+                        font-size: 16px;
                         color: #091429;
                         background-color: "transparent";
+                        transition: 0.2s ease-in-out;
                     }
                     &__project {
                         display: flex;
@@ -164,6 +167,7 @@
                         // mix-blend-mode: difference;
                         // background-color: rgba(14, 13, 13, 0.946);
                         color: rgb(157, 151, 148);
+                        transition: 0.2s ease-in-out;
                     }
                 }
             }
@@ -176,9 +180,9 @@
             bottom: 1.2vw;
             right: 4.7vw;
             // border: 2px solid red;
-            font-family: "VCR_OSD";
-            font-size: 24px;
-            width: 15%;
+            font-family: "Nacelle";
+            font-size: 22px;
+            width: 12%;
             display: flex;
             justify-content: space-between;
             span {

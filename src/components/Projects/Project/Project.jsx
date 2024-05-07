@@ -62,11 +62,11 @@ export default function Project({ item, closeProject, nextProject, index, curren
                         <p>{item.text}</p>
                         <div className={s.project__content__techno}>
                             <h3>TECHNOLOGIES</h3>
-                            <p>{item.techno}</p>
+                            <p className={s.project__content__text}>{item.techno}</p>
                         </div>
                         <div className={s.project__content__client}>
                             <h3>CLIENT</h3>
-                            <p>{item.client}</p>
+                            <p className={s.project__content__text}>{item.client}</p>
                         </div>
                         <div className={s.project__content__year}>
                             <h3>YEAR</h3>
@@ -93,7 +93,7 @@ export default function Project({ item, closeProject, nextProject, index, curren
                         >
                             NEXT PROJECT
                             <div className={s.project__button__svg}>
-                                <ArrowSVG color={"#ffff"} />
+                                <ArrowSVG color={"#091429"} />
                             </div>
                         </button>
                     </div>

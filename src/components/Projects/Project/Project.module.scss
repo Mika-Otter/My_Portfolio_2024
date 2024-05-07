@@ -1,8 +1,8 @@
 .main {
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    aspect-ratio: 2.29;
     position: absolute;
-    top: 0;
+    top: 6.6%;
 
     // border: 2px solid red;
     z-index: 100;
@@ -22,7 +22,7 @@
     transform: translate(-50%, -50%);
 
     -webkit-backdrop-filter: blur(20px);
-    clip-path: polygon(5% 0, 95% 0, 100% 9%, 100% 91%, 95% 100%, 5% 100%, 0 91%, 0 9%);
+    // clip-path: polygon(5% 0, 95% 0, 100% 9%, 100% 91%, 95% 100%, 5% 100%, 0 91%, 0 9%);
     z-index: 120;
     backdrop-filter: blur(20px);
 }
@@ -34,7 +34,7 @@
     background-color: #f8f8f800;
     z-index: 100;
 
-    clip-path: polygon(5% 0, 95% 0, 100% 9%, 100% 91%, 95% 100%, 5% 100%, 0 91%, 0 9%);
+    // clip-path: polygon(5% 0, 95% 0, 100% 9%, 100% 91%, 95% 100%, 5% 100%, 0 91%, 0 9%);
     display: flex;
 
     &__pic {
@@ -85,8 +85,8 @@
                 button {
                     cursor: pointer;
                     border: none;
-                    font-family: "VCR_OSD";
-                    font-size: 20px;
+                    font-family: "Nacelle";
+                    font-size: 18px;
                     background-color: #151818;
                     color: white;
                     padding: 7px 15px;
@@ -98,18 +98,24 @@
         }
     }
     &__content {
-        width: 40%;
+        width: 35%;
+        height: 80%;
+        margin-top: 6%;
         // border: 2px solid orange;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        // justify-content: center;
         gap: 15px;
 
+        &__text {
+            text-transform: uppercase;
+        }
+
         p {
-            font-family: "Right_Grotesk_Fine";
-            letter-spacing: 1px;
+            font-family: "Nacelle";
             font-weight: 200;
-            font-size: 16px;
+            letter-spacing: 0.5px;
+            font-size: 14px;
             width: 74%;
             margin: 0;
             margin-top: 5px;
@@ -117,9 +123,9 @@
         }
 
         h3 {
-            font-family: "Right_Grotesk";
-            letter-spacing: 2px;
-            font-size: 17px;
+            font-family: "Nacelle";
+            font-weight: 800;
+            font-size: 13px;
             margin: 0;
         }
 
@@ -149,18 +155,18 @@
 
     &__close {
         position: absolute;
-        top: 4rem;
-        right: 7rem;
+        top: 1.5rem;
+        right: 1.5rem;
         height: 30px;
         // border: 2px solid blue;
 
         display: flex;
         align-items: center;
         gap: 5px;
-        font-family: "VCR_OSD";
+        font-family: "Nacelle";
         color: rgb(44, 37, 37);
         font-weight: 600;
-        font-size: 20px;
+        font-size: 15px;
         line-height: 1.5;
         cursor: pointer;
 
@@ -196,11 +202,12 @@
         right: 7rem;
         &__btn {
             border: none;
-            background-color: rgb(26, 26, 26);
+            // background-color: rgb(26, 26, 26);
+            background: none;
             height: 3rem;
             width: 15rem;
-            clip-path: polygon(0 0, 100% 0, 100% 83%, 96% 100%, 0 100%);
-            font-family: "VCR_OSD";
+            // clip-path: polygon(0 0, 100% 0, 100% 83%, 96% 100%, 0 100%);
+            font-family: "Nacelle";
             font-size: 21px;
             text-align: left;
             padding-left: 12px;
@@ -209,8 +216,8 @@
             justify-content: space-around;
             align-items: center;
             cursor: pointer;
-            color: white;
-            mix-blend-mode: difference;
+            color: rgb(14, 13, 13);
+            // mix-blend-mode: difference;
         }
         &__svg {
             margin-top: 5px;
