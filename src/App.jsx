@@ -8,6 +8,7 @@ import Projects from "./components/Projects/Projects";
 import Navbar from "./components/Navbar/Navbar";
 import Logo from "./components/Logo/Logo";
 import PlayView from "./components/PlayView/PlayView";
+import AudioPlayer from "./components/Audio/Audio";
 
 export default function App() {
     const [mapRow, setMapRow] = useState({ row: 0, precedentRow: 0 });
@@ -30,6 +31,7 @@ export default function App() {
     }, []);
     return (
         <>
+            <AudioPlayer />
             <PlayView playMode={playMode} viewMode={viewMode} isPlayed={isPlayed} />
             <Logo />
             <Navbar />
