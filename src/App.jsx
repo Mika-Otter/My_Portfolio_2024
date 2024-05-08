@@ -57,8 +57,6 @@ export default function App() {
                 <div className="resizeeee">Hello</div>
             ) : (
                 <>
-                    <Wind />
-                    <AudioPlayer />
                     <PlayView playMode={playMode} viewMode={viewMode} isPlayed={isPlayed} />
                     <Logo />
                     <Navbar />

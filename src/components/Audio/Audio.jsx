@@ -5,6 +5,7 @@ export default function AudioPlayer() {
     const audioPlayerRef = useRef();
     const [playingAudio, setPlayingAudio] = useState(false);
     const canvasRef = useRef();
+    const animationRef = useRef();
 
     let testAudio = new Audio("./douceuridealev12.mp3");
 
@@ -21,15 +22,17 @@ export default function AudioPlayer() {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
 
-        canvas.width = 200;
-        canvas.height = 200;
+        canvas.width = 40;
+        canvas.height = 50;
+
+        let speed = 0.07;
 
         const squares = [
-            { x: 10, y: 50, width: 10, height: 20, color: "blue", dx: 1, dy: 0 },
-            { x: 30, y: 50, width: 10, height: 20, color: "blue", dx: 0, dy: 1 },
-            { x: 50, y: 50, width: 10, height: 20, color: "blue", dx: 1, dy: 1 },
-            { x: 70, y: 50, width: 10, height: 20, color: "blue", dx: 0, dy: 1 },
-            { x: 90, y: 50, width: 10, height: 20, color: "blue", dx: 1, dy: 0 },
+            { x: 9, y: 35, width: 3, height: -5, color: "black", dy: 0.7, max: -6 },
+            { x: 14, y: 35, width: 3, height: -5, color: "black", dy: 2, max: -13 },
+            { x: 19, y: 35, width: 3, height: -5, color: "black", dy: 3, max: -15 },
+            { x: 24, y: 35, width: 3, height: -5, color: "black", dy: 1.6, max: -16 },
+            { x: 29, y: 35, width: 3, height: -5, color: "black", dy: 1, max: -8 },
         ];
 
         function drawSquare(square) {
@@ -38,41 +41,52 @@ export default function AudioPlayer() {
         }
 
         function updateSquare(square) {
-            // Mettre à jour la position du carré
-            square.x += square.dx;
-            square.y += square.dy;
+            // Update the position of the square
+            square.height += square.dy * speed;
 
-            // Si le carré atteint les bords, changer de direction
-            if (square.x <= 0 || square.x + square.width >= canvas.width) {
-                square.dx *= -1;
-            }
-            if (square.y <= 0 || square.y + square.height >= canvas.height) {
+            // If the square goes beyond the boundaries, reset its position
+            if (square.height <= square.max || square.height > -5) {
                 square.dy *= -1;
             }
         }
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
             squares.forEach((square) => {
-                updateSquare(square);
                 drawSquare(square);
             });
+            if (playingAudio) {
+                squares.forEach((square) => {
+                    updateSquare(square);
+                });
+            } else {
+                squares.forEach((square) => {
+                    if (square.height <= -5) {
+                        square.height += 0.1;
+                        square.color = "";
+                    }
+                });
+            }
 
-            requestAnimationFrame(animate);
+            animationRef.current = requestAnimationFrame(animate);
         }
-
         animate();
-    });
+        return () => {
+            cancelAnimationFrame(animationRef.current);
+        };
+    }, [playingAudio]);
 
     return (
         <>
             <div className={s.audioplayer}>
-                <audio ref={audioPlayerRef} controls loop src="./douceuridealev8.mp3"></audio>
-                <button type="button" onClick={() => playMusic()}>
-                    hello
-                </button>
-                <canvas ref={canvasRef}></canvas>
+                <audio
+                    ref={audioPlayerRef}
+                    controls
+                    loop
+                    src="./douceuridealev8.mp3"
+                    className={s.audioplayer__player}
+                ></audio>
+                <canvas ref={canvasRef} onClick={() => playMusic()}></canvas>
             </div>
         </>
     );

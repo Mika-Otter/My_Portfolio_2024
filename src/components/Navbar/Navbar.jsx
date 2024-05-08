@@ -7,6 +7,7 @@ import Logo from "../Logo/Logo";
 import { SoundSVG } from "../SVG/SoundSVG";
 import { MenuIconSVG } from "../SVG/MenuIconSVG";
 import { ArrowLetsTalkSVG } from "../SVG/ArrowLetsTalksSVG";
+import AudioPlayer from "../Audio/Audio";
 
 export default function Navbar() {
     return (
@@ -23,7 +24,7 @@ export default function Navbar() {
                 <span>/</span>
             </div>
             <div className={s.navbar__sound}>
-                <SoundSVG />
+                <AudioPlayer />
             </div>
         </div>
     );
