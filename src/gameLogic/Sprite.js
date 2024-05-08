@@ -51,8 +51,8 @@ export class Sprite {
     }
 
     draw(context, player) {
-        this.spriteX = player.position.x - 32;
-        this.spriteY = player.position.y - 40;
+        this.spriteX = player.position.x - 50;
+        this.spriteY = player.position.y - 41.7;
 
         context.drawImage(
             this.image,

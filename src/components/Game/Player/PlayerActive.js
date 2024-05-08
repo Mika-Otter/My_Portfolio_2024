@@ -47,7 +47,8 @@ export class ActivePlayer extends Player {
         this.setState();
         this.sprite.update(this.SPRITE_NAME);
 
-        context.fillStyle = "transparent";
+        // context.fillStyle = "transparent";
+        // context.fillStyle = "rgba(2, 0, 255, 0.3)";
         context.fillRect(
             this.cameraBox.position.x,
             this.cameraBox.position.y,

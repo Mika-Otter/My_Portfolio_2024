@@ -20,7 +20,7 @@ export function createObjectsFrom2D(
                 objects.push(
                     new CollisionBlock({
                         position: {
-                            x: x * 32 * scale, // 128 = 32 * 400% ZOOM
+                            x: x * 32 * scale - 2, // 128 = 32 * 400% ZOOM
                             y: y * 32 * scale + precedentHeight,
                         },
                         width: 32 * scale,

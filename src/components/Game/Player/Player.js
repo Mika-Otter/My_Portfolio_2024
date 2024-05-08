@@ -14,7 +14,7 @@ export class Player {
 
         this.scale = background.width / background.originalWidth;
         this.backgroundHeight = background.height; //background aspectRation
-        this.width = 40 * this.scale;
+        this.width = 20 * this.scale;
         this.height = 80 * this.scale;
         this.bottom = this.position.y + this.height;
 
@@ -29,10 +29,11 @@ export class Player {
     }
 
     draw(context) {
+        // context.fillStyle = "rgba(2, 0, 255, 0.3)";
         context.fillStyle = "transparent";
+
         context.fillRect(this.position.x, this.position.y, this.width, this.height);
         this.sprite.draw(context, this);
-        // console.log(this.velocity.y);
     }
 
     update({ camera, canvas, background }) {
