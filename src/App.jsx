@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Logo from "./components/Logo/Logo";
 import PlayView from "./components/PlayView/PlayView";
 import AudioPlayer from "./components/Audio/Audio";
+import Wind from "./components/Game/Environnement/Wind/Wind";
 
 export default function App() {
     const [mapRow, setMapRow] = useState({ row: 0, precedentRow: 0 });
@@ -31,6 +32,7 @@ export default function App() {
     }, []);
     return (
         <>
+            <Wind />
             <AudioPlayer />
             <PlayView playMode={playMode} viewMode={viewMode} isPlayed={isPlayed} />
             <Logo />
@@ -45,6 +47,7 @@ export default function App() {
                             toExp={toExp}
                         />
                     </div>
+
                     <section className="main__section">
                         <div className="title">
                             <Title />

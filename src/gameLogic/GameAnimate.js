@@ -1,5 +1,6 @@
 // GameAnimate.js
 import { changeLevel } from "./CollisionLevel";
+import { RegularWind } from "../components/Game/Environnement/Wind";
 
 export function gameAnimate({
     ctx,
@@ -12,7 +13,10 @@ export function gameAnimate({
     overlay,
     mainChangeLevel,
 }) {
-    function animate() {
+    let lastTime = 0;
+    function animate(timeStamp) {
+        const deltaTime = timeStamp - lastTime;
+        lastTime = timeStamp;
         requestAnimationFrame(animate);
         mainChangeLevel();
 
@@ -29,6 +33,7 @@ export function gameAnimate({
         currentCollisionLevel.forEach((collisionBlock) => {
             collisionBlock.draw(ctx);
         });
+        background.update(deltaTime);
         player.draw(ctx);
         player.updatePlayer({
             background,
@@ -36,6 +41,7 @@ export function gameAnimate({
             canvas,
             camera,
         });
+
         ctx.restore();
         ctx.save();
         ctx.globalAlpha = overlay.opacity;
