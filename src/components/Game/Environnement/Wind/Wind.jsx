@@ -13,7 +13,7 @@ export default function Wind() {
         const CANVAS_HEIGHT = canvas.height;
 
         const windImg = new Image();
-        windImg.src = "/regularwind.png";
+        // windImg.src = "/regularwind.png";
         const spriteWidth = 1640;
         const spriteHeight = 700;
         let frameX = 0;

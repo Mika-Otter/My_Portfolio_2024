@@ -7,7 +7,7 @@ class Wind {
     }
 
     update(deltaTime) {
-        console.log(this.frameX);
+        // console.log(this.frameX);
         if (this.frameTimer > this.frameInterval) {
             this.frameTimer = 0;
             if (this.frameX < this.maxFrame) this.frameX++;
@@ -36,7 +36,7 @@ export class RegularWind extends Wind {
         super();
         this.width = 40;
         this.height = 50;
-        this.x = 200;
+        this.x = 500;
         this.y = 200;
         this.speed = 2;
         this.maxFrame = 18;

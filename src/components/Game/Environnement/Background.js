@@ -11,7 +11,7 @@ export default class Background {
         this.height = this.width / this.aspectRatio; // ratio
         this.winds = [];
         this.windTimer = 0;
-        this.windInterval = 1000;
+        this.windInterval = 3000;
     }
 
     draw(context, canvas) {
@@ -29,7 +29,7 @@ export default class Background {
     }
 
     addWind() {
-        console.log("tiiiimmmer", this.winds);
+        // console.log("tiiiimmmer", this.winds);
         this.winds.push(new RegularWind());
     }
 
