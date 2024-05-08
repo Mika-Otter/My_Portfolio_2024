@@ -16,6 +16,8 @@ export default function App() {
     const backgroundHeight = useBackgroundHeight();
     const [isPlayed, setIsPlayed] = useState(false);
     const [toExp, setToExp] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     const playMode = () => {
         setIsPlayed(true);
@@ -27,36 +29,63 @@ export default function App() {
     const goToExp = () => {
         setToExp(true);
     };
+    // useEffect(() => {
+    //     console.log(window.innerHeight, window.innerWidth);
+    // }, []);
+
     useEffect(() => {
-        console.log(window.innerHeight, window.innerWidth);
+        const handleResize = () => {
+            setIsLoading(true);
+            setWindowWidth(window.innerWidth);
+            window.location.reload();
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
     }, []);
+
+    useEffect(() => {
+        setIsLoading(false);
+    }, [windowWidth]);
+
     return (
         <>
-            <Wind />
-            <AudioPlayer />
-            <PlayView playMode={playMode} viewMode={viewMode} isPlayed={isPlayed} />
-            <Logo />
-            <Navbar />
-            <BackgroundHeightProvider>
-                <BigBox backgroundheight={backgroundHeight}>
-                    <div className="canvas">
-                        <Canvas
-                            mapRow={mapRow}
-                            setMapRow={setMapRow}
-                            isPlayed={isPlayed}
-                            toExp={toExp}
-                        />
-                    </div>
+            {isLoading ? (
+                <div className="resizeeee">Hello</div>
+            ) : (
+                <>
+                    <Wind />
+                    <AudioPlayer />
+                    <PlayView playMode={playMode} viewMode={viewMode} isPlayed={isPlayed} />
+                    <Logo />
+                    <Navbar />
+                    <BackgroundHeightProvider>
+                        <BigBox backgroundheight={backgroundHeight}>
+                            <div className="canvas">
+                                <Canvas
+                                    mapRow={mapRow}
+                                    setMapRow={setMapRow}
+                                    isPlayed={isPlayed}
+                                    toExp={toExp}
+                                />
+                            </div>
 
-                    <section className="main__section">
-                        <div className="title">
-                            <Title />
-                        </div>
-                        <div className="wrapper"></div>
-                        <div className="content">{!isPlayed && <Projects goToExp={goToExp} />}</div>
-                    </section>
-                </BigBox>
-            </BackgroundHeightProvider>
+                            <section className="main__section">
+                                <div className="title">
+                                    <Title />
+                                </div>
+                                <div className="wrapper"></div>
+                                <div className="content">
+                                    {!isPlayed && <Projects goToExp={goToExp} />}
+                                </div>
+                            </section>
+                        </BigBox>
+                    </BackgroundHeightProvider>
+                </>
+            )}
         </>
     );
 }

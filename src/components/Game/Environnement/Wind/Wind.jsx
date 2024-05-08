@@ -40,7 +40,7 @@ export default function Wind() {
 
 // ctx.drawImage(
 //     windImg,
-//     frameX * spriteWidth,
+//     frameX * spriteWidth
 //     0,
 //     spriteWidth,
 //     spriteHeight,

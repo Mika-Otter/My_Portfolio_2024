@@ -30,7 +30,7 @@ export default class Background {
 
     addWind() {
         // console.log("tiiiimmmer", this.winds);
-        this.winds.push(new RegularWind());
+        // this.winds.push(new RegularWind());
     }
 
     update(delaTime) {
