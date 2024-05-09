@@ -4,7 +4,6 @@
     position: absolute;
     top: 6.6%;
 
-    // border: 2px solid red;
     z-index: 100;
     display: flex;
     justify-content: center;
@@ -14,7 +13,7 @@
 .project__wrapper {
     position: absolute;
     overflow: hidden;
-    background-color: #fff9f9de;
+    background-color: rgba(235, 234, 234, 0.835);
     top: 50%;
     left: 50%;
     width: 0%;
@@ -37,25 +36,36 @@
     // clip-path: polygon(5% 0, 95% 0, 100% 9%, 100% 91%, 95% 100%, 5% 100%, 0 91%, 0 9%);
     display: flex;
 
+    &__left {
+        // border: 2px solid green;
+        width: 47%;
+        height: 95%;
+        margin-left: 5rem;
+        margin-top: 5%;
+    }
+
     &__pic {
-        width: 60%;
-        height: 100%;
         // border: 2px solid blue;
         display: flex;
         flex-direction: column;
-        margin-left: 2rem;
+        height: 70%;
+
         align-items: center;
         flex-direction: center;
+        // border: 2px solid red;
+
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
 
         &__title {
             // border: 2px solid green;
             width: 70%;
             height: 5.5rem;
             // line-height: 0.05;
-            font-family: "VCR_OSD";
+            font-family: "NeueMontreal-Regular";
             font-style: normal;
             text-transform: uppercase;
-            font-size: 1.5rem;
+            font-size: 0.7rem;
             margin: 0;
             padding: 0;
             margin-top: 7vh;
@@ -98,9 +108,10 @@
         }
     }
     &__content {
-        width: 35%;
+        width: 40%;
         height: 80%;
-        margin-top: 6%;
+        margin-top: 4.5%;
+        margin-left: 5%;
         // border: 2px solid orange;
         display: flex;
         flex-direction: column;
@@ -128,11 +139,11 @@
             font-size: 13px;
             margin: 0;
         }
-
-        // span {
-        //     font-family: "OktaNeue-Bold";
-        //     font-size: 18px;
-        // }
+        &__clientyear {
+            width: 73%;
+            display: flex;
+            justify-content: space-between;
+        }
 
         &__year__text {
             width: 74%;
@@ -145,9 +156,9 @@
             }
             &__ask {
                 line-height: 2;
-                font-size: 18px;
-                font-family: "VCR_OSD";
-                font-weight: 900;
+                font-size: 14px;
+                font-family: "NeueMontreal-Regular";
+                font-weight: 200;
                 letter-spacing: 1px;
             }
         }

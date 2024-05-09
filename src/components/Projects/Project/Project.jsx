@@ -47,36 +47,45 @@ export default function Project({ item, closeProject, nextProject, index, curren
         <div className={s.main}>
             <div className={s.project__wrapper} ref={projectWrapperRef}>
                 <div className={s.project} ref={projectRef}>
-                    <div className={s.project__pic}>
-                        <div className={s.project__pic__title}>
-                            <h2>{item.title}</h2>
-                        </div>
-                        <div className={s.project__pic__box}>
-                            <div className={s.project__pic__box__ctn}>
-                                <Video src={item.url} index={index} currentIndex={currentIndex} />
-                                <button type="button">LIVE SITE ●</button>
+                    <div className={s.project__left}>
+                        <div className={s.project__pic}>
+                            <div className={s.project__pic__box}>
+                                <div className={s.project__pic__box__ctn}>
+                                    <Video
+                                        src={item.url}
+                                        index={index}
+                                        currentIndex={currentIndex}
+                                    />
+                                    <button type="button">LIVE SITE ●</button>
+                                </div>
                             </div>
                         </div>
+                        <div className={s.project__pic__title}>
+                            <h2>{item.title}</h2>
+                            <p className={s.project__pic__title__ask}>Ask for source code</p>
+                        </div>
                     </div>
+
                     <div className={s.project__content}>
                         <p>{item.text}</p>
                         <div className={s.project__content__techno}>
                             <h3>TECHNOLOGIES</h3>
                             <p className={s.project__content__text}>{item.techno}</p>
                         </div>
-                        <div className={s.project__content__client}>
-                            <h3>CLIENT</h3>
-                            <p className={s.project__content__text}>{item.client}</p>
-                        </div>
-                        <div className={s.project__content__year}>
-                            <h3>YEAR</h3>
-                            <div className={s.project__content__year__text}>
-                                <span className={s.project__content__year__text__ask}>
-                                    {item.year}
-                                </span>
-                                <p>Ask for source code</p>
+                        <div className={s.project__content__clientyear}>
+                            <div className={s.project__content__client}>
+                                <h3>CLIENT</h3>
+                                <p className={s.project__content__text}>{item.client}</p>
                             </div>
-                            {/* {item.github} || {item.askforsource} */}
+                            <div className={s.project__content__year}>
+                                <h3>YEAR</h3>
+                                <div className={s.project__content__year__text}>
+                                    <span className={s.project__content__year__text__ask}>
+                                        {item.year}
+                                    </span>
+                                </div>
+                                {/* {item.github} || {item.askforsource} */}
+                            </div>
                         </div>
                     </div>
                     <div className={s.project__close} onClick={() => closingGSAP()}>
