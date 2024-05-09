@@ -56,8 +56,14 @@ export default function Project({ item, closeProject, nextProject, index, curren
                                         index={index}
                                         currentIndex={currentIndex}
                                     />
-                                    <button type="button">LIVE SITE ●</button>
+                                    {/* <button type="button">LIVE SITE ●</button> */}
                                 </div>
+                                <div className={s.project__pic__box__ctn__two}>
+                                    <div className={s.project__pic__box__ctn__two__small}></div>
+                                    <div className={s.project__pic__box__ctn__two__small}></div>
+                                </div>
+
+                                <div></div>
                             </div>
                         </div>
                         <div className={s.project__pic__title}>
