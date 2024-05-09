@@ -10,6 +10,7 @@ import Logo from "./components/Logo/Logo";
 import PlayView from "./components/PlayView/PlayView";
 import AudioPlayer from "./components/Audio/Audio";
 import Wind from "./components/Game/Environnement/Wind/Wind";
+import Loader from "./components/Loader/Loader";
 
 export default function App() {
     const [mapRow, setMapRow] = useState({ row: 0, precedentRow: 0 });
@@ -47,46 +48,40 @@ export default function App() {
         };
     }, []);
 
-    useEffect(() => {
-        setIsLoading(false);
-    }, [windowWidth]);
+    // useEffect(() => {
+    //     setIsLoading(false);
+    // }, [windowWidth]);
 
     return (
         <>
-            {isLoading ? (
-                <div className="resizeeee">Hello</div>
-            ) : (
-                <>
-                    <PlayView playMode={playMode} viewMode={viewMode} isPlayed={isPlayed} />
-                    <Logo />
-                    <Navbar />
-                    <BackgroundHeightProvider>
-                        <BigBox backgroundheight={backgroundHeight}>
-                            <div className="windcanvas">
-                                <Wind />
-                            </div>
-                            <div className="canvas">
-                                <Canvas
-                                    mapRow={mapRow}
-                                    setMapRow={setMapRow}
-                                    isPlayed={isPlayed}
-                                    toExp={toExp}
-                                />
-                            </div>
+            {isLoading ? <Loader /> : null}
 
-                            <section className="main__section">
-                                <div className="title">
-                                    <Title />
-                                </div>
-                                <div className="wrapper"></div>
-                                <div className="content">
-                                    {!isPlayed && <Projects goToExp={goToExp} />}
-                                </div>
-                            </section>
-                        </BigBox>
-                    </BackgroundHeightProvider>
-                </>
-            )}
+            <PlayView playMode={playMode} viewMode={viewMode} isPlayed={isPlayed} />
+            <Logo />
+            <Navbar />
+            <BackgroundHeightProvider>
+                <BigBox backgroundheight={backgroundHeight}>
+                    <div className="windcanvas">
+                        <Wind />
+                    </div>
+                    <div className="canvas">
+                        <Canvas
+                            mapRow={mapRow}
+                            setMapRow={setMapRow}
+                            isPlayed={isPlayed}
+                            toExp={toExp}
+                        />
+                    </div>
+
+                    <section className="main__section">
+                        <div className="title">
+                            <Title />
+                        </div>
+                        <div className="wrapper"></div>
+                        <div className="content">{!isPlayed && <Projects goToExp={goToExp} />}</div>
+                    </section>
+                </BigBox>
+            </BackgroundHeightProvider>
         </>
     );
 }

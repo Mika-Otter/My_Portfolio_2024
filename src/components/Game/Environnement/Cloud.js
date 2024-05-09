@@ -1,11 +1,10 @@
-export default class Background {
-    constructor({ position, imageSrc, canvas }) {
+export default class Cloud {
+    constructor({ position, imageSrc, canvas, scale }) {
         this.position = position;
         this.image = new Image();
         this.image.src = imageSrc;
-        this.originalWidth = 70 * 32; // Largeur originale de l'image
-        this.aspectRatio = 70 / 180;
-        this.width = canvas.width;
+        this.width = 1200 * scale; // Largeur originale de l'image
+        this.aspectRatio = 12 / 6;
         this.height = this.width / this.aspectRatio; // ratio
     }
 

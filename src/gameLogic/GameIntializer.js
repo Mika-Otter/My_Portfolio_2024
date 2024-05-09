@@ -3,12 +3,14 @@ import { HandleInput } from "./InputManager";
 import { Door } from "../components/Game/Environnement/Door";
 import { ActivePlayer } from "../components/Game/Player/PlayerActive";
 import Background from "../components/Game/Environnement/Background";
+import Cloud from "../components/Game/Environnement/Cloud";
 
 // Initialisation d'autres éléments du jeu, comme la classe Player, Background, etc.
 export function initializeGame(canvas, keysTab, lastKeysTab, toExp) {
     let mapRow = { row: 0, precedentRow: 0 };
     let background;
     let doors;
+    let clouds;
     let scale;
     let overlay = {
         opacity: 0,
@@ -52,6 +54,12 @@ export function initializeGame(canvas, keysTab, lastKeysTab, toExp) {
         imageSrc: "./src/assets/img/water.png",
         canvas,
     });
+    const cloud = new Cloud({
+        position: { x: 900, y: 30 },
+        imageSrc: "./src/assets/img/cloud.png",
+        canvas,
+        scale,
+    });
 
     // GAME DISPLAY________________________________________________________
 
@@ -92,5 +100,6 @@ export function initializeGame(canvas, keysTab, lastKeysTab, toExp) {
         overlay,
         mapRow,
         water,
+        cloud,
     };
 }

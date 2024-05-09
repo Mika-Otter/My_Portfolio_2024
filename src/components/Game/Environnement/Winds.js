@@ -8,7 +8,7 @@ export class Winds {
         this.height = canvas.height;
         this.windlist = [];
         this.windTimer = 0;
-        this.windInterval = 100;
+        this.windInterval = 200;
     }
 
     draw(context) {

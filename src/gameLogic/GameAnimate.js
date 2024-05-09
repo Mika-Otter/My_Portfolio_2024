@@ -13,6 +13,7 @@ export function gameAnimate({
     overlay,
     mainChangeLevel,
     water,
+    cloud,
 }) {
     let lastTime = 0;
     function animate(timeStamp) {
@@ -42,6 +43,7 @@ export function gameAnimate({
             camera,
         });
         water.draw(ctx, canvas);
+        cloud.draw(ctx, canvas);
 
         ctx.restore();
         ctx.save();

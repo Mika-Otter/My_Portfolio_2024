@@ -57,6 +57,7 @@ export default function Canvas({ setMapRow, isPlayed, toExp }) {
             overlay,
             mapRow,
             water,
+            cloud,
         } = initializeGame(canvas, keysTab, lastKeysTab, toExp);
 
         function mainChangeLevel() {
@@ -84,6 +85,7 @@ export default function Canvas({ setMapRow, isPlayed, toExp }) {
             overlay,
             mainChangeLevel,
             water,
+            cloud,
         });
         setBackgroundHeight(background.height);
     }, [toExp]);
