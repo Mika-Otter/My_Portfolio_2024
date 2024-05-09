@@ -75,7 +75,7 @@ export default function Projects({ goToExp }) {
                 " all my typefaces. But it was a bloody mess. So I had the idea of developing a tool to classify fonts. And" +
                 " also to test them from different angles. You can create an account, log in and upload your favourite" +
                 " fonts. I still have many ideas for features to develop, but for the moment I'm concentrating on my projects in Three.js. ",
-            techno: "React, GSAP, Node.js, MySQL, Prisma, JWT",
+            techno: "Figma, React, GSAP, Node.js, MySQL, Prisma, JWT",
             client: "School Project",
             type: "website",
         },

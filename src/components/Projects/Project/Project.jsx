@@ -56,32 +56,32 @@ export default function Project({ item, closeProject, nextProject, index, curren
                                         index={index}
                                         currentIndex={currentIndex}
                                     />
-                                    {/* <button type="button">LIVE SITE ●</button> */}
                                 </div>
                                 <div className={s.project__pic__box__ctn__two}>
                                     <div className={s.project__pic__box__ctn__two__small}></div>
                                     <div className={s.project__pic__box__ctn__two__small}></div>
                                 </div>
-
-                                <div></div>
                             </div>
+                            <button className={s.project__pic__button} type="button">
+                                LIVE SITE ●
+                            </button>
                         </div>
                         <div className={s.project__pic__title}>
                             <h2>{item.title}</h2>
-                            <p className={s.project__pic__title__ask}>Ask for source code</p>
                         </div>
                     </div>
 
                     <div className={s.project__content}>
                         <p>{item.text}</p>
-                        <div className={s.project__content__techno}>
-                            <h3>TECHNOLOGIES</h3>
-                            <p className={s.project__content__text}>{item.techno}</p>
+
+                        <div className={s.project__content__client}>
+                            <h3>CLIENT</h3>
+                            <p className={s.project__content__text}>{item.client}</p>
                         </div>
                         <div className={s.project__content__clientyear}>
-                            <div className={s.project__content__client}>
-                                <h3>CLIENT</h3>
-                                <p className={s.project__content__text}>{item.client}</p>
+                            <div className={s.project__content__techno}>
+                                <h3>TECHNOLOGIES</h3>
+                                <p className={s.project__content__text}>{item.techno}</p>
                             </div>
                             <div className={s.project__content__year}>
                                 <h3>YEAR</h3>
@@ -92,6 +92,9 @@ export default function Project({ item, closeProject, nextProject, index, curren
                                 </div>
                                 {/* {item.github} || {item.askforsource} */}
                             </div>
+                        </div>
+                        <div className={s.project__pic__title__ask}>
+                            <p>Ask for source code</p>
                         </div>
                     </div>
                     <div className={s.project__close} onClick={() => closingGSAP()}>
@@ -106,7 +109,7 @@ export default function Project({ item, closeProject, nextProject, index, curren
                             className={s.project__button__btn}
                             onClick={() => nextProject()}
                         >
-                            NEXT PROJECT
+                            <span>NEXT PROJECT</span>
                             <div className={s.project__button__svg}>
                                 <ArrowSVG color={"#091429"} />
                             </div>

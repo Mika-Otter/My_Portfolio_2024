@@ -1,10 +1,16 @@
 import * as React from "react";
 export const CrossSVG = (props) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} fill="none" {...props}>
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 17 18"
+        preserveAspectRatio="xMaxYMin"
+        className="responsive-svg"
+        fill="none"
+        {...props}
+    >
         <path
-            stroke="#000"
-            strokeWidth={2}
-            d="M0 11.572h7.857M11 0v7.857M22 10.428h-7.857M11.572 22v-7.857"
+            fill="#000"
+            d="M13.291 5.589 9.725 9.156l3.346 3.346-1.177 1.176-3.346-3.346L5 13.88 3.73 12.612 7.28 9.064 3.933 5.718 5.11 4.54l3.346 3.346 3.567-3.567L13.29 5.59Z"
         />
     </svg>
 );

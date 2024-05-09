@@ -42,26 +42,49 @@
         height: 95%;
         margin-left: 5rem;
         margin-top: 5%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     &__pic {
         // border: 2px solid blue;
-
+        position: relative;
+        width: 100%;
         height: 74%;
         display: flex;
         justify-content: center;
-
-        // border: 2px solid red;
 
         border-top: 1px solid black;
         border-bottom: 1px solid black;
         overflow: hidden;
         overflow-y: scroll;
+        &__button {
+            cursor: pointer;
+            border: none;
+            font-family: "Nacelle";
+            font-size: 18px;
+            background-color: #151818;
+            color: white;
+            padding: 7px 15px;
+            position: fixed;
+            bottom: 18%;
+            left: calc(40% + 1.25rem);
+        }
 
         &__title {
+            h2 {
+                margin: 0;
+                text-align: left;
+                height: 30px;
+                // border: 2px solid blue;
+            }
             // border: 2px solid green;
-            width: 70%;
-            height: 5.5rem;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 4.5rem;
             // line-height: 0.05;
             font-family: "NeueMontreal-Regular";
             font-style: normal;
@@ -69,12 +92,19 @@
             font-size: 0.7rem;
             margin: 0;
             padding: 0;
-            margin-top: 7vh;
+
             margin-bottom: 20px;
+
+            &__ask {
+                margin-top: -5px;
+                // border: 2px solid red;
+                line-height: 0;
+                height: 15px;
+            }
         }
         &__box {
             position: relative;
-            width: 80%;
+            width: 90%;
             padding-top: 5%;
             // border: 2px solid purple;
             height: 1200px;
@@ -118,19 +148,6 @@
                 img {
                     width: 100%;
                 }
-
-                button {
-                    cursor: pointer;
-                    border: none;
-                    font-family: "Nacelle";
-                    font-size: 18px;
-                    background-color: #151818;
-                    color: white;
-                    padding: 7px 15px;
-                    position: absolute;
-                    bottom: 0;
-                    right: 0;
-                }
             }
         }
     }
@@ -144,6 +161,23 @@
         flex-direction: column;
         // justify-content: center;
         gap: 15px;
+        &__techno {
+            width: 95%;
+            // border: 2px solid blueviolet;
+            p {
+                margin: 0;
+                padding: 0;
+                text-wrap: nowrap;
+            }
+        }
+
+        &__year {
+            width: 5%;
+        }
+        &__client {
+            // border: 2px solid purple;
+            width: 70%;
+        }
 
         &__text {
             text-transform: uppercase;
@@ -221,10 +255,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 30px;
-            height: 30px;
+            width: 20px;
+            height: 10px;
             z-index: 1000;
-            transform: rotate(45deg);
+            margin-top: -10px;
             transition: 0.3s ease-in-out;
         }
     }
@@ -236,36 +270,31 @@
 
     &__button {
         position: absolute;
-        bottom: 3rem;
-        right: 7rem;
+        bottom: 1.2vw;
+        right: 4.7vw;
+        // border: 2px solid red;
+        width: 15%;
+
+        span {
+            font-family: "Nacelle";
+            font-size: 22px;
+            color: #091429;
+        }
+
         &__btn {
             border: none;
-            // background-color: rgb(26, 26, 26);
-            background: none;
-            height: 3rem;
-            width: 15rem;
-            // clip-path: polygon(0 0, 100% 0, 100% 83%, 96% 100%, 0 100%);
-            font-family: "Nacelle";
-            font-size: 21px;
-            text-align: left;
-            padding-left: 12px;
-            padding-bottom: 5px;
+            all: unset;
+            width: 100%;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            color: rgb(14, 13, 13);
-            // mix-blend-mode: difference;
+            margin: 0;
+
+            // border: 2px solid red;
         }
         &__svg {
-            margin-top: 5px;
-            margin-right: 5px;
-            // border: 2px solid red;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            object-fit: cover;
-            width: 30px;
+            width: 25px;
         }
     }
 }
