@@ -19,6 +19,11 @@ export default function App() {
     const [toExp, setToExp] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [activeSound, setActiveSound] = useState(false);
+
+    function firstEnter() {
+        setActiveSound(true);
+    }
 
     const playMode = () => {
         setIsPlayed(true);
@@ -54,11 +59,11 @@ export default function App() {
 
     return (
         <>
-            {isLoading ? <Loader /> : null}
+            {isLoading ? <Loader firstEnter={firstEnter} /> : null}
 
             <PlayView playMode={playMode} viewMode={viewMode} isPlayed={isPlayed} />
             <Logo />
-            <Navbar />
+            <Navbar activeSound={activeSound} />
             <BackgroundHeightProvider>
                 <BigBox backgroundheight={backgroundHeight}>
                     <div className="windcanvas">

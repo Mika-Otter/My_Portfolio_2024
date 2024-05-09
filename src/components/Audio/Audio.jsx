@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import s from "./Audio.module.scss";
 
-export default function AudioPlayer() {
+export default function AudioPlayer({ activeSound }) {
     const audioPlayerRef = useRef();
     const [playingAudio, setPlayingAudio] = useState(false);
     const canvasRef = useRef();
@@ -13,6 +13,10 @@ export default function AudioPlayer() {
         setPlayingAudio((prevPlayingAudio) => !prevPlayingAudio);
         console.log(playingAudio);
     }
+
+    useEffect(() => {
+        activeSound ? setPlayingAudio(true) : null;
+    }, [activeSound]);
 
     useEffect(() => {
         playingAudio ? audioPlayerRef.current.play() : audioPlayerRef.current.pause();

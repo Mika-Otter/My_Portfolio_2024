@@ -9,7 +9,7 @@ import { MenuIconSVG } from "../SVG/MenuIconSVG";
 import { ArrowLetsTalkSVG } from "../SVG/ArrowLetsTalksSVG";
 import AudioPlayer from "../Audio/Audio";
 
-export default function Navbar() {
+export default function Navbar({ activeSound }) {
     return (
         <div className={s.navbar}>
             <div className={s.navbar__menu}>
@@ -24,7 +24,7 @@ export default function Navbar() {
                 <span>/</span>
             </div>
             <div className={s.navbar__sound}>
-                <AudioPlayer />
+                <AudioPlayer activeSound={activeSound} />
             </div>
         </div>
     );

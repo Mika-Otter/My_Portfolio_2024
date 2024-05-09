@@ -7,18 +7,19 @@ import cn from "classnames";
 
 gsap.registerPlugin();
 
-export default function Loader() {
+export default function Loader({ firstEnter }) {
     const bigBoxRef = useRef();
     const smallBoxRef = useRef();
-    const counterOneRef = useRef();
-    const counterTwoRef = useRef();
-    const counterThreeRef = useRef();
+    const logoRef = useRef();
+    const loaderRef = useRef();
+    const nameRef = useRef();
+    const developerRef = useRef();
+    const textRef = useRef();
+    const buttonRef = useRef();
+    const loaderbackRef = useRef();
     const rectsRef = useRef([]);
     const [enter, setEnter] = useState(false);
-    const [animation, setAnimation] = useState(true);
-    const counterOne = [0, 1];
-    const counterTwo = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-    const counterThree = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+    const [animation, setAnimation] = useState(false);
 
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -43,23 +44,36 @@ export default function Loader() {
 
         const tl = gsap.timeline({
             onComplete: () => {
-                // Mettre à jour l'état pour montrer le bouton ENTER
-                setAnimation(false);
+                tlSecond.play();
             },
         });
 
+        const tlSecond = gsap.timeline({
+            paused: true,
+            onComplete: () => {
+                setAnimation(false);
+            },
+        });
         shuffledIndexes.forEach((index, i) => {
             tl.to(
                 rects[index],
                 {
                     opacity: 1, // Réglez l'opacité à 0
                     duration: 2, // Durée de l'animation
-                    delay: i * 0.2, // Décalage pour chaque rectangle
+                    delay: i * 0.18, // Décalage pour chaque rectangle
                     ease: "power4.inOut", // Facilité de l'animation
                 },
                 0
             );
         });
+        tlSecond
+            .to(logoRef.current, { y: -30, ease: "power3.inOut", delay: 0.5 }, 0)
+            .to(textRef.current, { opacity: 1, delay: 0 }, 0)
+            .to(
+                buttonRef.current,
+                { opacity: 1, ease: "power3.inOut", duration: 0.3, delay: 0.8 },
+                0
+            );
     }, []);
 
     useGSAP(() => {
@@ -69,7 +83,7 @@ export default function Loader() {
             gsap.to(bigBoxRef.current, {
                 scale: 0.7,
                 ease: "power4.inOut",
-                duration: 1,
+                duration: 0.7,
             });
             gsap.to(smallBoxRef.current, {
                 opacity: 0,
@@ -82,7 +96,7 @@ export default function Loader() {
                 y: `${height / 2}px`,
                 height: "0%",
                 delay: 0.7,
-                duration: 0.9,
+                duration: 0.5,
                 ease: "power3.inOut",
             });
         }
@@ -90,31 +104,55 @@ export default function Loader() {
 
     const handleEnter = () => {
         setEnter(true);
+        firstEnter();
     };
+
+    useGSAP(() => {
+        const tl = gsap.timeline();
+        const { width, height } = loaderRef.current.getBoundingClientRect();
+
+        tl.to(loaderRef.current, { width: 330, duration: 1.3 })
+            .to(loaderRef.current, {
+                width: 380,
+                duration: 1,
+            })
+            .to(loaderRef.current, { width: 450, duration: 0.3 })
+            .to(loaderRef.current, { width: 490, duration: 0.2 })
+            .to(loaderRef.current, { width: 570, duration: 0.1, delay: 0.3 })
+            .to(loaderRef.current, { width: 600, duration: 0.4, delay: 0.7 })
+            .set(loaderRef.current, { transformOrigin: "center center" })
+            .set(loaderbackRef.current, { opacity: 0 })
+            .to(loaderRef.current, {
+                x: `300px`,
+                width: 0,
+                duration: 0.6,
+                delay: 1,
+            });
+    });
 
     return (
         <>
             <section className={s.loader} ref={bigBoxRef}>
                 <div ref={smallBoxRef} className={s.loader__box}>
-                    <div className={s.loader__box__ctn}>
+                    <div className={s.loader__box__ctn} ref={logoRef}>
                         <LogoStartSVG rectsRef={rectsRef} />
                     </div>
                     <div className={s.loaderbar}>
-                        <div className={s.loaderbar__one}></div>
+                        <div className={s.loaderbar__back} ref={loaderbackRef}></div>
+                        <div className={s.loaderbar__one} ref={loaderRef}></div>
                     </div>
 
-                    <div className={s.counter__box}>
-                        <Counter initialNumber={0} duration={1} delay={4} numbers={counterOne} />
-                        <Counter initialNumber={0} duration={6} delay={0} numbers={counterTwo} />
-                        <Counter initialNumber={1} duration={2} delay={3} numbers={counterThree} />
-                    </div>
                     {!animation ? (
                         <>
-                            <button type="button" onClick={() => handleEnter()}>
-                                ENTER
-                            </button>
-                            <h2>REMI CROCE</h2>
-                            <h2>CREATIVE DEVELOPER</h2>
+                            <div className={s.buttons} ref={buttonRef}>
+                                <button type="button" onClick={() => handleEnter()}>
+                                    ENTER
+                                </button>
+                            </div>
+                            <div className={s.texts} ref={textRef}>
+                                <h2 ref={nameRef}>REMI CROCE </h2>
+                                <h2 ref={developerRef}>CREATIVE DEVELOPER</h2>
+                            </div>
                         </>
                     ) : null}
                 </div>
@@ -122,41 +160,3 @@ export default function Loader() {
         </>
     );
 }
-
-const CounterNumber = forwardRef(({ number }, ref) => {
-    return (
-        <div className={s.num} ref={ref}>
-            {number}
-        </div>
-    );
-});
-
-const Counter = ({ initialNumber, duration, delay, numbers }) => {
-    const counterRef = useRef();
-    const numRefs = useRef([]);
-    const [counterNumbers, setCounterNumbers] = useState(numbers);
-
-    useEffect(() => {
-        const numHeight = numRefs.current[0]?.clientHeight;
-        const totalDistance = (counterNumbers.length - 1) * numHeight;
-
-        gsap.to(counterRef.current, {
-            y: -totalDistance,
-            duration: duration,
-            delay: delay,
-            ease: "power2.inOut",
-        });
-    }, []);
-
-    return (
-        <div className={s.counter} ref={counterRef}>
-            {counterNumbers.map((number, index) => (
-                <CounterNumber
-                    key={index}
-                    number={number}
-                    ref={(el) => (numRefs.current[index] = el)}
-                />
-            ))}
-        </div>
-    );
-};

@@ -17,14 +17,10 @@
         height: 100%;
         // border: 2px solid blue;
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
         align-items: center;
         flex-direction: column;
 
-        h2 {
-            font-family: "NeueMontreal-Medium";
-            font-size: 1rem;
-        }
         &__ctn {
             position: absolute;
             top: 32%;
@@ -51,17 +47,63 @@
 
 .loaderbar {
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
-    width: 200px;
-    height: 10px;
+    width: 600px;
+    height: 5px;
     transform: translate(-50%, -50%);
-    display: flex;
-    background: rgb(221, 219, 219);
+
+    &__back {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 600px;
+        height: 5px;
+        background: rgb(221, 219, 219);
+    }
     &__one {
-        position: relative;
+        position: absolute;
+        left: 0;
+        top: 0;
         background: #787777;
-        width: 100px;
-        height: 10px;
+        width: 5px;
+        height: 5px;
+    }
+}
+
+.buttons {
+    opacity: 0;
+    button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: "NeueMontreal-Medium";
+        font-size: 32px;
+        z-index: 10;
+
+        // border: 2px solid red;
+        transition: 0.3s ease-in-out;
+    }
+
+    button:hover {
+        color: #787777;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 3%;
+}
+
+.texts {
+    opacity: 0;
+    position: absolute;
+    bottom: 2%;
+    // border: 2px solid blue;
+    text-align: center;
+    font-family: "NeueMontreal-Regular";
+    font-size: 9px;
+
+    h2 {
+        margin: 0;
     }
 }
