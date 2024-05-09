@@ -12,18 +12,56 @@
     align-items: center;
 
     &__box {
+        position: relative;
         width: 80%;
         height: 100%;
         // border: 2px solid blue;
         display: flex;
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
         flex-direction: column;
+
+        h2 {
+            font-family: "NeueMontreal-Medium";
+            font-size: 1rem;
+        }
         &__ctn {
-            margin-top: 10%;
-            width: 12%;
+            position: absolute;
+            top: 32%;
+            width: 11%;
             height: 50%;
             // border: 2px solid red;
         }
+    }
+}
+
+.counter__box {
+    position: fixed;
+    bottom: 30%;
+    left: 45%;
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+    height: 20px;
+    border: 2px solid pink;
+    overflow: hidden;
+    font-family: "Nacelle";
+    font-size: 20px;
+}
+
+.loaderbar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 10px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    background: rgb(221, 219, 219);
+    &__one {
+        position: relative;
+        background: #787777;
+        width: 100px;
+        height: 10px;
     }
 }
