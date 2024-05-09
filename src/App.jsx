@@ -62,6 +62,9 @@ export default function App() {
                     <Navbar />
                     <BackgroundHeightProvider>
                         <BigBox backgroundheight={backgroundHeight}>
+                            <div className="windcanvas">
+                                <Wind />
+                            </div>
                             <div className="canvas">
                                 <Canvas
                                     mapRow={mapRow}

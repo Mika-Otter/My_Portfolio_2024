@@ -1,4 +1,4 @@
-import { RegularWind } from "./Wind";
+import { RegularWind, RollingWindBottom, RollingWindTop } from "./Wind";
 
 export default class Background {
     constructor({ position, imageSrc, canvas }) {
@@ -10,8 +10,10 @@ export default class Background {
         this.width = canvas.width;
         this.height = this.width / this.aspectRatio; // ratio
         this.winds = [];
+        this.rollingwindstop = [];
+        this.rollingwindsbottom = [];
         this.windTimer = 0;
-        this.windInterval = 3000;
+        this.windInterval = 1000;
     }
 
     draw(context, canvas) {
@@ -30,18 +32,37 @@ export default class Background {
 
     addWind() {
         // console.log("tiiiimmmer", this.winds);
-        // this.winds.push(new RegularWind());
+        // this.winds.push(new RegularWind(this.width, this.height));
+        // this.winds.push(new RollingWindBottom(this.width, this.height));
+        // this.winds.push(new RollingWindTop(this.width, this.height));
+        // this.rollingwindsbottom.push(new RollingWindBottom(this.width, this.height)());
+        // this.rollingwindstop.push(new RollingWindTop(this.width, this.height));
     }
 
     update(delaTime) {
-        this.winds.forEach((wind) => {
-            wind.update(delaTime);
-        });
-        if (this.windTimer > this.windInterval) {
-            this.addWind();
-            this.windTimer = 0;
-        } else {
-            this.windTimer += delaTime;
-        }
+        // this.winds.forEach((wind, index) => {
+        //     wind.update(delaTime);
+        //     if (wind.frameX === wind.maxFrame) {
+        //         this.winds.splice(index, 1);
+        //     }
+        // });
+        // this.rollingwindsbottom.forEach((wind, index) => {
+        //     wind.update(delaTime);
+        //     if (wind.frameX === wind.maxFrame) {
+        //         this.winds.splice(index, 1);
+        //     }
+        // });
+        // this.rollingwindstop.forEach((wind, index) => {
+        //     wind.update(delaTime);
+        //     if (wind.frameX === wind.maxFrame) {
+        //         this.winds.splice(index, 1);
+        //     }
+        // });
+        // if (this.windTimer > this.windInterval) {
+        //     this.addWind();
+        //     this.windTimer = 0;
+        // } else {
+        //     this.windTimer += delaTime;
+        // }
     }
 }

@@ -8,10 +8,10 @@ class Wind {
 
     update(deltaTime) {
         // console.log(this.frameX);
+        this.x += this.speed;
         if (this.frameTimer > this.frameInterval) {
             this.frameTimer = 0;
-            if (this.frameX < this.maxFrame) this.frameX++;
-            else this.frameX = 0;
+            this.frameX++;
         } else {
             this.frameTimer += deltaTime;
         }
@@ -28,45 +28,61 @@ class Wind {
             this.width,
             this.height
         );
+        context.globalAlpha = 0.7;
     }
 }
 
 export class RegularWind extends Wind {
-    constructor() {
+    constructor(width, height) {
         super();
-        this.width = 40;
+        this.width = 40; //40
         this.height = 50;
-        this.x = 500;
-        this.y = 200;
-        this.speed = 2;
-        this.maxFrame = 18;
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.speed = -2;
+        this.maxFrame = 18; //18
         this.image = new Image();
         this.image.src = "/regularwind.png";
+        this.image.opacity = 0;
     }
 
     update(deltaTime) {
         super.update(deltaTime);
     }
 }
-export class RotateWindTop extends Wind {
-    constructor(game) {
+export class RollingWindTop extends Wind {
+    constructor(width, height) {
         super();
         this.width = 350;
         this.height = 50;
-        this.x = 200;
-        this.y = 200;
-        this.speed = 2;
-        this.maxFrame = 18;
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.speed = -1;
+        this.maxFrame = 15;
+        this.image = new Image();
+        this.image.src = "/rollingwindtop.png";
+    }
+
+    update(deltaTime) {
+        super.update(deltaTime);
     }
 }
-export class RotateWindBottom extends Wind {
-    constructor(game) {
+export class RollingWindBottom extends Wind {
+    constructor(width, height) {
         super();
         this.width = 350;
         this.height = 50;
-        this.x = 200;
-        this.y = 200;
-        this.speed = 2;
-        this.maxFrame = 18;
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.speed = -1;
+        this.maxFrame = 15;
+        this.image = new Image();
+        this.image.src = "/rollingwindbottom.png";
+        this.windTimer = 0;
+        this.windInterval = 1000;
+    }
+
+    update(deltaTime) {
+        super.update(deltaTime);
     }
 }

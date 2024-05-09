@@ -15,8 +15,8 @@ export function gameAnimate({
 }) {
     let lastTime = 0;
     function animate(timeStamp) {
-        const deltaTime = timeStamp - lastTime;
-        lastTime = timeStamp;
+        // const deltaTime = timeStamp - lastTime;
+        // lastTime = timeStamp;
         requestAnimationFrame(animate);
         mainChangeLevel();
 
@@ -33,7 +33,7 @@ export function gameAnimate({
         currentCollisionLevel.forEach((collisionBlock) => {
             collisionBlock.draw(ctx);
         });
-        background.update(deltaTime);
+        // background.update(deltaTime);
         player.draw(ctx);
         player.updatePlayer({
             background,

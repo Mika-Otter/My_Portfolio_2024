@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import s from "./Wind.module.scss";
+import { Winds } from "../Winds";
 
 export default function Wind() {
     const canvasWindRef = useRef();
@@ -11,21 +12,18 @@ export default function Wind() {
         const CANVAS_WIDTH = canvas.width;
         canvas.height = window.innerHeight;
         const CANVAS_HEIGHT = canvas.height;
+        const winds = new Winds(canvas);
 
-        const windImg = new Image();
-        // windImg.src = "/regularwind.png";
-        const spriteWidth = 1640;
-        const spriteHeight = 700;
-        let frameX = 0;
+        let lastTime = 0;
+        function animate(timeStamp) {
+            const deltaTime = timeStamp - lastTime;
+            lastTime = timeStamp;
 
-        function animate() {
-            ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-            // ctx.fillStyle = "red";
-            // ctx.fillRect(20, 20, 500, 500);
-            ctx.drawImage(windImg, 0, 0);
-
-            // if (frameX < 45) frameX++;
             requestAnimationFrame(animate);
+
+            ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+            winds.draw(ctx);
+            winds.update(deltaTime);
         }
 
         animate();
