@@ -12,6 +12,7 @@ export function gameAnimate({
     currentCollisionLevel,
     overlay,
     mainChangeLevel,
+    water,
 }) {
     let lastTime = 0;
     function animate(timeStamp) {
@@ -33,7 +34,6 @@ export function gameAnimate({
         currentCollisionLevel.forEach((collisionBlock) => {
             collisionBlock.draw(ctx);
         });
-        // background.update(deltaTime);
         player.draw(ctx);
         player.updatePlayer({
             background,
@@ -41,6 +41,7 @@ export function gameAnimate({
             canvas,
             camera,
         });
+        water.draw(ctx, canvas);
 
         ctx.restore();
         ctx.save();

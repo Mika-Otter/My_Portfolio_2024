@@ -56,6 +56,7 @@ export default function Canvas({ setMapRow, isPlayed, toExp }) {
             RoomsLevels,
             overlay,
             mapRow,
+            water,
         } = initializeGame(canvas, keysTab, lastKeysTab, toExp);
 
         function mainChangeLevel() {
@@ -82,6 +83,7 @@ export default function Canvas({ setMapRow, isPlayed, toExp }) {
             currentCollisionLevel,
             overlay,
             mainChangeLevel,
+            water,
         });
         setBackgroundHeight(background.height);
     }, [toExp]);

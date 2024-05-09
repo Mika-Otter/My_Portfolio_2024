@@ -21,7 +21,7 @@ export function initializeGame(canvas, keysTab, lastKeysTab, toExp) {
             init: () => {
                 background = new Background({
                     position: { x: 0, y: 5 },
-                    imageSrc: "./src/assets/img/map-clean.png",
+                    imageSrc: "./src/assets/img/map-final.png",
                     canvas,
                 });
                 scale = background.width / background.originalWidth;
@@ -47,6 +47,11 @@ export function initializeGame(canvas, keysTab, lastKeysTab, toExp) {
     let i = 0;
     const collisionBlocksList = parseCollisions(background);
     let currentCollisionLevel = collisionBlocksList[i];
+    const water = new Background({
+        position: { x: 0, y: 5 },
+        imageSrc: "./src/assets/img/water.png",
+        canvas,
+    });
 
     // GAME DISPLAY________________________________________________________
 
@@ -86,5 +91,6 @@ export function initializeGame(canvas, keysTab, lastKeysTab, toExp) {
         RoomsLevels,
         overlay,
         mapRow,
+        water,
     };
 }
