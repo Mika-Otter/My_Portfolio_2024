@@ -45,7 +45,6 @@ export class HandleInput {
                     if (this.keysTab.indexOf("d") == -1) {
                         this.keysTab.unshift("d");
                     }
-                    console.log("moove ", this.keysTab, this.lastKeysTab);
                     break;
                 case " ":
                     event.preventDefault();
@@ -70,7 +69,6 @@ export class HandleInput {
                 case "d":
                     this.keysTab.splice(this.keysTab.indexOf("d"), 1);
                     this.lastKeysTab.splice(0, 1, "d");
-                    console.log("keyup ", this.keysTab, this.lastKeysTab);
                     break;
                 case " ":
                     this.keysTab.splice(this.keysTab.indexOf(" "), 1);

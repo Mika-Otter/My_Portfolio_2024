@@ -301,7 +301,12 @@ export default function Projects({ goToExp, changeRoom }) {
                             </div>
                         </div>
                     </div>
-                    <div className={s.projects__box__goToExp} onClick={() => changeRoom()}>
+                    <div
+                        className={s.projects__box__goToExp}
+                        onClick={() => {
+                            changeRoom();
+                        }}
+                    >
                         <span> NEXT LEVEL </span>
                         <div className={s.projects__box__goToExp__arrow}>
                             <ArrowSVG color={"#091429"} />

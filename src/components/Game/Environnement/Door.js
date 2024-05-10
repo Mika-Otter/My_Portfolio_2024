@@ -33,9 +33,7 @@ export class Door {
             gsap.to(this.overlay, {
                 opacity: 0,
                 onComplete: () => {
-                    console.log("hello ??");
                     changeRoom();
-                    console.log("hello baby");
                     gsap.to(this.overlay, {
                         opacity: 0,
                     });

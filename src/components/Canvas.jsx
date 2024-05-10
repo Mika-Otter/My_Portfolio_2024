@@ -1,9 +1,5 @@
 import { useRef, useEffect, useState } from "react";
 import { initializeGame } from "../gameLogic/GameIntializer";
-import Background from "./Game/Environnement/Background";
-import { Door } from "./Game/Environnement/Door";
-import { ActivePlayer } from "./Game/Player/PlayerActive";
-import { parseCollisions } from "../gameLogic/CollisionLevel";
 import { HandleInput } from "../gameLogic/InputManager";
 import { gameAnimate } from "../gameLogic/GameAnimate";
 import { useBackgroundHeight, useSetBackgroundHeight } from "../context/BackgroundHeightContext";
@@ -19,9 +15,9 @@ export default function Canvas({ isPlayed, toExp, changetoExp, RoomLevel, change
     const [firstGame, setFirstGame] = useState(true);
     const [player, setPlayer] = useState(null);
 
-    useEffect(() => {
-        console.log(RoomLevel, "yooooo");
-    }, [RoomLevel]);
+    // useEffect(() => {
+    //     console.log(RoomLevel, "yooooo");
+    // }, [RoomLevel]);
 
     useEffect(() => {
         handler = new HandleInput(keysTab, lastKeysTab, isPlayed);
@@ -39,6 +35,17 @@ export default function Canvas({ isPlayed, toExp, changetoExp, RoomLevel, change
             }
         };
     }, [isPlayed]);
+
+    useEffect(() => {
+        if (toExp) {
+            // player.goToExp()
+            player.enterInDoor();
+            changetoExp();
+            setTimeout(() => {
+                setChangingLevel(true);
+            }, 50);
+        }
+    });
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -63,6 +70,7 @@ export default function Canvas({ isPlayed, toExp, changetoExp, RoomLevel, change
             water,
             cloud,
         } = initializeGame({ canvas, keysTab, lastKeysTab, toExp, RoomLevel, changeRoom });
+        setPlayer(player);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         function mainChangeLevel() {
             if (mapRow.row > mapRow.precedentRow) {
@@ -71,15 +79,6 @@ export default function Canvas({ isPlayed, toExp, changetoExp, RoomLevel, change
                     currentCollisionLevel = collisionBlocksList[i];
                 }
             }
-        }
-
-        if (toExp) {
-            // player.goToExp()
-            player.enterInDoor();
-            changetoExp();
-            setTimeout(() => {
-                setChangingLevel(true);
-            }, 50);
         }
 
         let lastTime = 0;
@@ -109,11 +108,14 @@ export default function Canvas({ isPlayed, toExp, changetoExp, RoomLevel, change
                 canvas,
                 camera,
             });
-            water.draw(ctx, canvas);
-            cloud.draw(ctx, canvas);
-
+            if (RoomLevel === 1) {
+                water.draw(ctx, canvas);
+                cloud.draw(ctx, canvas);
+            }
             ctx.restore();
+
             ctx.save();
+
             ctx.globalAlpha = overlay.opacity;
             ctx.fillStyle = "black";
             ctx.fillRect(0, 0, canvas.width, canvas.height);

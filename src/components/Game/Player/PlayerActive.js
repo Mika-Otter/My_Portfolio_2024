@@ -24,6 +24,7 @@ export class ActivePlayer extends Player {
         this.doors = doors;
         this.mapRow = mapRow;
         this.toExp = toExp;
+        this.isJumping = false;
     }
 
     setState() {
@@ -41,7 +42,6 @@ export class ActivePlayer extends Player {
     }
     // UPDATE PLAYER____________________________________________________________________
     updatePlayer({ background, context, canvas, camera }) {
-        console.log(this.toExp);
         this.handleMovement({ canvas, camera, background });
         this.updateCameraBox({ camera });
         this.update({ camera, canvas, background });
@@ -62,7 +62,10 @@ export class ActivePlayer extends Player {
         if (this.keysTab.includes("z")) {
             this.enterInDoor();
         }
-        if (this.toExp) {
+        if (this.velocity.y !== 0) {
+            this.isJumping = true;
+        }
+        if (this.toExp && !this.isJumping) {
             this.enterInDoor();
         }
     }

@@ -20,11 +20,7 @@ export class Winds {
         });
     }
     addWind() {
-        // console.log("tiiiimmmer", this.winds);
         this.windlist.push(new RegularWind(this.width, this.height));
-        // this.windlist.push(new RollingWindBottom(this.width, this.height));
-        // this.windlist.push(new RollingWindTop(this.width, this.height));
-        // console.log(this.winds);
     }
     update(deltaTime) {
         this.windlist.forEach((wind, index) => {
