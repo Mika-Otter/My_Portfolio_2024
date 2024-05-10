@@ -1,13 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import s from "./Menu.module.scss";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import cn from "classnames";
 
-export default function Menu({ isMenu }) {
+export default function Menu({ isMenu, handleMenu }) {
+    const menuRef = useRef();
+    const tl = useRef();
+
+    useGSAP(() => {
+        tl.current = gsap.timeline({ paused: true, ease: "power3.out" });
+        const { width } = menuRef.current.getBoundingClientRect();
+        tl.current.to(menuRef.current, {
+            x: `-${width}`,
+            xPercent: -1,
+            duration: 3,
+        });
+    }, []);
+
+    useEffect(() => {
+        isMenu ? tl.current.timeScale(5).play() : tl.current.timeScale(4).reverse();
+    }, [isMenu]);
+
     return (
         <>
-            <div className={s.menu}>
+            <div className={s.menu} ref={menuRef}>
                 <div className={s.menu__item}>
                     <div className={s.menu__item__wrapper}>
                         <div className={cn(s.menu__item__span)}>
@@ -42,7 +59,9 @@ export default function Menu({ isMenu }) {
                 </div>
                 <div className={s.menu__social}>
                     <div className={s.menu__social__mail}>
-                        <button type="mail">MAIL</button>
+                        <button type="mail" onClick={() => handleMenu()}>
+                            MAIL
+                        </button>
                     </div>
                     <div className={s.menu__social__other}>
                         <button type="button">INSTAGRAM</button>

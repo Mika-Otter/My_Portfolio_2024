@@ -9,11 +9,11 @@ import { MenuIconSVG } from "../SVG/MenuIconSVG";
 import { ArrowLetsTalkSVG } from "../SVG/ArrowLetsTalksSVG";
 import AudioPlayer from "../Audio/Audio";
 
-export default function Navbar({ activeSound }) {
+export default function Navbar({ activeSound, handleMenu }) {
     return (
         <div className={s.navbar}>
             <div className={s.navbar__menu}>
-                <span>MENU</span>
+                <span onClick={() => handleMenu()}>MENU</span>
                 {/* <div className={s.navbar__menu__icone}>
                     <MenuIconSVG />
                 </div> */}

@@ -23,9 +23,14 @@ export default function App() {
     const [activeSound, setActiveSound] = useState(false);
     const [isMenu, setIsMenu] = useState(false);
 
-    function firstEnter() {
+    const firstEnter = () => {
         setActiveSound(true);
-    }
+    };
+
+    const handleMenu = () => {
+        setIsMenu((prev) => !prev);
+        console.log(isMenu);
+    };
 
     const playMode = () => {
         setIsPlayed(true);
@@ -65,8 +70,8 @@ export default function App() {
 
             <PlayView playMode={playMode} viewMode={viewMode} isPlayed={isPlayed} />
             <Logo />
-            <Navbar activeSound={activeSound} />
-            <Menu />
+            <Navbar activeSound={activeSound} handleMenu={handleMenu} />
+            <Menu isMenu={isMenu} handleMenu={handleMenu} />
             <BackgroundHeightProvider>
                 <BigBox backgroundheight={backgroundHeight}>
                     <div className="windcanvas">
