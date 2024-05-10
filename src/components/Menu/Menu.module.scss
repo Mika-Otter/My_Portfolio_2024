@@ -16,6 +16,23 @@
     flex-direction: column;
     justify-content: space-between;
 
+    &__close {
+        margin-left: 8%;
+        margin-top: 1%;
+        display: flex;
+        font-size: 13px;
+        align-items: center;
+        cursor: pointer;
+        &__cross {
+            margin-top: 3px;
+            width: 25px;
+            transition: 0.3s ease-in-out;
+        }
+    }
+    &__close:hover .menu__close__cross {
+        transform: rotate(-45deg);
+    }
+
     &__item {
         // border: 2px solid red;
         margin: 8% 8% 15% 8%;
@@ -29,7 +46,7 @@
             flex-direction: column;
             font-size: 75px;
             overflow: hidden;
-            height: 75px;
+            height: 73px;
             width: 93%;
             text-align: left;
         }
@@ -37,9 +54,20 @@
         &__span {
             display: flex;
             flex-direction: column;
-            transition: 0.3s ease-in-out;
+
+            transition: 0.5s ease-in-out;
             cursor: pointer;
+            margin: 0;
+            margin-bottom: 0;
+            padding: 0;
             transform: translateY(-50%);
+            margin-top: -15px;
+            span {
+                margin: 0;
+
+                padding: 0;
+                height: 73px;
+            }
         }
         &__span:hover {
             transform: translateY(0%);
@@ -57,9 +85,33 @@
         p {
             margin: 0;
         }
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+            font-size: 17px;
+            overflow: hidden;
+            height: 20px;
+            width: 93%;
+            text-align: left;
+        }
         &__phone,
         &__mail {
+            position: relative;
+            text-decoration: none;
             cursor: pointer;
+            font-family: "NeueMontreal-Regular";
+            font-weight: 100;
+            color: rgb(44, 40, 40);
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+
+            transform: translateY(-50%);
+            transition: 0.3s ease-in-out;
+        }
+        &__phone:hover,
+        &__mail:hover {
+            transform: translateY(0%);
         }
     }
 
@@ -71,11 +123,30 @@
         gap: 9px;
         font-size: 14px;
 
-        button {
-            all: unset;
+        a {
+            position: relative;
+            text-decoration: none;
             cursor: pointer;
             font-family: "NeueMontreal-Regular";
             font-weight: 100;
+            color: rgb(44, 40, 40);
+        }
+        a::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            border-radius: 5px;
+            height: 0.08em;
+            bottom: 0;
+            left: 0;
+            background: currentcolor;
+            transform-origin: bottom right;
+            transition: transform 0.6s ease-out;
+        }
+        a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
         }
         &__other {
             display: flex;

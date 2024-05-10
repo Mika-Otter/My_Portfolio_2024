@@ -3,6 +3,7 @@ import s from "./Menu.module.scss";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import cn from "classnames";
+import { CrossSVG } from "../SVG/CrossSVG";
 
 export default function Menu({ isMenu, handleMenu }) {
     const menuRef = useRef();
@@ -25,6 +26,13 @@ export default function Menu({ isMenu, handleMenu }) {
     return (
         <>
             <div className={s.menu} ref={menuRef}>
+                <div className={s.menu__close} onClick={() => handleMenu()}>
+                    <div className={s.menu__close__cross}>
+                        {" "}
+                        <CrossSVG />
+                    </div>
+                    CLOSE
+                </div>
                 <div className={s.menu__item}>
                     <div className={s.menu__item__wrapper}>
                         <div className={cn(s.menu__item__span)}>
@@ -54,19 +62,27 @@ export default function Menu({ isMenu, handleMenu }) {
                 <div className={s.menu__location}>
                     <p>Actually in the south of France </p>
                     <p>GMT +2</p>
-                    <span className={s.menu__location__phone}>+336 70 39 47 00</span>
-                    <span className={s.menu__location__mail}>mi.otter.side@gmail.com</span>
+                    <div className={s.menu__location__wrapper}>
+                        <div className={s.menu__location__phone}>
+                            <span>+336 70 39 47 00</span>
+                            <span>+336 70 39 47 00</span>
+                        </div>
+                    </div>
+                    <div className={s.menu__location__wrapper}>
+                        <div className={s.menu__location__mail}>
+                            <span>mi.otter.side@gmail.com</span>
+                            <span>mi.otter.side@gmail.com</span>
+                        </div>
+                    </div>
                 </div>
                 <div className={s.menu__social}>
                     <div className={s.menu__social__mail}>
-                        <button type="mail" onClick={() => handleMenu()}>
-                            MAIL
-                        </button>
+                        <a href="#">MAIL</a>
                     </div>
                     <div className={s.menu__social__other}>
-                        <button type="button">INSTAGRAM</button>
-                        <button type="button">LINKEDIN</button>
-                        <button type="button">GITHUB</button>
+                        <a href="#">INSTAGRAM</a>
+                        <a href="#">LINKEDIN</a>
+                        <a href="#">GITHUB</a>
                     </div>
                 </div>
             </div>
