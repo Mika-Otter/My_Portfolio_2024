@@ -1,11 +1,11 @@
 export default class Background {
-    constructor({ position, imageSrc, canvas }) {
+    constructor({ position, imageSrc, canvas, originalWidth, width, aspectRatio }) {
         this.position = position;
         this.image = new Image();
         this.image.src = imageSrc;
-        this.originalWidth = 70 * 32; // Largeur originale de l'image
-        this.aspectRatio = 70 / 180;
-        this.width = canvas.width;
+        this.originalWidth = originalWidth; // Largeur originale de l'image
+        this.aspectRatio = aspectRatio;
+        this.width = width;
         this.height = this.width / this.aspectRatio; // ratio
     }
 

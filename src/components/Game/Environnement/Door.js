@@ -1,7 +1,15 @@
 import gsap from "gsap";
 
 export class Door {
-    constructor({ position, imageSrc, frameRate = 1, loop = true, autoplay = true, overlay }) {
+    constructor({
+        position,
+        imageSrc,
+        frameRate = 1,
+        loop = true,
+        autoplay = true,
+        overlay,
+        changeRoom,
+    }) {
         this.position = position;
         this.image = new Image();
         this.image.onload = () => {
@@ -24,6 +32,14 @@ export class Door {
         this.onComplete = () => {
             gsap.to(this.overlay, {
                 opacity: 0,
+                onComplete: () => {
+                    console.log("hello ??");
+                    changeRoom();
+                    console.log("hello baby");
+                    gsap.to(this.overlay, {
+                        opacity: 0,
+                    });
+                },
             });
         };
     }

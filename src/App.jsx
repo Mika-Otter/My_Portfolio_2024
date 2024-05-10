@@ -45,20 +45,35 @@ export default function App() {
     const goToExp = () => {
         setToExp(true);
     };
+
+    const changetoExp = () => {
+        setToExp(false);
+    };
+    useEffect(() => {
+        // console.log("bidon bidon", toExp);
+    }, [toExp]);
     // useEffect(() => {
     //     console.log(window.innerHeight, window.innerWidth);
     // }, []);
 
-    useGSAP(() => {
-        if (toExp) {
-            gsap.set(overlayRef.current, {
-                zIndex: 10000,
-            });
-            gsap.to(overlayRef.current, {
-                opacity: 1,
-            });
-        }
-    }, [toExp]);
+    // useGSAP(() => {
+    //     if (toExp) {
+    //         gsap.set(overlayRef.current, {
+    //             zIndex: 10000,
+    //         });
+    //         gsap.to(overlayRef.current, {
+    //             opacity: 1,
+    //         });
+    //     }
+    //     setTimeout(() => {
+    //         gsap.to(overlayRef.current, {
+    //             opacity: 0,
+    //         });
+    //         gsap.set(overlayRef.current, {
+    //             zIndex: -3,
+    //         });
+    //     }, 500);
+    // }, [toExp]);
 
     useEffect(() => {
         const handleResize = () => {
@@ -97,6 +112,7 @@ export default function App() {
                             setMapRow={setMapRow}
                             isPlayed={isPlayed}
                             toExp={toExp}
+                            changetoExp={changetoExp}
                         />
                     </div>
 

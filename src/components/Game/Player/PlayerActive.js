@@ -41,6 +41,7 @@ export class ActivePlayer extends Player {
     }
     // UPDATE PLAYER____________________________________________________________________
     updatePlayer({ background, context, canvas, camera }) {
+        console.log(this.toExp);
         this.handleMovement({ canvas, camera, background });
         this.updateCameraBox({ camera });
         this.update({ camera, canvas, background });
@@ -58,9 +59,10 @@ export class ActivePlayer extends Player {
         this.changeLevelByTheBottom();
         this.changeLevelByTheTop();
 
-        // console.log(this.toExp);
-
         if (this.keysTab.includes("z")) {
+            this.enterInDoor();
+        }
+        if (this.toExp) {
             this.enterInDoor();
         }
     }

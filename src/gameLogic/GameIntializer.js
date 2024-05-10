@@ -6,7 +6,7 @@ import Background from "../components/Game/Environnement/Background";
 import Cloud from "../components/Game/Environnement/Cloud";
 
 // Initialisation d'autres éléments du jeu, comme la classe Player, Background, etc.
-export function initializeGame(canvas, keysTab, lastKeysTab, toExp) {
+export function initializeGame({ canvas, keysTab, lastKeysTab, toExp, RoomLevel, changeRoom }) {
     let mapRow = { row: 0, precedentRow: 0 };
     let background;
     let doors;
@@ -17,7 +17,7 @@ export function initializeGame(canvas, keysTab, lastKeysTab, toExp) {
     };
 
     // GLOBAL VARIABLES________________________________________________
-    let RoomLevel = 1;
+
     let RoomsLevels = {
         1: {
             init: () => {
@@ -25,9 +25,11 @@ export function initializeGame(canvas, keysTab, lastKeysTab, toExp) {
                     position: { x: 0, y: 5 },
                     imageSrc: "./src/assets/img/map-final.png",
                     canvas,
+                    originalWidth: 70 * 32,
+                    width: canvas.width,
+                    aspectRatio: 70 / 180,
                 });
                 scale = background.width / background.originalWidth;
-                console.log("yoooooooooooo", scale);
                 doors = [
                     new Door({
                         position: { x: 2506 * scale, y: 8900 * scale }, // x * 1.8, y * 1.8 for ZOOM 180% + adjusment
@@ -36,12 +38,37 @@ export function initializeGame(canvas, keysTab, lastKeysTab, toExp) {
                         loop: false,
                         autoplay: false,
                         overlay,
+                        changeRoom,
+                        originalWidth: 70 * 32,
+                        width: 3000,
+                        aspectRatio: 70 / 180,
                     }),
                 ];
             },
         },
         2: {
-            init: () => {},
+            init: () => {
+                background = new Background({
+                    position: { x: 0, y: 5 },
+                    imageSrc: "./src/assets/img/MAPTILED2.png",
+                    canvas,
+                    originalWidth: 70 * 32,
+                    width: canvas.width,
+                    aspectRatio: 70 / 180,
+                });
+                scale = background.width / background.originalWidth;
+                doors = [
+                    new Door({
+                        position: { x: 2506 * scale, y: 8900 * scale }, // x * 1.8, y * 1.8 for ZOOM 180% + adjusment
+                        imageSrc: "./src/assets/sprite-door/doorOpen.png",
+                        frameRate: 5,
+                        loop: false,
+                        autoplay: false,
+                        overlay,
+                        changeRoom,
+                    }),
+                ];
+            },
         },
     };
     RoomsLevels[RoomLevel].init();
@@ -95,8 +122,6 @@ export function initializeGame(canvas, keysTab, lastKeysTab, toExp) {
         currentCollisionLevel,
         collisionBlocksList,
         i,
-        RoomLevel,
-        RoomsLevels,
         overlay,
         mapRow,
         water,
