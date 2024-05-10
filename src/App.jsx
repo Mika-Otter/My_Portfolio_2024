@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Canvas from "./components/Canvas";
 import "./assets/styles/global.scss";
 import Title from "./components/Title/Title";
@@ -12,6 +12,8 @@ import AudioPlayer from "./components/Audio/Audio";
 import Wind from "./components/Game/Environnement/Wind/Wind";
 import Loader from "./components/Loader/Loader";
 import Menu from "./components/Menu/Menu";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 export default function App() {
     const [mapRow, setMapRow] = useState({ row: 0, precedentRow: 0 });
@@ -22,6 +24,7 @@ export default function App() {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [activeSound, setActiveSound] = useState(false);
     const [isMenu, setIsMenu] = useState(false);
+    const overlayRef = useRef();
 
     const firstEnter = () => {
         setActiveSound(true);
@@ -46,6 +49,17 @@ export default function App() {
     //     console.log(window.innerHeight, window.innerWidth);
     // }, []);
 
+    useGSAP(() => {
+        if (toExp) {
+            gsap.set(overlayRef.current, {
+                zIndex: 10000,
+            });
+            gsap.to(overlayRef.current, {
+                opacity: 1,
+            });
+        }
+    }, [toExp]);
+
     useEffect(() => {
         const handleResize = () => {
             setIsLoading(true);
@@ -66,8 +80,8 @@ export default function App() {
 
     return (
         <>
+            <div className="overlay" ref={overlayRef}></div>
             {isLoading ? <Loader firstEnter={firstEnter} /> : null}
-
             <PlayView playMode={playMode} viewMode={viewMode} isPlayed={isPlayed} />
             <Logo />
             <Navbar activeSound={activeSound} handleMenu={handleMenu} />

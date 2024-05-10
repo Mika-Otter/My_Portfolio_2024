@@ -48,7 +48,7 @@ export function gameAnimate({
         ctx.restore();
         ctx.save();
         ctx.globalAlpha = overlay.opacity;
-        ctx.fillStyle = "transparent";
+        ctx.fillStyle = "black";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.restore();
     }

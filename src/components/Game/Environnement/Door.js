@@ -23,7 +23,7 @@ export class Door {
         this.overlay = overlay;
         this.onComplete = () => {
             gsap.to(this.overlay, {
-                opacity: 1,
+                opacity: 0,
             });
         };
     }

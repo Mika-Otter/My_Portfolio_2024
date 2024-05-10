@@ -1,12 +1,5 @@
 import React from "react";
-import s from "./Navbar.module.scss";
-import { MenuBoxSVG } from "../SVG/MenuBox";
-import { LetsTalkBoxSVG } from "../SVG/LetsTalkBoxSVG";
-import { LogoSVG } from "../SVG/LogoSVG";
-import Logo from "../Logo/Logo";
-import { SoundSVG } from "../SVG/SoundSVG";
-import { MenuIconSVG } from "../SVG/MenuIconSVG";
-import { ArrowLetsTalkSVG } from "../SVG/ArrowLetsTalksSVG";
+import s from "./Navbar.module.scss"
 import AudioPlayer from "../Audio/Audio";
 
 export default function Navbar({ activeSound, handleMenu }) {
