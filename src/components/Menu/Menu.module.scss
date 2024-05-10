@@ -1,0 +1,85 @@
+.menu {
+    position: fixed;
+    z-index: 4000;
+    top: 1%;
+    right: 10px;
+    height: 98%;
+    width: 33%;
+    background-color: rgb(230, 228, 228, 0.73);
+    color: rgb(44, 40, 40);
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px);
+    font-family: "NeueMontreal-Regular";
+    font-weight: 900;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__item {
+        // border: 2px solid red;
+        margin: 8% 8% 15% 8%;
+        margin-top: 12%;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        height: 35%;
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+            font-size: 75px;
+            overflow: hidden;
+            height: 75px;
+            width: 93%;
+            text-align: left;
+        }
+
+        &__span {
+            display: flex;
+            flex-direction: column;
+            transition: 0.3s ease-in-out;
+            cursor: pointer;
+            transform: translateY(-50%);
+        }
+        &__span:hover {
+            transform: translateY(0%);
+        }
+    }
+
+    &__location {
+        font-family: "NeueMontreal-Regular";
+        font-weight: 100;
+        display: flex;
+        flex-direction: column;
+        margin-left: 8%;
+        height: 60%;
+        // border: 2px solid blue;
+        p {
+            margin: 0;
+        }
+        &__phone,
+        &__mail {
+            cursor: pointer;
+        }
+    }
+
+    &__social {
+        margin: 8%;
+        margin-bottom: 5%;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+        font-size: 14px;
+
+        button {
+            all: unset;
+            cursor: pointer;
+            font-family: "NeueMontreal-Regular";
+            font-weight: 100;
+        }
+        &__other {
+            display: flex;
+            gap: 14px;
+        }
+    }
+}

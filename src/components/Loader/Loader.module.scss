@@ -100,10 +100,13 @@
     bottom: 2%;
     // border: 2px solid blue;
     text-align: center;
-    font-family: "NeueMontreal-Regular";
+
+    font-weight: 200;
     font-size: 9px;
 
     h2 {
+        font-family: "NeueMontreal-Regular";
+        font-weight: 100;
         margin: 0;
     }
 }

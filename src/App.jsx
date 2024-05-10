@@ -11,6 +11,7 @@ import PlayView from "./components/PlayView/PlayView";
 import AudioPlayer from "./components/Audio/Audio";
 import Wind from "./components/Game/Environnement/Wind/Wind";
 import Loader from "./components/Loader/Loader";
+import Menu from "./components/Menu/Menu";
 
 export default function App() {
     const [mapRow, setMapRow] = useState({ row: 0, precedentRow: 0 });
@@ -20,6 +21,7 @@ export default function App() {
     const [isLoading, setIsLoading] = useState(true);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [activeSound, setActiveSound] = useState(false);
+    const [isMenu, setIsMenu] = useState(false);
 
     function firstEnter() {
         setActiveSound(true);
@@ -64,6 +66,7 @@ export default function App() {
             <PlayView playMode={playMode} viewMode={viewMode} isPlayed={isPlayed} />
             <Logo />
             <Navbar activeSound={activeSound} />
+            <Menu />
             <BackgroundHeightProvider>
                 <BigBox backgroundheight={backgroundHeight}>
                     <div className="windcanvas">
