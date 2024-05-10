@@ -8,6 +8,20 @@ import { CrossSVG } from "../SVG/CrossSVG";
 export default function Menu({ isMenu, handleMenu }) {
     const menuRef = useRef();
     const tl = useRef();
+    const [currentTime, setCurrentTime] = useState(new Date());
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentTime(new Date());
+        }, 60000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    const formattedTime = currentTime.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+    });
 
     useGSAP(() => {
         tl.current = gsap.timeline({ paused: true, ease: "power3.out" });
@@ -20,7 +34,13 @@ export default function Menu({ isMenu, handleMenu }) {
     }, []);
 
     useEffect(() => {
-        isMenu ? tl.current.timeScale(5).play() : tl.current.timeScale(4).reverse();
+        const animation = isMenu
+            ? tl.current.timeScale(5).play()
+            : tl.current.timeScale(4).reverse();
+
+        return () => {
+            animation.kill();
+        };
     }, [isMenu]);
 
     return (
@@ -60,29 +80,35 @@ export default function Menu({ isMenu, handleMenu }) {
                     </div>
                 </div>
                 <div className={s.menu__location}>
-                    <p>Actually in the south of France </p>
-                    <p>GMT +2</p>
+                    <p>Actually in</p>
+                    <p>South of France / {formattedTime}</p>
                     <div className={s.menu__location__wrapper}>
-                        <div className={s.menu__location__phone}>
-                            <span>+336 70 39 47 00</span>
-                            <span>+336 70 39 47 00</span>
-                        </div>
+                        <a className={s.menu__location__phone} href="tel:+33670493700">
+                            <span>+336 70 49 37 00</span>
+                            <span>+336 70 49 37 00</span>
+                        </a>
                     </div>
                     <div className={s.menu__location__wrapper}>
-                        <div className={s.menu__location__mail}>
+                        <a href="mailto:aaaaa@gmail.com" className={s.menu__location__mail}>
                             <span>mi.otter.side@gmail.com</span>
                             <span>mi.otter.side@gmail.com</span>
-                        </div>
+                        </a>
                     </div>
                 </div>
                 <div className={s.menu__social}>
                     <div className={s.menu__social__mail}>
-                        <a href="#">MAIL</a>
+                        <a href="mailto:mi.otter.side@gmail.com">MAIL</a>
                     </div>
                     <div className={s.menu__social__other}>
-                        <a href="#">INSTAGRAM</a>
-                        <a href="#">LINKEDIN</a>
-                        <a href="#">GITHUB</a>
+                        <a href="https://www.instagram.com/mi.otter/" target="_blank">
+                            INSTAGRAM
+                        </a>
+                        <a href="https://linkedin.com/in/rémi-croce-320499254" target="_blank">
+                            LINKEDIN
+                        </a>
+                        <a href="https://github.com/Mika-Otter" target="_blank">
+                            GITHUB
+                        </a>
                     </div>
                 </div>
             </div>
