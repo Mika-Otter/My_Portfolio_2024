@@ -30,7 +30,7 @@
         }
     }
     &__close:hover .menu__close__cross {
-        transform: rotate(-45deg);
+        transform: scale(0.8);
     }
 
     &__item {
