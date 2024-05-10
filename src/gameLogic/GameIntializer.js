@@ -15,6 +15,8 @@ export function initializeGame({ canvas, keysTab, lastKeysTab, toExp, RoomLevel,
     let overlay = {
         opacity: 0,
     };
+    let cloud;
+    let water;
 
     // GLOBAL VARIABLES________________________________________________
 
@@ -44,6 +46,23 @@ export function initializeGame({ canvas, keysTab, lastKeysTab, toExp, RoomLevel,
                         aspectRatio: 70 / 180,
                     }),
                 ];
+                water = new Background({
+                    position: { x: 0, y: 5 },
+                    imageSrc: "./src/assets/img/water.png",
+                    canvas,
+                    originalWidth: 70 * 32,
+                    width: canvas.width,
+                    aspectRatio: 70 / 180,
+                });
+                cloud = new Cloud({
+                    position: { x: 900, y: 30 },
+                    imageSrc: "./src/assets/img/cloud.png",
+                    canvas,
+                    scale,
+                    originalWidth: 70 * 32,
+                    width: canvas.width,
+                    aspectRatio: 70 / 180,
+                });
             },
         },
         2: {
@@ -77,17 +96,6 @@ export function initializeGame({ canvas, keysTab, lastKeysTab, toExp, RoomLevel,
     let i = 0;
     const collisionBlocksList = parseCollisions(background);
     let currentCollisionLevel = collisionBlocksList[i];
-    const water = new Background({
-        position: { x: 0, y: 5 },
-        imageSrc: "./src/assets/img/water.png",
-        canvas,
-    });
-    const cloud = new Cloud({
-        position: { x: 900, y: 30 },
-        imageSrc: "./src/assets/img/cloud.png",
-        canvas,
-        scale,
-    });
 
     // GAME DISPLAY________________________________________________________
 

@@ -55,31 +55,25 @@ export default function App() {
     const changetoExp = () => {
         setToExp(false);
     };
-    useEffect(() => {
-        // console.log("bidon bidon", toExp);
-    }, [toExp]);
-    // useEffect(() => {
-    //     console.log(window.innerHeight, window.innerWidth);
-    // }, []);
 
-    // useGSAP(() => {
-    //     if (toExp) {
-    //         gsap.set(overlayRef.current, {
-    //             zIndex: 10000,
-    //         });
-    //         gsap.to(overlayRef.current, {
-    //             opacity: 1,
-    //         });
-    //     }
-    //     setTimeout(() => {
-    //         gsap.to(overlayRef.current, {
-    //             opacity: 0,
-    //         });
-    //         gsap.set(overlayRef.current, {
-    //             zIndex: -3,
-    //         });
-    //     }, 500);
-    // }, [toExp]);
+    useGSAP(() => {
+        if (RoomLevel) {
+            gsap.set(overlayRef.current, {
+                zIndex: 9000,
+            });
+            gsap.to(overlayRef.current, {
+                opacity: 1,
+            });
+        }
+        setTimeout(() => {
+            gsap.to(overlayRef.current, {
+                opacity: 0,
+            });
+            gsap.set(overlayRef.current, {
+                zIndex: -3,
+            });
+        }, 1500);
+    }, [RoomLevel]);
 
     useEffect(() => {
         const handleResize = () => {
