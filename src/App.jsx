@@ -14,6 +14,7 @@ import Loader from "./components/Loader/Loader";
 import Menu from "./components/Menu/Menu";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import Test from "./components/Test";
 
 export default function App() {
     const [mapRow, setMapRow] = useState({ row: 0, precedentRow: 0 });
@@ -25,6 +26,11 @@ export default function App() {
     const [activeSound, setActiveSound] = useState(false);
     const [isMenu, setIsMenu] = useState(false);
     const overlayRef = useRef();
+    const [RoomLevel, setRoomLevel] = useState(1);
+
+    const changeRoom = () => {
+        setRoomLevel(2);
+    };
 
     const firstEnter = () => {
         setActiveSound(true);
@@ -101,6 +107,7 @@ export default function App() {
             <Logo />
             <Navbar activeSound={activeSound} handleMenu={handleMenu} />
             <Menu isMenu={isMenu} handleMenu={handleMenu} />
+
             <BackgroundHeightProvider>
                 <BigBox backgroundheight={backgroundHeight}>
                     <div className="windcanvas">
@@ -113,6 +120,8 @@ export default function App() {
                             isPlayed={isPlayed}
                             toExp={toExp}
                             changetoExp={changetoExp}
+                            RoomLevel={RoomLevel}
+                            changeRoom={changeRoom}
                         />
                     </div>
 
@@ -121,7 +130,9 @@ export default function App() {
                             <Title />
                         </div>
                         <div className="wrapper"></div>
-                        <div className="content">{!isPlayed && <Projects goToExp={goToExp} />}</div>
+                        <div className="content">
+                            {!isPlayed && <Projects goToExp={goToExp} changeRoom={changeRoom} />}
+                        </div>
                     </section>
                 </BigBox>
             </BackgroundHeightProvider>

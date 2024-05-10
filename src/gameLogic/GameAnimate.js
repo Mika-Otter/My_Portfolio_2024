@@ -19,7 +19,7 @@ export function gameAnimate({
     function animate(timeStamp) {
         // const deltaTime = timeStamp - lastTime;
         // lastTime = timeStamp;
-        requestAnimationFrame(animate);
+
         mainChangeLevel();
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -51,6 +51,7 @@ export function gameAnimate({
         ctx.fillStyle = "black";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.restore();
+        requestAnimationFrame(animate);
     }
 
     background.onload = animate(0);

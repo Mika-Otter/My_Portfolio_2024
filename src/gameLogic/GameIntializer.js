@@ -71,6 +71,7 @@ export function initializeGame({ canvas, keysTab, lastKeysTab, toExp, RoomLevel,
             },
         },
     };
+
     RoomsLevels[RoomLevel].init();
 
     let i = 0;
