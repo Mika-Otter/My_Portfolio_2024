@@ -5,7 +5,14 @@ import { gameAnimate } from "../gameLogic/GameAnimate";
 import { useBackgroundHeight, useSetBackgroundHeight } from "../context/BackgroundHeightContext";
 import { Game } from "../gameLogic/GameInit";
 
-export default function CanvasTest({ isPlayed, toExp, changetoExp, RoomLevel, changeRoom, test }) {
+export default function CanvasTest({
+    isPlayed,
+    toExp,
+    changetoExp,
+    RoomLevel,
+    changeRoom,
+    nextLevel,
+}) {
     const canvasRef = useRef(null);
     const backgroundHeight = useBackgroundHeight();
     const setBackgroundHeight = useSetBackgroundHeight();
@@ -15,6 +22,7 @@ export default function CanvasTest({ isPlayed, toExp, changetoExp, RoomLevel, ch
     let handler;
     const [firstGame, setFirstGame] = useState(true);
     const [player, setPlayer] = useState(null);
+    const [changingLevel, setChangingLevel] = useState(false);
 
     useEffect(() => {
         handler = new HandleInput(keysTab, lastKeysTab, isPlayed);
@@ -26,30 +34,36 @@ export default function CanvasTest({ isPlayed, toExp, changetoExp, RoomLevel, ch
         } else {
             handler.initializeKeyListener();
         }
+        if (nextLevel === true) {
+            handler.removeListeners();
+        }
         return () => {
             if (handler) {
                 handler.removeListeners();
             }
         };
-    }, [isPlayed]);
+    }, [isPlayed, RoomLevel, nextLevel]);
+
+    // useEffect(() => {
+    //     if (toExp) {
+    //         // player.goToExp()
+    //         player.enterInDoor();
+    //         changetoExp();
+    //         setTimeout(() => {
+    //             setChangingLevel(true);
+    //         }, 50);
+    //     }
+    // });
 
     useEffect(() => {
-        if (toExp) {
-            // player.goToExp()
-            player.enterInDoor();
-            changetoExp();
-            setTimeout(() => {
-                setChangingLevel(true);
-            }, 50);
-        }
-    });
-
-    useEffect(() => {
-        console.log("HEEEEELLO", test);
-        if (test) {
+        if (nextLevel) {
             player.testActivate();
+
+            setTimeout(() => {
+                changeRoom();
+            }, 3000);
         }
-    }, [test]);
+    }, [nextLevel]);
 
     useEffect(() => {}, []);
 
@@ -69,6 +83,7 @@ export default function CanvasTest({ isPlayed, toExp, changetoExp, RoomLevel, ch
         setPlayer(player);
 
         let lastTime = 0;
+        window.scrollBy(0, -100);
         function animate(timeStamp) {
             // const deltaTime = timeStamp - lastTime;
             // lastTime = timeStamp;

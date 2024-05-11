@@ -28,15 +28,11 @@ export default function App() {
     const [isMenu, setIsMenu] = useState(false);
     const overlayRef = useRef();
     const [RoomLevel, setRoomLevel] = useState(1);
-    const [test, setTest] = useState(false);
+    const [nextLevel, setNextLevel] = useState(false);
 
-    const handleTest = () => {
-        setTest(true);
+    const handleNextLevel = () => {
+        setNextLevel((prev) => !prev);
     };
-
-    useEffect(() => {
-        console.log("heeere", test);
-    }, [test]);
 
     const changeRoom = () => {
         setRoomLevel(2);
@@ -109,7 +105,7 @@ export default function App() {
             {isLoading ? <Loader firstEnter={firstEnter} /> : null}
             <PlayView playMode={playMode} viewMode={viewMode} isPlayed={isPlayed} />
             <Logo />
-            <Navbar activeSound={activeSound} handleMenu={handleMenu} handleTest={handleTest} />
+            <Navbar activeSound={activeSound} handleMenu={handleMenu} />
             <Menu isMenu={isMenu} handleMenu={handleMenu} />
             <BackgroundHeightProvider>
                 <BigBox backgroundheight={backgroundHeight}>
@@ -125,7 +121,7 @@ export default function App() {
                             changetoExp={changetoExp}
                             RoomLevel={RoomLevel}
                             changeRoom={changeRoom}
-                            test={test}
+                            nextLevel={nextLevel}
                         />
                     </div>
 
@@ -135,7 +131,9 @@ export default function App() {
                         </div>
                         <div className="wrapper"></div>
                         <div className="content">
-                            {!isPlayed && <Projects goToExp={goToExp} changeRoom={changeRoom} />}
+                            {!isPlayed && (
+                                <Projects goToExp={goToExp} handleNextLevel={handleNextLevel} />
+                            )}
                         </div>
                     </section>
                 </BigBox>
