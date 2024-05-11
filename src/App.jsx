@@ -29,13 +29,21 @@ export default function App() {
     const overlayRef = useRef();
     const [RoomLevel, setRoomLevel] = useState(1);
     const [nextLevel, setNextLevel] = useState(false);
+    const [goToHome, setGoToHome] = useState(false);
 
     const handleNextLevel = () => {
         setNextLevel((prev) => !prev);
     };
 
+    const changeRoomOne = () => {
+        setRoomLevel(1);
+    };
     const changeRoom = () => {
         setRoomLevel(2);
+    };
+
+    const handleGoToHome = () => {
+        setGoToHome((prev) => !prev);
     };
 
     const firstEnter = () => {
@@ -106,12 +114,15 @@ export default function App() {
             <PlayView playMode={playMode} viewMode={viewMode} isPlayed={isPlayed} />
             <Logo />
             <Navbar activeSound={activeSound} handleMenu={handleMenu} />
-            <Menu isMenu={isMenu} handleMenu={handleMenu} />
+            <Menu isMenu={isMenu} handleMenu={handleMenu} handleGoToHome={handleGoToHome} />
             <BackgroundHeightProvider>
                 <BigBox backgroundheight={backgroundHeight}>
-                    <div className="windcanvas">
-                        <Wind />
-                    </div>
+                    {RoomLevel === 1 ? (
+                        <div className="windcanvas">
+                            <Wind />
+                        </div>
+                    ) : null}
+
                     <div className="canvas">
                         <CanvasTest
                             mapRow={mapRow}
@@ -122,6 +133,10 @@ export default function App() {
                             RoomLevel={RoomLevel}
                             changeRoom={changeRoom}
                             nextLevel={nextLevel}
+                            handleNextLevel={handleNextLevel}
+                            goToHome={goToHome}
+                            handleGoToHome={handleGoToHome}
+                            changeRoomOne={changeRoomOne}
                         />
                     </div>
 

@@ -93,12 +93,12 @@ export class Game {
             2: {
                 init: () => {
                     this.background = new Background({
-                        position: { x: 0, y: 5 },
-                        imageSrc: "./src/assets/img/MAPTILED2.png",
+                        position: { x: 0, y: 0 },
+                        imageSrc: "./src/assets/img/lastmap.png",
                         canvas,
-                        originalWidth: 70 * 32,
-                        width: canvas.width,
-                        aspectRatio: 70 / 180,
+                        originalWidth: 100 * 32,
+                        width: canvas.width * 1.3,
+                        aspectRatio: 3200 / 3586,
                     });
                     this.scale = this.background.width / this.background.originalWidth;
                     this.doors = [
@@ -114,12 +114,12 @@ export class Game {
                     ];
                     // Parse collisions for level 2
                     this.collisionBlocksList = parseCollisions(this.background);
-                    this.currentCollisionLevel = this.collisionBlocksList[this.i];
+                    this.currentCollisionLevel = this.collisionBlocksList[1];
                 },
             },
         };
 
-        RoomsLevels[RoomLevel].init();
+        RoomsLevels[this.RoomLevel].init();
     }
 
     initializePlayer() {

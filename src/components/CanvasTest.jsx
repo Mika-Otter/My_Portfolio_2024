@@ -8,10 +8,13 @@ import { Game } from "../gameLogic/GameInit";
 export default function CanvasTest({
     isPlayed,
     toExp,
-    changetoExp,
     RoomLevel,
     changeRoom,
+    handleNextLevel,
     nextLevel,
+    handleGoToHome,
+    goToHome,
+    changeRoomOne,
 }) {
     const canvasRef = useRef(null);
     const backgroundHeight = useBackgroundHeight();
@@ -28,15 +31,14 @@ export default function CanvasTest({
         handler = new HandleInput(keysTab, lastKeysTab, isPlayed);
         setInputHandler(handler);
 
-        // Appeler les méthodes d'initialisation après la création de l'instance HandleInput
         if (!isPlayed) {
             handler.initializeWheelListener();
         } else {
             handler.initializeKeyListener();
         }
-        if (nextLevel === true) {
-            handler.removeListeners();
-        }
+        // if (nextLevel === true) {
+        //     handler.removeListeners();
+        // }
         return () => {
             if (handler) {
                 handler.removeListeners();
@@ -56,14 +58,23 @@ export default function CanvasTest({
     // });
 
     useEffect(() => {
-        if (nextLevel) {
+        if (nextLevel || goToHome) {
             player.testActivate();
 
-            setTimeout(() => {
-                changeRoom();
-            }, 3000);
+            if (nextLevel) {
+                handleNextLevel();
+                setTimeout(() => {
+                    changeRoom();
+                }, 3000);
+            }
+            if (goToHome) {
+                handleGoToHome();
+                setTimeout(() => {
+                    changeRoomOne();
+                }, 3000);
+            }
         }
-    }, [nextLevel]);
+    }, [nextLevel, goToHome]);
 
     useEffect(() => {}, []);
 

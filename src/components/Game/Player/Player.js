@@ -57,7 +57,7 @@ export class Player {
             this.shouldPanCameraToTheLeft({ camera, canvas, background });
         }
         if (this.velocity.x < 0) {
-            this.shouldPanCameraToTheRight({ camera });
+            this.shouldPanCameraToTheRight({ camera, background });
         }
     }
 
@@ -130,13 +130,13 @@ export class Player {
         if (this.position.y + 300 * this.scale > this.backgroundHeight) {
             this.cameraBox = {
                 position: {
-                    x: this.position.x - 250,
-                    y: this.position.y - 200,
+                    x: this.position.x - 250 * this.scale,
+                    y: this.position.y - 200 * this.scale,
                 },
                 width: 500 * this.scale,
-                height: 100 * this.scale,
+                height: 330 * this.scale,
             };
-            camera.position.y = -this.backgroundHeight * 0.797;
+            // camera.position.y = -this.backgroundHeight * 0.797;
         } else {
             this.cameraBox = {
                 position: {
@@ -154,16 +154,15 @@ export class Player {
         const cameraboxRightSide = this.cameraBox.position.x + this.cameraBox.width;
         const scaledDownCanvasWidth = canvas.width;
 
-        if (cameraboxRightSide >= background.image.width) return;
+        if (cameraboxRightSide >= background.width - 5) return;
 
         if (cameraboxRightSide >= scaledDownCanvasWidth + Math.abs(camera.position.x)) {
             camera.position.x -= this.velocity.x;
         }
     }
 
-    shouldPanCameraToTheRight({ camera }) {
+    shouldPanCameraToTheRight({ camera, background }) {
         if (this.cameraBox.position.x <= 0) return;
-
         if (this.cameraBox.position.x <= Math.abs(camera.position.x)) {
             camera.position.x -= this.velocity.x;
         }

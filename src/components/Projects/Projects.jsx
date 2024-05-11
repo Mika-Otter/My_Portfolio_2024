@@ -146,9 +146,9 @@ export default function Projects({ goToExp, handleNextLevel }) {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
     };
 
-    useEffect(() => {
-        console.log(isProjectOpen);
-    }, [isProjectOpen]);
+    // useEffect(() => {
+    //     console.log(isProjectOpen);
+    // }, [isProjectOpen]);
 
     useEffect(() => {
         setLastIndex(currentIndex);
