@@ -101,7 +101,6 @@ export default function App() {
             <Logo />
             <Navbar activeSound={activeSound} handleMenu={handleMenu} />
             <Menu isMenu={isMenu} handleMenu={handleMenu} />
-
             <BackgroundHeightProvider>
                 <BigBox backgroundheight={backgroundHeight}>
                     <div className="windcanvas">

@@ -3,10 +3,10 @@ export default class Background {
         this.position = position;
         this.image = new Image();
         this.image.src = imageSrc;
-        this.originalWidth = originalWidth; // Largeur originale de l'image
+        this.originalWidth = originalWidth;
         this.aspectRatio = aspectRatio;
         this.width = width;
-        this.height = this.width / this.aspectRatio; // ratio
+        this.height = this.width / this.aspectRatio;
     }
 
     draw(context, canvas) {
