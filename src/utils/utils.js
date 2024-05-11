@@ -1,7 +1,7 @@
-export function parse2D(array) {
+export function parse2D(array, size) {
     const rows = [];
-    for (let i = 0; i < array.length; i += 70) {
-        rows.push(array.slice(i, i + 70));
+    for (let i = 0; i < array.length; i += size) {
+        rows.push(array.slice(i, i + size));
     }
 
     return rows;
@@ -34,11 +34,11 @@ export function createObjectsFrom2D(
     return objects;
 }
 
-export function calculateHeight(array, background) {
-    const scale = background.width / background.originalWidth;
-    let ArrayHeight = 0;
-    for (let i = 0; i < array.length; i++) {
-        ArrayHeight++;
-    }
-    return ArrayHeight * 28.8 * scale;
-}
+// export function calculateHeight(array, background) {
+//     const scale = background.width / background.originalWidth;
+//     let ArrayHeight = 0;
+//     for (let i = 0; i < array.length; i++) {
+//         ArrayHeight++;
+//     }
+//     return ArrayHeight * 28.8 * scale;
+// }

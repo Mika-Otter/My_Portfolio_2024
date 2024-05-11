@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 import cn from "classnames";
 import { CrossSVG } from "../SVG/CrossSVG";
 
-export default function Menu({ isMenu, handleMenu }) {
+export default function Menu({ isMenu, handleMenu, handleGoToHome }) {
     const menuRef = useRef();
     const tl = useRef();
     const [currentTime, setCurrentTime] = useState(new Date());
@@ -55,7 +55,7 @@ export default function Menu({ isMenu, handleMenu }) {
                 </div>
                 <div className={s.menu__item}>
                     <div className={s.menu__item__wrapper}>
-                        <div className={cn(s.menu__item__span)}>
+                        <div className={cn(s.menu__item__span)} onClick={() => handleGoToHome()}>
                             <span>HOME</span>
                             <span>HOME</span>
                         </div>
