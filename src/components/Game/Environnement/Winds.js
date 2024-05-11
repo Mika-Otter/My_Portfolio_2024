@@ -19,9 +19,11 @@ export class Winds {
             wind.draw(context);
         });
     }
+
     addWind() {
         this.windlist.push(new RegularWind(this.width, this.height));
     }
+
     update(deltaTime) {
         this.windlist.forEach((wind, index) => {
             wind.update(deltaTime);

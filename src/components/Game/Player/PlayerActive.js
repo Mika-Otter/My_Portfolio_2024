@@ -92,7 +92,6 @@ export class ActivePlayer extends Player {
     }
 
     // CHANGE LEVEL__________________________________________________________________
-
     changeLevelByTheBottom() {
         if (
             this.position.y + this.height >

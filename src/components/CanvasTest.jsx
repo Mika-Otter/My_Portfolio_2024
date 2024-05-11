@@ -3,8 +3,9 @@ import { initializeGame } from "../gameLogic/GameIntializer";
 import { HandleInput } from "../gameLogic/InputManager";
 import { gameAnimate } from "../gameLogic/GameAnimate";
 import { useBackgroundHeight, useSetBackgroundHeight } from "../context/BackgroundHeightContext";
+import { Game } from "../gameLogic/GameInit";
 
-export default function Canvas({ isPlayed, toExp, changetoExp, RoomLevel, changeRoom }) {
+export default function CanvasTest({ isPlayed, toExp, changetoExp, RoomLevel, changeRoom }) {
     const canvasRef = useRef(null);
     const backgroundHeight = useBackgroundHeight();
     const setBackgroundHeight = useSetBackgroundHeight();
@@ -14,12 +15,6 @@ export default function Canvas({ isPlayed, toExp, changetoExp, RoomLevel, change
     let handler;
     const [firstGame, setFirstGame] = useState(true);
     const [player, setPlayer] = useState(null);
-    const [canvas, setCanvas] = useState(null);
-    const [ctx, setCtx] = useState(null);
-
-    // useEffect(() => {
-    //     console.log(RoomLevel, "yooooo");
-    // }, [RoomLevel]);
 
     useEffect(() => {
         handler = new HandleInput(keysTab, lastKeysTab, isPlayed);
@@ -49,14 +44,7 @@ export default function Canvas({ isPlayed, toExp, changetoExp, RoomLevel, change
         }
     });
 
-    useEffect(() => {
-        const newCanvas = canvasRef.current;
-        const newCtx = newCanvas.getContext("2d");
-        newCanvas.width = window.width;
-        newCanvas.height = window.height;
-        setCanvas(newCanvas);
-        setCtx(newCtx);
-    }, []);
+    useEffect(() => {}, []);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -66,41 +54,19 @@ export default function Canvas({ isPlayed, toExp, changetoExp, RoomLevel, change
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        window.scrollBy(0, -100);
 
-        let {
-            player,
-            camera,
-            doors,
-            background,
-            currentCollisionLevel,
-            collisionBlocksList,
-            i,
-            overlay,
-            mapRow,
-            water,
-            cloud,
-        } = initializeGame({ canvas, keysTab, lastKeysTab, toExp, RoomLevel, changeRoom });
+        const game = new Game({ canvas, keysTab, lastKeysTab, toExp, RoomLevel, changeRoom });
+        game.initialize();
+        const { player, camera, background, water, cloud, currentCollisionLevel, doors, overlay } =
+            game.getAnimateObjects();
         setPlayer(player);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        function mainChangeLevel() {
-            if (mapRow.row > mapRow.precedentRow) {
-                i++;
-                if (i < collisionBlocksList.length) {
-                    currentCollisionLevel = collisionBlocksList[i];
-                }
-            }
-        }
 
         let lastTime = 0;
         function animate(timeStamp) {
             // const deltaTime = timeStamp - lastTime;
             // lastTime = timeStamp;
 
-            mainChangeLevel();
-
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
             ctx.save();
             ctx.translate(camera.position.x, camera.position.y);
 

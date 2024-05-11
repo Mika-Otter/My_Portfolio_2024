@@ -160,6 +160,7 @@ export class Player {
             camera.position.x -= this.velocity.x;
         }
     }
+
     shouldPanCameraToTheRight({ camera }) {
         if (this.cameraBox.position.x <= 0) return;
 
@@ -167,12 +168,14 @@ export class Player {
             camera.position.x -= this.velocity.x;
         }
     }
+
     //CAMERA VERTICAL MANAGE____________________________________________________________
     shouldPanCameraToTheTop({ camera }) {
         if (this.cameraBox.position.y <= Math.abs(camera.position.y)) {
             camera.position.y -= this.velocity.y;
         }
     }
+
     shouldPanCameraToTheBottom({ camera, canvas }) {
         const bottomSideCamera = this.cameraBox.position.y + this.cameraBox.height;
         const canvasSize = canvas.height;

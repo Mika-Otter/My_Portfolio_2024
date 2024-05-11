@@ -14,7 +14,8 @@ import Loader from "./components/Loader/Loader";
 import Menu from "./components/Menu/Menu";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import Test from "./components/Test";
+import CanvasTest from "./components/CanvasTest";
+// import Test from "./components/Test";
 
 export default function App() {
     const [mapRow, setMapRow] = useState({ row: 0, precedentRow: 0 });
@@ -107,7 +108,7 @@ export default function App() {
                         <Wind />
                     </div>
                     <div className="canvas">
-                        <Canvas
+                        <CanvasTest
                             mapRow={mapRow}
                             setMapRow={setMapRow}
                             isPlayed={isPlayed}

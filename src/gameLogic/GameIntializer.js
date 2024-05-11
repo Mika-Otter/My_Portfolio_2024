@@ -5,7 +5,6 @@ import { ActivePlayer } from "../components/Game/Player/PlayerActive";
 import Background from "../components/Game/Environnement/Background";
 import Cloud from "../components/Game/Environnement/Cloud";
 
-// Initialisation d'autres éléments du jeu, comme la classe Player, Background, etc.
 export function initializeGame({ canvas, keysTab, lastKeysTab, toExp, RoomLevel, changeRoom }) {
     let mapRow = { row: 0, precedentRow: 0 };
     let background;
@@ -17,8 +16,6 @@ export function initializeGame({ canvas, keysTab, lastKeysTab, toExp, RoomLevel,
     };
     let cloud;
     let water;
-
-    // GLOBAL VARIABLES________________________________________________
 
     let RoomsLevels = {
         1: {
@@ -97,8 +94,6 @@ export function initializeGame({ canvas, keysTab, lastKeysTab, toExp, RoomLevel,
     const collisionBlocksList = parseCollisions(background);
     let currentCollisionLevel = collisionBlocksList[i];
 
-    // GAME DISPLAY________________________________________________________
-
     const player = new ActivePlayer({
         collisionBlocks: currentCollisionLevel,
         background,
@@ -122,7 +117,6 @@ export function initializeGame({ canvas, keysTab, lastKeysTab, toExp, RoomLevel,
 
     doors = player.doors;
 
-    // Retourner les éléments initialisés
     return {
         player,
         camera,
