@@ -40,6 +40,10 @@ export class ActivePlayer extends Player {
             this.SPRITE_NAME = "IDLE_R";
         }
     }
+
+    testActivate() {
+        this.SPRITE_NAME = "RUN_R";
+    }
     // UPDATE PLAYER____________________________________________________________________
     updatePlayer({ background, context, canvas, camera }) {
         this.handleMovement({ canvas, camera, background });

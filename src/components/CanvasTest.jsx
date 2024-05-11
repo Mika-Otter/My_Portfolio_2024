@@ -5,7 +5,7 @@ import { gameAnimate } from "../gameLogic/GameAnimate";
 import { useBackgroundHeight, useSetBackgroundHeight } from "../context/BackgroundHeightContext";
 import { Game } from "../gameLogic/GameInit";
 
-export default function CanvasTest({ isPlayed, toExp, changetoExp, RoomLevel, changeRoom }) {
+export default function CanvasTest({ isPlayed, toExp, changetoExp, RoomLevel, changeRoom, test }) {
     const canvasRef = useRef(null);
     const backgroundHeight = useBackgroundHeight();
     const setBackgroundHeight = useSetBackgroundHeight();
@@ -43,6 +43,13 @@ export default function CanvasTest({ isPlayed, toExp, changetoExp, RoomLevel, ch
             }, 50);
         }
     });
+
+    useEffect(() => {
+        console.log("HEEEEELLO", test);
+        if (test) {
+            player.testActivate();
+        }
+    }, [test]);
 
     useEffect(() => {}, []);
 

@@ -1,13 +1,19 @@
 import React from "react";
-import s from "./Navbar.module.scss"
+import s from "./Navbar.module.scss";
 import AudioPlayer from "../Audio/Audio";
 
-export default function Navbar({ activeSound, handleMenu }) {
+export default function Navbar({ activeSound, handleMenu, handleTest }) {
     return (
         <div className={s.navbar}>
             <div className={s.navbar__rotator}>
                 <div className={s.navbar__ctn}>
-                    <div className={s.navbar__ctn__wrapper} onClick={() => handleMenu()}>
+                    <div
+                        className={s.navbar__ctn__wrapper}
+                        onClick={() => {
+                            handleMenu();
+                            handleTest();
+                        }}
+                    >
                         <div className={s.navbar__ctn__button}>
                             <span>MENU</span>
                             <span>MENU</span>

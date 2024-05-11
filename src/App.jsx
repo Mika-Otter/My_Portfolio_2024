@@ -28,6 +28,15 @@ export default function App() {
     const [isMenu, setIsMenu] = useState(false);
     const overlayRef = useRef();
     const [RoomLevel, setRoomLevel] = useState(1);
+    const [test, setTest] = useState(false);
+
+    const handleTest = () => {
+        setTest(true);
+    };
+
+    useEffect(() => {
+        console.log("heeere", test);
+    }, [test]);
 
     const changeRoom = () => {
         setRoomLevel(2);
@@ -100,7 +109,7 @@ export default function App() {
             {isLoading ? <Loader firstEnter={firstEnter} /> : null}
             <PlayView playMode={playMode} viewMode={viewMode} isPlayed={isPlayed} />
             <Logo />
-            <Navbar activeSound={activeSound} handleMenu={handleMenu} />
+            <Navbar activeSound={activeSound} handleMenu={handleMenu} handleTest={handleTest} />
             <Menu isMenu={isMenu} handleMenu={handleMenu} />
             <BackgroundHeightProvider>
                 <BigBox backgroundheight={backgroundHeight}>
@@ -116,6 +125,7 @@ export default function App() {
                             changetoExp={changetoExp}
                             RoomLevel={RoomLevel}
                             changeRoom={changeRoom}
+                            test={test}
                         />
                     </div>
 
