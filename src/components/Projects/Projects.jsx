@@ -13,13 +13,21 @@ import Video from "../Video/Video";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-export default function Projects({ goToExp, handleNextLevel }) {
+export default function Projects({ handleNextLevel, nextLevel }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [lastIndex, setLastIndex] = useState(0);
     const [isHover, setIsHover] = useState(false);
     const [isProjectOpen, setIsProjectOpen] = useState(false);
+    const [clickNextLevel, setClickNextLevel] = useState(false);
+    const projectsRef = useRef();
+    const projectsWrapperRef = useRef();
 
     const intervalRef = useRef();
+
+    const handleClickNextLevel = () => {
+        setClickNextLevel((prev) => !prev);
+        console.log(clickNextLevel);
+    };
 
     const items = [
         {
@@ -200,128 +208,158 @@ export default function Projects({ goToExp, handleNextLevel }) {
         console.log(currentIndex, "and last index :", lastIndex);
     }, [currentIndex]);
 
+    useGSAP(() => {
+        if (clickNextLevel) {
+            const { height } = projectsWrapperRef.current.getBoundingClientRect();
+            gsap.set(projectsWrapperRef.current, {
+                transformOrigin: "center center",
+            });
+            gsap.to(projectsWrapperRef.current, {
+                yPercent: `${height / 2}px`,
+                height: "0%",
+                delay: 0.2,
+                duration: 1,
+                ease: "power3.inOut",
+            });
+            gsap.to(projectsRef.current, {
+                opacity: 0,
+                duration: 0.3,
+            });
+            gsap.set(projectsRef.current, {
+                display: "none",
+                delay: 0.3,
+            });
+
+            handleClickNextLevel();
+        }
+    }, [clickNextLevel]);
     return (
         <>
             <section className={s.projects}>
-                <div className={s.projects__box}>
-                    <h2>All projects</h2>
-                    {/* <div className={s.projects__box__title}><h2>Projects</h2> </div> */}
+                <div className={s.projects__box__wrapper} ref={projectsWrapperRef}>
+                    <div className={s.projects__box} ref={projectsRef}>
+                        <h2>All projects</h2>
+                        {/* <div className={s.projects__box__title}><h2>Projects</h2> </div> */}
 
-                    <div className={s.projects__box__content}>
-                        <div className={s.projects__box__content__view}>
-                            <div className={s.projects__box__content__view__ctn}>
-                                {items.map((item, index) => (
-                                    <div
-                                        className={s.projects__box__content__view__ctn__img}
-                                        ref={viewRefs.current[index]}
-                                        key={index}
-                                    >
-                                        <Video
-                                            src={item.url}
-                                            index={index}
-                                            currentIndex={currentIndex}
-                                        />
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        <div className={s.projects__box__content__games}>
-                            {items.map((item, index) =>
-                                item.type === "game" ? (
-                                    <li
-                                        key={index}
-                                        className={index === currentIndex ? s.liHover : ""}
-                                        onMouseEnter={(e) => handleMouseEnter(e, index)}
-                                        onMouseLeave={(e) => handleMouseLeave(e, index)}
-                                        onClick={() => openProject()}
-                                    >
+                        <div className={s.projects__box__content}>
+                            <div className={s.projects__box__content__view}>
+                                <div className={s.projects__box__content__view__ctn}>
+                                    {items.map((item, index) => (
                                         <div
-                                            className={
-                                                s.projects__box__content__text__projects__project
-                                            }
+                                            className={s.projects__box__content__view__ctn__img}
+                                            ref={viewRefs.current[index]}
+                                            key={index}
                                         >
-                                            {item.title}
-                                            <span
+                                            <Video
+                                                src={item.url}
+                                                index={index}
+                                                currentIndex={currentIndex}
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className={s.projects__box__content__games}>
+                                {items.map((item, index) =>
+                                    item.type === "game" ? (
+                                        <li
+                                            key={index}
+                                            className={index === currentIndex ? s.liHover : ""}
+                                            onMouseEnter={(e) => handleMouseEnter(e, index)}
+                                            onMouseLeave={(e) => handleMouseLeave(e, index)}
+                                            onClick={() => openProject()}
+                                        >
+                                            <div
                                                 className={
-                                                    s.projects__box__content__text__projects__project__text
+                                                    s.projects__box__content__text__projects__project
                                                 }
                                             >
-                                                {item.smalltext}
-                                            </span>
-                                        </div>
-                                        <span
-                                            className={
-                                                s.projects__box__content__text__projects__project__year
-                                            }
-                                        >
-                                            {item.year}
-                                        </span>
-                                    </li>
-                                ) : null
-                            )}
-                        </div>
-                        <div className={s.projects__box__content__text}>
-                            <div className={s.projects__box__content__text__banner}></div>
-                            <div className={s.projects__box__content__text__projects}>
-                                <ul>
-                                    {items.map((item, index) =>
-                                        item.type === "website" ? (
-                                            <li
-                                                key={index}
-                                                className={index === currentIndex ? s.liHover : ""}
-                                                onMouseEnter={(e) => handleMouseEnter(e, index)}
-                                                onMouseLeave={(e) => handleMouseLeave(e, index)}
-                                                onClick={() => openProject()}
-                                            >
-                                                <div
-                                                    className={
-                                                        s.projects__box__content__text__projects__project
-                                                    }
-                                                >
-                                                    {item.title}
-                                                    <span
-                                                        className={
-                                                            s.projects__box__content__text__projects__project__text
-                                                        }
-                                                    >
-                                                        {item.smalltext}
-                                                    </span>
-                                                </div>
+                                                {item.title}
                                                 <span
                                                     className={
-                                                        s.projects__box__content__text__projects__project__year
+                                                        s.projects__box__content__text__projects__project__text
                                                     }
                                                 >
-                                                    {item.year}
+                                                    {item.smalltext}
                                                 </span>
-                                            </li>
-                                        ) : null
-                                    )}
-                                </ul>
+                                            </div>
+                                            <span
+                                                className={
+                                                    s.projects__box__content__text__projects__project__year
+                                                }
+                                            >
+                                                {item.year}
+                                            </span>
+                                        </li>
+                                    ) : null
+                                )}
+                            </div>
+                            <div className={s.projects__box__content__text}>
+                                <div className={s.projects__box__content__text__banner}></div>
+                                <div className={s.projects__box__content__text__projects}>
+                                    <ul>
+                                        {items.map((item, index) =>
+                                            item.type === "website" ? (
+                                                <li
+                                                    key={index}
+                                                    className={
+                                                        index === currentIndex ? s.liHover : ""
+                                                    }
+                                                    onMouseEnter={(e) => handleMouseEnter(e, index)}
+                                                    onMouseLeave={(e) => handleMouseLeave(e, index)}
+                                                    onClick={() => openProject()}
+                                                >
+                                                    <div
+                                                        className={
+                                                            s.projects__box__content__text__projects__project
+                                                        }
+                                                    >
+                                                        {item.title}
+                                                        <span
+                                                            className={
+                                                                s.projects__box__content__text__projects__project__text
+                                                            }
+                                                        >
+                                                            {item.smalltext}
+                                                        </span>
+                                                    </div>
+                                                    <span
+                                                        className={
+                                                            s.projects__box__content__text__projects__project__year
+                                                        }
+                                                    >
+                                                        {item.year}
+                                                    </span>
+                                                </li>
+                                            ) : null
+                                        )}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            className={s.projects__box__goToExp}
+                            onClick={() => {
+                                handleNextLevel();
+                                handleClickNextLevel();
+                            }}
+                        >
+                            <span> NEXT LEVEL </span>
+                            <div className={s.projects__box__goToExp__arrow}>
+                                <ArrowSVG color={"#091429"} />
                             </div>
                         </div>
                     </div>
-                    <div
-                        className={s.projects__box__goToExp}
-                        onClick={() => {
-                            handleNextLevel();
-                        }}
-                    >
-                        <span> NEXT LEVEL </span>
-                        <div className={s.projects__box__goToExp__arrow}>
-                            <ArrowSVG color={"#091429"} />
-                        </div>
-                    </div>
+                    {isProjectOpen && (
+                        <Project
+                            item={items[currentIndex]}
+                            closeProject={closeProject}
+                            nextProject={nextProject}
+                            index={currentIndex}
+                            currentIndex={currentIndex}
+                        />
+                    )}
                 </div>
-                {isProjectOpen && (
-                    <Project
-                        item={items[currentIndex]}
-                        closeProject={closeProject}
-                        nextProject={nextProject}
-                        index={currentIndex}
-                        currentIndex={currentIndex}
-                    />
-                )}
             </section>
         </>
     );

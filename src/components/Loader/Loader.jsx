@@ -90,7 +90,6 @@ export default function Loader({ firstEnter }) {
             });
             gsap.set(bigBoxRef.current, {
                 transformOrigin: "center center",
-                // Déplacer l'élément vers le haut pour compenser
             });
             gsap.to(bigBoxRef.current, {
                 y: `${height / 2}px`,

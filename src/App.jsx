@@ -37,6 +37,7 @@ export default function App() {
 
     const changeRoomOne = () => {
         setRoomLevel(1);
+        window.scrollTo(0, 0);
     };
     const changeRoom = () => {
         setRoomLevel(2);
@@ -147,7 +148,7 @@ export default function App() {
                         <div className="wrapper"></div>
                         <div className="content">
                             {!isPlayed && (
-                                <Projects goToExp={goToExp} handleNextLevel={handleNextLevel} />
+                                <Projects handleNextLevel={handleNextLevel} nextLevel={nextLevel} />
                             )}
                         </div>
                     </section>
