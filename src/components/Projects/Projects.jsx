@@ -13,7 +13,7 @@ import Video from "../Video/Video";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-export default function Projects({ goToExp, changeRoom }) {
+export default function Projects({ goToExp, handleNextLevel }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [lastIndex, setLastIndex] = useState(0);
     const [isHover, setIsHover] = useState(false);
@@ -304,7 +304,7 @@ export default function Projects({ goToExp, changeRoom }) {
                     <div
                         className={s.projects__box__goToExp}
                         onClick={() => {
-                            changeRoom();
+                            handleNextLevel();
                         }}
                     >
                         <span> NEXT LEVEL </span>

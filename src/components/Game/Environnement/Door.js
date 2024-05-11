@@ -63,7 +63,6 @@ export class Door {
             this.width,
             this.height
         );
-
         this.updateFrames();
     }
 
