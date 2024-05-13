@@ -43,6 +43,10 @@ export class ActivePlayer extends Player {
 
     testActivate() {
         this.SPRITE_NAME = "TELEPORT";
+
+        setTimeout(() => {
+            this.SPRITE_NAME = "IDLE_R";
+        }, 1500);
     }
     // UPDATE PLAYER____________________________________________________________________
     updatePlayer({ background, context, canvas, camera }) {

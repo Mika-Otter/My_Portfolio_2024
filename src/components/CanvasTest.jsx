@@ -15,6 +15,8 @@ export default function CanvasTest({
     handleGoToHome,
     goToHome,
     changeRoomOne,
+    playMode,
+    viewMode,
 }) {
     const canvasRef = useRef(null);
     const backgroundHeight = useBackgroundHeight();
@@ -26,6 +28,12 @@ export default function CanvasTest({
     const [firstGame, setFirstGame] = useState(true);
     const [player, setPlayer] = useState(null);
     const [changingLevel, setChangingLevel] = useState(false);
+    const ctxRef = useRef(null);
+    let game = null;
+    const [canvas, setCanvas] = useState(null);
+    const [ctx, setCtx] = useState(null);
+    const playerRef = useRef();
+    const [reload, setReload] = useState(false);
 
     useEffect(() => {
         handler = new HandleInput(keysTab, lastKeysTab, isPlayed);
@@ -46,100 +54,109 @@ export default function CanvasTest({
         };
     }, [isPlayed, RoomLevel, nextLevel]);
 
-    // useEffect(() => {
-    //     if (toExp) {
-    //         // player.goToExp()
-    //         player.enterInDoor();
-    //         changetoExp();
-    //         setTimeout(() => {
-    //             setChangingLevel(true);
-    //         }, 50);
-    //     }
-    // });
-
     useEffect(() => {
         if (nextLevel || goToHome) {
-            player.testActivate();
+            playerRef.current.testActivate();
 
             if (nextLevel) {
                 handleNextLevel();
                 setTimeout(() => {
                     changeRoom();
-                }, 3000);
+                }, 1500);
             }
             if (goToHome) {
                 handleGoToHome();
 
                 setTimeout(() => {
                     changeRoomOne();
-                }, 3000);
+                }, 1500);
+                setTimeout(() => {
+                    setReload((prev) => !prev);
+                }, 2000);
             }
         }
     }, [nextLevel, goToHome]);
 
-    useEffect(() => {}, []);
-
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
-        let animation;
-
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        setCanvas(canvas);
+        setCtx(ctx);
+    }, []);
+    useEffect(() => {
+        if (canvas && ctx) {
+            let animation;
 
-        const game = new Game({ canvas, keysTab, lastKeysTab, toExp, RoomLevel, changeRoom });
-        game.initialize();
-        const { player, camera, background, water, cloud, currentCollisionLevel, doors, overlay } =
-            game.getAnimateObjects();
-        setPlayer(player);
-
-        let lastTime = 0;
-        window.scrollBy(0, -100);
-        function animate(timeStamp) {
-            // const deltaTime = timeStamp - lastTime;
-            // lastTime = timeStamp;
-
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.save();
-            ctx.translate(camera.position.x, camera.position.y);
 
-            doors.forEach((door) => {
-                door.draw(ctx);
-            });
-
-            background.draw(ctx, canvas);
-            currentCollisionLevel.forEach((collisionBlock) => {
-                collisionBlock.draw(ctx);
-            });
-            player.draw(ctx);
-            player.updatePlayer({
-                background,
-                context: ctx,
-                canvas,
+            game = new Game({ canvas, keysTab, lastKeysTab, toExp, RoomLevel, changeRoom });
+            game.initialize();
+            const {
+                player,
                 camera,
-            });
-            if (RoomLevel === 1) {
-                water.draw(ctx, canvas);
-                cloud.draw(ctx, canvas);
+                background,
+                water,
+                cloud,
+                currentCollisionLevel,
+                doors,
+                overlay,
+            } = game.getAnimateObjects();
+            playerRef.current = player;
+            // setPlayer(player);
+            console.log("player", player);
+
+            let lastTime = 0;
+            window.scrollBy(0, -100);
+            function animate(timeStamp) {
+                // const deltaTime = timeStamp - lastTime;
+                // lastTime = timeStamp;
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.save();
+                ctx.translate(camera.position.x, camera.position.y);
+
+                doors.forEach((door) => {
+                    door.draw(ctx);
+                });
+
+                background.draw(ctx, canvas);
+                currentCollisionLevel.forEach((collisionBlock) => {
+                    collisionBlock.draw(ctx);
+                });
+                player.draw(ctx);
+                player.updatePlayer({
+                    background,
+                    context: ctx,
+                    canvas,
+                    camera,
+                });
+                if (RoomLevel === 1) {
+                    water.draw(ctx, canvas);
+                    cloud.draw(ctx, canvas);
+                }
+                ctx.restore();
+
+                ctx.save();
+
+                ctx.globalAlpha = overlay.opacity;
+                ctx.fillStyle = "black";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.restore();
+                animation = requestAnimationFrame(animate);
             }
-            ctx.restore();
 
-            ctx.save();
-
-            ctx.globalAlpha = overlay.opacity;
-            ctx.fillStyle = "black";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.restore();
-            animation = requestAnimationFrame(animate);
+            background.onload = animate(0);
+            setBackgroundHeight(background.height);
+            return () => {
+                cancelAnimationFrame(animation);
+                playerRef.current = null;
+            };
         }
-
-        background.onload = animate(0);
-        setBackgroundHeight(background.height);
-        return () => {
-            cancelAnimationFrame(animation);
-        };
-    }, [RoomLevel]);
+    }, [canvas, ctx, RoomLevel, reload]);
 
     return <canvas ref={canvasRef} />;
 }

@@ -73,6 +73,7 @@ export class Sprite {
     }
 
     update(SPRITE_NAME) {
+        console.log(SPRITE_NAME, "hhhhhhhhhherrree bababtbaa");
         if (SPRITE_NAME === "TELEPORT" && !this.teleporting) {
             this.teleporting = true;
             this.teleportFrame = 0;
@@ -87,6 +88,7 @@ export class Sprite {
                 // stop on last frame
                 this.frameX = (totalFrames - 1) * this.spriteWidth;
                 this.frameY = this.spriteAnimations["TELEPORT"].loc[totalFrames - 1].y;
+                setTimeout(() => (this.teleporting = false), 2000);
                 return;
             }
             let position = Math.floor(this.teleportFrame / this.teleportDelay);

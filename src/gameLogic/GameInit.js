@@ -23,13 +23,13 @@ export class Game {
         this.collisionBlocksList;
         this.currentCollisionLevel;
         this.i = 0;
+        this.player;
     }
 
     initialize() {
         // this.initializeLevel();
         this.initializeCamera();
         this.initializeRoomsLevel();
-        this.initializePlayer();
     }
 
     initializeLevel() {
@@ -88,6 +88,19 @@ export class Game {
                     // Parse collisions for level 1
                     this.collisionBlocksList = parseCollisions(this.background);
                     this.currentCollisionLevel = this.collisionBlocksList[this.i];
+                    this.player = new ActivePlayer({
+                        collisionBlocks: this.currentCollisionLevel,
+                        background: this.background,
+                        doors: this.doors,
+                        canvas: this.canvas,
+                        collisionBlocksList: this.collisionBlocksList,
+                        keysTab: this.keysTab,
+                        lastKeysTab: this.lastKeysTab,
+                        overlay: this.overlay,
+                        mapRow: this.mapRow,
+                        toExp: this.toExp,
+                        scale: this.scale,
+                    });
                 },
             },
             2: {
@@ -115,27 +128,24 @@ export class Game {
                     // Parse collisions for level 2
                     this.collisionBlocksList = parseCollisions(this.background);
                     this.currentCollisionLevel = this.collisionBlocksList[1];
+                    this.player = new ActivePlayer({
+                        collisionBlocks: this.currentCollisionLevel,
+                        background: this.background,
+                        doors: this.doors,
+                        canvas: this.canvas,
+                        collisionBlocksList: this.collisionBlocksList,
+                        keysTab: this.keysTab,
+                        lastKeysTab: this.lastKeysTab,
+                        overlay: this.overlay,
+                        mapRow: this.mapRow,
+                        toExp: this.toExp,
+                        scale: this.scale,
+                    });
                 },
             },
         };
 
         RoomsLevels[this.RoomLevel].init();
-    }
-
-    initializePlayer() {
-        this.player = new ActivePlayer({
-            collisionBlocks: this.currentCollisionLevel,
-            background: this.background,
-            doors: this.doors,
-            canvas: this.canvas,
-            collisionBlocksList: this.collisionBlocksList,
-            keysTab: this.keysTab,
-            lastKeysTab: this.lastKeysTab,
-            overlay: this.overlay,
-            mapRow: this.mapRow,
-            toExp: this.toExp,
-            scale: this.scale,
-        });
     }
 
     initializeCamera() {
