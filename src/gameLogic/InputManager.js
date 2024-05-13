@@ -15,7 +15,7 @@ export class HandleInput {
                 setTimeout(() => {
                     this.keysTab.splice(this.keysTab.indexOf("q"), 1);
                     this.lastKeysTab.splice(0, 1, "q");
-                }, 1200);
+                }, 500);
                 // console.log("scroooll ", this.keysTab, this.lastKeysTab);
             } else if (event.deltaY > 0 && this.keysTab.indexOf("d") == -1) {
                 this.keysTab.unshift("d");
@@ -23,7 +23,7 @@ export class HandleInput {
                 setTimeout(() => {
                     this.keysTab.splice(this.keysTab.indexOf("d"), 1);
                     this.lastKeysTab.splice(0, 1, "d");
-                }, 1200);
+                }, 500);
 
                 // console.log("scroooll ", this.keysTab, this.lastKeysTab);
             }

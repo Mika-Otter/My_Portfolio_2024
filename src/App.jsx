@@ -59,7 +59,7 @@ export default function App() {
 
         setTimeout(() => {
             viewMode();
-        }, 2500);
+        }, 2000);
     };
 
     const firstEnter = () => {
