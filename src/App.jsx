@@ -45,18 +45,21 @@ export default function App() {
         handleTransition();
     };
     const changeRoomOne = () => {
-        handleTransition();
-        setTimeout(() => {
-            setRoomLevel(1);
-            window.scrollTo(0, 0);
-        }, 1500);
+        setRoomLevel(1);
+        window.scrollTo(0, 0);
     };
     const changeRoom = () => {
         setRoomLevel(2);
     };
 
     const handleGoToHome = () => {
+        handleTransition();
         setGoToHome((prev) => !prev);
+        playMode();
+
+        setTimeout(() => {
+            viewMode();
+        }, 2500);
     };
 
     const firstEnter = () => {
@@ -186,7 +189,7 @@ export default function App() {
                 gsap.set(overlayFourRef.current, {
                     x: "-100%",
                 });
-            }, 3000);
+            }, 3500);
         }
     }, [transition]);
 
@@ -261,10 +264,11 @@ export default function App() {
                         </div>
                         <div className="wrapper"></div>
                         <div className="content">
-                            {!isPlayed && (
+                            {!isPlayed && RoomLevel === 1 ? (
                                 <Projects handleNextLevel={handleNextLevel} nextLevel={nextLevel} />
-                            )}
+                            ) : null}
                         </div>
+                        {!isPlayed && <div className="plaster"></div>}
                     </section>
                 </BigBox>
             </BackgroundHeightProvider>
