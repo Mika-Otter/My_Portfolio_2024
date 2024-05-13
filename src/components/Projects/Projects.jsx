@@ -217,8 +217,7 @@ export default function Projects({ handleNextLevel, nextLevel }) {
             gsap.to(projectsWrapperRef.current, {
                 yPercent: `${height / 2}px`,
                 height: "0%",
-                delay: 0.2,
-                duration: 1,
+                duration: 0.5,
                 ease: "power3.inOut",
             });
             gsap.to(projectsRef.current, {

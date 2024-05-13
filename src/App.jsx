@@ -27,17 +27,29 @@ export default function App() {
     const [activeSound, setActiveSound] = useState(false);
     const [isMenu, setIsMenu] = useState(false);
     const overlayRef = useRef();
+    const overlayOneRef = useRef();
+    const overlayTwoRef = useRef();
+    const overlayThreeRef = useRef();
+    const overlayFourRef = useRef();
     const [RoomLevel, setRoomLevel] = useState(1);
     const [nextLevel, setNextLevel] = useState(false);
     const [goToHome, setGoToHome] = useState(false);
+    const [transition, setTransition] = useState(false);
+
+    const handleTransition = () => {
+        setTransition((prev) => !prev);
+    };
 
     const handleNextLevel = () => {
         setNextLevel((prev) => !prev);
+        handleTransition();
     };
-
     const changeRoomOne = () => {
-        setRoomLevel(1);
-        window.scrollTo(0, 0);
+        handleTransition();
+        setTimeout(() => {
+            setRoomLevel(1);
+            window.scrollTo(0, 0);
+        }, 1500);
     };
     const changeRoom = () => {
         setRoomLevel(2);
@@ -72,23 +84,111 @@ export default function App() {
     };
 
     useGSAP(() => {
-        if (RoomLevel) {
+        if (transition === true) {
             gsap.set(overlayRef.current, {
                 zIndex: 9000,
             });
-            gsap.to(overlayRef.current, {
-                opacity: 1,
-            });
+
+            const tl = gsap.timeline();
+
+            tl.to(
+                overlayOneRef.current,
+                {
+                    x: "100%",
+                    duration: 0.9,
+                    ease: "power3.inOut",
+                },
+                0
+            )
+                .to(
+                    overlayTwoRef.current,
+                    {
+                        x: "100%",
+                        duration: 0.9,
+                        ease: "power3.inOut",
+                        delay: 0.2,
+                    },
+                    0
+                )
+                .to(
+                    overlayThreeRef.current,
+                    {
+                        x: "100%",
+                        duration: 0.9,
+                        ease: "power3.inOut",
+                        delay: 0.4,
+                    },
+                    0
+                )
+                .to(
+                    overlayFourRef.current,
+                    {
+                        x: "100%",
+                        duration: 0.9,
+                        ease: "power3.inOut",
+                        delay: 0.6,
+                    },
+                    0
+                )
+                .to(
+                    overlayOneRef.current,
+                    {
+                        x: "200%",
+                        duration: 0.9,
+                        ease: "power3.inOut",
+                    },
+                    2
+                )
+                .to(
+                    overlayTwoRef.current,
+                    {
+                        x: "200%",
+                        duration: 0.9,
+                        ease: "power3.inOut",
+                        delay: 0.2,
+                    },
+                    2
+                )
+                .to(
+                    overlayThreeRef.current,
+                    {
+                        x: "200%",
+                        duration: 0.9,
+                        ease: "power3.inOut",
+                        delay: 0.4,
+                    },
+                    2
+                )
+                .to(
+                    overlayFourRef.current,
+                    {
+                        x: "200%",
+                        duration: 0.9,
+                        ease: "power3.inOut",
+                        delay: 0.6,
+                    },
+                    2
+                );
+            handleTransition();
+            setTimeout(() => {
+                gsap.set(overlayRef.current, {
+                    zIndex: -3,
+                });
+                gsap.set(overlayOneRef.current, {
+                    x: "-100%",
+                });
+                gsap.set(overlayTwoRef.current, {
+                    x: "-100%",
+                });
+                gsap.set(overlayThreeRef.current, {
+                    x: "-100%",
+                });
+                gsap.set(overlayFourRef.current, {
+                    x: "-100%",
+                });
+            }, 3000);
         }
-        setTimeout(() => {
-            gsap.to(overlayRef.current, {
-                opacity: 0,
-            });
-            gsap.set(overlayRef.current, {
-                zIndex: -3,
-            });
-        }, 1500);
-    }, [RoomLevel]);
+    }, [transition]);
 
     useEffect(() => {
         const handleResize = () => {
@@ -110,12 +210,26 @@ export default function App() {
 
     return (
         <>
-            <div className="overlay" ref={overlayRef}></div>
+            <div className="overlay" ref={overlayRef}>
+                <div className="overlay-div" ref={overlayOneRef}></div>
+                <div className="overlay-div" ref={overlayTwoRef}></div>
+                <div className="overlay-div" ref={overlayThreeRef}></div>
+                <div className="overlay-div" ref={overlayFourRef}></div>
+            </div>
             {isLoading ? <Loader firstEnter={firstEnter} /> : null}
             <PlayView playMode={playMode} viewMode={viewMode} isPlayed={isPlayed} />
             <Logo />
-            <Navbar activeSound={activeSound} handleMenu={handleMenu} />
-            <Menu isMenu={isMenu} handleMenu={handleMenu} handleGoToHome={handleGoToHome} />
+            <Navbar
+                activeSound={activeSound}
+                handleMenu={handleMenu}
+                handleTransition={handleTransition}
+            />
+            <Menu
+                isMenu={isMenu}
+                handleMenu={handleMenu}
+                handleGoToHome={handleGoToHome}
+                handleTransition={handleTransition}
+            />
             <BackgroundHeightProvider>
                 <BigBox backgroundheight={backgroundHeight}>
                     {RoomLevel === 1 ? (

@@ -46,17 +46,6 @@ export default function CanvasTest({
         };
     }, [isPlayed, RoomLevel, nextLevel]);
 
-    // useEffect(() => {
-    //     if (toExp) {
-    //         // player.goToExp()
-    //         player.enterInDoor();
-    //         changetoExp();
-    //         setTimeout(() => {
-    //             setChangingLevel(true);
-    //         }, 50);
-    //     }
-    // });
-
     useEffect(() => {
         if (nextLevel || goToHome) {
             player.testActivate();
@@ -65,14 +54,14 @@ export default function CanvasTest({
                 handleNextLevel();
                 setTimeout(() => {
                     changeRoom();
-                }, 3000);
+                }, 1500);
             }
             if (goToHome) {
                 handleGoToHome();
 
                 setTimeout(() => {
                     changeRoomOne();
-                }, 3000);
+                }, 1500);
             }
         }
     }, [nextLevel, goToHome]);
