@@ -23,7 +23,7 @@ export class Player {
         this.collisionBlocks = collisionBlocks;
         this.jumping = false;
 
-        this.sprite = new Sprite("../../../../sprite/Sprite-New.png");
+        this.sprite = new Sprite("../../../../sprite/spritesheet-character.png");
         this.SPRITE_NAME = "IDLE_R";
         this.scrolledToBottom = false;
     }

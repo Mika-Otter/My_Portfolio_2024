@@ -69,6 +69,7 @@ export default function CanvasTest({
             }
             if (goToHome) {
                 handleGoToHome();
+
                 setTimeout(() => {
                     changeRoomOne();
                 }, 3000);

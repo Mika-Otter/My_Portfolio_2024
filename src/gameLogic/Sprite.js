@@ -6,7 +6,7 @@ export class Sprite {
         this.spriteWidth = 80;
         this.spriteHeight = 80;
 
-        this.playerState = ["IDLE_R", "IDLE_L", "RUN_R", "RUN_L"];
+        this.playerState = ["IDLE_R", "IDLE_L", "RUN_R", "RUN_L", "TELEPORT"];
 
         this.frameX = 0;
         this.frameY = 0;
@@ -33,7 +33,12 @@ export class Sprite {
                 name: "RUN_L",
                 frames: 27,
             },
+            {
+                name: "TELEPORT",
+                frames: 26,
+            },
         ];
+        this.teleporting = false;
 
         //make coordinate for spriteAnimations = []
         this.animationStates.forEach((state, index) => {
@@ -68,6 +73,29 @@ export class Sprite {
     }
 
     update(SPRITE_NAME) {
+        if (SPRITE_NAME === "TELEPORT" && !this.teleporting) {
+            this.teleporting = true;
+            this.teleportFrame = 0;
+            this.teleportDelay = 12;
+        }
+
+        if (this.teleporting) {
+            const totalFrames = this.spriteAnimations["TELEPORT"].loc.length;
+
+            // if all frames are appear
+            if (this.teleportFrame >= totalFrames * this.teleportDelay) {
+                // stop on last frame
+                this.frameX = (totalFrames - 1) * this.spriteWidth;
+                this.frameY = this.spriteAnimations["TELEPORT"].loc[totalFrames - 1].y;
+                return;
+            }
+            let position = Math.floor(this.teleportFrame / this.teleportDelay);
+            this.frameX = position * this.spriteWidth;
+            this.frameY = this.spriteAnimations["TELEPORT"].loc[position].y;
+            this.teleportFrame++;
+            return;
+        }
+
         let position =
             Math.floor(this.gameFrame / this.staggerFrames) %
             this.spriteAnimations[this.playerState[this.playerState.indexOf(SPRITE_NAME)]].loc
