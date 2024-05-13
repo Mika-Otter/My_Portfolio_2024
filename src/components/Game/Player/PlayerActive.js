@@ -42,7 +42,7 @@ export class ActivePlayer extends Player {
     }
 
     testActivate() {
-        this.SPRITE_NAME = "RUN_R";
+        this.SPRITE_NAME = "TELEPORT";
     }
     // UPDATE PLAYER____________________________________________________________________
     updatePlayer({ background, context, canvas, camera }) {
