@@ -33,7 +33,10 @@ export class Player {
         context.fillStyle = "transparent";
 
         context.fillRect(this.position.x, this.position.y, this.width, this.height);
-        this.sprite.draw(context, this);
+
+        if (this.sprite) {
+            this.sprite.draw(context, this);
+        }
     }
 
     update({ camera, canvas, background }) {

@@ -36,6 +36,7 @@ export default class Starship {
         ];
 
         this.launching = false;
+        this.speedStarship = 0.6;
 
         //make coordinate for spriteAnimations = []
         this.animationStates.forEach((state, index) => {
@@ -72,6 +73,10 @@ export default class Starship {
     }
 
     update(SPRITE_NAME) {
+        if (this.position.y >= 125 && SPRITE_NAME === "LAUNCH") {
+            this.position.y -= this.speedStarship;
+            this.speedStarship += 0.02;
+        }
         let position =
             Math.floor(this.gameFrame / this.staggerFrames) %
             this.spriteAnimations[this.starshipState[this.starshipState.indexOf(SPRITE_NAME)]].loc
