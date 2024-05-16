@@ -23,25 +23,23 @@ export class Stars {
     }
 
     addStar() {
-        // if (!this.starAdding) {
         this.starlist.push(new FlyingStar());
-        console.log("Heeeeello", this.starlist);
-        //         this.starAdding = true;
-        // }
     }
 
     update() {
-        this.starlist.forEach((star, index) => {
-            star.update();
-            if (star.y > window.innerHeight * 3) {
-                this.starlist.splice(index, 1);
+        if (this.starAdding) {
+            this.starlist.forEach((star, index) => {
+                star.update();
+                if (star.y > window.innerHeight * 3) {
+                    this.starlist.splice(index, 1);
+                }
+            });
+            if (this.starTimer > this.starInterval) {
+                this.addStar();
+                this.starTimer = 0;
+            } else {
+                this.starTimer += 7;
             }
-        });
-        if (this.starTimer > this.starInterval) {
-            this.addStar();
-            this.starTimer = 0;
-        } else {
-            this.starTimer += 7;
         }
     }
 }
