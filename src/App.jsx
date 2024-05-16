@@ -35,6 +35,11 @@ export default function App() {
     const [nextLevel, setNextLevel] = useState(false);
     const [goToHome, setGoToHome] = useState(false);
     const [transition, setTransition] = useState(false);
+    const [contact, setContact] = useState(false);
+
+    const handleContact = () => {
+        setContact((prev) => !prev);
+    };
 
     const handleTransition = () => {
         setTransition((prev) => !prev);
@@ -232,6 +237,8 @@ export default function App() {
                 handleMenu={handleMenu}
                 handleGoToHome={handleGoToHome}
                 handleTransition={handleTransition}
+                contact={contact}
+                handleContact={handleContact}
             />
             <BackgroundHeightProvider>
                 <BigBox backgroundheight={backgroundHeight}>

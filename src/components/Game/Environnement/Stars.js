@@ -2,18 +2,18 @@ import { FlyingStar } from "./FlyingStar";
 
 export class Stars {
     constructor(width, height) {
-        this.x = 0;
+        this.x = 500;
         this.y = 0;
         this.width = width;
         this.height = height;
         this.starlist = [];
         this.starTimer = 0;
-        this.starInterval = 200;
+        this.starInterval = 30;
         this.starAdding = false;
     }
 
     draw(context) {
-        context.fillStyle = "blue";
+        context.fillStyle = "#020444";
         context.fillRect(this.x, this.y, this.width, this.height);
 
         this.starlist.forEach((star) => {
@@ -33,9 +33,9 @@ export class Stars {
     update() {
         this.starlist.forEach((star, index) => {
             star.update();
-            // setTimeout(() => {
-            //     this.starlist.splice(index, 1);
-            // }, 2000);
+            if (star.y > window.innerHeight * 3) {
+                this.starlist.splice(index, 1);
+            }
         });
         if (this.starTimer > this.starInterval) {
             this.addStar();
