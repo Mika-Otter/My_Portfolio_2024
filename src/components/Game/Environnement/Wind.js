@@ -43,7 +43,6 @@ export class RegularWind extends Wind {
         this.maxFrame = 18; //18
         this.image = new Image();
         this.image.src = "/regularwind.png";
-        this.image.opacity = 0;
     }
 
     update(deltaTime) {

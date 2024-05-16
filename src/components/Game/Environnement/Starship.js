@@ -1,5 +1,8 @@
+import { Stars } from "./Stars";
+
 export default class Starship {
-    constructor(frameRate = 1) {
+    constructor(canvas) {
+        this.canvas = canvas;
         this.image = new Image();
         this.image.src = "/starship.png";
         this.image.onload = () => {
@@ -8,7 +11,7 @@ export default class Starship {
             this.height = this.image.height;
         };
 
-        this.frameRate = frameRate;
+        this.frameRate = 1;
         this.position = {
             x: 800,
             y: 1930,
@@ -37,6 +40,9 @@ export default class Starship {
 
         this.launching = false;
         this.speedStarship = 0.6;
+        this.color = "transparent";
+        this.flyingStars = false;
+        this.stars = new Stars(700, 2000);
 
         //make coordinate for spriteAnimations = []
         this.animationStates.forEach((state, index) => {
@@ -53,6 +59,14 @@ export default class Starship {
     }
 
     draw(context) {
+        this.stars.draw(context);
+
+        const windowWidth = window.innerWidth * 1.5;
+        const windowHeight = window.innerHeight * 1.5;
+
+        context.fillStyle = this.color;
+        context.fillRect(200, 100, windowWidth, windowHeight);
+
         context.drawImage(
             this.image,
             this.frameX,
@@ -64,7 +78,6 @@ export default class Starship {
             96,
             224
         );
-
         if (!this.launching) {
             this.update("IDLE");
         } else {
@@ -72,10 +85,14 @@ export default class Starship {
         }
     }
 
-    update(SPRITE_NAME) {
+    update(SPRITE_NAME, context) {
+        this.stars.update();
         if (this.position.y >= 125 && SPRITE_NAME === "LAUNCH") {
             this.position.y -= this.speedStarship;
             this.speedStarship += 0.02;
+        } else if (this.position.y <= 125) {
+            this.flyingStars = true;
+            this.flyingInTheStars();
         }
         let position =
             Math.floor(this.gameFrame / this.staggerFrames) %
@@ -89,5 +106,7 @@ export default class Starship {
         this.gameFrame++;
     }
 
-    launch() {}
+    flyingInTheStars() {
+        this.color = "#020444";
+    }
 }

@@ -129,8 +129,7 @@ export class Game {
                     ];
 
                     this.starShip = new Starship({
-                        position: { x: 800, y: 1930 },
-                        autoplay: false,
+                        canvas: canvas,
                     });
 
                     // Parse collisions for level 2
