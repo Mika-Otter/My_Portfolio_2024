@@ -3,6 +3,7 @@ import { Door } from "../components/Game/Environnement/Door";
 import { ActivePlayer } from "../components/Game/Player/PlayerActive";
 import Background from "../components/Game/Environnement/Background";
 import Cloud from "../components/Game/Environnement/Cloud";
+import Starship from "../components/Game/Environnement/Starship";
 
 export class Game {
     constructor({ canvas, keysTab, lastKeysTab, toExp, RoomLevel, changeRoom }) {
@@ -24,6 +25,7 @@ export class Game {
         this.currentCollisionLevel;
         this.i = 0;
         this.player;
+        this.starShip;
     }
 
     initialize() {
@@ -125,6 +127,12 @@ export class Game {
                             changeRoom: this.changeRoom,
                         }),
                     ];
+
+                    this.starShip = new Starship({
+                        position: { x: 800, y: 1930 },
+                        autoplay: false,
+                    });
+
                     // Parse collisions for level 2
                     this.collisionBlocksList = parseCollisions(this.background);
                     this.currentCollisionLevel = this.collisionBlocksList[1];
@@ -140,6 +148,7 @@ export class Game {
                         mapRow: this.mapRow,
                         toExp: this.toExp,
                         scale: this.scale,
+                        starShip: this.starShip,
                     });
                 },
             },
@@ -182,6 +191,7 @@ export class Game {
             currentCollisionLevel: this.currentCollisionLevel,
             doors: this.doors,
             overlay: this.overlay,
+            starShip: this.starShip,
         };
     }
 }
