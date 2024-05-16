@@ -14,7 +14,7 @@ export default class Starship {
         this.frameRate = 1;
         this.position = {
             x: 800,
-            y: 1930,
+            y: 1780,
         };
 
         this.spriteWidth = 96;
@@ -42,7 +42,7 @@ export default class Starship {
         this.speedStarship = 0.6;
         this.color = "transparent";
         this.flyingStars = false;
-        this.stars = new Stars(700, 2000);
+        this.stars = new Stars(window.innerWidth, window.innerHeight);
 
         //make coordinate for spriteAnimations = []
         this.animationStates.forEach((state, index) => {
@@ -59,14 +59,14 @@ export default class Starship {
     }
 
     draw(context) {
-        this.stars.draw(context);
-
         const windowWidth = window.innerWidth * 1.5;
         const windowHeight = window.innerHeight * 1.5;
 
         context.fillStyle = this.color;
         context.fillRect(200, 100, windowWidth, windowHeight);
-
+        if (this.flyingStars) {
+            this.stars.draw(context);
+        }
         context.drawImage(
             this.image,
             this.frameX,
@@ -75,8 +75,8 @@ export default class Starship {
             this.spriteHeight,
             this.position.x,
             this.position.y,
-            96,
-            224
+            96 * 1.7,
+            224 * 1.7
         );
         if (!this.launching) {
             this.update("IDLE");
@@ -86,13 +86,18 @@ export default class Starship {
     }
 
     update(SPRITE_NAME, context) {
+        const widthLimit = window.innerHeight * 0.5 - 200;
+        console.log(widthLimit, "LA LIMIIIIITE");
+
         this.stars.update();
-        if (this.position.y >= 125 && SPRITE_NAME === "LAUNCH") {
+        if (this.position.y >= widthLimit && SPRITE_NAME === "LAUNCH") {
             this.position.y -= this.speedStarship;
             this.speedStarship += 0.02;
-        } else if (this.position.y <= 125) {
-            this.flyingStars = true;
-            this.flyingInTheStars();
+        } else if (this.position.y <= widthLimit) {
+            setTimeout(() => {
+                this.flyingStars = true;
+                this.flyingInTheStars();
+            }, 700);
         }
         let position =
             Math.floor(this.gameFrame / this.staggerFrames) %

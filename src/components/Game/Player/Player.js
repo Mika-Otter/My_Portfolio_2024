@@ -30,8 +30,8 @@ export class Player {
     }
 
     draw(context) {
-        context.fillStyle = "rgba(2, 0, 255, 0.3)";
-        // context.fillStyle = "transparent";
+        // context.fillStyle = "rgba(2, 0, 255, 0.3)";
+        context.fillStyle = "transparent";
 
         context.fillRect(this.position.x, this.position.y, this.width, this.height);
 
