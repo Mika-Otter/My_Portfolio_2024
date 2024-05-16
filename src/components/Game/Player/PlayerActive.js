@@ -56,9 +56,27 @@ export class ActivePlayer extends Player {
         this.updateCameraBox({ camera });
         this.update({ camera, canvas, background });
         this.setState();
-        this.sprite.update(this.SPRITE_NAME);
+        if (this.sprite) {
+            this.sprite.update(this.SPRITE_NAME);
+        }
+        if (this.sprite === "") {
+            this.position.y = this.starShip.position.y;
+            this.cameraBox.y = this.starShip.position.y;
+            this.cameraBox.height = 700;
+            this.cameraBox.position.y = this.position.y - 300;
+            if (camera.position.x > -440) {
+                camera.position.x -= 3;
+            }
 
-        // context.fillStyle = "transparent";
+            if (
+                this.cameraBox.position.y <= Math.abs(camera.position.y) &&
+                this.cameraBox.position.y > 100
+            ) {
+                camera.position.y += this.starShip.speedStarship;
+            }
+        }
+
+        context.fillStyle = "transparent";
         // context.fillStyle = "rgba(2, 0, 255, 0.3)";
         context.fillRect(
             this.cameraBox.position.x,
@@ -150,6 +168,11 @@ export class ActivePlayer extends Player {
         ) {
             console.log("Okeeeey");
             starShip.launching = true;
+            this.position.x = starShip.position.x;
+            this.position.y = starShip.position.y;
+            this.cameraBox.y = starShip.position.y;
+            this.gravity = 0;
+            this.sprite = "";
         }
     }
     // END...
