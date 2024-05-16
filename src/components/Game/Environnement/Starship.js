@@ -82,14 +82,13 @@ export default class Starship {
             this.update("IDLE");
         } else {
             this.update("LAUNCH");
+            this.stars.starAdding = true;
         }
     }
 
     update(SPRITE_NAME, context) {
         const widthLimit = window.innerHeight * 0.5 - 200;
-        console.log(widthLimit, "LA LIMIIIIITE");
-
-        this.stars.update();
+        this.stars.update()
         if (this.position.y >= widthLimit && SPRITE_NAME === "LAUNCH") {
             this.position.y -= this.speedStarship;
             this.speedStarship += 0.02;

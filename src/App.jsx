@@ -15,6 +15,7 @@ import Menu from "./components/Menu/Menu";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import CanvasTest from "./components/CanvasTest";
+import Contact from "./components/Contact/Contact";
 // import Test from "./components/Test";
 
 export default function App() {
@@ -38,7 +39,7 @@ export default function App() {
     const [contact, setContact] = useState(false);
 
     const handleContact = () => {
-        setContact((prev) => !prev);
+        setContact(true);
     };
 
     const handleTransition = () => {
@@ -240,6 +241,8 @@ export default function App() {
                 contact={contact}
                 handleContact={handleContact}
             />
+            {contact ? <Contact /> : null}
+
             <BackgroundHeightProvider>
                 <BigBox backgroundheight={backgroundHeight}>
                     {RoomLevel === 1 ? (
