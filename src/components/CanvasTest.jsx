@@ -104,6 +104,7 @@ export default function CanvasTest({
                 currentCollisionLevel,
                 doors,
                 overlay,
+                starShip,
             } = game.getAnimateObjects();
             playerRef.current = player;
             // setPlayer(player);
@@ -127,6 +128,9 @@ export default function CanvasTest({
                 currentCollisionLevel.forEach((collisionBlock) => {
                     collisionBlock.draw(ctx);
                 });
+                if (RoomLevel === 2) {
+                    starShip.draw(ctx, player);
+                }
                 player.draw(ctx);
                 player.updatePlayer({
                     background,
@@ -138,6 +142,7 @@ export default function CanvasTest({
                     water.draw(ctx, canvas);
                     cloud.draw(ctx, canvas);
                 }
+
                 ctx.restore();
 
                 ctx.save();

@@ -52,7 +52,6 @@ export class Sprite {
             }
             this.spriteAnimations[state.name] = frames;
         });
-        console.log(this.spriteAnimations);
     }
 
     draw(context, player) {
@@ -73,7 +72,6 @@ export class Sprite {
     }
 
     update(SPRITE_NAME) {
-        console.log(SPRITE_NAME, "hhhhhhhhhherrree bababtbaa");
         if (SPRITE_NAME === "TELEPORT" && !this.teleporting) {
             this.teleporting = true;
             this.teleportFrame = 0;

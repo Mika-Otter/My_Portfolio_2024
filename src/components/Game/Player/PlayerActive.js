@@ -11,6 +11,7 @@ export class ActivePlayer extends Player {
         lastKeysTab,
         mapRow,
         toExp,
+        starShip,
     }) {
         super({ collisionBlocks, background });
         this.canvas = canvas;
@@ -25,6 +26,7 @@ export class ActivePlayer extends Player {
         this.mapRow = mapRow;
         this.toExp = toExp;
         this.isJumping = false;
+        this.starShip = starShip;
     }
 
     setState() {
@@ -68,7 +70,7 @@ export class ActivePlayer extends Player {
         this.changeLevelByTheTop();
 
         if (this.keysTab.includes("z")) {
-            this.enterInDoor();
+            this.launchStarship();
         }
         if (this.velocity.y !== 0) {
             this.isJumping = true;
@@ -134,6 +136,20 @@ export class ActivePlayer extends Player {
                 this.preventInput = true;
                 door.play();
             }
+        }
+    }
+
+    launchStarship() {
+        const starShip = this.starShip;
+
+        if (
+            this.position.x + this.width <= starShip.position.x + starShip.spriteWidth &&
+            this.position.x - 3 >= starShip.position.x &&
+            this.position.y <= starShip.position.y + starShip.spriteHeight &&
+            this.position.y + this.height >= starShip.position.y
+        ) {
+            console.log("Okeeeey");
+            starShip.launching = true;
         }
     }
     // END...
