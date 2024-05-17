@@ -17,6 +17,9 @@ export default function CanvasTest({
     changeRoomOne,
     playMode,
     viewMode,
+    contact,
+    isMenu,
+    isOpenProject,
 }) {
     const canvasRef = useRef(null);
     const backgroundHeight = useBackgroundHeight();
@@ -44,15 +47,15 @@ export default function CanvasTest({
         } else {
             handler.initializeKeyListener();
         }
-        // if (nextLevel === true) {
-        //     handler.removeListeners();
-        // }
+        if (contact || isOpenProject) {
+            handler.removeListeners();
+        }
         return () => {
             if (handler) {
                 handler.removeListeners();
             }
         };
-    }, [isPlayed, RoomLevel, nextLevel]);
+    }, [isPlayed, RoomLevel, nextLevel, isMenu, contact, isOpenProject]);
 
     useEffect(() => {
         if (nextLevel || goToHome) {

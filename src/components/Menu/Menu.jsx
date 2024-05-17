@@ -74,7 +74,13 @@ export default function Menu({ isMenu, handleMenu, handleGoToHome, contact, hand
                             <span>ABOUT</span>
                         </div>
                     </div> */}
-                    <div className={s.menu__item__wrapper} onClick={() => handleContact()}>
+                    <div
+                        className={s.menu__item__wrapper}
+                        onClick={() => {
+                            handleContact();
+                            handleMenu();
+                        }}
+                    >
                         <div className={cn(s.menu__item__span)}>
                             <span>CONTACT</span>
                             <span>CONTACT</span>

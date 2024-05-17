@@ -13,11 +13,17 @@ import Video from "../Video/Video";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-export default function Projects({ handleNextLevel, nextLevel }) {
+export default function Projects({
+    handleNextLevel,
+    nextLevel,
+    isOpenProject,
+    openProject,
+    closeProject,
+}) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [lastIndex, setLastIndex] = useState(0);
     const [isHover, setIsHover] = useState(false);
-    const [isProjectOpen, setIsProjectOpen] = useState(false);
+
     const [clickNextLevel, setClickNextLevel] = useState(false);
     const projectsRef = useRef();
     const projectsWrapperRef = useRef();
@@ -129,14 +135,6 @@ export default function Projects({ handleNextLevel, nextLevel }) {
     ];
     const viewRefs = useRef(items.map(() => React.createRef()));
 
-    const openProject = () => {
-        setIsProjectOpen(true);
-    };
-
-    const closeProject = () => {
-        setIsProjectOpen(false);
-    };
-
     const handleMouseEnter = (e, index) => {
         setCurrentIndex(index);
         setIsHover(true);
@@ -155,8 +153,8 @@ export default function Projects({ handleNextLevel, nextLevel }) {
     };
 
     // useEffect(() => {
-    //     console.log(isProjectOpen);
-    // }, [isProjectOpen]);
+    //     console.log(isOpenProject);
+    // }, [isOpenProject]);
 
     useEffect(() => {
         setLastIndex(currentIndex);
@@ -198,11 +196,11 @@ export default function Projects({ handleNextLevel, nextLevel }) {
     }, [currentIndex]);
 
     useEffect(() => {
-        if (!isHover && !isProjectOpen) {
+        if (!isHover && !isOpenProject) {
             intervalRef.current = setInterval(moveHover, 9000);
         }
         return () => clearInterval(intervalRef.current);
-    }, [isHover, isProjectOpen]);
+    }, [isHover, isOpenProject]);
 
     useEffect(() => {
         console.log(currentIndex, "and last index :", lastIndex);
@@ -349,7 +347,7 @@ export default function Projects({ handleNextLevel, nextLevel }) {
                             </div>
                         </div>
                     </div>
-                    {isProjectOpen && (
+                    {isOpenProject && (
                         <Project
                             item={items[currentIndex]}
                             closeProject={closeProject}
