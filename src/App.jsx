@@ -39,7 +39,8 @@ export default function App() {
     const [contact, setContact] = useState(false);
 
     const handleContact = () => {
-        setContact(true);
+        setContact((prev) => !prev);
+        console.log("oookkkeey", contact);
     };
 
     const handleTransition = () => {
@@ -74,7 +75,6 @@ export default function App() {
 
     const handleMenu = () => {
         setIsMenu((prev) => !prev);
-        console.log(isMenu);
     };
 
     const playMode = () => {
@@ -241,7 +241,7 @@ export default function App() {
                 contact={contact}
                 handleContact={handleContact}
             />
-            {contact ? <Contact /> : null}
+            <Contact handleContact={handleContact} contact={contact} />
 
             <BackgroundHeightProvider>
                 <BigBox backgroundheight={backgroundHeight}>

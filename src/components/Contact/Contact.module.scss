@@ -1,15 +1,16 @@
 .contact::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
 }
-.contact {
+
+.wrapper {
     z-index: 20000;
     position: fixed;
     width: 49%;
     height: 98%;
     top: 1%;
-    right: 1%;
+    right: -50%;
     box-sizing: border-box;
-    padding: 40px;
+
     background-color: rgba(241, 239, 239, 0.73);
     color: rgb(44, 40, 40);
     -webkit-backdrop-filter: blur(13px);
@@ -20,9 +21,54 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+
+    // border: 2px solid red;
+
+    &__fade {
+        // border: 2px solid green;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        background: rgb(241, 239, 239);
+        background: linear-gradient(0deg, rgba(241, 239, 239, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    }
+}
+
+.contact {
+    padding: 40px;
+    height: 100%;
     overflow-y: scroll;
     scrollbar-width: none;
+    &__fade {
+        position: sticky;
+        background: rgb(241, 239, 239);
+        background: linear-gradient(0deg, rgba(241, 239, 239, 1) 0%, rgba(0, 212, 255, 0) 100%);
 
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+    }
+    &__close {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        span {
+            font-size: 14px;
+            margin-bottom: 3px;
+            font-weight: 700;
+        }
+        &__svg {
+            width: 25px;
+            transition: 0.3s ease-in-out;
+        }
+
+        &:hover &__svg {
+            transform: scale(0.85);
+        }
+    }
     label {
         text-transform: uppercase;
         font-size: 15px;
@@ -66,7 +112,7 @@
                 display: flex;
                 flex-direction: column;
                 gap: 5px;
-                width: 100%;
+                width: 49%;
             }
         }
         &__company,
@@ -79,6 +125,7 @@
 
         &__need {
             &__inputs {
+                margin-top: 15px;
                 display: flex;
                 justify-content: space-around;
 
@@ -88,7 +135,7 @@
                     color: rgb(158, 158, 158);
                     transition: 0.3s ease-in-out;
                     cursor: pointer;
-                    font-size: 20px;
+                    font-size: 19px;
                 }
 
                 input[type="radio"] {
@@ -99,6 +146,9 @@
                 }
 
                 input:checked + label {
+                    color: rgb(44, 40, 40);
+                }
+                input:hover + label {
                     color: rgb(44, 40, 40);
                 }
             }
@@ -113,7 +163,7 @@
                 font-weight: 400;
                 font-size: 17px;
                 background: none;
-                height: 180px;
+                height: 130px;
                 resize: none;
                 padding: 10px;
             }
@@ -125,11 +175,118 @@
         &__lastLine {
             display: flex;
             justify-content: space-between;
+            gap: 20px;
 
             &__budget,
             &__timeline {
+                width: 100%;
                 display: flex;
                 flex-direction: column;
+                gap: 10px;
+            }
+
+            &__timeline {
+                input {
+                    width: 98%;
+                }
+            }
+            &__budget {
+                &__button {
+                    border: 1px solid rgb(44, 40, 40);
+                    display: flex;
+                    align-items: center;
+
+                    justify-content: space-between;
+                    z-index: -1;
+                    cursor: pointer;
+                    button {
+                        background: none;
+                        border: none;
+                        font-size: 16px;
+                        font-family: "NeueMontreal-Regular";
+                        font-weight: 700;
+                    }
+
+                    &__span__active {
+                        font-size: 25px;
+                        transition: 0.5s ease-in-out;
+                    }
+                    &__span__disable {
+                        transform: rotate(180deg);
+                        font-size: 25px;
+                        transition: 0.5s ease-in-out;
+                    }
+                }
+
+                &__select {
+                    position: absolute;
+                    background-color: rgba(241, 239, 239);
+                    border: 1px solid rgb(44, 40, 40);
+                    padding: 10px;
+                    display: flex;
+                    width: 230px;
+                    flex-direction: column;
+                    gap: 5px;
+                    text-transform: uppercase;
+                    color: grey;
+                    font-family: "NeueMontreal-Medium";
+
+                    span {
+                        cursor: pointer;
+                        transition: 0.3s ease-in-out;
+                        font-weight: 500;
+                    }
+                    span:hover {
+                        color: rgb(44, 40, 40);
+                    }
+                }
+            }
+            &__budget {
+                &__hideInput {
+                    display: none;
+                }
+            }
+        }
+        &__bonus {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+
+            &__findMe,
+            &__favorite {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        &__button {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            height: 30px;
+            // border: 2px solid red;
+            overflow: hidden;
+            button {
+                cursor: pointer;
+                transform: translateY(0%);
+                height: 60px;
+                display: flex;
+                flex-direction: column;
+                border: none;
+                background: none;
+                font-size: 30px;
+                font-weight: 600;
+                font-family: "NeueMontreal-Regular";
+                transition: 0.3s ease-in-out;
+
+                span {
+                    height: 30px;
+                }
+            }
+            button:hover {
+                transform: translateY(-50%);
             }
         }
     }
