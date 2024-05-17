@@ -158,21 +158,23 @@ export class ActivePlayer extends Player {
     }
 
     launchStarship() {
-        const starShip = this.starShip;
+        if (this.starShip) {
+            const starShip = this.starShip;
 
-        if (
-            this.position.x + this.width <= starShip.position.x + starShip.spriteWidth * 1.5 &&
-            this.position.x - 3 >= starShip.position.x &&
-            this.position.y <= starShip.position.y + starShip.spriteHeight * 1.5 &&
-            this.position.y + this.height >= starShip.position.y
-        ) {
-            console.log("Okeeeey");
-            starShip.launching = true;
-            this.position.x = starShip.position.x;
-            this.position.y = starShip.position.y;
-            this.cameraBox.y = starShip.position.y;
-            this.gravity = 0;
-            this.sprite = "";
+            if (
+                this.position.x + this.width <= starShip.position.x + starShip.spriteWidth * 1.5 &&
+                this.position.x - 3 >= starShip.position.x &&
+                this.position.y <= starShip.position.y + starShip.spriteHeight * 1.5 &&
+                this.position.y + this.height >= starShip.position.y
+            ) {
+                console.log("Okeeeey");
+                starShip.launching = true;
+                this.position.x = starShip.position.x;
+                this.position.y = starShip.position.y;
+                this.cameraBox.y = starShip.position.y;
+                this.gravity = 0;
+                this.sprite = "";
+            }
         }
     }
     // END...
