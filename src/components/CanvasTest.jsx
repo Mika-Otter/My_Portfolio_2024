@@ -3,7 +3,7 @@ import { initializeGame } from "../gameLogic/GameIntializer";
 import { HandleInput } from "../gameLogic/InputManager";
 import { gameAnimate } from "../gameLogic/GameAnimate";
 import { useBackgroundHeight, useSetBackgroundHeight } from "../context/BackgroundHeightContext";
-import { Game } from "../gameLogic/GameInit";
+import { Game } from "../assets/img/GameInit";
 
 export default function CanvasTest({
     isPlayed,
@@ -108,6 +108,7 @@ export default function CanvasTest({
                 doors,
                 overlay,
                 starShip,
+                secrets,
             } = game.getAnimateObjects();
             playerRef.current = player;
             // setPlayer(player);
@@ -144,6 +145,10 @@ export default function CanvasTest({
                 if (RoomLevel === 1) {
                     water.draw(ctx, canvas);
                     cloud.draw(ctx, canvas);
+                    secrets.forEach((secret) => {
+                        secret.draw(ctx);
+                        // secret.update();
+                    });
                 }
 
                 ctx.restore();

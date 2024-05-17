@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from "react";
-import Canvas from "./components/Canvas";
 import "./assets/styles/global.scss";
 import Title from "./components/Title/Title";
 import { BackgroundHeightProvider, useBackgroundHeight } from "./context/BackgroundHeightContext";
