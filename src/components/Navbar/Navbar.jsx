@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Navbar.module.scss";
 import AudioPlayer from "../Audio/Audio";
 
-export default function Navbar({ activeSound, handleMenu, handleTest }) {
+export default function Navbar({ activeSound, handleMenu, handleTest, handleContact }) {
     return (
         <div className={s.navbar}>
             <div className={s.navbar__rotator}>
@@ -26,7 +26,7 @@ export default function Navbar({ activeSound, handleMenu, handleTest }) {
                         <span>/</span>
                     </div>
                     <div className={s.navbar__ctn__wrapper}>
-                        <div className={s.navbar__ctn__button}>
+                        <div className={s.navbar__ctn__button} onClick={() => handleContact()}>
                             <span>CONTACT </span>
                             <span>CONTACT </span>
                         </div>

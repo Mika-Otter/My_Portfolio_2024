@@ -38,8 +38,19 @@ export default function App() {
     const [transition, setTransition] = useState(false);
     const [contact, setContact] = useState(false);
 
+    const [isOpenProject, setisOpenProject] = useState(false);
+
+    const openProject = () => {
+        setisOpenProject(true);
+    };
+
+    const closeProject = () => {
+        setisOpenProject(false);
+    };
+
     const handleContact = () => {
-        setContact(true);
+        setContact((prev) => !prev);
+        console.log("oookkkeey", contact);
     };
 
     const handleTransition = () => {
@@ -74,7 +85,6 @@ export default function App() {
 
     const handleMenu = () => {
         setIsMenu((prev) => !prev);
-        console.log(isMenu);
     };
 
     const playMode = () => {
@@ -219,6 +229,7 @@ export default function App() {
 
     return (
         <>
+            <div className="test"></div>
             <div className="overlay" ref={overlayRef}>
                 <div className="overlay-div" ref={overlayOneRef}></div>
                 <div className="overlay-div" ref={overlayTwoRef}></div>
@@ -232,6 +243,7 @@ export default function App() {
                 activeSound={activeSound}
                 handleMenu={handleMenu}
                 handleTransition={handleTransition}
+                handleContact={handleContact}
             />
             <Menu
                 isMenu={isMenu}
@@ -241,7 +253,7 @@ export default function App() {
                 contact={contact}
                 handleContact={handleContact}
             />
-            {contact ? <Contact /> : null}
+            <Contact handleContact={handleContact} contact={contact} />
 
             <BackgroundHeightProvider>
                 <BigBox backgroundheight={backgroundHeight}>
@@ -265,6 +277,9 @@ export default function App() {
                             goToHome={goToHome}
                             handleGoToHome={handleGoToHome}
                             changeRoomOne={changeRoomOne}
+                            contact={contact}
+                            isMenu={isMenu}
+                            isOpenProject={isOpenProject}
                         />
                     </div>
 
@@ -275,7 +290,13 @@ export default function App() {
                         <div className="wrapper"></div>
                         <div className="content">
                             {!isPlayed && RoomLevel === 1 ? (
-                                <Projects handleNextLevel={handleNextLevel} nextLevel={nextLevel} />
+                                <Projects
+                                    handleNextLevel={handleNextLevel}
+                                    nextLevel={nextLevel}
+                                    isOpenProject={isOpenProject}
+                                    openProject={openProject}
+                                    closeProject={closeProject}
+                                />
                             ) : null}
                         </div>
                         {!isPlayed && <div className="plaster"></div>}
