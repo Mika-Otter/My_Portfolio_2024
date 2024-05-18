@@ -171,7 +171,6 @@ export class ActivePlayer extends Player {
                 this.position.y <= starShip.position.y + starShip.spriteHeight * 1.5 &&
                 this.position.y + this.height >= starShip.position.y
             ) {
-                console.log("Okeeeey");
                 starShip.launching = true;
                 this.position.x = starShip.position.x;
                 this.position.y = starShip.position.y;
@@ -179,6 +178,12 @@ export class ActivePlayer extends Player {
                 this.gravity = 0;
                 this.sprite = "";
             }
+        }
+    }
+
+    pausingStarship() {
+        if (this.starShip) {
+            this.starShip.pause = true;
         }
     }
 

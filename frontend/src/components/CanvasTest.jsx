@@ -67,6 +67,7 @@ export default function CanvasTest({
                 }, 1500);
             }
             if (goToHome) {
+                playerRef.current.pausingStarship();
                 handleGoToHome();
 
                 setTimeout(() => {

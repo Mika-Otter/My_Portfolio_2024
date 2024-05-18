@@ -39,6 +39,7 @@ export default class Starship {
         ];
 
         this.launching = false;
+        this.pause = false;
         this.speedStarship = 0.6;
         this.color = "transparent";
         this.flyingStars = false;
@@ -80,6 +81,9 @@ export default class Starship {
         );
         if (!this.launching) {
             this.update("IDLE");
+        } else if (this.pause) {
+            this.update("LAUNCH");
+            this.stars.starAdding = false;
         } else {
             this.update("LAUNCH");
             this.stars.starAdding = true;
