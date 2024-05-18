@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import "./assets/styles/global.scss";
 import Title from "./components/Title/Title";
 import { BackgroundHeightProvider, useBackgroundHeight } from "./context/BackgroundHeightContext";
-import BigBox from "./components/BigBox";
+import BigBox from "./components/BigBox/BigBox";
 import Projects from "./components/Projects/Projects";
 import Navbar from "./components/Navbar/Navbar";
 import Logo from "./components/Logo/Logo";
@@ -14,6 +14,7 @@ import Menu from "./components/Menu/Menu";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import CanvasTest from "./components/CanvasTest";
+import Canvas from "./components/Canvas";
 import Contact from "./components/Contact/Contact";
 // import Test from "./components/Test";
 
@@ -104,11 +105,9 @@ export default function App() {
     useGSAP(() => {
         if (transition === true) {
             gsap.set(overlayRef.current, {
-                zIndex: 9000,
+                zIndex: 30000,
             });
-
             const tl = gsap.timeline();
-
             tl.to(
                 overlayOneRef.current,
                 {
@@ -222,9 +221,9 @@ export default function App() {
         };
     }, []);
 
-    // useEffect(() => {
-    //     setIsLoading(false);
-    // }, [windowWidth]);
+    useEffect(() => {
+        console.log("hello", backgroundHeight);
+    }, [backgroundHeight]);
 
     return (
         <>
@@ -287,6 +286,7 @@ export default function App() {
                             <Title />
                         </div>
                         <div className="wrapper"></div>
+                        {/* {!isPlayed && <div className="plaster"></div>} */}
                         <div className="content">
                             {!isPlayed && RoomLevel === 1 ? (
                                 <Projects
@@ -298,7 +298,6 @@ export default function App() {
                                 />
                             ) : null}
                         </div>
-                        {!isPlayed && <div className="plaster"></div>}
                     </section>
                 </BigBox>
             </BackgroundHeightProvider>
