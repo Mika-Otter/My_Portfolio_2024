@@ -34,9 +34,8 @@
     }
 
     &__item {
-        // border: 2px solid red;
         margin: 8% 8% 15% 8%;
-        margin-top: 12%;
+        margin-top: 4%;
         display: flex;
         flex-direction: column;
         gap: 3px;
@@ -47,8 +46,9 @@
             font-size: 75px;
             overflow: hidden;
             height: 73px;
-            width: 93%;
+            width: 100%;
             text-align: left;
+            // border: 2px solid red;
         }
 
         &__span {

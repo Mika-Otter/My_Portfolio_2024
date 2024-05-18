@@ -6,7 +6,14 @@ import cn from "classnames";
 import { CrossSVG } from "../SVG/CrossSVG";
 import Contact from "../Contact/Contact";
 
-export default function Menu({ isMenu, handleMenu, handleGoToHome, contact, handleContact }) {
+export default function Menu({
+    isMenu,
+    handleMenu,
+    handleGoToHome,
+    handleContact,
+    handleControls,
+    activePlay,
+}) {
     const menuRef = useRef();
     const tl = useRef();
     const [currentTime, setCurrentTime] = useState(new Date());
@@ -74,6 +81,19 @@ export default function Menu({ isMenu, handleMenu, handleGoToHome, contact, hand
                             <span>ABOUT</span>
                         </div>
                     </div> */}
+                    <div
+                        className={s.menu__item__wrapper}
+                        onClick={() => {
+                            handleControls();
+                            activePlay();
+                            handleMenu();
+                        }}
+                    >
+                        <div className={cn(s.menu__item__span)}>
+                            <span>CONTROLS</span>
+                            <span>CONTROLS</span>
+                        </div>
+                    </div>
                     <div
                         className={s.menu__item__wrapper}
                         onClick={() => {

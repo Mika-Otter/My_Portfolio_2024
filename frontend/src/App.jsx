@@ -16,6 +16,7 @@ import { useGSAP } from "@gsap/react";
 import CanvasTest from "./components/CanvasTest";
 import Canvas from "./components/Canvas";
 import Contact from "./components/Contact/Contact";
+import Controls from "./components/Controls/Controls";
 // import Test from "./components/Test";
 
 export default function App() {
@@ -37,8 +38,25 @@ export default function App() {
     const [goToHome, setGoToHome] = useState(false);
     const [transition, setTransition] = useState(false);
     const [contact, setContact] = useState(false);
+    const [firstControls, setFirstControls] = useState(true);
+    const [isControls, setIsControls] = useState(false);
 
     const [isOpenProject, setisOpenProject] = useState(false);
+
+    const handleControls = () => {
+        setIsControls((prev) => !prev);
+    };
+
+    const firstPlay = () => {
+        if (firstControls) {
+            handleControls();
+            setFirstControls(false);
+        }
+    };
+
+    const activePlay = () => {
+        setIsPlayed(true);
+    };
 
     const openProject = () => {
         setisOpenProject(true);
@@ -235,7 +253,13 @@ export default function App() {
                 <div className="overlay-div" ref={overlayFourRef}></div>
             </div>
             {isLoading ? <Loader firstEnter={firstEnter} /> : null}
-            <PlayView playMode={playMode} viewMode={viewMode} isPlayed={isPlayed} />
+            <PlayView
+                playMode={playMode}
+                viewMode={viewMode}
+                isPlayed={isPlayed}
+                firstPlay={firstPlay}
+            />
+            {isControls && <Controls handleControls={handleControls} />}
             <Logo />
             <Navbar
                 activeSound={activeSound}
@@ -248,8 +272,9 @@ export default function App() {
                 handleMenu={handleMenu}
                 handleGoToHome={handleGoToHome}
                 handleTransition={handleTransition}
-                contact={contact}
                 handleContact={handleContact}
+                handleControls={handleControls}
+                activePlay={activePlay}
             />
             <Contact handleContact={handleContact} contact={contact} />
 
