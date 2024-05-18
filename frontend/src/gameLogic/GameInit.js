@@ -86,19 +86,6 @@ export class Game {
                     // Parse collisions for level 1
                     this.collisionBlocksList = parseCollisions(this.background);
                     this.currentCollisionLevel = this.collisionBlocksList[this.i];
-                    this.player = new ActivePlayer({
-                        collisionBlocks: this.currentCollisionLevel,
-                        background: this.background,
-                        doors: this.doors,
-                        canvas: this.canvas,
-                        collisionBlocksList: this.collisionBlocksList,
-                        keysTab: this.keysTab,
-                        lastKeysTab: this.lastKeysTab,
-                        overlay: this.overlay,
-                        mapRow: this.mapRow,
-                        toExp: this.toExp,
-                        scale: this.scale,
-                    });
                     this.secrets = [
                         new Secret({
                             imageSrc: "./src/assets/img/mushroom-Sheet.png",
@@ -128,6 +115,20 @@ export class Game {
                             scale: this.scale,
                         }),
                     ];
+                    this.player = new ActivePlayer({
+                        collisionBlocks: this.currentCollisionLevel,
+                        background: this.background,
+                        doors: this.doors,
+                        canvas: this.canvas,
+                        collisionBlocksList: this.collisionBlocksList,
+                        keysTab: this.keysTab,
+                        lastKeysTab: this.lastKeysTab,
+                        overlay: this.overlay,
+                        mapRow: this.mapRow,
+                        toExp: this.toExp,
+                        scale: this.scale,
+                        secrets: this.secrets,
+                    });
                 },
             },
             2: {

@@ -12,6 +12,7 @@ export class ActivePlayer extends Player {
         mapRow,
         toExp,
         starShip,
+        secrets,
     }) {
         super({ collisionBlocks, background });
         this.canvas = canvas;
@@ -27,6 +28,7 @@ export class ActivePlayer extends Player {
         this.toExp = toExp;
         this.isJumping = false;
         this.starShip = starShip;
+        this.secrets = secrets;
     }
 
     setState() {
@@ -89,7 +91,9 @@ export class ActivePlayer extends Player {
 
         if (this.keysTab.includes("z")) {
             this.launchStarship();
+            this.activeSecrets();
         }
+
         if (this.velocity.y !== 0) {
             this.isJumping = true;
         }
@@ -175,6 +179,21 @@ export class ActivePlayer extends Player {
                 this.gravity = 0;
                 this.sprite = "";
             }
+        }
+    }
+
+    activeSecrets() {
+        if (this.secrets) {
+            this.secrets.forEach((secret) => {
+                if (
+                    this.position.x + this.width <= secret.position.x + secret.renderWidth + 50 &&
+                    this.position.x >= secret.position.x - 50 &&
+                    this.position.y <= secret.position.y + secret.renderHeight &&
+                    this.position.y + this.height >= secret.position.y
+                ) {
+                    console.log("Okeeeey");
+                }
+            });
         }
     }
     // END...

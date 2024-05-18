@@ -8,7 +8,11 @@ export default class Secret {
         this.frameX = 0;
         this.frameMax = frameMax;
         this.position = position;
+        this.position.x = position.x * scale;
+        this.position.y = position.y * scale;
         this.scale = scale;
+        this.renderWidth = this.width * 2.1 * scale;
+        this.renderHeight = this.height * 2.1 * this.scale;
 
         this.gameFrame = 0;
         this.staggerFrames = 20;
@@ -21,10 +25,10 @@ export default class Secret {
             this.frameY * this.height,
             this.width,
             this.height,
-            this.position.x * this.scale,
-            this.position.y * this.scale,
-            this.width * 2.1 * this.scale,
-            this.height * 2.1 * this.scale
+            this.position.x,
+            this.position.y,
+            this.renderWidth,
+            this.renderHeight
         );
     }
 
