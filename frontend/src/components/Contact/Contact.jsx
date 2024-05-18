@@ -4,6 +4,7 @@ import cn from "classnames";
 import { CrossSVG } from "../SVG/CrossSVG";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import axios from "axios";
 
 export default function Contact({ handleContact, contact }) {
     const selectRef = useRef();
@@ -11,6 +12,33 @@ export default function Contact({ handleContact, contact }) {
     const contactRef = useRef();
     const [selecting, setSelecting] = useState(false);
     const [choice, setChoice] = useState("SELECT ONE");
+
+    const sendFormData = async (formData) => {
+        try {
+            const response = await axios.post("/api/send-email", formData);
+            console.log(response.data);
+            alert("Email envoyé avec succès !");
+        } catch (error) {
+            console.error("Erreur lors de l'envoi de l'email:", error);
+            alert("Erreur lors de l'envoi de l'email. Veuillez réessayer plus tard.");
+        }
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = {
+            name: e.target.name.value,
+            email: e.target.email.value,
+            company: e.target.company.value,
+            need: e.target.need.value,
+            description: e.target.description.value,
+            budget: choice, // Utilisez la variable "choice" mise à jour par la fonction handleSelect
+            timeline: e.target.timeline.value,
+            findMe: e.target.findMe.value,
+            favorite: e.target.favorite.value,
+        };
+        sendFormData(formData);
+    };
 
     const handleSelect = (choice) => {
         if (choice !== "SELECT ONE") {
@@ -57,7 +85,7 @@ export default function Contact({ handleContact, contact }) {
                     <div className={s.contact__title}>
                         <h2>CONTACT</h2>
                     </div>
-                    <form className={s.contact__form}>
+                    <form className={s.contact__form} onSubmit={handleSubmit}>
                         <div className={s.contact__form__firstLine}>
                             <div className={s.contact__form__firstLine__name}>
                                 <label htmlFor="name">Your Name *</label>
