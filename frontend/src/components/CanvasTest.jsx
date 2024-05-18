@@ -134,6 +134,13 @@ export default function CanvasTest({
                 if (RoomLevel === 2) {
                     starShip.draw(ctx, player);
                 }
+
+                if (RoomLevel === 1) {
+                    secrets.forEach((secret) => {
+                        secret.draw(ctx);
+                        secret.update();
+                    });
+                }
                 player.draw(ctx);
                 player.updatePlayer({
                     background,
@@ -144,10 +151,6 @@ export default function CanvasTest({
                 if (RoomLevel === 1) {
                     water.draw(ctx, canvas);
                     cloud.draw(ctx, canvas);
-                    secrets.forEach((secret) => {
-                        secret.draw(ctx);
-                        secret.update();
-                    });
                 }
 
                 ctx.restore();

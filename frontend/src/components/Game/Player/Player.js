@@ -24,7 +24,7 @@ export class Player {
         this.collisionBlocks = collisionBlocks;
         this.jumping = false;
 
-        this.sprite = new Sprite("../../../../sprite/final-char.png");
+        this.sprite = new Sprite("../../../../sprite/final-char.png", this.scale);
         this.SPRITE_NAME = "IDLE_R";
         this.scrolledToBottom = false;
     }

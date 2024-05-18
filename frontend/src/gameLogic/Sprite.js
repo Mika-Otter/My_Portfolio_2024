@@ -1,7 +1,8 @@
 export class Sprite {
-    constructor(imageSrc) {
+    constructor(imageSrc, scale) {
         this.image = new Image();
         this.image.src = imageSrc;
+        this.scale = scale;
 
         this.spriteWidth = 80;
         this.spriteHeight = 80;
@@ -55,8 +56,8 @@ export class Sprite {
     }
 
     draw(context, player) {
-        this.spriteX = player.position.x - 50;
-        this.spriteY = player.position.y - 41.7;
+        this.spriteX = player.position.x - 66 * this.scale;
+        this.spriteY = player.position.y - 49 * this.scale;
 
         context.drawImage(
             this.image,
@@ -66,8 +67,8 @@ export class Sprite {
             this.spriteHeight,
             this.spriteX,
             this.spriteY,
-            120,
-            120
+            160 * this.scale,
+            160 * this.scale
         );
     }
 
