@@ -1,5 +1,4 @@
 import { useRef, useEffect, useState } from "react";
-import { initializeGame } from "../gameLogic/GameIntializer";
 import { HandleInput } from "../gameLogic/InputManager";
 import { gameAnimate } from "../gameLogic/GameAnimate";
 import { useBackgroundHeight, useSetBackgroundHeight } from "../context/BackgroundHeightContext";

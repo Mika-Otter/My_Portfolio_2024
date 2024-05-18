@@ -4,6 +4,7 @@ import { ActivePlayer } from "../components/Game/Player/PlayerActive";
 import Background from "../components/Game/Environnement/Background";
 import Cloud from "../components/Game/Environnement/Cloud";
 import Starship from "../components/Game/Environnement/Starship";
+import Secret from "./Secrets";
 
 export class Game {
     constructor({ canvas, keysTab, lastKeysTab, toExp, RoomLevel, changeRoom }) {
@@ -26,17 +27,12 @@ export class Game {
         this.i = 0;
         this.player;
         this.starShip;
+        this.secrets;
     }
 
     initialize() {
-        // this.initializeLevel();
         this.initializeCamera();
         this.initializeRoomsLevel();
-    }
-
-    initializeLevel() {
-        // Initialisation du niveau commun à tous les niveaux
-        // Exemple: Initialisation de l'échelle, du fond d'écran de l'eau, etc.
     }
 
     initializeRoomsLevel() {
@@ -103,6 +99,35 @@ export class Game {
                         toExp: this.toExp,
                         scale: this.scale,
                     });
+                    this.secrets = [
+                        new Secret({
+                            imageSrc: "./src/assets/img/mushroom-Sheet.png",
+                            width: 32,
+                            height: 32,
+                            frameY: 0,
+                            frameMax: 22,
+                            position: { x: 1125, y: 1595 },
+                            scale: this.scale,
+                        }),
+                        new Secret({
+                            imageSrc: "./src/assets/img/cat-Sheet.png",
+                            width: 32,
+                            height: 32,
+                            frameY: 0,
+                            frameMax: 24,
+                            position: { x: 1210, y: 4124 },
+                            scale: this.scale,
+                        }),
+                        new Secret({
+                            imageSrc: "./src/assets/img/robot-Sheet.png",
+                            width: 64,
+                            height: 96,
+                            frameY: 0,
+                            frameMax: 23,
+                            position: { x: 270, y: 2453 },
+                            scale: this.scale,
+                        }),
+                    ];
                 },
             },
             2: {
@@ -192,6 +217,7 @@ export class Game {
             doors: this.doors,
             overlay: this.overlay,
             starShip: this.starShip,
+            secrets: this.secrets,
         };
     }
 }

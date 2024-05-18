@@ -1,13 +1,14 @@
 export default class Secret {
-    constructor({ imageSrc, width, height, frameY, frameMax, position }) {
+    constructor({ imageSrc, width, height, frameY, frameMax, position, scale }) {
         this.image = new Image();
         this.image.src = imageSrc;
         this.width = width;
         this.height = height;
         this.frameY = frameY;
-        this.frameX = 1;
+        this.frameX = 0;
         this.frameMax = frameMax;
         this.position = position;
+        this.scale = scale;
 
         this.gameFrame = 0;
         this.staggerFrames = 20;
@@ -20,10 +21,10 @@ export default class Secret {
             this.frameY * this.height,
             this.width,
             this.height,
-            this.position.x,
-            this.position.y,
-            this.width * 2,
-            this.height * 2
+            this.position.x * this.scale,
+            this.position.y * this.scale,
+            this.width * 2.1 * this.scale,
+            this.height * 2.1 * this.scale
         );
     }
 
