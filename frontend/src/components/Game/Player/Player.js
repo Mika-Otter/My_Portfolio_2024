@@ -30,9 +30,7 @@ export class Player {
     }
 
     draw(context) {
-        // context.fillStyle = "rgba(2, 0, 255, 0.3)";
         context.fillStyle = "transparent";
-
         context.fillRect(this.position.x, this.position.y, this.width, this.height);
 
         if (this.sprite) {
@@ -44,7 +42,7 @@ export class Player {
         this.position.x += this.velocity.x * this.scale;
         this.checkForHorizontalCollision();
 
-        //apply gravity
+        // Apply gravity
         this.velocity.y += this.gravity;
 
         this.position.y += this.velocity.y;
@@ -63,9 +61,9 @@ export class Player {
         if (this.velocity.x < 0) {
             this.shouldPanCameraToTheRight({ camera, background });
         }
+        return this; // Ensure this method returns 'this'
     }
 
-    //CHECK HORIZONTAL COLLISION________________________________________________________
     checkForHorizontalCollision() {
         this.collidedLeft = false;
         this.collidedRight = false;
@@ -78,25 +76,23 @@ export class Player {
                 this.position.y <= collisionBlock.position.y + collisionBlock.height &&
                 this.position.y + this.height >= collisionBlock.position.y
             ) {
-                if (this.velocity.x < -0) {
+                if (this.velocity.x < 0) {
                     this.velocity.x = 0;
                     this.collidedLeft = true;
-
                     this.position.x = collisionBlock.position.x + collisionBlock.width + 0.01;
                     break;
                 }
                 if (this.velocity.x > 0) {
                     this.velocity.x = 0;
                     this.collidedRight = true;
-
                     this.position.x = collisionBlock.position.x - this.width - 0.01;
                     break;
                 }
             }
         }
+        return this; // Ensure this method returns 'this'
     }
 
-    // CHECK VERTICAL COLLISION_______________________________________________________________
     checkForVerticalCollision({ camera, canvas }) {
         for (let i = 0; i < this.collisionBlocks.length; i++) {
             const collisionBlock = this.collisionBlocks[i];
@@ -127,9 +123,9 @@ export class Player {
                 this.grounded = false;
             }
         }
+        return this; // Ensure this method returns 'this'
     }
 
-    //CAMERA MANAGE____________________________________________________________________
     updateCameraBox({ camera }) {
         if (this.position.y + 300 * this.scale > this.backgroundHeight) {
             this.cameraBox = {
@@ -140,7 +136,6 @@ export class Player {
                 width: 500 * this.scale,
                 height: 330 * this.scale,
             };
-            // camera.position.y = -this.backgroundHeight * 0.797;
         } else {
             this.cameraBox = {
                 position: {
@@ -151,32 +146,34 @@ export class Player {
                 height: 400 * this.scale,
             };
         }
+        return this; // Ensure this method returns 'this'
     }
 
-    //CAMERA HORIZONTAL MANAGE__________________________________________________________
     shouldPanCameraToTheLeft({ canvas, camera, background }) {
         const cameraboxRightSide = this.cameraBox.position.x + this.cameraBox.width;
         const scaledDownCanvasWidth = canvas.width;
 
-        if (cameraboxRightSide >= background.width - 5) return;
+        if (cameraboxRightSide >= background.width - 5) return this;
 
         if (cameraboxRightSide >= scaledDownCanvasWidth + Math.abs(camera.position.x)) {
             camera.position.x -= this.velocity.x;
         }
+        return this; // Ensure this method returns 'this'
     }
 
     shouldPanCameraToTheRight({ camera, background }) {
-        if (this.cameraBox.position.x <= 0) return;
+        if (this.cameraBox.position.x <= 0) return this;
         if (this.cameraBox.position.x <= Math.abs(camera.position.x)) {
             camera.position.x -= this.velocity.x;
         }
+        return this; // Ensure this method returns 'this'
     }
 
-    //CAMERA VERTICAL MANAGE____________________________________________________________
     shouldPanCameraToTheTop({ camera }) {
         if (this.cameraBox.position.y <= Math.abs(camera.position.y)) {
             camera.position.y -= this.velocity.y;
         }
+        return this; // Ensure this method returns 'this'
     }
 
     shouldPanCameraToTheBottom({ camera, canvas }) {
@@ -192,5 +189,6 @@ export class Player {
                 });
             }
         }
+        return this; // Ensure this method returns 'this'
     }
 }
