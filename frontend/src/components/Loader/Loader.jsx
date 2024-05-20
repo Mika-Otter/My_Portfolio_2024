@@ -4,8 +4,22 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { LogoStartSVG } from "../SVG/LogoStartSVG";
 import cn from "classnames";
+import { preloadImages } from "../../gameLogic/PreloadImg";
 
 gsap.registerPlugin();
+
+const imageSources = [
+    "./src/assets/img/home-map.png",
+    "./src/assets/img/contact-map.png",
+    "./src/assets/sprite-door/doorOpen.png",
+    "./src/assets/img/water.png",
+    "./src/assets/img/cloud.png",
+    "./src/assets/img/mushroom-Sheet.png",
+    "./src/assets/img/cat-Sheet.png",
+    "./src/assets/img/robot-Sheet.png",
+    "/flyingStars.png",
+    "/starship.png",
+];
 
 export default function Loader({ firstEnter }) {
     const bigBoxRef = useRef();
@@ -20,7 +34,17 @@ export default function Loader({ firstEnter }) {
     const rectsRef = useRef([]);
     const [enter, setEnter] = useState(false);
     const [animation, setAnimation] = useState(false);
+    const [loadingImg, setLoadingImg] = useState(false);
 
+    useEffect(() => {
+        preloadImages(imageSources)
+            .then(() => {
+                setLoadingImg(true);
+            })
+            .catch((err) => {
+                console.error("Failed to preload images", err);
+            });
+    }, []);
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -58,10 +82,10 @@ export default function Loader({ firstEnter }) {
             tl.to(
                 rects[index],
                 {
-                    opacity: 1, // Réglez l'opacité à 0
-                    duration: 2, // Durée de l'animation
-                    delay: i * 0.18, // Décalage pour chaque rectangle
-                    ease: "power4.inOut", // Facilité de l'animation
+                    opacity: 1,
+                    duration: 2,
+                    delay: i * 0.18,
+                    ease: "power4.inOut",
                 },
                 0
             );
