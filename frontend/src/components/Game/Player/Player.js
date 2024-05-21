@@ -61,7 +61,7 @@ export class Player {
         if (this.velocity.x < 0) {
             this.shouldPanCameraToTheRight({ camera, background });
         }
-        return this; // Ensure this method returns 'this'
+        return this;
     }
 
     checkForHorizontalCollision() {
@@ -90,7 +90,7 @@ export class Player {
                 }
             }
         }
-        return this; // Ensure this method returns 'this'
+        return this;
     }
 
     checkForVerticalCollision({ camera, canvas }) {
@@ -123,7 +123,7 @@ export class Player {
                 this.grounded = false;
             }
         }
-        return this; // Ensure this method returns 'this'
+        return this;
     }
 
     updateCameraBox({ camera }) {
@@ -146,7 +146,7 @@ export class Player {
                 height: 400 * this.scale,
             };
         }
-        return this; // Ensure this method returns 'this'
+        return this;
     }
 
     shouldPanCameraToTheLeft({ canvas, camera, background }) {
@@ -158,7 +158,7 @@ export class Player {
         if (cameraboxRightSide >= scaledDownCanvasWidth + Math.abs(camera.position.x)) {
             camera.position.x -= this.velocity.x;
         }
-        return this; // Ensure this method returns 'this'
+        return this;
     }
 
     shouldPanCameraToTheRight({ camera, background }) {
@@ -166,14 +166,14 @@ export class Player {
         if (this.cameraBox.position.x <= Math.abs(camera.position.x)) {
             camera.position.x -= this.velocity.x;
         }
-        return this; // Ensure this method returns 'this'
+        return this;
     }
 
     shouldPanCameraToTheTop({ camera }) {
         if (this.cameraBox.position.y <= Math.abs(camera.position.y)) {
             camera.position.y -= this.velocity.y;
         }
-        return this; // Ensure this method returns 'this'
+        return this;
     }
 
     shouldPanCameraToTheBottom({ camera, canvas }) {
@@ -189,6 +189,6 @@ export class Player {
                 });
             }
         }
-        return this; // Ensure this method returns 'this'
+        return this;
     }
 }

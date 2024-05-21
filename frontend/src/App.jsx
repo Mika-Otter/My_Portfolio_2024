@@ -45,12 +45,15 @@ export default function App() {
 
     const handleControls = () => {
         setIsControls((prev) => !prev);
+
+        if (firstControls) {
+            setFirstControls(false);
+        }
     };
 
     const firstPlay = () => {
         if (firstControls) {
             handleControls();
-            setFirstControls(false);
         }
     };
 
@@ -257,7 +260,8 @@ export default function App() {
                 playMode={playMode}
                 viewMode={viewMode}
                 isPlayed={isPlayed}
-                firstPlay={firstPlay}
+                firstControls={firstControls}
+                handleControls={handleControls}
             />
             {isControls && <Controls handleControls={handleControls} />}
             <Logo />

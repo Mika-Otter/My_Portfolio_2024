@@ -15,19 +15,77 @@
     align-items: center;
 }
 
+.controls__wrapper {
+    width: 0%;
+    height: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1efef;
+}
+
 .controls {
-    width: 80%;
-    height: 80%;
+    opacity: 0;
+
+    position: relative;
+    font-family: "NeueMontreal-Regular";
     display: flex;
     flex-direction: column;
-    background-color: #f1efef;
-    font-family: "NeueMontreal-Regular";
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+    &__space {
+        position: relative;
+        width: 100px;
+        height: 50px;
+
+        &__front {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid rgb(24, 23, 23);
+            background-color: #f1efef;
+            z-index: 3;
+        }
+        &__back {
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(100, 100, 100);
+            border: 1px solid rgb(24, 23, 23);
+            z-index: 1;
+        }
+    }
 
     &__key {
+        position: relative;
         width: 50px;
         height: 50px;
-        border: 1px solid rgb(24, 23, 23);
 
+        &__front {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid rgb(24, 23, 23);
+            background-color: #f1efef;
+            z-index: 3;
+            // transition: 0.5s ease-in-out;
+        }
+
+        &__back {
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(100, 100, 100);
+            border: 1px solid rgb(24, 23, 23);
+            z-index: 1;
+        }
         span {
             font-size: 22px;
         }
@@ -37,7 +95,22 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 17%;
+        height: 7%;
+        margin-top: -10%;
+
+        &__input {
+            input {
+                display: none;
+            }
+
+            label {
+                cursor: pointer;
+                color: #8e8c8c;
+            }
+            input:checked ~ label {
+                color: rgb(24, 23, 23);
+            }
+        }
     }
 
     &__content {
@@ -49,14 +122,18 @@
             gap: 15px;
             align-items: center;
         }
-        &__left {
+        &__left,
+        &__right {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
         &__center {
             display: flex;
             justify-content: center;
             align-items: center;
-            img {
-                width: 70%;
+            &__video {
+                width: 60%;
             }
         }
     }

@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./PlayView.module.scss";
 
-export default function PlayView({ playMode, viewMode, isPlayed, firstPlay }) {
+export default function PlayView({ playMode, viewMode, isPlayed, firstControls, handleControls }) {
     return (
         <div className={s.playView}>
             <button
@@ -16,7 +16,9 @@ export default function PlayView({ playMode, viewMode, isPlayed, firstPlay }) {
                 className={isPlayed ? s.playView__play : s.playView__playOff}
                 onClick={() => {
                     playMode();
-                    firstPlay();
+                    if (firstControls) {
+                        handleControls();
+                    }
                 }}
             >
                 PLAY
