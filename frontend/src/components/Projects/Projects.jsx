@@ -36,33 +36,33 @@ export default function Projects({
     };
 
     const items = [
-        {
-            title: "Antoine Lichtenberg ",
-            smalltext: "  Decorator",
-            year: "2024",
-            url: "./fake-project-archi.png",
-            alt: "Antoine Lichtenberg",
-            text:
-                "I created a portfolio for Antoine Lichtenberg, a former architect who is now moving" +
-                " into film decoration. I enjoyed continuing to explore GSAP and responding to a first concrete project," +
-                " for a client who had a wish and desires that I had to follow. I'm very excited to be working for inspiring people. ",
-            techno: "React, GSAP",
-            client: "Antoine Lichtenberg Decorator",
-            type: "website",
-        },
-        {
-            title: "Booball ",
-            smalltext: "  Small Game with a boo",
-            year: "2024",
-            url: "./fake-project-booball.png",
-            alt: "Booball",
-            text:
-                "When I learnt about canvas elements in html, I made this little animation." +
-                " Basically just a decorative element. Later, I had the idea of turning it into a simple, fun game.",
-            techno: "Javascript POO, canvas html element",
-            client: "Personnal",
-            type: "game",
-        },
+        // {
+        //     title: "Antoine Lichtenberg ",
+        //     smalltext: "  Decorator",
+        //     year: "2024",
+        //     url: "./fake-project-archi.png",
+        //     alt: "Antoine Lichtenberg",
+        //     text:
+        //         "I created a portfolio for Antoine Lichtenberg, a former architect who is now moving" +
+        //         " into film decoration. I enjoyed continuing to explore GSAP and responding to a first concrete project," +
+        //         " for a client who had a wish and desires that I had to follow. I'm very excited to be working for inspiring people. ",
+        //     techno: "React, GSAP",
+        //     client: "Antoine Lichtenberg Decorator",
+        //     type: "website",
+        // },
+        // {
+        //     title: "Booball ",
+        //     smalltext: "  Small Game with a boo",
+        //     year: "2024",
+        //     url: "./fake-project-booball.png",
+        //     alt: "Booball",
+        //     text:
+        //         "When I learnt about canvas elements in html, I made this little animation." +
+        //         " Basically just a decorative element. Later, I had the idea of turning it into a simple, fun game.",
+        //     techno: "Javascript POO, canvas html element",
+        //     client: "Personnal",
+        //     type: "game",
+        // },
         {
             title: "DNSEP2021 ",
             smalltext: "  Art diploma exhibition",
@@ -77,6 +77,14 @@ export default function Projects({
             techno: "React, GSAP",
             client: "Personnal",
             type: "website",
+            img1: "/project-dnsep/dnsep-1.png",
+            img2: "/project-dnsep/dnsep-2.png",
+            img3: "/project-dnsep/dnsep-3.png",
+            img4: "/project-dnsep/dnsep-4.png",
+            img5: "/project-dnsep/dnsep-5.png",
+            img6: "/project-dnsep/dnsep-6.png",
+            img7: "/project-dnsep/dnsep-7.png",
+            img8: "/project-dnsep/dnsep-8.png",
         },
         {
             title: "Typpov ",

@@ -40,7 +40,7 @@ export default function Project({ item, closeProject, nextProject, index, curren
     };
 
     useEffect(() => {
-        console.log(closing);
+        console.log(window.innerWidth, window.innerHeight);
     }, [closing]);
 
     return (
@@ -58,16 +58,40 @@ export default function Project({ item, closeProject, nextProject, index, curren
                                     />
                                 </div>
                                 <div className={s.project__pic__box__ctn__two}>
-                                    <div className={s.project__pic__box__ctn__two__small}></div>
-                                    <div className={s.project__pic__box__ctn__two__small}></div>
+                                    <div className={s.project__pic__box__ctn__two__small}>
+                                        <img src={item.img1} alt={item.img1} />
+                                    </div>
+                                    <div className={s.project__pic__box__ctn__two__small}>
+                                        <img src={item.img2} alt={item.img2} />
+                                    </div>
+                                </div>
+                                <div className={s.project__pic__box__ctn}>
+                                    <img src={item.img3} alt={item.img3} />
+                                </div>
+                                <div className={s.project__pic__box__ctn__two}>
+                                    <div className={s.project__pic__box__ctn__two__small}>
+                                        <img src={item.img4} alt={item.img4} />
+                                    </div>
+                                    <div className={s.project__pic__box__ctn__two__small}>
+                                        <img src={item.img5} alt={item.img5} />
+                                    </div>
+                                </div>
+                                <div className={s.project__pic__box__ctn}>
+                                    <img src={item.img6} alt={item.img6} />
+                                </div>
+                                <div className={s.project__pic__box__ctn__two}>
+                                    <div className={s.project__pic__box__ctn__two__small}>
+                                        <img src={item.img7} alt={item.img7} />
+                                    </div>
+                                    <div className={s.project__pic__box__ctn__two__small}>
+                                        <img src={item.img8} alt={item.img8} />
+                                    </div>
                                 </div>
                             </div>
-                            <button className={s.project__pic__button} type="button">
-                                LIVE SITE ●
-                            </button>
                         </div>
                         <div className={s.project__pic__title}>
                             <h2>{item.title}</h2>
+                            <span>Live Site </span>
                         </div>
                     </div>
 
