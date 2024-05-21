@@ -18,6 +18,7 @@
 .controls__wrapper {
     width: 0%;
     height: 0%;
+    margin-top: -2%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,10 +32,45 @@
     font-family: "NeueMontreal-Regular";
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
+    padding: 60px 20px;
     align-items: center;
     height: 100%;
     width: 100%;
+
+    &__keyboard {
+        font-family: "NeueMontreal-Medium";
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 12%;
+        // border: 2px solid rgb(0, 255, 34);
+        width: 25%;
+
+        &__ctn {
+            width: 60%;
+            display: flex;
+            justify-content: space-between;
+            // border: 2px solid blue;
+        }
+        &__input {
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+            // border: 2px solid blue;
+            input {
+                display: none;
+            }
+
+            label {
+                cursor: pointer;
+                color: #8e8c8c;
+            }
+            input:checked ~ label {
+                color: rgb(24, 23, 23);
+            }
+        }
+    }
 
     &__space {
         position: relative;
@@ -91,31 +127,14 @@
         }
     }
 
-    &__keyboard {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 7%;
-        margin-top: -10%;
-
-        &__input {
-            input {
-                display: none;
-            }
-
-            label {
-                cursor: pointer;
-                color: #8e8c8c;
-            }
-            input:checked ~ label {
-                color: rgb(24, 23, 23);
-            }
-        }
-    }
-
     &__content {
         display: flex;
+        box-sizing: border-box;
         justify-content: space-around;
+        align-items: center;
+        // border: 2px solid red;
+        padding: 0px 100px;
+        width: 100%;
 
         &__keys {
             display: flex;
@@ -126,15 +145,65 @@
         &__right {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            justify-content: center;
+            gap: 40px;
+            width: 20%;
+            // border: 2px solid green;
+        }
+
+        &__left {
+            &__runleft {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        &__right {
+            &__runright {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                gap: 10px;
+            }
+            &__space {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+
+        &__left {
+            &__interact {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
         }
         &__center {
             display: flex;
             justify-content: center;
             align-items: center;
             &__video {
-                width: 60%;
+                width: 80%;
             }
+        }
+    }
+
+    &__gotoplay {
+        height: 15%;
+        display: flex;
+        align-items: center;
+        // border: 2px solid rgb(0, 0, 255);
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 26px;
+            margin-bottom: 30px;
+            font-family: "NeueMontreal-Medium";
         }
     }
 }

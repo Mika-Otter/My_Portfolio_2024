@@ -447,7 +447,7 @@ export default function Controls({ handleControls, isControls }) {
         timelineRef.current = gsap
             .timeline({ paused: true })
             .to(projectWrapperRef.current, { height: "2%", width: "80%", duration: 0.2 })
-            .to(projectWrapperRef.current, { height: "80%", duration: 0.6 })
+            .to(projectWrapperRef.current, { height: "70%", duration: 0.6 })
             .to(projectRef.current, { opacity: 1 });
 
         if (!isControls) {
@@ -467,28 +467,30 @@ export default function Controls({ handleControls, isControls }) {
                     <div className={s.controls} ref={projectRef}>
                         <div className={s.controls__keyboard}>
                             <label htmlFor="keyboard">KEYBOARD : </label>
-                            <div className={s.controls__keyboard__input}>
-                                <input
-                                    type="radio"
-                                    name="keyboard"
-                                    id="qwerty"
-                                    value="qwerty"
-                                    checked={selectedKeyboard === "qwerty"}
-                                    onChange={() => setSelectedKeyboard("qwerty")}
-                                />
-                                <label htmlFor="qwerty">QWERTY</label>
-                            </div>
-                            <div className={s.controls__keyboard__input}>
-                                <input
-                                    type="radio"
-                                    name="keyboard"
-                                    id="azerty"
-                                    value="azerty"
-                                    checked={selectedKeyboard === "azerty"}
-                                    onChange={() => setSelectedKeyboard("azerty")}
-                                />
+                            <div className={s.controls__keyboard__ctn}>
+                                <div className={s.controls__keyboard__input}>
+                                    <input
+                                        type="radio"
+                                        name="keyboard"
+                                        id="qwerty"
+                                        value="qwerty"
+                                        checked={selectedKeyboard === "qwerty"}
+                                        onChange={() => setSelectedKeyboard("qwerty")}
+                                    />
+                                    <label htmlFor="qwerty">QWERTY</label>
+                                </div>
+                                <div className={s.controls__keyboard__input}>
+                                    <input
+                                        type="radio"
+                                        name="keyboard"
+                                        id="azerty"
+                                        value="azerty"
+                                        checked={selectedKeyboard === "azerty"}
+                                        onChange={() => setSelectedKeyboard("azerty")}
+                                    />
 
-                                <label htmlFor="azerty">AZERTY</label>
+                                    <label htmlFor="azerty">AZERTY</label>
+                                </div>
                             </div>
                         </div>
 
@@ -585,6 +587,7 @@ export default function Controls({ handleControls, isControls }) {
                                     </div>
                                 </div>
                                 <div className={s.controls__content__right__space}>
+                                    <span>Jump</span>
                                     <div className={s.controls__space}>
                                         <div className={s.controls__space__front} ref={keySpaceRef}>
                                             <span>SPACE</span>
