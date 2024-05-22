@@ -127,9 +127,9 @@ export default function Project({ item, closeProject, nextProject, index, curren
                                 {/* {item.github} || {item.askforsource} */}
                             </div>
                         </div>
-                        <div className={s.project__pic__title__ask}>
+                        {/* <div className={s.project__pic__title__ask}>
                             <p>Ask for source code</p>
-                        </div>
+                        </div> */}
                     </div>
                     <div className={s.project__close} onClick={() => closingGSAP()}>
                         <span>CLOSE</span>

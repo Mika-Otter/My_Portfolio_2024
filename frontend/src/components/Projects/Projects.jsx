@@ -118,7 +118,7 @@ export default function Projects({
             alt: "Platform Game",
             text: "While learning OOP in JS, I created a little platform game. I learned a lot thanks to Frank Laboratory on youtube. ",
             techno: "Javascript POO, canvas html element",
-            client: "Personnal",
+            client: "Personnal Prototype",
             type: "game",
         },
         {
@@ -190,7 +190,7 @@ export default function Projects({
         const parentElement = currentElement.parentElement;
         const randomLarge = Math.floor(Math.random() * 45) + 5;
         const randomTop = Math.floor(Math.random() * 44);
-        const randomWidth = Math.floor(Math.random() * 10) + 45;
+        const randomWidth = Math.floor(Math.random() * 10) + 30;
         const height = randomWidth / 0.9;
         // const randomHeight = Math.floor(Math.random() * 15) + 35;
 
@@ -210,6 +210,7 @@ export default function Projects({
                     height: "0%",
                     width: `${randomWidth}%`,
                     opacity: 1,
+                    zIndex: -1,
                 });
                 gsap.to(currentElement, {
                     height: `${height}%`,
@@ -259,7 +260,7 @@ export default function Projects({
             <section className={s.projects}>
                 <div className={s.projects__box__wrapper} ref={projectsWrapperRef}>
                     <div className={s.projects__box} ref={projectsRef}>
-                        <h2>All projects</h2>
+                        <h2>Latest works</h2>
                         {/* <div className={s.projects__box__title}><h2>Projects</h2> </div> */}
 
                         <div className={s.projects__box__content}>
