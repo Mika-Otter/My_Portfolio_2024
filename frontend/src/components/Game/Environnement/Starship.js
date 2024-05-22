@@ -95,8 +95,8 @@ export default class Starship {
 
         this.stars.update();
         if (this.position.y >= widthLimit && SPRITE_NAME === "LAUNCH") {
-            // this.position.y -= this.speedStarship;
-            // this.speedStarship += 0.02;
+            this.position.y -= this.speedStarship;
+            this.speedStarship += 0.02;
         } else if (this.position.y <= widthLimit) {
             setTimeout(() => {
                 this.flyingStars = true;

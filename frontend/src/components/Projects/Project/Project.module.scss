@@ -120,13 +120,21 @@
                 // margin-top: 5%;
                 position: relative;
                 width: 100%;
-                aspect-ratio: 1.97;
-                // object-fit: cover;
+                aspect-ratio: 1.9;
+                object-fit: cover;
                 overflow: hidden;
                 // border: 2px solid red;
                 display: flex;
                 justify-content: space-between;
                 gap: 15px;
+
+                &__alone {
+                    margin-top: 5%;
+                    width: 100%;
+                    height: 80%;
+                    aspect-ratio: 1.97;
+                    // border: 2px solid red;
+                }
             }
             &__ctn__two {
                 position: relative;

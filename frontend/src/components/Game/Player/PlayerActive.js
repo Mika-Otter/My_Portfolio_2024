@@ -76,9 +76,9 @@ export class ActivePlayer extends Player {
             this.cameraBox.y = this.starShip.position.y;
             this.cameraBox.height = 700;
             this.cameraBox.position.y = this.position.y - 300;
-            // if (camera.position.x > -440) {
-            //     camera.position.x -= 3;
-            // }
+            if (camera.position.x > -440) {
+                camera.position.x -= 3;
+            }
 
             if (
                 this.cameraBox.position.y <= Math.abs(camera.position.y) &&
@@ -178,9 +178,9 @@ export class ActivePlayer extends Player {
                 this.position.y + this.height >= starShip.position.y
             ) {
                 starShip.launching = true;
-                // this.position.x = starShip.position.x;
+                this.position.x = starShip.position.x;
                 this.position.y = starShip.position.y;
-                // this.cameraBox.y = starShip.position.y;
+                this.cameraBox.y = starShip.position.y;
                 this.gravity = 0;
                 this.sprite = "";
             }
