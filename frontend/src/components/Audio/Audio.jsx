@@ -80,6 +80,10 @@ export default function AudioPlayer({ activeSound }) {
         };
     }, [playingAudio]);
 
+    useEffect(() => {
+        audioPlayerRef.current.volume = 0.2;
+    }, []);
+
     return (
         <>
             <div className={s.audioplayer}>
