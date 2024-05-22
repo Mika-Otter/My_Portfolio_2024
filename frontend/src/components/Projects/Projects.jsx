@@ -188,10 +188,10 @@ export default function Projects({
         const currentElement = viewRefs.current[currentIndex].current;
         const lastElement = viewRefs.current[lastIndex].current;
         const parentElement = currentElement.parentElement;
-        const randomLarge = Math.floor(Math.random() * 45) + 5;
+        const randomLarge = Math.floor(Math.random() * 20) + 3;
         const randomTop = Math.floor(Math.random() * 44);
         const randomWidth = Math.floor(Math.random() * 10) + 30;
-        const height = randomWidth / 0.9;
+        const height = randomWidth / 0.6;
         // const randomHeight = Math.floor(Math.random() * 15) + 35;
 
         // console.log(currentElement);
@@ -282,7 +282,7 @@ export default function Projects({
                                 </div>
                             </div>
                             <div className={s.projects__box__content__games}>
-                                {items.map((item, index) =>
+                                {/* {items.map((item, index) =>
                                     item.type === "game" ? (
                                         <li
                                             key={index}
@@ -314,47 +314,43 @@ export default function Projects({
                                             </span>
                                         </li>
                                     ) : null
-                                )}
+                                )} */}
                             </div>
                             <div className={s.projects__box__content__text}>
                                 <div className={s.projects__box__content__text__banner}></div>
                                 <div className={s.projects__box__content__text__projects}>
                                     <ul>
-                                        {items.map((item, index) =>
-                                            item.type === "website" ? (
-                                                <li
-                                                    key={index}
+                                        {items.map((item, index) => (
+                                            <li
+                                                key={index}
+                                                className={index === currentIndex ? s.liHover : ""}
+                                                onMouseEnter={(e) => handleMouseEnter(e, index)}
+                                                onMouseLeave={(e) => handleMouseLeave(e, index)}
+                                                onClick={() => openProject()}
+                                            >
+                                                <div
                                                     className={
-                                                        index === currentIndex ? s.liHover : ""
+                                                        s.projects__box__content__text__projects__project
                                                     }
-                                                    onMouseEnter={(e) => handleMouseEnter(e, index)}
-                                                    onMouseLeave={(e) => handleMouseLeave(e, index)}
-                                                    onClick={() => openProject()}
                                                 >
-                                                    <div
-                                                        className={
-                                                            s.projects__box__content__text__projects__project
-                                                        }
-                                                    >
-                                                        {item.title}
-                                                        <span
-                                                            className={
-                                                                s.projects__box__content__text__projects__project__text
-                                                            }
-                                                        >
-                                                            {item.smalltext}
-                                                        </span>
-                                                    </div>
+                                                    {item.title}
                                                     <span
                                                         className={
-                                                            s.projects__box__content__text__projects__project__year
+                                                            s.projects__box__content__text__projects__project__text
                                                         }
                                                     >
-                                                        {item.year}
+                                                        {item.smalltext}
                                                     </span>
-                                                </li>
-                                            ) : null
-                                        )}
+                                                </div>
+                                                <span
+                                                    className={
+                                                        s.projects__box__content__text__projects__project__year
+                                                    }
+                                                >
+                                                    {item.year}
+                                                </span>
+                                            </li>
+                                        ))}
                                     </ul>
                                 </div>
                             </div>

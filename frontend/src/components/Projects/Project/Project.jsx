@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import { CrossSVG } from "../../SVG/CrossSVG";
 import { ArrowSVG } from "../../SVG/ArrowSVG";
 import Video from "../../Video/Video";
+import ArrowLiveSVG from "../../SVG/ArrowLiveSVG";
 
 export default function Project({ item, closeProject, nextProject, index, currentIndex }) {
     const projectWrapperRef = useRef();
@@ -17,7 +18,7 @@ export default function Project({ item, closeProject, nextProject, index, curren
         timelineRef.current = gsap
             .timeline({ paused: true })
             .to(projectWrapperRef.current, { height: "2%", width: "100%", duration: 0.2 })
-            .to(projectWrapperRef.current, { height: "100%", duration: 0.6 })
+            .to(projectWrapperRef.current, { height: "95%", duration: 0.6 })
             .to(projectRef.current, { opacity: 1 });
 
         if (!closing) {
@@ -101,7 +102,12 @@ export default function Project({ item, closeProject, nextProject, index, curren
                         </div>
                         <div className={s.project__pic__title}>
                             <h2>{item.title}</h2>
-                            <span>Live Site </span>
+                            <span>
+                                Live Site{" "}
+                                <div className={s.project__pic__title__svg}>
+                                    <ArrowLiveSVG />
+                                </div>
+                            </span>
                         </div>
                     </div>
 

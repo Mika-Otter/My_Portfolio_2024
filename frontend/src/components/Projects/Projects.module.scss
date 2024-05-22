@@ -10,13 +10,19 @@
 
     &__box__wrapper {
         width: 89%;
-        aspect-ratio: 2.29;
+        aspect-ratio: 2.49;
         position: relative;
         margin-top: -3.5%;
         overflow: hidden;
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
-        background-color: rgb(230, 228, 228, 0.835); // rgb(230, 228, 228, 0.835)
+        background-color: rgba(
+            240,
+            234,
+            234,
+            0.835
+        ); //rgb(230, 228, 228, 0.835); // rgb(230, 228, 228, 0.835)
+        background-color: rgba(241, 239, 239, 0.83);
     }
 
     &__box {
@@ -90,7 +96,7 @@
                 height: 110%;
                 top: -5%;
 
-                position: absolute;
+                // position: absolute;
                 // border: 2px solid purple;
                 &__ctn {
                     // border: 2px solid green;
@@ -135,7 +141,7 @@
                         margin: 0;
                         padding-top: 1rem;
 
-                        width: 35%;
+                        width: 75%;
                         margin-top: 5%;
                         margin-right: 5%;
                     }
