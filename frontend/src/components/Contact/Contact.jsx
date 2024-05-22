@@ -1,82 +1,40 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import s from "./Contact.module.scss";
 import cn from "classnames";
 import { CrossSVG } from "../SVG/CrossSVG";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import axios from "axios";
+import useForm from "../../hooks/useForm";
+import useContactAnimation from "../../hooks/useContactAnimation";
+
+const initialState = {
+    name: "",
+    email: "",
+    company: "",
+    need: "",
+    description: "",
+    budget: "SELECT ONE",
+    timeline: "",
+    findMe: "",
+    favorite: "",
+};
 
 export default function Contact({ handleContact, contact }) {
-    const selectRef = useRef();
-    const tlContact = useRef();
     const contactRef = useRef();
+    const selectRef = useRef();
     const [selecting, setSelecting] = useState(false);
-    const [choice, setChoice] = useState("SELECT ONE");
 
-    const sendFormData = async (formData) => {
-        try {
-            const response = await axios.post("/api/send-email", formData);
-            console.log(response.data);
-            alert("Email envoyé avec succès !");
-        } catch (error) {
-            console.error("Erreur lors de l'envoi de l'email:", error);
-            alert("Erreur lors de l'envoi de l'email. Veuillez réessayer plus tard.");
-        }
-    };
+    const { formData, handleChange, handleSelect, handleSubmit } = useForm(
+        initialState,
+        "/api/send-email"
+    );
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const formData = {
-            name: e.target.name.value,
-            email: e.target.email.value,
-            company: e.target.company.value,
-            need: e.target.need.value,
-            description: e.target.description.value,
-            budget: choice, // Utilisez la variable "choice" mise à jour par la fonction handleSelect
-            timeline: e.target.timeline.value,
-            findMe: e.target.findMe.value,
-            favorite: e.target.favorite.value,
-        };
-        sendFormData(formData);
-    };
-
-    const handleSelect = (choice) => {
-        if (choice !== "SELECT ONE") {
-            setChoice(choice);
-        }
-        setSelecting((prev) => !prev);
-    };
-
-    useGSAP(() => {
-        tlContact.current = gsap.timeline({ paused: true, ease: "power3.out" });
-        const { width } = contactRef.current.getBoundingClientRect();
-        tlContact.current.to(contactRef.current, {
-            x: `-${width}`,
-            xPercent: -1,
-            duration: 3,
-        });
-    }, []);
-
-    useEffect(() => {
-        const animation = contact
-            ? tlContact.current.timeScale(5).play()
-            : tlContact.current.timeScale(4).reverse();
-
-        return () => {
-            animation.kill();
-        };
-    }, [contact]);
-
-    useEffect(() => {
-        console.log(contact);
-    }, [contact]);
+    useContactAnimation(contactRef, contact);
 
     return (
         <>
             <div className={s.wrapper} ref={contactRef}>
                 <div className={s.wrapper__fade}></div>
                 <div className={s.contact}>
-                    <div className={s.contact__close} onClick={() => handleContact()}>
+                    <div className={s.contact__close} onClick={handleContact}>
                         <div className={s.contact__close__svg}>
                             <CrossSVG />
                         </div>
@@ -89,16 +47,34 @@ export default function Contact({ handleContact, contact }) {
                         <div className={s.contact__form__firstLine}>
                             <div className={s.contact__form__firstLine__name}>
                                 <label htmlFor="name">Your Name *</label>
-                                <input type="text" name="name" placeholder="TYPE HERE" />
+                                <input
+                                    type="text"
+                                    name="name"
+                                    placeholder="TYPE HERE"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                />
                             </div>
                             <div className={s.contact__form__firstLine__email}>
                                 <label htmlFor="email">YOUR EMAIL *</label>
-                                <input type="email" name="email" placeholder="TYPE HERE" />
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="TYPE HERE"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                />
                             </div>
                         </div>
                         <div className={s.contact__form__company}>
                             <label htmlFor="company">COMPANY NAME *</label>
-                            <input type="text" name="company" placeholder="TYPE HERE" />
+                            <input
+                                type="text"
+                                name="company"
+                                placeholder="TYPE HERE"
+                                value={formData.company}
+                                onChange={handleChange}
+                            />
                         </div>
                         <div className={s.contact__form__need}>
                             <label htmlFor="need">NEED *</label>
@@ -108,6 +84,7 @@ export default function Contact({ handleContact, contact }) {
                                     name="need"
                                     id="design-develop"
                                     value="design-develop"
+                                    onChange={handleChange}
                                 />
                                 <label htmlFor="design-develop">
                                     I DESIGN <br /> & DEVELOP
@@ -117,6 +94,7 @@ export default function Contact({ handleContact, contact }) {
                                     name="need"
                                     id="develop-only"
                                     value="develop-only"
+                                    onChange={handleChange}
                                 />
                                 <label htmlFor="develop-only">
                                     YOU DESIGN <br /> I DEVELOP
@@ -127,8 +105,8 @@ export default function Contact({ handleContact, contact }) {
                                     name="need"
                                     id="design-only"
                                     value="design-only"
+                                    onChange={handleChange}
                                 />
-
                                 <label htmlFor="design-only">
                                     I DESIGN <br /> YOU DEVELOP
                                 </label>
@@ -139,7 +117,9 @@ export default function Contact({ handleContact, contact }) {
                             <textarea
                                 name="description"
                                 placeholder="Details about your project..."
-                            ></textarea>{" "}
+                                value={formData.description}
+                                onChange={handleChange}
+                            ></textarea>
                         </div>
                         <div className={s.contact__form__lastLine}>
                             <div className={s.contact__form__lastLine__budget}>
@@ -147,14 +127,15 @@ export default function Contact({ handleContact, contact }) {
                                 <input
                                     type="text"
                                     className={s.contact__form__lastLine__budget__hideInput}
-                                    value={choice}
+                                    value={formData.budget}
+                                    readOnly
                                 />
                                 <div className={s.contact__form__lastLine__budget__button}>
                                     <button
                                         type="button"
-                                        onClick={() => handleSelect("SELECT ONE")}
+                                        onClick={() => setSelecting((prev) => !prev)}
                                     >
-                                        {choice}
+                                        {formData.budget}
                                     </button>
                                     <span
                                         className={
@@ -166,22 +147,29 @@ export default function Contact({ handleContact, contact }) {
                                         ▴
                                     </span>
                                 </div>
-
                                 {selecting && (
                                     <div
                                         ref={selectRef}
                                         className={s.contact__form__lastLine__budget__select}
                                     >
-                                        <span onClick={(e) => handleSelect(e.target.innerText)}>
+                                        <span
+                                            onClick={() => handleSelect("budget", "LESS THAN $3K")}
+                                        >
                                             LESS THAN $3K
                                         </span>
-                                        <span onClick={(e) => handleSelect(e.target.innerText)}>
+                                        <span
+                                            onClick={() => handleSelect("budget", "MORE THAN $3K")}
+                                        >
                                             MORE THAN $3K
                                         </span>
-                                        <span onClick={(e) => handleSelect(e.target.innerText)}>
+                                        <span
+                                            onClick={() => handleSelect("budget", "MORE THAN $5K")}
+                                        >
                                             MORE THAN $5K
                                         </span>
-                                        <span onClick={(e) => handleSelect(e.target.innerText)}>
+                                        <span
+                                            onClick={() => handleSelect("budget", "MORE THAN $7K")}
+                                        >
                                             MORE THAN $7K
                                         </span>
                                     </div>
@@ -190,7 +178,13 @@ export default function Contact({ handleContact, contact }) {
                             <div className={s.contact__form__lastLine__timeline}>
                                 <label htmlFor="timeline">TIMELINE EXPECTATIONS *</label>
                                 <div className={s.contact__form__lastLine__timeline__input}>
-                                    <input name="timeline" type="text" placeholder="TYPE HERE" />
+                                    <input
+                                        name="timeline"
+                                        type="text"
+                                        placeholder="TYPE HERE"
+                                        value={formData.timeline}
+                                        onChange={handleChange}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -202,6 +196,8 @@ export default function Contact({ handleContact, contact }) {
                                     id="findMe"
                                     type="text"
                                     placeholder="TYPE HERE"
+                                    value={formData.findMe}
+                                    onChange={handleChange}
                                 />
                             </div>
                             <div className={s.contact__form__bonus__favorite}>
@@ -211,6 +207,8 @@ export default function Contact({ handleContact, contact }) {
                                     id="favorite"
                                     type="text"
                                     placeholder="TYPE HERE"
+                                    value={formData.favorite}
+                                    onChange={handleChange}
                                 />
                             </div>
                         </div>
