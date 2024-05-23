@@ -151,7 +151,8 @@ export default function CanvasTest({
                 });
                 if (RoomLevel === 1) {
                     water.draw(ctx, canvas);
-                    cloud.draw(ctx, canvas);
+                    cloud.draw(ctx);
+                    // cloud.update();
                 }
 
                 ctx.restore();
