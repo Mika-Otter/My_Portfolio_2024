@@ -71,7 +71,7 @@ export default function App() {
         setIsDialog(true);
         setTimeout(() => {
             setIsDialog(false);
-        }, 6500);
+        }, 8500);
     };
 
     const handleControls = () => {
