@@ -8,7 +8,7 @@ import Secret from "./Secrets";
 import Clouds from "../components/Game/Environnement/Cloud";
 
 export class Game {
-    constructor({ canvas, keysTab, lastKeysTab, toExp, RoomLevel, changeRoom }) {
+    constructor({ canvas, keysTab, lastKeysTab, toExp, RoomLevel, changeRoom, handleIsDialog }) {
         this.canvas = canvas;
         this.keysTab = keysTab;
         this.lastKeysTab = lastKeysTab;
@@ -29,6 +29,7 @@ export class Game {
         this.player;
         this.starShip;
         this.secrets;
+        this.handleIsDialog = handleIsDialog;
     }
 
     initialize() {
@@ -76,21 +77,6 @@ export class Game {
                         aspectRatio: 70 / 180,
                     });
                     this.cloud = new Clouds("./src/assets/img/cloud.png", this.scale);
-                    // this.cloud = new Cloud({
-                    //     position: { x: 1500 * this.scale, y: -30 * this.scale },
-                    //     imageSrc: "./src/assets/img/cloud.png",
-                    //     scale: this.scale,
-                    //     speed: 0.5,
-                    // });
-                    // this.cloud = new Background({
-                    //     position: { x: 0, y: 5 },
-                    //     imageSrc: "./src/assets/img/cloud.png",
-                    //     canvas,
-                    //     // scale: this.scale,
-                    //     originalWidth: 70 * 32,
-                    //     width: canvas.width,
-                    //     aspectRatio: 70 / 180,
-                    // });
                     // Parse collisions for level 1
                     this.collisionBlocksList = parseCollisions(this.background);
                     this.currentCollisionLevel = this.collisionBlocksList[this.i];
@@ -136,6 +122,7 @@ export class Game {
                         toExp: this.toExp,
                         scale: this.scale,
                         secrets: this.secrets,
+                        handleIsDialog: this.handleIsDialog,
                     });
                 },
             },

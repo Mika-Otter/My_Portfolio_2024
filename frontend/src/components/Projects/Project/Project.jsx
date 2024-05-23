@@ -17,8 +17,13 @@ export default function Project({ item, closeProject, nextProject, index, curren
     useGSAP(() => {
         timelineRef.current = gsap
             .timeline({ paused: true })
-            .to(projectWrapperRef.current, { height: "2%", width: "100%", duration: 0.2 })
-            .to(projectWrapperRef.current, { height: "95%", duration: 0.6 })
+            .to(projectWrapperRef.current, { height: "2%", width: "100%", duration: 0.5 })
+            .to(projectWrapperRef.current, {
+                y: {},
+                height: "95%",
+                duration: 0.6,
+                delay: 0.2,
+            })
             .to(projectRef.current, { opacity: 1 });
 
         if (!closing) {

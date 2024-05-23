@@ -16,6 +16,7 @@ export default function useAppState() {
     const [firstControls, setFirstControls] = useState(true);
     const [isControls, setIsControls] = useState(false);
     const [isOpenProject, setIsOpenProject] = useState(false);
+    const [isDialog, setIsDialog] = useState(false);
 
     return {
         mapRow,
@@ -48,5 +49,7 @@ export default function useAppState() {
         setIsControls,
         isOpenProject,
         setIsOpenProject,
+        isDialog,
+        setIsDialog,
     };
 }

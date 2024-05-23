@@ -57,7 +57,6 @@ export class Cloud {
 
     update() {
         this.position.x -= this.speed;
-        console.log(this.position.x + this.width);
         // Optionnel: Réinitialiser la position si le nuage sort de l'écran
         if (this.position.x + this.width < 0) {
             this.position.x = window.innerWidth + 100;

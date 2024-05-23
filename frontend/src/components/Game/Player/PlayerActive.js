@@ -13,6 +13,7 @@ export class ActivePlayer extends Player {
         toExp,
         starShip,
         secrets,
+        handleIsDialog,
     }) {
         super({ collisionBlocks, background });
         this.canvas = canvas;
@@ -28,6 +29,7 @@ export class ActivePlayer extends Player {
         this.starShip = starShip;
         this.secrets = secrets;
         this.lastUpdateTime = performance.now();
+        this.handleIsDialog = () => handleIsDialog();
     }
 
     setTitle(title) {
@@ -204,7 +206,7 @@ export class ActivePlayer extends Player {
                     this.position.y <= secret.position.y + secret.renderHeight &&
                     this.position.y + this.height >= secret.position.y
                 ) {
-                    console.log("Okeeeey");
+                    this.handleIsDialog();
                 }
             });
         }

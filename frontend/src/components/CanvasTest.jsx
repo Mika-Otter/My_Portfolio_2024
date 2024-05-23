@@ -19,6 +19,7 @@ export default function CanvasTest({
     contact,
     isMenu,
     isOpenProject,
+    handleIsDialog,
 }) {
     const canvasRef = useRef(null);
     const backgroundHeight = useBackgroundHeight();
@@ -96,7 +97,15 @@ export default function CanvasTest({
             canvas.height = window.innerHeight;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            game = new Game({ canvas, keysTab, lastKeysTab, toExp, RoomLevel, changeRoom });
+            game = new Game({
+                canvas,
+                keysTab,
+                lastKeysTab,
+                toExp,
+                RoomLevel,
+                changeRoom,
+                handleIsDialog,
+            });
             game.initialize();
             const {
                 player,

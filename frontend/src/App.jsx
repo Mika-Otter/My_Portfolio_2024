@@ -17,6 +17,7 @@ import Controls from "./components/Controls/Controls";
 import useAppState from "./hooks/useAppState";
 import useAppTransition from "./hooks/useAppTransition";
 import useResize from "./hooks/useResize";
+import Dialog from "./components/Game/Dialog/Dialog";
 
 export default function App() {
     const {
@@ -50,6 +51,8 @@ export default function App() {
         setIsControls,
         isOpenProject,
         setIsOpenProject,
+        isDialog,
+        setIsDialog,
     } = useAppState();
 
     const {
@@ -63,6 +66,13 @@ export default function App() {
     } = useAppTransition();
 
     useResize(setWindowWidth, setIsLoading);
+
+    const handleIsDialog = () => {
+        setIsDialog(true);
+        setTimeout(() => {
+            setIsDialog(false);
+        }, 6500);
+    };
 
     const handleControls = () => {
         setIsControls((prev) => !prev);
@@ -150,6 +160,14 @@ export default function App() {
         console.log("hello", backgroundHeight);
     }, [backgroundHeight]);
 
+    useEffect(() => {
+        console.log("Initial isDialog:", isDialog);
+    }, []);
+
+    useEffect(() => {
+        console.log("Render isDialog:", isDialog);
+    }, [isDialog]);
+
     return (
         <>
             <div className="test"></div>
@@ -185,6 +203,7 @@ export default function App() {
                 activePlay={activePlay}
             />
             <Contact handleContact={handleContact} contact={contact} />
+            <Dialog text="yoooo" isDialog={isDialog} />
             <BackgroundHeightProvider>
                 <BigBox backgroundheight={backgroundHeight}>
                     {RoomLevel === 1 ? (
@@ -210,6 +229,7 @@ export default function App() {
                             contact={contact}
                             isMenu={isMenu}
                             isOpenProject={isOpenProject}
+                            handleIsDialog={handleIsDialog}
                         />
                     </div>
 
