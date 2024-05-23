@@ -53,6 +53,8 @@ export default function App() {
         setIsOpenProject,
         isDialog,
         setIsDialog,
+        secretText,
+        setSecretText,
     } = useAppState();
 
     const {
@@ -66,6 +68,13 @@ export default function App() {
     } = useAppTransition();
 
     useResize(setWindowWidth, setIsLoading);
+
+    const activeCatSecret = () => {
+        setSecretText("cat");
+    };
+    const activeRobotSecret = () => {
+        setSecretText("robot");
+    };
 
     const handleIsDialog = () => {
         setIsDialog(true);
@@ -203,7 +212,7 @@ export default function App() {
                 activePlay={activePlay}
             />
             <Contact handleContact={handleContact} contact={contact} />
-            <Dialog text="yoooo" isDialog={isDialog} />
+            <Dialog text="yoooo" isDialog={isDialog} secretText={secretText} />
             <BackgroundHeightProvider>
                 <BigBox backgroundheight={backgroundHeight}>
                     {RoomLevel === 1 ? (
@@ -230,6 +239,8 @@ export default function App() {
                             isMenu={isMenu}
                             isOpenProject={isOpenProject}
                             handleIsDialog={handleIsDialog}
+                            activeCatSecret={activeCatSecret}
+                            activeRobotSecret={activeRobotSecret}
                         />
                     </div>
 

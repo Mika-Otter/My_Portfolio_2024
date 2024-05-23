@@ -5,22 +5,20 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin();
 
-export default function Dialog({ text, isDialog }) {
+export default function Dialog({ text, isDialog, secretText }) {
     const dialogRef = useRef(null);
     const timelineDialogRef = useRef(gsap.timeline({ paused: true }));
     const textRef = useRef(null);
-    const [secretText, setSecretText] = useState("");
-
-    const activeCatSecret = () => {};
 
     let speeds = {
         longpause: 900,
         pause: 800,
-        slow: 120,
+        slow: 250,
+        middle: 150,
         normal: 70,
         fast: 40,
     };
-    let textlines = [
+    let CatTextlines = [
         { string: "The music is made by", speed: speeds.normal },
         { string: ".", speed: speeds.slow },
         { string: ".", speed: speeds.slow },
@@ -29,11 +27,19 @@ export default function Dialog({ text, isDialog }) {
         { string: "!", speed: speeds.longpause },
         { string: "@lechatnoir_music", speed: speeds.normal },
     ];
+    let RobotTextlines = [
+        { string: "01001100 ", speed: speeds.normal },
+        { string: "01001111 ", speed: speeds.slow },
+        { string: "01010110", speed: speeds.fast },
+        { string: " ", speed: speeds.pause },
+        { string: "01000101 ", speed: speeds.fast },
+        { string: ". . . ", speed: speeds.pause },
+    ];
 
     let characters = [];
-    function textReveal() {
-        textlines.forEach((line, index) => {
-            if (index < textlines.length - 1) {
+    function textReveal(list) {
+        list.forEach((line, index) => {
+            if (index < list.length - 1) {
                 line.string += " ";
             }
             line.string.split("").forEach((character) => {
@@ -50,15 +56,15 @@ export default function Dialog({ text, isDialog }) {
         });
     }
 
-    function revealOneCharacter(list) {
-        let next = list.splice(0, 1)[0];
+    function revealOneCharacter(characters) {
+        let next = characters.splice(0, 1)[0];
         next.span.classList.add(s.revealed);
 
         let delay = next.isSpace ? 0 : next.delay;
 
-        if (list.length > 0) {
+        if (characters.length > 0) {
             setTimeout(() => {
-                revealOneCharacter(list);
+                revealOneCharacter(characters);
             }, delay);
         }
     }
@@ -76,13 +82,18 @@ export default function Dialog({ text, isDialog }) {
         if (isDialog) {
             timelineDialogRef.current.play();
             setTimeout(() => {
-                textReveal();
+                if (secretText === "cat") {
+                    textReveal(CatTextlines);
+                } else if (secretText === "robot") {
+                    textReveal(RobotTextlines);
+                }
                 revealOneCharacter(characters);
             }, 1500);
         } else {
             timelineDialogRef.current.reverse();
             setTimeout(() => {
                 textRef.current.innerHTML = "";
+                characters = [];
             }, 500);
         }
     }, [isDialog]);

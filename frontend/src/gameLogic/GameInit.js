@@ -8,7 +8,17 @@ import Secret from "./Secrets";
 import Clouds from "../components/Game/Environnement/Cloud";
 
 export class Game {
-    constructor({ canvas, keysTab, lastKeysTab, toExp, RoomLevel, changeRoom, handleIsDialog }) {
+    constructor({
+        canvas,
+        keysTab,
+        lastKeysTab,
+        toExp,
+        RoomLevel,
+        changeRoom,
+        handleIsDialog,
+        activeCatSecret,
+        activeRobotSecret,
+    }) {
         this.canvas = canvas;
         this.keysTab = keysTab;
         this.lastKeysTab = lastKeysTab;
@@ -30,6 +40,8 @@ export class Game {
         this.starShip;
         this.secrets;
         this.handleIsDialog = handleIsDialog;
+        this.activeCatSecret = activeCatSecret;
+        this.activeRobotSecret = activeRobotSecret;
     }
 
     initialize() {
@@ -123,6 +135,8 @@ export class Game {
                         scale: this.scale,
                         secrets: this.secrets,
                         handleIsDialog: this.handleIsDialog,
+                        activeCatSecret: this.activeCatSecret,
+                        activeRobotSecret: this.activeRobotSecret,
                     });
                 },
             },

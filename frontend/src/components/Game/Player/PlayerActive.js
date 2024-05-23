@@ -14,6 +14,8 @@ export class ActivePlayer extends Player {
         starShip,
         secrets,
         handleIsDialog,
+        activeCatSecret,
+        activeRobotSecret,
     }) {
         super({ collisionBlocks, background });
         this.canvas = canvas;
@@ -30,6 +32,9 @@ export class ActivePlayer extends Player {
         this.secrets = secrets;
         this.lastUpdateTime = performance.now();
         this.handleIsDialog = () => handleIsDialog();
+        this.activeCatSecret = () => activeCatSecret();
+        this.activeRobotSecret = () => activeRobotSecret();
+        this.isDialoging = false;
     }
 
     setTitle(title) {
@@ -197,16 +202,32 @@ export class ActivePlayer extends Player {
         return this;
     }
 
+    isDialogingActive() {
+        this.isDialoging = true;
+        setTimeout(() => {
+            this.isDialoging = false;
+        }, 9000);
+    }
+
     activeSecrets() {
         if (this.secrets) {
-            this.secrets.forEach((secret) => {
+            this.secrets.forEach((secret, index) => {
                 if (
                     this.position.x + this.width <= secret.position.x + secret.renderWidth + 50 &&
                     this.position.x >= secret.position.x - 50 &&
                     this.position.y <= secret.position.y + secret.renderHeight &&
                     this.position.y + this.height >= secret.position.y
                 ) {
+                    if (index === 0) return;
+                    if (this.isDialoging) return;
                     this.handleIsDialog();
+                    this.isDialogingActive();
+
+                    if (index === 1) {
+                        this.activeCatSecret();
+                    } else if (index === 2) {
+                        this.activeRobotSecret();
+                    }
                 }
             });
         }

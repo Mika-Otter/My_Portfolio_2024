@@ -14,12 +14,12 @@ export default function CanvasTest({
     handleGoToHome,
     goToHome,
     changeRoomOne,
-    playMode,
-    viewMode,
     contact,
     isMenu,
     isOpenProject,
     handleIsDialog,
+    activeCatSecret,
+    activeRobotSecret,
 }) {
     const canvasRef = useRef(null);
     const backgroundHeight = useBackgroundHeight();
@@ -105,6 +105,8 @@ export default function CanvasTest({
                 RoomLevel,
                 changeRoom,
                 handleIsDialog,
+                activeCatSecret,
+                activeRobotSecret,
             });
             game.initialize();
             const {
