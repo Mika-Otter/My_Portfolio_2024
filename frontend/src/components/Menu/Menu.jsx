@@ -56,7 +56,6 @@ export default function Menu({
             <div className={s.menu} ref={menuRef}>
                 <div className={s.menu__close} onClick={() => handleMenu()}>
                     <div className={s.menu__close__cross}>
-                        {" "}
                         <CrossSVG />
                     </div>
                     CLOSE
@@ -64,7 +63,13 @@ export default function Menu({
 
                 <div className={s.menu__item}>
                     <div className={s.menu__item__wrapper}>
-                        <div className={cn(s.menu__item__span)} onClick={() => handleGoToHome()}>
+                        <div
+                            className={cn(s.menu__item__span)}
+                            onClick={() => {
+                                handleGoToHome();
+                                handleMenu();
+                            }}
+                        >
                             <span>HOME</span>
                             <span>HOME</span>
                         </div>

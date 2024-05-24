@@ -5,7 +5,6 @@ export class ActivePlayer extends Player {
     constructor({
         collisionBlocks,
         background,
-        doors,
         canvas,
         collisionBlocksList,
         keysTab,
@@ -28,7 +27,6 @@ export class ActivePlayer extends Player {
         this.moving = false;
         this.collisionBlocksList = collisionBlocksList;
         this.level = mapRow;
-        this.doors = doors;
         this.mapRow = mapRow;
         this.toExp = toExp;
         this.isJumping = false;
@@ -118,9 +116,7 @@ export class ActivePlayer extends Player {
         if (this.velocity.y !== 0) {
             this.isJumping = true;
         }
-        if (this.toExp && !this.isJumping) {
-            this.enterInDoor();
-        }
+
         return this;
     }
 
@@ -162,22 +158,6 @@ export class ActivePlayer extends Player {
         if (this.position.y < this.collisionBlocks[0].position.y && this.mapRow.row > 0) {
             this.mapRow.row--;
             this.collisionBlocks = this.collisionBlocksList[this.mapRow.row];
-        }
-        return this;
-    }
-
-    enterInDoor() {
-        for (const door of this.doors) {
-            if (
-                (this.position.x + this.width <= door.position.x + door.width &&
-                    this.position.x - 3 >= door.position.x &&
-                    this.position.y <= door.position.y + door.height &&
-                    this.position.y + this.height >= door.position.y) ||
-                this.toExp
-            ) {
-                this.preventInput = true;
-                door.play();
-            }
         }
         return this;
     }

@@ -7,11 +7,9 @@ import Projects from "./components/Projects/Projects";
 import Navbar from "./components/Navbar/Navbar";
 import Logo from "./components/Logo/Logo";
 import PlayView from "./components/PlayView/PlayView";
-import AudioPlayer from "./components/Audio/Audio";
 import Wind from "./components/Game/Environnement/Wind/Wind";
 import Loader from "./components/Loader/Loader";
 import Menu from "./components/Menu/Menu";
-import CanvasTest from "./components/CanvasTest";
 import Contact from "./components/Contact/Contact";
 import Controls from "./components/Controls/Controls";
 import useAppState from "./hooks/useAppState";
@@ -19,6 +17,7 @@ import useAppTransition from "./hooks/useAppTransition";
 import useResize from "./hooks/useResize";
 import Dialog from "./components/Game/Dialog/Dialog";
 import MushroomEffect from "./components/MushroomEffect/MushroomEffect";
+import Canvas from "./components/Canvas";
 
 export default function App() {
     const testRef = useRef(null);
@@ -235,7 +234,7 @@ export default function App() {
                     ) : null}
 
                     <div className="canvas">
-                        <CanvasTest
+                        <Canvas
                             mapRow={mapRow}
                             setMapRow={setMapRow}
                             isPlayed={isPlayed}

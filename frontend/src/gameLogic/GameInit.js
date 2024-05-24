@@ -1,5 +1,4 @@
 import { parseCollisions, changeLevel } from "./CollisionLevel";
-import { Door } from "../components/Game/Environnement/Door";
 import { ActivePlayer } from "../components/Game/Player/PlayerActive";
 import Background from "../components/Game/Environnement/Background";
 import Cloud from "../components/Game/Environnement/Cloud";
@@ -30,7 +29,6 @@ export class Game {
         this.changeRoom = changeRoom;
         this.mapRow = { row: 0, precedentRow: 0 };
         this.background;
-        this.doors;
         this.clouds;
         this.scale;
         this.overlay = { opacity: 0 };
@@ -72,20 +70,6 @@ export class Game {
                         aspectRatio: 70 / 180,
                     });
                     this.scale = this.background.width / this.background.originalWidth;
-                    this.doors = [
-                        new Door({
-                            position: { x: 2506 * this.scale, y: 8900 * this.scale },
-                            imageSrc: "./src/assets/sprite-door/doorOpen.png",
-                            frameRate: 5,
-                            loop: false,
-                            autoplay: false,
-                            overlay: this.overlay,
-                            changeRoom: this.changeRoom,
-                            originalWidth: 70 * 32,
-                            width: 3000,
-                            aspectRatio: 70 / 180,
-                        }),
-                    ];
                     this.water = new Background({
                         position: { x: 0, y: 5 },
                         imageSrc: "./src/assets/img/water.png",
@@ -130,7 +114,6 @@ export class Game {
                     this.player = new ActivePlayer({
                         collisionBlocks: this.currentCollisionLevel,
                         background: this.background,
-                        doors: this.doors,
                         canvas: this.canvas,
                         collisionBlocksList: this.collisionBlocksList,
                         keysTab: this.keysTab,
@@ -159,18 +142,6 @@ export class Game {
                         aspectRatio: 3200 / 3586,
                     });
                     this.scale = this.background.width / this.background.originalWidth;
-                    this.doors = [
-                        new Door({
-                            position: { x: 2506 * this.scale, y: 8900 * this.scale },
-                            imageSrc: "./src/assets/sprite-door/doorOpen.png",
-                            frameRate: 5,
-                            loop: false,
-                            autoplay: false,
-                            overlay: this.overlay,
-                            changeRoom: this.changeRoom,
-                        }),
-                    ];
-
                     this.starShip = new Starship({
                         position: { x: 600, y: 1200 },
                         autoplay: false,
@@ -182,7 +153,6 @@ export class Game {
                     this.player = new ActivePlayer({
                         collisionBlocks: this.currentCollisionLevel,
                         background: this.background,
-                        doors: this.doors,
                         canvas: this.canvas,
                         collisionBlocksList: this.collisionBlocksList,
                         keysTab: this.keysTab,
@@ -214,7 +184,6 @@ export class Game {
         return {
             player: this.player,
             camera: this.camera,
-            doors: this.doors,
             background: this.background,
             currentCollisionLevel: this.currentCollisionLevel,
             collisionBlocksList: this.collisionBlocksList,
@@ -233,7 +202,6 @@ export class Game {
             water: this.water,
             cloud: this.cloud,
             currentCollisionLevel: this.currentCollisionLevel,
-            doors: this.doors,
             overlay: this.overlay,
             starShip: this.starShip,
             secrets: this.secrets,
