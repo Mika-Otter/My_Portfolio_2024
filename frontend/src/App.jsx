@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./assets/styles/global.scss";
 import Title from "./components/Title/Title";
 import { BackgroundHeightProvider, useBackgroundHeight } from "./context/BackgroundHeightContext";
@@ -58,6 +58,16 @@ export default function App() {
         secretText,
         setSecretText,
     } = useAppState();
+
+    const [isEatMushroom, setIsEatMushroom] = useState(false);
+
+    const eatingMushroomEffect = () => {
+        setIsEatMushroom(true);
+
+        setTimeout(() => {
+            setIsEatMushroom(false);
+        }, 15000);
+    };
 
     const {
         overlayRef,
@@ -182,7 +192,7 @@ export default function App() {
     return (
         <>
             <div className="test" ref={testRef}>
-                <MushroomEffect />
+                <MushroomEffect isEatMushroom={isEatMushroom} />
             </div>
             <div className="overlay" ref={overlayRef}>
                 <div className="overlay-div" ref={overlayOneRef}></div>
@@ -246,6 +256,7 @@ export default function App() {
                             activeCatSecret={activeCatSecret}
                             activeRobotSecret={activeRobotSecret}
                             testRef={testRef}
+                            eatingMushroomEffect={eatingMushroomEffect}
                         />
                     </div>
 

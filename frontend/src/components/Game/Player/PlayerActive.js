@@ -18,6 +18,7 @@ export class ActivePlayer extends Player {
         activeCatSecret,
         activeRobotSecret,
         testRef,
+        eatingMushroomEffect,
     }) {
         super({ collisionBlocks, background });
         this.canvas = canvas;
@@ -36,6 +37,7 @@ export class ActivePlayer extends Player {
         this.handleIsDialog = () => handleIsDialog();
         this.activeCatSecret = () => activeCatSecret();
         this.activeRobotSecret = () => activeRobotSecret();
+        this.eatingMushroomEffect = () => eatingMushroomEffect();
         this.isDialoging = false;
         this.testRef = testRef;
     }
@@ -222,11 +224,12 @@ export class ActivePlayer extends Player {
                     this.position.y + this.height >= secret.position.y
                 ) {
                     if (index === 0) {
-                        // gsap.to(this.testRef.current, { opacity: 1, rotate: "+=720", duration: 2 });
-                        // this.secrets[0].eatMushroom();
-                        // setTimeout(() => {
-                        //     gsap.to(this.testRef.current, { opacity: 0, duration: 2 });
-                        // }, 3000);
+                        gsap.to(this.testRef.current, { opacity: 1, duration: 2 });
+                        this.secrets[0].eatMushroom();
+                        this.eatingMushroomEffect();
+                        setTimeout(() => {
+                            gsap.to(this.testRef.current, { opacity: 0, duration: 2 });
+                        }, 11000);
                         return;
                     }
                     if (this.isDialoging) return;

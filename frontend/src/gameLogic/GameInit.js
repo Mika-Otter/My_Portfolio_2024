@@ -19,6 +19,7 @@ export class Game {
         activeCatSecret,
         activeRobotSecret,
         testRef,
+        eatingMushroomEffect,
     }) {
         this.canvas = canvas;
         this.keysTab = keysTab;
@@ -44,6 +45,7 @@ export class Game {
         this.activeCatSecret = activeCatSecret;
         this.activeRobotSecret = activeRobotSecret;
         this.testRef = testRef;
+        this.eatingMushroomEffect = eatingMushroomEffect;
     }
 
     initialize() {
@@ -140,6 +142,7 @@ export class Game {
                         activeCatSecret: this.activeCatSecret,
                         activeRobotSecret: this.activeRobotSecret,
                         testRef: this.testRef,
+                        eatingMushroomEffect: this.eatingMushroomEffect,
                     });
                 },
             },

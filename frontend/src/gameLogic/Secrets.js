@@ -38,7 +38,7 @@ export default class Secret {
 
         setTimeout(() => {
             this.position.x = this.originalPosition;
-        }, 10000);
+        }, 20000);
     }
     update() {
         // Met à jour la frame actuelle

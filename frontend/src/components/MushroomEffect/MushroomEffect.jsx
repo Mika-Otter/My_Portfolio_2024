@@ -3,37 +3,53 @@ import s from "./MushroomEffect.module.scss";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-export default function MushroomEffect() {
-    const columnBlockRefs = useRef({});
-
-    const [test, setTest] = useState(false);
-
-    useGSAP(() => {
-        Object.values(columnBlockRefs.current).forEach((blockRefs) => {
-            if (blockRefs.length > 0) {
-                const tl = gsap.timeline({});
-                tl.to(blockRefs, {
-                    opacity: 0,
-                    duration: 0.4,
-                    stagger: { amount: 5, from: "random", each: 5 },
-                });
-            }
-        });
-    }, [test]);
+export default function MushroomEffect({ isEatMushroom }) {
+    const columnBlockRefs = useRef([]);
+    const tlRef = useRef(null);
 
     useEffect(() => {
-        console.log(test);
-    }, [test]);
+        if (isEatMushroom) {
+            tlRef.current = gsap.timeline({ paused: true });
 
-    const getBlocks = () => {
+            // Récupérer toutes les références de blocs à travers toutes les colonnes
+            const allBlocks = [];
+            columnBlockRefs.current.forEach((col) => {
+                allBlocks.push(...col);
+            });
+
+            // Ajouter les animations à la timeline
+            if (allBlocks.length > 0) {
+                tlRef.current.to(allBlocks, {
+                    opacity: 1,
+                    duration: 0.5,
+                    stagger: { amount: 3, from: "center" },
+                });
+            }
+        }
+    }, [isEatMushroom]);
+
+    useEffect(() => {
+        // Jouer la timeline lorsque isEatMushroom est true
+        if (isEatMushroom && tlRef.current) {
+            tlRef.current.play();
+            setTimeout(() => {
+                tlRef.current.reverse();
+            }, 7000);
+        }
+    }, [isEatMushroom]);
+
+    const getBlocks = (columnIndex) => {
         const { innerWidth, innerHeight } = window;
         const blockSize = innerWidth * 0.05;
         const amountOfBlocks = Math.ceil(innerHeight / blockSize);
 
         return [...Array(amountOfBlocks)].map((_, i) => {
             const ref = (el) => {
-                columnBlockRefs.current[i] = columnBlockRefs.current[i] || [];
-                columnBlockRefs.current[i].push(el);
+                if (el) {
+                    columnBlockRefs.current[columnIndex] =
+                        columnBlockRefs.current[columnIndex] || [];
+                    columnBlockRefs.current[columnIndex][i] = el;
+                }
             };
 
             return <div key={i} className={s.block} ref={ref}></div>;
@@ -42,12 +58,9 @@ export default function MushroomEffect() {
 
     return (
         <div className={s.bigbox}>
-            <button type="button" onClick={() => setTest((prev) => !prev)}>
-                Test
-            </button>
-            {[...Array(20)].map((_, i) => (
-                <div key={i} className={s.column}>
-                    {getBlocks()}
+            {[...Array(20)].map((_, columnIndex) => (
+                <div key={columnIndex} className={s.column}>
+                    {getBlocks(columnIndex)}
                 </div>
             ))}
         </div>

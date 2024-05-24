@@ -21,6 +21,7 @@ export default function CanvasTest({
     activeCatSecret,
     activeRobotSecret,
     testRef,
+    eatingMushroomEffect,
 }) {
     const canvasRef = useRef(null);
     const backgroundHeight = useBackgroundHeight();
@@ -109,6 +110,7 @@ export default function CanvasTest({
                 activeCatSecret,
                 activeRobotSecret,
                 testRef,
+                eatingMushroomEffect,
             });
             game.initialize();
             const {
