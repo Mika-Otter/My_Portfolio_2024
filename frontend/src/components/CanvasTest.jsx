@@ -20,6 +20,7 @@ export default function CanvasTest({
     handleIsDialog,
     activeCatSecret,
     activeRobotSecret,
+    testRef,
 }) {
     const canvasRef = useRef(null);
     const backgroundHeight = useBackgroundHeight();
@@ -107,6 +108,7 @@ export default function CanvasTest({
                 handleIsDialog,
                 activeCatSecret,
                 activeRobotSecret,
+                testRef,
             });
             game.initialize();
             const {

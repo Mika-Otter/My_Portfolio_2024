@@ -18,6 +18,7 @@ export class Game {
         handleIsDialog,
         activeCatSecret,
         activeRobotSecret,
+        testRef,
     }) {
         this.canvas = canvas;
         this.keysTab = keysTab;
@@ -42,6 +43,7 @@ export class Game {
         this.handleIsDialog = handleIsDialog;
         this.activeCatSecret = activeCatSecret;
         this.activeRobotSecret = activeRobotSecret;
+        this.testRef = testRef;
     }
 
     initialize() {
@@ -137,6 +139,7 @@ export class Game {
                         handleIsDialog: this.handleIsDialog,
                         activeCatSecret: this.activeCatSecret,
                         activeRobotSecret: this.activeRobotSecret,
+                        testRef: this.testRef,
                     });
                 },
             },

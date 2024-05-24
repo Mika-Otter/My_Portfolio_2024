@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import "./assets/styles/global.scss";
 import Title from "./components/Title/Title";
 import { BackgroundHeightProvider, useBackgroundHeight } from "./context/BackgroundHeightContext";
@@ -20,6 +20,7 @@ import useResize from "./hooks/useResize";
 import Dialog from "./components/Game/Dialog/Dialog";
 
 export default function App() {
+    const testRef = useRef(null);
     const {
         mapRow,
         setMapRow,
@@ -179,7 +180,7 @@ export default function App() {
 
     return (
         <>
-            <div className="test"></div>
+            <div className="test" ref={testRef}></div>
             <div className="overlay" ref={overlayRef}>
                 <div className="overlay-div" ref={overlayOneRef}></div>
                 <div className="overlay-div" ref={overlayTwoRef}></div>
@@ -241,6 +242,7 @@ export default function App() {
                             handleIsDialog={handleIsDialog}
                             activeCatSecret={activeCatSecret}
                             activeRobotSecret={activeRobotSecret}
+                            testRef={testRef}
                         />
                     </div>
 

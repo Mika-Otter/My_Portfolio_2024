@@ -1,4 +1,5 @@
 import { Player } from "./Player";
+import gsap from "gsap";
 
 export class ActivePlayer extends Player {
     constructor({
@@ -16,6 +17,7 @@ export class ActivePlayer extends Player {
         handleIsDialog,
         activeCatSecret,
         activeRobotSecret,
+        testRef,
     }) {
         super({ collisionBlocks, background });
         this.canvas = canvas;
@@ -35,6 +37,7 @@ export class ActivePlayer extends Player {
         this.activeCatSecret = () => activeCatSecret();
         this.activeRobotSecret = () => activeRobotSecret();
         this.isDialoging = false;
+        this.testRef = testRef;
     }
 
     setTitle(title) {
@@ -218,7 +221,14 @@ export class ActivePlayer extends Player {
                     this.position.y <= secret.position.y + secret.renderHeight &&
                     this.position.y + this.height >= secret.position.y
                 ) {
-                    if (index === 0) return;
+                    if (index === 0) {
+                        gsap.to(this.testRef.current, { opacity: 1, duration: 2 });
+                        this.secrets[0].eatMushroom();
+                        setTimeout(() => {
+                            gsap.to(this.testRef.current, { opacity: 0, duration: 2 });
+                        }, 3000);
+                        return;
+                    }
                     if (this.isDialoging) return;
                     this.handleIsDialog();
                     this.isDialogingActive();

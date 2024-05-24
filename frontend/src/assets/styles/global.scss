@@ -8,6 +8,15 @@ body {
     overflow-x: hidden;
 }
 
+.test {
+    position: fixed;
+    background-color: white;
+    mix-blend-mode: difference;
+    opacity: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
 .canvas {
     position: fixed;
     top: 0;

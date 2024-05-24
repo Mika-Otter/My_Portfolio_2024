@@ -8,6 +8,7 @@ export default class Secret {
         this.frameX = 0;
         this.frameMax = frameMax;
         this.position = position;
+        this.originalPosition = position.x * scale;
         this.position.x = position.x * scale;
         this.position.y = position.y * scale;
         this.scale = scale;
@@ -32,6 +33,13 @@ export default class Secret {
         );
     }
 
+    eatMushroom() {
+        this.position.x = 5000;
+
+        setTimeout(() => {
+            this.position.x = this.originalPosition;
+        }, 10000);
+    }
     update() {
         // Met à jour la frame actuelle
         this.frameX = Math.floor(this.gameFrame / this.staggerFrames) % this.frameMax;
