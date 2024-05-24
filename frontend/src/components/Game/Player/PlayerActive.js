@@ -5,7 +5,6 @@ export class ActivePlayer extends Player {
     constructor({
         collisionBlocks,
         background,
-        doors,
         canvas,
         collisionBlocksList,
         keysTab,
@@ -19,6 +18,7 @@ export class ActivePlayer extends Player {
         activeRobotSecret,
         testRef,
         eatingMushroomEffect,
+        handleContact,
     }) {
         super({ collisionBlocks, background });
         this.canvas = canvas;
@@ -27,7 +27,6 @@ export class ActivePlayer extends Player {
         this.moving = false;
         this.collisionBlocksList = collisionBlocksList;
         this.level = mapRow;
-        this.doors = doors;
         this.mapRow = mapRow;
         this.toExp = toExp;
         this.isJumping = false;
@@ -40,6 +39,7 @@ export class ActivePlayer extends Player {
         this.eatingMushroomEffect = () => eatingMushroomEffect();
         this.isDialoging = false;
         this.testRef = testRef;
+        this.handleContact = () => handleContact();
     }
 
     setTitle(title) {
@@ -116,9 +116,7 @@ export class ActivePlayer extends Player {
         if (this.velocity.y !== 0) {
             this.isJumping = true;
         }
-        if (this.toExp && !this.isJumping) {
-            this.enterInDoor();
-        }
+
         return this;
     }
 
@@ -164,22 +162,6 @@ export class ActivePlayer extends Player {
         return this;
     }
 
-    enterInDoor() {
-        for (const door of this.doors) {
-            if (
-                (this.position.x + this.width <= door.position.x + door.width &&
-                    this.position.x - 3 >= door.position.x &&
-                    this.position.y <= door.position.y + door.height &&
-                    this.position.y + this.height >= door.position.y) ||
-                this.toExp
-            ) {
-                this.preventInput = true;
-                door.play();
-            }
-        }
-        return this;
-    }
-
     launchStarship() {
         if (this.starShip) {
             const starShip = this.starShip;
@@ -195,6 +177,9 @@ export class ActivePlayer extends Player {
                 this.cameraBox.y = starShip.position.y;
                 this.gravity = 0;
                 this.sprite = "";
+                setTimeout(() => {
+                    this.handleContact();
+                }, 3200);
             }
         }
         return this;

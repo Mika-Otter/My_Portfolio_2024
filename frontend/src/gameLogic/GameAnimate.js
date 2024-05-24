@@ -1,12 +1,7 @@
-// GameAnimate.js
-import { changeLevel } from "./CollisionLevel";
-import { RegularWind } from "../components/Game/Environnement/Wind";
-
 export function gameAnimate({
     ctx,
     canvas,
     camera,
-    doors,
     player,
     background,
     currentCollisionLevel,
@@ -26,10 +21,6 @@ export function gameAnimate({
 
         ctx.save();
         ctx.translate(camera.position.x, camera.position.y);
-
-        doors.forEach((door) => {
-            door.draw(ctx);
-        });
 
         background.draw(ctx, canvas);
         currentCollisionLevel.forEach((collisionBlock) => {

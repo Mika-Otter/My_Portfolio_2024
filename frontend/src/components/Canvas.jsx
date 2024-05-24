@@ -4,7 +4,7 @@ import { gameAnimate } from "../gameLogic/GameAnimate";
 import { useBackgroundHeight, useSetBackgroundHeight } from "../context/BackgroundHeightContext";
 import { Game } from "../gameLogic/GameInit";
 
-export default function CanvasTest({
+export default function Canvas({
     isPlayed,
     toExp,
     RoomLevel,
@@ -22,6 +22,7 @@ export default function CanvasTest({
     activeRobotSecret,
     testRef,
     eatingMushroomEffect,
+    handleContact,
 }) {
     const canvasRef = useRef(null);
     const backgroundHeight = useBackgroundHeight();
@@ -111,6 +112,7 @@ export default function CanvasTest({
                 activeRobotSecret,
                 testRef,
                 eatingMushroomEffect,
+                handleContact,
             });
             game.initialize();
             const {
@@ -120,7 +122,6 @@ export default function CanvasTest({
                 water,
                 cloud,
                 currentCollisionLevel,
-                doors,
                 overlay,
                 starShip,
                 secrets,
@@ -138,10 +139,6 @@ export default function CanvasTest({
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.save();
                 ctx.translate(camera.position.x, camera.position.y);
-
-                doors.forEach((door) => {
-                    door.draw(ctx);
-                });
 
                 background.draw(ctx, canvas);
                 currentCollisionLevel.forEach((collisionBlock) => {
