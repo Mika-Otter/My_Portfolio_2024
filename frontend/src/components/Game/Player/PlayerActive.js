@@ -19,6 +19,7 @@ export class ActivePlayer extends Player {
         activeRobotSecret,
         testRef,
         eatingMushroomEffect,
+        handleContact,
     }) {
         super({ collisionBlocks, background });
         this.canvas = canvas;
@@ -40,6 +41,7 @@ export class ActivePlayer extends Player {
         this.eatingMushroomEffect = () => eatingMushroomEffect();
         this.isDialoging = false;
         this.testRef = testRef;
+        this.handleContact = () => handleContact();
     }
 
     setTitle(title) {
@@ -195,6 +197,9 @@ export class ActivePlayer extends Player {
                 this.cameraBox.y = starShip.position.y;
                 this.gravity = 0;
                 this.sprite = "";
+                setTimeout(() => {
+                    this.handleContact();
+                }, 3200);
             }
         }
         return this;

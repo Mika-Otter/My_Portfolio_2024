@@ -122,7 +122,6 @@ export default function App() {
 
     const handleContact = () => {
         setContact((prev) => !prev);
-        console.log("oookkkeey", contact);
     };
 
     const handleNextLevel = () => {
@@ -257,6 +256,7 @@ export default function App() {
                             activeRobotSecret={activeRobotSecret}
                             testRef={testRef}
                             eatingMushroomEffect={eatingMushroomEffect}
+                            handleContact={handleContact}
                         />
                     </div>
 

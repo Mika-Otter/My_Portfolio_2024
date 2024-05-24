@@ -20,6 +20,7 @@ export class Game {
         activeRobotSecret,
         testRef,
         eatingMushroomEffect,
+        handleContact,
     }) {
         this.canvas = canvas;
         this.keysTab = keysTab;
@@ -46,6 +47,7 @@ export class Game {
         this.activeRobotSecret = activeRobotSecret;
         this.testRef = testRef;
         this.eatingMushroomEffect = eatingMushroomEffect;
+        this.handleContact = handleContact;
     }
 
     initialize() {
@@ -190,6 +192,7 @@ export class Game {
                         toExp: this.toExp,
                         scale: this.scale,
                         starShip: this.starShip,
+                        handleContact: this.handleContact,
                     });
                 },
             },

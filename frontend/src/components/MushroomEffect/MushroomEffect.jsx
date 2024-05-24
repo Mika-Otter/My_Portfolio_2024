@@ -22,7 +22,7 @@ export default function MushroomEffect({ isEatMushroom }) {
                 tlRef.current.to(allBlocks, {
                     opacity: 1,
                     duration: 0.5,
-                    stagger: { amount: 3, from: "center" },
+                    stagger: { amount: 3, from: "random" },
                 });
             }
         }
