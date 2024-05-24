@@ -18,6 +18,7 @@ import useAppState from "./hooks/useAppState";
 import useAppTransition from "./hooks/useAppTransition";
 import useResize from "./hooks/useResize";
 import Dialog from "./components/Game/Dialog/Dialog";
+import MushroomEffect from "./components/MushroomEffect/MushroomEffect";
 
 export default function App() {
     const testRef = useRef(null);
@@ -180,7 +181,9 @@ export default function App() {
 
     return (
         <>
-            <div className="test" ref={testRef}></div>
+            <div className="test" ref={testRef}>
+                <MushroomEffect />
+            </div>
             <div className="overlay" ref={overlayRef}>
                 <div className="overlay-div" ref={overlayOneRef}></div>
                 <div className="overlay-div" ref={overlayTwoRef}></div>

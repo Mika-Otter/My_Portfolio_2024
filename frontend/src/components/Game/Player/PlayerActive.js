@@ -209,7 +209,7 @@ export class ActivePlayer extends Player {
         this.isDialoging = true;
         setTimeout(() => {
             this.isDialoging = false;
-        }, 9000);
+        }, 10000);
     }
 
     activeSecrets() {
@@ -222,11 +222,11 @@ export class ActivePlayer extends Player {
                     this.position.y + this.height >= secret.position.y
                 ) {
                     if (index === 0) {
-                        gsap.to(this.testRef.current, { opacity: 1, duration: 2 });
-                        this.secrets[0].eatMushroom();
-                        setTimeout(() => {
-                            gsap.to(this.testRef.current, { opacity: 0, duration: 2 });
-                        }, 3000);
+                        // gsap.to(this.testRef.current, { opacity: 1, rotate: "+=720", duration: 2 });
+                        // this.secrets[0].eatMushroom();
+                        // setTimeout(() => {
+                        //     gsap.to(this.testRef.current, { opacity: 0, duration: 2 });
+                        // }, 3000);
                         return;
                     }
                     if (this.isDialoging) return;
