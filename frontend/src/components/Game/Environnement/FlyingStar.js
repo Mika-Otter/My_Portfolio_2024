@@ -7,7 +7,7 @@ export class FlyingStar {
         this.y = Math.random() * 200;
         this.speed = 13;
         this.image = new Image();
-        this.image.src = "/flyingStars.png";
+        this.image.src = "./src/assets/img/flyingStars.png";
     }
 
     update() {
