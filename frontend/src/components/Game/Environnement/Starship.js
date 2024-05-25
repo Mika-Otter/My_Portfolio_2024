@@ -4,7 +4,7 @@ export default class Starship {
     constructor(canvas) {
         this.canvas = canvas;
         this.image = new Image();
-        this.image.src = "/starship.png";
+        this.image.src = "./src/assets/img/starship.png";
         this.image.onload = () => {
             this.loaded = true;
             this.width = this.image.width / this.frameRate;

@@ -42,7 +42,7 @@ export class RegularWind extends Wind {
         this.speed = -2;
         this.maxFrame = 18; //18
         this.image = new Image();
-        this.image.src = "/regularwind.png";
+        this.image.src = "./src/assets/img/regularwind.png";
     }
 
     update(deltaTime) {

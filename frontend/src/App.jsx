@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import "./assets/styles/global.scss";
+import "./styles/global.scss";
 import Title from "./components/Title/Title";
 import { BackgroundHeightProvider, useBackgroundHeight } from "./context/BackgroundHeightContext";
 import BigBox from "./components/BigBox/BigBox";

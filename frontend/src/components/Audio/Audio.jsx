@@ -29,7 +29,7 @@ export default function AudioPlayer({ activeSound }) {
                 ref={audioPlayerRef}
                 controls
                 loop
-                src="./douceuridealev8.mp3"
+                src="./src/assets/douceuridealev12.mp3"
                 className={s.audioplayer__player}
             ></audio>
             <canvas ref={canvasRef} onClick={playMusic}></canvas>
