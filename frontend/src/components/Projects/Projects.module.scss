@@ -175,8 +175,9 @@
                         }
                         &__year {
                             margin-right: 1.3rem;
-                            font-weight: 500;
-                            font-family: "Nacelle";
+
+                            font-family: "Nacelle-Regular";
+                            font-weight: 100;
                         }
                     }
 
@@ -199,7 +200,7 @@
             bottom: 1.2vw;
             right: 4.7vw;
             // border: 2px solid red;
-            font-family: "Nacelle";
+            font-family: "Nacelle-Regular";
             font-size: 22px;
             width: 12%;
             display: flex;
