@@ -67,7 +67,7 @@ export default function Projects({
             title: "DNSEP2021 ",
             smalltext: "  Art diploma exhibition",
             year: "2024",
-            url: "./video/DNSEP.mp4",
+            url: "./src/assets/video/DNSEP.mp4",
             alt: "DNSEP2021",
             text:
                 " DNSEP 2021 is a website who summarize my practice in art school. " +
@@ -90,7 +90,7 @@ export default function Projects({
             title: "Typpov ",
             smalltext: "  Ri7 Final Exam Project, typographie tool",
             year: "2024",
-            url: "./video/Typpov-Low.mp4",
+            url: "./src/assets/video/Typpov-Low.mp4",
             alt: "Typpov",
             text:
                 " I had to do a project for my degree at Ri7. I was engulfed in a multitude of folders where I stored" +
@@ -114,7 +114,7 @@ export default function Projects({
             title: "Platform Game ",
             smalltext: "  Personal Game",
             year: "2023",
-            url: "./video/Platform.mp4",
+            url: "./src/assets/video/Platform.mp4",
             alt: "Platform Game",
             text: "While learning OOP in JS, I created a little platform game. I learned a lot thanks to Frank Laboratory on youtube. ",
             techno: "Javascript POO, canvas html element",
@@ -125,7 +125,7 @@ export default function Projects({
             title: "UNEXPECTED Studio ",
             smalltext: "  Design",
             year: "2023",
-            url: "./video/UnexpectedStudio.mp4",
+            url: "./src/assets/video/UnexpectedStudio.mp4",
             alt: "UNEXPECTEDStudio",
             text:
                 "I produced a proposal for the redesign of the Unexpected Studio website. I followed their graphic guidelines" +
@@ -146,7 +146,7 @@ export default function Projects({
             title: "Various Game ",
             smalltext: "  Morpion, Puissance4, Pendu, Labyrinth",
             year: "2023",
-            url: "./video/VariousGame.mp4",
+            url: "./src/assets/video/VariousGame.mp4",
             alt: "Various Games",
             text:
                 "A series of little games that helped me learn the basics of Javascript at the Ri7 school." +
@@ -280,41 +280,6 @@ export default function Projects({
                                         </div>
                                     ))}
                                 </div>
-                            </div>
-                            <div className={s.projects__box__content__games}>
-                                {/* {items.map((item, index) =>
-                                    item.type === "game" ? (
-                                        <li
-                                            key={index}
-                                            className={index === currentIndex ? s.liHover : ""}
-                                            onMouseEnter={(e) => handleMouseEnter(e, index)}
-                                            onMouseLeave={(e) => handleMouseLeave(e, index)}
-                                            onClick={() => openProject()}
-                                        >
-                                            <div
-                                                className={
-                                                    s.projects__box__content__text__projects__project
-                                                }
-                                            >
-                                                {item.title}
-                                                <span
-                                                    className={
-                                                        s.projects__box__content__text__projects__project__text
-                                                    }
-                                                >
-                                                    {item.smalltext}
-                                                </span>
-                                            </div>
-                                            <span
-                                                className={
-                                                    s.projects__box__content__text__projects__project__year
-                                                }
-                                            >
-                                                {item.year}
-                                            </span>
-                                        </li>
-                                    ) : null
-                                )} */}
                             </div>
                             <div className={s.projects__box__content__text}>
                                 <div className={s.projects__box__content__text__banner}></div>
