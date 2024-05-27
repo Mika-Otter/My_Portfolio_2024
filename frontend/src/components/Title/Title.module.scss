@@ -4,7 +4,7 @@
 .title {
     width: 94%;
     margin-left: 5%;
-    margin-top: 0rem;
+    margin-top: 0.2%;
     // border: 2px solid red;
     display: flex;
     flex-wrap: wrap;
@@ -12,20 +12,34 @@
     &__second {
         width: 100%;
         font-family: "NeueMontreal-Medium";
-        // color: rgb(231, 231, 231);
         color: $primary-color-darkblue;
-        // mix-blend-mode: difference;
         font-size: $fontsize-title;
         font-weight: 500;
         line-height: 1.2;
         margin: 0;
-        margin-top: -35px;
+        height: calc($fontsize-title - 30px);
+        display: flex;
+        align-items: center;
         letter-spacing: -0.1rem;
     }
     &__second {
-        width: 23%;
-        // border: 2px solid green;
-        margin-top: -4%;
+        width: 53%;
+        height: calc($fontsize-title - 30px);
+        display: flex;
+        align-items: center;
+
+        &__text {
+            font-family: "NeueMontreal-Medium";
+            color: $primary-color-darkblue;
+            font-size: $fontsize-title;
+            font-weight: 500;
+            line-height: 1.2;
+            margin: 0;
+            height: calc($fontsize-title - 30px);
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.1rem;
+        }
     }
 }
 
@@ -35,14 +49,13 @@
     font-family: "NeueMontreal-Medium";
     font-weight: 500;
     letter-spacing: 1px;
-    font-size: $fontsize-m;
+    font-size: $fontsize-title-second;
     text-transform: uppercase;
-    // color: rgb(231, 231, 231);
     color: $primary-color-darkblue;
-    // mix-blend-mode: difference;
     // border: 2px solid blue;
-    margin-top: -1%;
-    margin-left: 5.5rem;
+    margin-left: 1vw;
+    height: 87%;
+
     span {
         margin: 0;
         margin-bottom: -5px;

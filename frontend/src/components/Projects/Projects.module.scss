@@ -34,9 +34,7 @@
                 font-family: "NeueMontreal-Medium";
                 text-transform: uppercase;
                 font-size: $fontsize-title;
-
                 font-weight: 200;
-                // border: 2px solid red;
                 text-align: center;
                 margin: 0;
                 margin-top: 30px;
@@ -101,13 +99,13 @@
                         padding: 0;
                         margin: 0;
                         padding-top: 1rem;
-                        width: 70%;
+                        width: 100%;
                         margin-top: 20%;
                         margin-right: 5%;
-                        margin-left: 43%;
+                        margin-left: 38%;
+                        // border: 2px solid green;
                     }
                     li {
-                        // border: 2px solid green;
                         width: 100%;
                         box-sizing: border-box;
                         cursor: pointer;
