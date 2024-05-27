@@ -203,12 +203,13 @@
     &__content {
         width: 33%;
         height: 70%;
-        margin-top: 8%;
+        margin-top: 6%;
         margin-left: 5%;
         // border: 2px solid orange;
         display: flex;
         flex-direction: column;
         gap: 15px;
+        color: $primary-color-darkblue;
         &__techno {
             width: 85%;
             // border: 2px solid blueviolet;
@@ -238,6 +239,7 @@
             font-size: 15px;
             width: 74%;
             margin: 0;
+            line-height: 1.3;
 
             // border: 2px solid blue;
         }
@@ -277,19 +279,19 @@
 
     &__close {
         position: absolute;
-        top: 2.5rem;
-        right: 1.5rem;
+        top: 1.1rem;
+        right: 0.8rem;
         height: 30px;
         // border: 2px solid blue;
 
         display: flex;
         align-items: center;
-        gap: 5px;
-        font-family: "Nacelle";
-        color: rgb(44, 37, 37);
+        gap: 3px;
+        font-family: "NeueMontreal-Regular";
+        color: $primary-color-darkblue;
         font-weight: 600;
-        font-size: 14px;
-        line-height: 1.8;
+        font-size: 12px;
+        // line-height: 1.8;
         cursor: pointer;
 
         span {
@@ -308,7 +310,7 @@
             width: 20px;
             height: 10px;
             z-index: 1000;
-            margin-top: -10px;
+            margin-top: -15px;
             transition: 0.3s ease-in-out;
         }
     }
