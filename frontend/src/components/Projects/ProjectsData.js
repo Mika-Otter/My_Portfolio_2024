@@ -28,7 +28,7 @@ const projectsData = [
     // },
     {
         title: "DNSEP2021 ",
-        smalltext: "  Art diploma exhibition",
+        smalltext: "  Website",
         year: "2024",
         url: "./src/assets/video/DNSEP.mp4",
         alt: "DNSEP2021",
@@ -51,7 +51,7 @@ const projectsData = [
     },
     {
         title: "Typpov ",
-        smalltext: "  Ri7 Final Exam Project, typographie tool",
+        smalltext: " Sass",
         year: "2024",
         url: "./src/assets/video/Typpov-Low.mp4",
         alt: "Typpov",
@@ -75,7 +75,7 @@ const projectsData = [
 
     {
         title: "Platform Game ",
-        smalltext: "  Personal Game",
+        smalltext: "  Game",
         year: "2023",
         url: "./src/assets/video/Platform.mp4",
         alt: "Platform Game",
@@ -106,8 +106,8 @@ const projectsData = [
         img8: "./src/assets/img/project-unexpected/unexpected1.webp",
     },
     {
-        title: "Various Game ",
-        smalltext: "  Morpion, Puissance4, Pendu, Labyrinth",
+        title: "4 Games ",
+        smalltext: "  Game",
         year: "2023",
         url: "./src/assets/video/VariousGame.mp4",
         alt: "Various Games",

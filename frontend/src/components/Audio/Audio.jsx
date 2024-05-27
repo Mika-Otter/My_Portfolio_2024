@@ -12,11 +12,11 @@ export default function AudioPlayer({ activeSound }) {
         const canvas = canvasRef.current;
         const speed = 0.07;
         const squares = [
-            { x: 9, y: 35, width: 3, height: -5, color: "black", dy: 0.7, max: -6 },
-            { x: 14, y: 35, width: 3, height: -5, color: "black", dy: 2, max: -13 },
-            { x: 19, y: 35, width: 3, height: -5, color: "black", dy: 3, max: -15 },
-            { x: 24, y: 35, width: 3, height: -5, color: "black", dy: 1.6, max: -16 },
-            { x: 29, y: 35, width: 3, height: -5, color: "black", dy: 1, max: -8 },
+            { x: 9, y: 35, width: 3, height: -5, color: "white", dy: 0.7, max: -6 },
+            { x: 14, y: 35, width: 3, height: -5, color: "white", dy: 2, max: -13 },
+            { x: 19, y: 35, width: 3, height: -5, color: "white", dy: 3, max: -15 },
+            { x: 24, y: 35, width: 3, height: -5, color: "white", dy: 1.6, max: -16 },
+            { x: 29, y: 35, width: 3, height: -5, color: "white", dy: 1, max: -8 },
         ];
         const animate = initializeCanvas(canvas, squares, speed);
         animationRef.current = requestAnimationFrame(() => animate(playingAudio));

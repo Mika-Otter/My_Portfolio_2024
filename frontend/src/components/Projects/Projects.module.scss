@@ -6,11 +6,10 @@
     height: 100%;
     width: 100%;
 
-    // border: 2px solid green;
-
     &__box__wrapper {
-        width: 89%;
-        aspect-ratio: 2.49;
+        // border: 2px solid green;
+        width: 92%;
+        aspect-ratio: 2.29;
         position: relative;
         margin-top: -3.5%;
         overflow: hidden;
@@ -29,18 +28,32 @@
         width: 95%;
         height: 100%;
         margin-inline: auto;
-        h2 {
-            font-family: "NeueMontreal-Medium";
-            text-transform: uppercase;
-            font-size: 25px;
-            font-weight: 200;
-            // border: 2px solid red;
-            text-align: center;
-            margin: 0;
-            margin-top: 30px;
-            mix-blend-mode: difference;
-            color: #dedfdf;
+        &__title {
+            position: absolute;
+            z-index: -1;
+            h2 {
+                font-family: "NeueMontreal-Medium";
+                text-transform: uppercase;
+                font-size: 12rem;
+                font-weight: 200;
+                // border: 2px solid red;
+                text-align: center;
+                margin: 0;
+                margin-top: 30px;
+                mix-blend-mode: difference;
+                color: #2d2d4d;
+            }
+
+            &__latest {
+                top: 0;
+                left: 30px;
+            }
+            &__works {
+                bottom: 40px;
+                left: 400px;
+            }
         }
+
         &__content {
             // border: 2px solid blue;
             height: 80%;
@@ -51,7 +64,7 @@
                 position: absolute;
                 bottom: 30px;
                 left: 10%;
-                // border: 2px solid green;
+
                 width: 40%;
 
                 ul {
@@ -81,14 +94,6 @@
                     background-color: "transparent";
                     transition: 0.2s ease-in-out;
                     mix-blend-mode: difference;
-                }
-                .liHover {
-                    // font-size: 18px;
-
-                    // background-color: rgba(14, 13, 13, 0.946);
-                    color: rgb(46, 44, 44);
-                    mix-blend-mode: difference;
-                    transition: 0.2s ease-in-out;
                 }
             }
             &__view {
@@ -134,47 +139,53 @@
 
                 &__projects {
                     display: flex;
-                    justify-content: flex-end;
+
                     ul {
-                        // border: 2px solid blue;
                         padding: 0;
                         margin: 0;
                         padding-top: 1rem;
 
-                        width: 75%;
-                        margin-top: 5%;
+                        width: 45%;
+                        margin-top: 20%;
                         margin-right: 5%;
+                        margin-left: 50%;
                     }
                     li {
+                        border: 2px solid green;
                         box-sizing: border-box;
-                        height: 20px;
+                        // border: 2px solid blue;
                         cursor: pointer;
                         padding-bottom: 3px;
 
-                        width: 100%;
+                        // width: 100%;
                         list-style: none;
                         display: flex;
-                        justify-content: space-between;
+                        align-items: baseline;
 
-                        align-items: center;
                         font-family: "NeueMontreal-Regular";
-                        font-weight: 300;
-                        font-size: 16px;
-                        color: #dedfdf;
+                        font-weight: 500;
+                        font-size: 18px;
+                        color: #2d2d4d;
                         background-color: "transparent";
                         transition: 0.2s ease-in-out;
-                        mix-blend-mode: difference;
+                        // mix-blend-mode: difference;
                     }
                     &__project {
+                        width: 100%;
                         display: flex;
-                        gap: 10px;
+                        gap: 5px;
+
+                        // flex-direction: column;
+
                         text-transform: uppercase;
                         &__text {
                             text-transform: initial;
                             margin: 0;
+                            font-size: 17px;
                         }
+
                         &__year {
-                            margin-right: 1.3rem;
+                            font-size: 15px;
 
                             font-family: "Nacelle-Regular";
                             font-weight: 100;
@@ -185,8 +196,8 @@
                         // font-size: 18px;
                         // mix-blend-mode: difference;
                         // background-color: rgba(14, 13, 13, 0.946);
-                        color: rgb(46, 44, 44);
-                        mix-blend-mode: difference;
+                        color: rgb(166, 166, 166);
+                        // mix-blend-mode: difference;
                         transition: 0.2s ease-in-out;
                     }
                 }

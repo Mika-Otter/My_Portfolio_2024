@@ -71,10 +71,10 @@ export default function Dialog({ text, isDialog, secretText }) {
 
     useGSAP(() => {
         timelineDialogRef.current
-            .set(dialogRef.current, { opacity: 1 })
+            .to(dialogRef.current, { opacity: 1, duration: 1, ease: "power3.inOut" })
 
-            .to(dialogRef.current, { height: "3%", width: "80%", duration: 0.3 })
-            .to(dialogRef.current, { height: "100%", width: "80%", duration: 0.5 })
+            // .to(dialogRef.current, { height: "3%", width: "80%", duration: 0.3 })
+            // .to(dialogRef.current, { height: "100%", width: "80%", duration: 0.5 })
             .to(textRef.current, { opacity: 1 }, ">");
     }, []);
 

@@ -1,12 +1,33 @@
 import React from "react";
 import s from "./Navbar.module.scss";
 import AudioPlayer from "../Audio/Audio";
+import PlayView from "../PlayView/PlayView";
 
-export default function Navbar({ activeSound, handleMenu, handleTest, handleContact }) {
+export default function Navbar({
+    activeSound,
+    handleMenu,
+    handleTest,
+    handleContact,
+    playMode,
+    viewMode,
+    isPlayed,
+    firstControls,
+    handleControls,
+}) {
     return (
         <div className={s.navbar}>
             <div className={s.navbar__rotator}>
                 <div className={s.navbar__ctn}>
+                    {/* <div className={s.navbar__ctn__playview}>
+                        <PlayView
+                            playMode={playMode}
+                            viewMode={viewMode}
+                            isPlayed={isPlayed}
+                            firstControls={firstControls}
+                            handleControls={handleControls}
+                        />
+                    </div> */}
+
                     <div
                         className={s.navbar__ctn__wrapper}
                         onClick={() => {
@@ -22,9 +43,7 @@ export default function Navbar({ activeSound, handleMenu, handleTest, handleCont
                     <MenuIconSVG />
                 </div> */}
                     </div>
-                    <div className={s.navbar__ctn__separator}>
-                        <span>/</span>
-                    </div>
+                    <div className={s.navbar__ctn__separator}></div>
                     <div className={s.navbar__ctn__wrapper}>
                         <div className={s.navbar__ctn__button} onClick={() => handleContact()}>
                             <span>CONTACT </span>

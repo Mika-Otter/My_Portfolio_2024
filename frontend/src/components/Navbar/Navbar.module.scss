@@ -2,9 +2,10 @@
     z-index: 5000;
     position: fixed;
 
-    top: 21%;
+    top: 3%;
 
-    right: 7px;
+    // right: 7px;
+    left: 5px;
     // border: 2px solid red;
 
     display: flex;
@@ -18,12 +19,14 @@
     font-size: 15px;
     line-height: 3;
     height: 200px;
-    width: 42px;
+    width: 30px;
     padding-top: 15px;
 
-    background-color: rgba(241, 239, 239, 0.83); //rgba(251, 247, 247, 0.835)
+    // background-color: rgba(241, 239, 239, 0.83); //rgba(251, 247, 247, 0.835)
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
+    mix-blend-mode: difference;
+    color: white;
 
     &__rotator {
         // border: 2px solid blue;
@@ -37,6 +40,11 @@
         gap: 8px;
         align-items: center;
         margin-left: 15px;
+
+        &__playview {
+            // border: 2px solid blue;
+            margin-right: 20px;
+        }
 
         &__wrapper {
             // border: 2px solid rgb(43, 176, 48);

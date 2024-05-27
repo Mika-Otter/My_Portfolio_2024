@@ -213,6 +213,11 @@ export default function App() {
                 handleMenu={handleMenu}
                 handleTransition={() => handleTransition(setTransition)}
                 handleContact={handleContact}
+                // playMode={playMode}
+                // viewMode={viewMode}
+                // isPlayed={isPlayed}
+                // firstControls={firstControls}
+                // handleControls={handleControls}
             />
             <Menu
                 isMenu={isMenu}
