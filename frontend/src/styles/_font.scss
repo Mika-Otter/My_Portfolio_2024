@@ -1,3 +1,5 @@
+@use "./utils/funtions" as f;
+
 @font-face {
     font-family: "NeueMontreal-Medium";
     src: url("./font/PPNeueMontreal-Medium.otf");
@@ -20,3 +22,5 @@
     font-family: "Nacelle-Regular";
     src: url("./font/Nacelle-Regular.otf");
 }
+
+$fontsize-title: clamp(f.rem(120), 13vw, f.rem(290));

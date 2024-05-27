@@ -146,9 +146,6 @@ export default function Projects({
                         <div className={cn(s.projects__box__title, s.projects__box__title__works)}>
                             <h2>works</h2>
                         </div>
-
-                        {/* <div className={s.projects__box__title}><h2>Projects</h2> </div> */}
-
                         <div className={s.projects__box__content}>
                             <div className={s.projects__box__content__view}>
                                 <div className={s.projects__box__content__view__ctn}>
