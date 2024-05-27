@@ -3,6 +3,7 @@ import s from "./Project.module.scss";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CrossSVG } from "../../SVG/CrossSVG";
 import { ArrowSVG } from "../../SVG/ArrowSVG";
 import Video from "../../Video/Video";
@@ -13,6 +14,15 @@ export default function Project({ item, closeProject, nextProject, index, curren
     const [closing, setClosing] = useState(false);
     const timelineRef = useRef();
     const projectRef = useRef();
+    const projectPicRef = useRef(null);
+    const projectPicBoxRef = useRef(null);
+
+    // useGSAP(() => {
+    //     let smoother = ScrollSmoother.create({
+    //         wrapper: projectPicRef.current,
+    //         content: projectPicBoxRef.current,
+    //     });
+    // }, []);
 
     useGSAP(() => {
         timelineRef.current = gsap
@@ -54,10 +64,10 @@ export default function Project({ item, closeProject, nextProject, index, curren
             <div className={s.project__wrapper} ref={projectWrapperRef}>
                 <div className={s.project} ref={projectRef}>
                     <div className={s.project__left}>
-                        <div className={s.project__pic}>
+                        <div className={s.project__pic} ref={projectPicRef}>
                             {item.img1 ? (
                                 <>
-                                    <div className={s.project__pic__box}>
+                                    <div className={s.project__pic__box} ref={projectPicBoxRef}>
                                         <div className={s.project__pic__box__ctn}>
                                             <Video
                                                 src={item.url}
@@ -108,6 +118,7 @@ export default function Project({ item, closeProject, nextProject, index, curren
                                 </div>
                             )}
                         </div>
+
                         <div className={s.project__pic__title}>
                             <h2>{item.title}</h2>
                             <span>
