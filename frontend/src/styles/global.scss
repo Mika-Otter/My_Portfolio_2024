@@ -1,6 +1,11 @@
 @use "font";
 @import "theme";
 
+html {
+    box-sizing: border-box; //if box width is 300px and you add 20px of padding, the size of the box stay 300px instead 340px
+    font-size: 100%;
+}
+
 body {
     margin: 0;
     padding: 0;

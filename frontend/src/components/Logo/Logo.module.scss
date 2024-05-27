@@ -2,7 +2,7 @@
     cursor: pointer;
     position: fixed;
     top: 1%;
-    left: 9px;
+    left: clamp(3px, 0.6vw, 9px);
     width: 25px;
     z-index: 6000;
     mix-blend-mode: difference;
