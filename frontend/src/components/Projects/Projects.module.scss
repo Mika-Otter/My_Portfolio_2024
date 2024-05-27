@@ -115,12 +115,12 @@
                         align-items: baseline;
                         font-family: "NeueMontreal-Regular";
                         font-weight: 500;
-                        font-size: 18px;
+                        font-size: $fontsize-project;
                         letter-spacing: 0.5px;
                         color: #091940;
                         background-color: "transparent";
                         transition: 0.2s ease-in-out;
-                        height: 20px;
+                        height: $fontsize-project;
                     }
                     &__project {
                         width: 100%;
@@ -130,11 +130,11 @@
                         &__text {
                             text-transform: initial;
                             margin: 0;
-                            font-size: 17px;
+                            font-size: $fontsize-s;
                         }
 
                         &__year {
-                            font-size: 15px;
+                            font-size: $fontsize-s;
                             font-family: "Nacelle-Regular";
                             font-weight: 100;
                         }
