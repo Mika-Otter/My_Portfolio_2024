@@ -64,9 +64,10 @@ export default function Projects({
     useGSAP(() => {
         const currentElement = viewRefs.current[currentIndex].current;
         const parentElement = currentElement.parentElement;
-        const randomLarge = Math.floor(Math.random() * 35) + 1;
+        const randomLarge = Math.floor(Math.random() * 30) + 1;
         const randomTop = Math.floor(Math.random() * 40) + 4;
-        const randomWidth = Math.floor(Math.random() * 5) + 42;
+        // const randomWidth = Math.floor(Math.random() * 5) + 42;
+        const randomWidth = 44;
         const height = randomWidth / 0.6;
         // const randomHeight = Math.floor(Math.random() * 15) + 35;
 
@@ -134,6 +135,11 @@ export default function Projects({
             <section className={s.projects}>
                 <div className={s.projects__box__wrapper} ref={projectsWrapperRef}>
                     <div className={s.projects__box} ref={projectsRef}>
+                        {/* <div className={s.projects__box__title__test}>
+                            <h2>Latest works</h2>
+                            <h2 className={s.title__two}>Latest works</h2>
+                            <h2 className={s.title__two}>Latest works</h2>
+                        </div> */}
                         <div className={cn(s.projects__box__title, s.projects__box__title__latest)}>
                             <h2>Latest</h2>
                         </div>

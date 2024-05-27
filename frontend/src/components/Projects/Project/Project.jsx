@@ -19,10 +19,10 @@ export default function Project({ item, closeProject, nextProject, index, curren
             .timeline({ paused: true })
             .to(projectWrapperRef.current, { height: "2%", width: "100%", duration: 0.5 })
             .to(projectWrapperRef.current, {
-                y: {},
-                height: "95%",
+                height: "95.8%",
                 duration: 0.6,
                 delay: 0.2,
+                borderRadius: "5px",
             })
             .to(projectRef.current, { opacity: 1 });
 
@@ -56,45 +56,48 @@ export default function Project({ item, closeProject, nextProject, index, curren
                     <div className={s.project__left}>
                         <div className={s.project__pic}>
                             {item.img1 ? (
-                                <div className={s.project__pic__box}>
-                                    <div className={s.project__pic__box__ctn}>
-                                        <Video
-                                            src={item.url}
-                                            index={index}
-                                            currentIndex={currentIndex}
-                                        />
-                                    </div>
-                                    <div className={s.project__pic__box__ctn__two}>
-                                        <div className={s.project__pic__box__ctn__two__small}>
-                                            <img src={item.img1} alt={item.img1} />
+                                <>
+                                    <div className={s.project__pic__box}>
+                                        <div className={s.project__pic__box__ctn}>
+                                            <Video
+                                                src={item.url}
+                                                index={index}
+                                                currentIndex={currentIndex}
+                                            />
                                         </div>
-                                        <div className={s.project__pic__box__ctn__two__small}>
-                                            <img src={item.img2} alt={item.img2} />
+                                        <div className={s.project__pic__box__ctn__two}>
+                                            <div className={s.project__pic__box__ctn__two__small}>
+                                                <img src={item.img1} alt={item.img1} />
+                                            </div>
+                                            <div className={s.project__pic__box__ctn__two__small}>
+                                                <img src={item.img2} alt={item.img2} />
+                                            </div>
+                                        </div>
+                                        <div className={s.project__pic__box__ctn}>
+                                            <img src={item.img3} alt={item.img3} />
+                                        </div>
+                                        <div className={s.project__pic__box__ctn__two}>
+                                            <div className={s.project__pic__box__ctn__two__small}>
+                                                <img src={item.img4} alt={item.img4} />
+                                            </div>
+                                            <div className={s.project__pic__box__ctn__two__small}>
+                                                <img src={item.img5} alt={item.img5} />
+                                            </div>
+                                        </div>
+                                        <div className={s.project__pic__box__ctn}>
+                                            <img src={item.img6} alt={item.img6} />
+                                        </div>
+                                        <div className={s.project__pic__box__ctn__two}>
+                                            <div className={s.project__pic__box__ctn__two__small}>
+                                                <img src={item.img7} alt={item.img7} />
+                                            </div>
+                                            <div className={s.project__pic__box__ctn__two__small}>
+                                                <img src={item.img8} alt={item.img8} />
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className={s.project__pic__box__ctn}>
-                                        <img src={item.img3} alt={item.img3} />
-                                    </div>
-                                    <div className={s.project__pic__box__ctn__two}>
-                                        <div className={s.project__pic__box__ctn__two__small}>
-                                            <img src={item.img4} alt={item.img4} />
-                                        </div>
-                                        <div className={s.project__pic__box__ctn__two__small}>
-                                            <img src={item.img5} alt={item.img5} />
-                                        </div>
-                                    </div>
-                                    <div className={s.project__pic__box__ctn}>
-                                        <img src={item.img6} alt={item.img6} />
-                                    </div>
-                                    <div className={s.project__pic__box__ctn__two}>
-                                        <div className={s.project__pic__box__ctn__two__small}>
-                                            <img src={item.img7} alt={item.img7} />
-                                        </div>
-                                        <div className={s.project__pic__box__ctn__two__small}>
-                                            <img src={item.img8} alt={item.img8} />
-                                        </div>
-                                    </div>
-                                </div>
+                                    <div className={s.project__pic__wrapper}></div>
+                                </>
                             ) : (
                                 <div className={s.project__pic__box__ctn__alone}>
                                     <Video

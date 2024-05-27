@@ -3,8 +3,8 @@
     display: flex;
     // transform: rotate(180deg);
     position: fixed;
-    top: 0.5%;
-    right: 5rem;
+    top: 1%;
+    right: 3rem;
     mix-blend-mode: difference;
     // border: 1px solid white;
     // border-radius: 3px;
@@ -14,15 +14,15 @@
     justify-content: space-around;
 
     button {
-        // font-family: "NeueMontreal-Medium";
-        // font-weight: 500;
-        // font-size: 1.2rem;
+        font-family: "NeueMontreal-Medium";
+        font-weight: 500;
+        font-size: 1.2rem;
 
-        font-family: "Nacelle";
-        margin-top: 5px;
-        letter-spacing: 1px;
-        line-height: 1.3;
-        font-size: 17px;
+        // font-family: "Nacelle";
+        // margin-top: 5px;
+        // letter-spacing: 1px;
+        // line-height: 1.3;
+        // font-size: 17px;
         cursor: pointer;
         border: none;
         background-color: transparent;

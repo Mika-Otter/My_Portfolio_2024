@@ -1,6 +1,8 @@
+@import "../../styles/theme";
+
 .title {
     width: 94%;
-    margin-left: 7%;
+    margin-left: 5%;
     margin-top: 0rem;
     // border: 2px solid red;
     display: flex;
@@ -10,13 +12,13 @@
         width: 100%;
         font-family: "NeueMontreal-Medium";
         // color: rgb(231, 231, 231);
-        color: rgb(25, 33, 59);
+        color: $primary-color-darkblue;
         // mix-blend-mode: difference;
-        font-size: 11.5rem;
+        font-size: 12.7rem;
         font-weight: 500;
         line-height: 1.2;
         margin: 0;
-        margin-top: -20px;
+        margin-top: -35px;
         letter-spacing: -0.1rem;
     }
     &__second {
@@ -29,16 +31,17 @@
 .smalltext {
     display: flex;
     flex-direction: column;
-    font-family: "NeueMontreal-Regular";
+    font-family: "NeueMontreal-Medium";
     font-weight: 500;
     letter-spacing: 1px;
-    font-size: 1.4rem;
+    font-size: 18px;
+    text-transform: uppercase;
     // color: rgb(231, 231, 231);
-    color: rgb(34, 39, 55);
+    color: $primary-color-darkblue;
     // mix-blend-mode: difference;
     // border: 2px solid blue;
-    margin-top: -1.5%;
-    margin-left: 3.5rem;
+    margin-top: -1%;
+    margin-left: 5.5rem;
     span {
         margin: 0;
         margin-bottom: -5px;

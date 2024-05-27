@@ -1,3 +1,5 @@
+@import "../../styles/theme";
+
 .projects {
     display: flex;
     flex-direction: column;
@@ -15,13 +17,9 @@
         overflow: hidden;
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
-        background-color: rgba(
-            240,
-            234,
-            234,
-            0.835
-        ); //rgb(230, 228, 228, 0.835); // rgb(230, 228, 228, 0.835)
-        background-color: rgba(241, 239, 239, 0.83);
+        //rgb(230, 228, 228, 0.835); // rgb(230, 228, 228, 0.835)
+        background-color: $white-board;
+        border-radius: 5px;
     }
 
     &__box {
@@ -31,26 +29,50 @@
         &__title {
             position: absolute;
             z-index: -1;
+
+            &__test {
+                z-index: -1;
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                transform: rotate(-90deg);
+                top: 9rem;
+                left: -10rem;
+
+                h2 {
+                    margin: 0;
+                    padding: 0;
+                    font-family: "NeueMontreal-Medium";
+                    text-transform: uppercase;
+                    font-size: 3.5rem;
+                    height: 2.9rem;
+                    color: $primary-color-darkblue;
+                }
+            }
+
             h2 {
                 font-family: "NeueMontreal-Medium";
                 text-transform: uppercase;
-                font-size: 12rem;
+                font-size: 14rem;
+
                 font-weight: 200;
                 // border: 2px solid red;
                 text-align: center;
                 margin: 0;
                 margin-top: 30px;
                 mix-blend-mode: difference;
-                color: #2d2d4d;
+                color: $primary-color-darkblue;
+                // color: rgb(40, 40, 44);
             }
 
             &__latest {
-                top: 0;
-                left: 30px;
+                top: -20px;
+                left: 50px;
             }
             &__works {
-                bottom: 40px;
-                left: 400px;
+                bottom: 10px;
+                left: 300px;
             }
         }
 
@@ -60,42 +82,6 @@
             display: flex;
             position: relative;
 
-            &__games {
-                position: absolute;
-                bottom: 30px;
-                left: 10%;
-
-                width: 40%;
-
-                ul {
-                    padding: 0;
-                    margin: 0;
-                    padding-top: 1rem;
-                    height: 120%;
-                    width: 60%;
-                    margin-top: 20%;
-                }
-                li {
-                    box-sizing: border-box;
-                    height: 19px;
-                    cursor: pointer;
-                    padding-bottom: 3px;
-
-                    width: 90%;
-                    list-style: none;
-                    display: flex;
-                    justify-content: space-between;
-
-                    align-items: center;
-                    font-family: "NeueMontreal-Regular";
-                    font-weight: 300;
-                    font-size: 16px;
-                    color: #c7c4c4;
-                    background-color: "transparent";
-                    transition: 0.2s ease-in-out;
-                    mix-blend-mode: difference;
-                }
-            }
             &__view {
                 width: 100%;
                 height: 110%;
@@ -117,6 +103,8 @@
                     &__img {
                         // border: 1px solid rgb(149, 149, 149);
                         height: 0%;
+                        border-radius: 4px;
+                        overflow: hidden;
 
                         opacity: 0;
                         position: absolute;
@@ -135,7 +123,7 @@
                 width: 100%;
                 display: flex;
                 flex-direction: column;
-                // border: 2px solid green;
+                z-index: 2000;
 
                 &__projects {
                     display: flex;
@@ -145,38 +133,33 @@
                         margin: 0;
                         padding-top: 1rem;
 
-                        width: 45%;
+                        width: 70%;
                         margin-top: 20%;
-                        margin-right: 5%;
-                        margin-left: 50%;
+                        margin-right: 1%;
+                        margin-left: 43%;
                     }
                     li {
-                        border: 2px solid green;
+                        // border: 2px solid green;
+                        width: 100%;
                         box-sizing: border-box;
-                        // border: 2px solid blue;
                         cursor: pointer;
                         padding-bottom: 3px;
-
-                        // width: 100%;
                         list-style: none;
                         display: flex;
                         align-items: baseline;
-
                         font-family: "NeueMontreal-Regular";
                         font-weight: 500;
                         font-size: 18px;
-                        color: #2d2d4d;
+                        letter-spacing: 0.5px;
+                        color: #091940;
                         background-color: "transparent";
                         transition: 0.2s ease-in-out;
-                        // mix-blend-mode: difference;
+                        height: 20px;
                     }
                     &__project {
                         width: 100%;
                         display: flex;
                         gap: 5px;
-
-                        // flex-direction: column;
-
                         text-transform: uppercase;
                         &__text {
                             text-transform: initial;
@@ -186,18 +169,13 @@
 
                         &__year {
                             font-size: 15px;
-
                             font-family: "Nacelle-Regular";
                             font-weight: 100;
                         }
                     }
 
                     .liHover {
-                        // font-size: 18px;
-                        // mix-blend-mode: difference;
-                        // background-color: rgba(14, 13, 13, 0.946);
                         color: rgb(166, 166, 166);
-                        // mix-blend-mode: difference;
                         transition: 0.2s ease-in-out;
                     }
                 }
@@ -208,8 +186,8 @@
             margin: 0;
             position: absolute;
             color: #091429;
-            bottom: 1.2vw;
-            right: 4.7vw;
+            bottom: 3.7vw;
+            right: 3.4vw;
             // border: 2px solid red;
             font-family: "Nacelle-Regular";
             font-size: 22px;
@@ -259,23 +237,5 @@
         justify-content: center;
         align-items: center;
         border-radius: 33px 0px 0px 33px;
-    }
-
-    &__projects {
-        ul {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-        }
-        li {
-            border: 1px solid black;
-            list-style: none;
-            color: rgb(5, 22, 34);
-            height: 30px;
-            font-family: "OktaNeue-Regular";
-            font-weight: 600;
-            font-size: 13px;
-            letter-spacing: 0.2px;
-        }
     }
 }
