@@ -3,7 +3,7 @@
 
 .main {
     width: 100%;
-    aspect-ratio: 2.19;
+    height: 100%;
     position: absolute;
     top: 50%;
 
@@ -11,9 +11,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    // border: 2px solid blue;
+    min-height: 400px;
 }
 
 .project__wrapper {
+    margin: 0;
     position: absolute;
     overflow: hidden;
     background-color: $white-board-opac;
@@ -28,7 +31,6 @@
     // clip-path: polygon(5% 0, 95% 0, 100% 9%, 100% 91%, 95% 100%, 5% 100%, 0 91%, 0 9%);
     z-index: 120;
     backdrop-filter: blur(20px);
-    // border: 2px solid blue;
 }
 
 .project {

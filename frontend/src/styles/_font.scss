@@ -24,6 +24,7 @@
 }
 
 $fontsize-title: clamp(f.rem(120), 13vw, f.rem(290));
+$fontsize-title-project: clamp(f.rem(90), 8vw, f.rem(220));
 $fontsize-title-second: clamp(f.rem(15), 1.1vw, f.rem(25));
 $fontsize-s: clamp(f.rem(14), 1vw, f.rem(22));
 $fontsize-m: clamp(f.rem(15), 1.1vw, f.rem(21));
@@ -31,3 +32,5 @@ $fontsize-l: clamp(f.rem(16), 12px + 0.5vw, f.rem(24));
 $fontsize-xl: clamp(f.rem(20), 12px + 1.5vw, f.rem(28));
 
 $fontsize-project: clamp(f.rem(15), 0.9vw, f.rem(22));
+$fontsize-projects: clamp(f.rem(17), 1.2vw, f.rem(24));
+$fontsize-menu: clamp(f.rem(55), 5vw, f.rem(80));

@@ -19,7 +19,7 @@ export default function Project({ item, closeProject, nextProject, index, curren
             .timeline({ paused: true })
             .to(projectWrapperRef.current, { height: "2%", width: "100%", duration: 0.5 })
             .to(projectWrapperRef.current, {
-                height: "95.8%",
+                height: "100%",
                 duration: 0.6,
                 delay: 0.2,
                 borderRadius: "5px",

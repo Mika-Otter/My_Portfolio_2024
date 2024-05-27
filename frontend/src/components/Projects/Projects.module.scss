@@ -8,11 +8,12 @@
     align-items: center;
     height: 100%;
     width: 100%;
+    min-height: 550px;
 
     &__box__wrapper {
         // border: 2px solid green;
         width: 92%;
-        aspect-ratio: 2.29;
+        height: 80%;
         position: relative;
         margin-top: -3.5%;
         overflow: hidden;
@@ -33,7 +34,7 @@
             h2 {
                 font-family: "NeueMontreal-Medium";
                 text-transform: uppercase;
-                font-size: $fontsize-title;
+                font-size: $fontsize-title-project;
                 font-weight: 200;
                 text-align: center;
                 margin: 0;
@@ -47,8 +48,8 @@
                 left: 50px;
             }
             &__works {
-                bottom: 10px;
-                left: 300px;
+                bottom: 50px;
+                left: 500px;
             }
         }
 
@@ -101,9 +102,8 @@
                         padding-top: 1rem;
                         width: 100%;
                         margin-top: 20%;
-                        margin-right: 5%;
-                        margin-left: 38%;
-                        // border: 2px solid green;
+                        margin-right: 15%;
+                        margin-left: 33%;
                     }
                     li {
                         width: 100%;
@@ -115,18 +115,19 @@
                         align-items: baseline;
                         font-family: "NeueMontreal-Regular";
                         font-weight: 500;
-                        font-size: $fontsize-project;
+                        font-size: $fontsize-projects;
                         letter-spacing: 0.5px;
                         color: #091940;
                         background-color: "transparent";
                         transition: 0.2s ease-in-out;
-                        height: $fontsize-project;
+                        height: calc($fontsize-projects + 2px);
                     }
                     &__project {
                         width: 100%;
                         display: flex;
                         gap: 5px;
                         text-transform: uppercase;
+                        align-items: baseline;
                         &__text {
                             text-transform: initial;
                             margin: 0;
