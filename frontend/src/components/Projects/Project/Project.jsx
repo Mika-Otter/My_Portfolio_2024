@@ -129,7 +129,7 @@ export default function Project({ item, closeProject, nextProject, index, curren
                         <div className={s.project__content__clientyear}>
                             <div className={s.project__content__techno}>
                                 <h3>TECHNOLOGIES</h3>
-                                <p className={s.project__content__text}>{item.techno}</p>
+                                <p className={s.project__content__techno__text}>{item.techno}</p>
                             </div>
                             <div className={s.project__content__year}>
                                 <h3>YEAR</h3>
