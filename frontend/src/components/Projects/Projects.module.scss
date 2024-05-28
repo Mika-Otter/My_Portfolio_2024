@@ -102,7 +102,7 @@
                         padding-top: 1rem;
                         width: 100%;
                         margin-top: 20%;
-                        margin-right: 15%;
+                        margin-right: 7%;
                         margin-left: 33%;
                     }
                     li {
@@ -131,11 +131,11 @@
                         &__text {
                             text-transform: initial;
                             margin: 0;
-                            font-size: $fontsize-s;
+                            font-size: $fontsize-m;
                         }
 
                         &__year {
-                            font-size: $fontsize-s;
+                            font-size: $fontsize-m;
                             font-family: "Nacelle-Regular";
                             font-weight: 100;
                         }
@@ -153,19 +153,39 @@
             margin: 0;
             position: absolute;
             color: #091429;
-            bottom: 3.7vw;
-            right: 3.4vw;
+            bottom: clamp(50px, 5vw, 80px);
+            right: 1vw;
             // border: 2px solid red;
             font-family: "Nacelle-Regular";
             font-size: 22px;
-            width: 12%;
+            width: 12vw;
+            min-width: 200px;
             display: flex;
             justify-content: space-between;
-            span {
-                margin: 0;
-            }
+
             &__arrow {
                 width: 25px;
+            }
+
+            &__wrapper {
+                height: 20px;
+                // border: 2px solid red;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                &__ctn {
+                    height: 20px;
+                    margin: 0;
+                    transform: translateY(-100%);
+                    transition: 0.3s ease-in-out;
+                    span {
+                        margin: 0;
+                        padding: 0;
+                    }
+                }
+            }
+            &__wrapper:hover &__wrapper__ctn {
+                transform: translateY(0%);
             }
         }
     }

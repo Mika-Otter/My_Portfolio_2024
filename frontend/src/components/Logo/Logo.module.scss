@@ -2,8 +2,8 @@
     cursor: pointer;
     position: fixed;
     top: 1%;
-    left: clamp(3px, 0.6vw, 9px);
+    left: clamp(4px, 0.8vw, 13px);
     width: clamp(15px, 15px + 0.7vw, 30px);
     z-index: 6000;
-    mix-blend-mode: difference;
+    // mix-blend-mode: difference;
 }

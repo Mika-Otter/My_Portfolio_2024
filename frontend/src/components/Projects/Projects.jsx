@@ -57,6 +57,10 @@ export default function Projects({
         setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
     };
 
+    const prevProject = () => {
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + items.length) % items.length);
+    };
+
     useEffect(() => {
         setLastIndex(currentIndex);
     }, [currentIndex]);
@@ -64,7 +68,7 @@ export default function Projects({
     useGSAP(() => {
         const currentElement = viewRefs.current[currentIndex].current;
         const parentElement = currentElement.parentElement;
-        const randomLarge = Math.floor(Math.random() * 25) + 1;
+        const randomLarge = Math.floor(Math.random() * 24) + 1;
         const randomTop = Math.floor(Math.random() * 40) + 4;
         // const randomWidth = Math.floor(Math.random() * 5) + 42;
         const randomWidth = 44;
@@ -205,9 +209,17 @@ export default function Projects({
                                 handleClickNextLevel();
                             }}
                         >
-                            <span> NEXT LEVEL </span>
+                            <div className={s.projects__box__goToExp__wrapper}>
+                                <div className={s.projects__box__goToExp__wrapper__ctn}>
+                                    <span>NEXT LEVEL</span>
+                                </div>
+                                <div className={s.projects__box__goToExp__wrapper__ctn}>
+                                    <span>NEXT LEVEL</span>
+                                </div>
+                            </div>
+
                             <div className={s.projects__box__goToExp__arrow}>
-                                <ArrowSVG color={"#091429"} />
+                                {/* <ArrowSVG color={"#091429"} /> */}
                             </div>
                         </div>
                     </div>
@@ -216,6 +228,7 @@ export default function Projects({
                             item={items[currentIndex]}
                             closeProject={closeProject}
                             nextProject={nextProject}
+                            prevProject={prevProject}
                             index={currentIndex}
                             currentIndex={currentIndex}
                         />

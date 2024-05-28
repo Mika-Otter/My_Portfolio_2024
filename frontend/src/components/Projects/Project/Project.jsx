@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import s from "./Project.module.scss";
+import cn from "classnames";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -9,7 +10,14 @@ import { ArrowSVG } from "../../SVG/ArrowSVG";
 import Video from "../../Video/Video";
 import ArrowLiveSVG from "../../SVG/ArrowLiveSVG";
 
-export default function Project({ item, closeProject, nextProject, index, currentIndex }) {
+export default function Project({
+    item,
+    closeProject,
+    nextProject,
+    prevProject,
+    index,
+    currentIndex,
+}) {
     const projectWrapperRef = useRef();
     const [closing, setClosing] = useState(false);
     const timelineRef = useRef();
@@ -165,12 +173,22 @@ export default function Project({ item, closeProject, nextProject, index, curren
                     <div className={s.project__button}>
                         <button
                             type="button"
+                            className={cn(s.project__button__btn, s.project__button__prev)}
+                            onClick={() => prevProject()}
+                        >
+                            <span>PREV</span>
+                            <div className={s.project__button__svg}>
+                                {/* <ArrowSVG color={"#091429"} /> */}
+                            </div>
+                        </button>
+                        <button
+                            type="button"
                             className={s.project__button__btn}
                             onClick={() => nextProject()}
                         >
-                            <span>NEXT PROJECT</span>
+                            <span>NEXT</span>
                             <div className={s.project__button__svg}>
-                                <ArrowSVG color={"#091429"} />
+                                {/* <ArrowSVG color={"#091429"} /> */}
                             </div>
                         </button>
                     </div>

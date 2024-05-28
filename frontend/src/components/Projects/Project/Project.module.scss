@@ -68,7 +68,7 @@
         justify-content: center;
         overflow: hidden;
         overflow-y: scroll;
-        margin-top: 8%;
+        margin-top: 11%;
         scrollbar-width: none; /* Firefox */
         -ms-overflow-style: none; /* Internet Explorer 10+ */
 
@@ -197,7 +197,7 @@
     }
     &__content {
         height: 70%;
-        width: 25%;
+        width: 50%;
         margin-top: 6%;
         margin-left: 3%;
         margin-right: 8%;
@@ -205,6 +205,7 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
+        padding: 0px 25px;
 
         color: $primary-color-darkblue;
 
@@ -283,7 +284,7 @@
     &__close {
         position: absolute;
         top: 1.1rem;
-        right: 0.8rem;
+        right: 2rem;
         height: 30px;
         // border: 2px solid blue;
 
@@ -325,15 +326,29 @@
 
     &__button {
         position: absolute;
-        bottom: 8.5%;
-        right: 4.7vw;
+        bottom: 9%;
+        right: 2.7vw;
         // border: 2px solid red;
-        width: 12.5%;
+        width: 10%;
+        display: flex;
 
+        button {
+            margin: 0;
+            padding: 0;
+            width: 40%;
+        }
         span {
             font-family: "NeueMontreal-Regular";
+            font-weight: 600;
             color: $primary-color-darkblue;
-            font-size: $fontsize-l;
+            font-size: $fontsize-m;
+            margin: 0;
+        }
+
+        &__prev {
+            span {
+                font-weight: 200;
+            }
         }
 
         &__btn {
