@@ -66,16 +66,16 @@
     position: absolute;
     top: 55%;
     left: 50%;
-    width: 600px;
-    height: 5px;
+    width: 50dvw;
+    height: 0.3vw;
     transform: translate(-50%, -50%);
 
     &__back {
         position: absolute;
         left: 0;
         top: 0;
-        width: 600px;
-        height: 5px;
+        width: 100%;
+        height: 100%;
         background: rgb(221, 219, 219);
     }
     &__one {
@@ -84,7 +84,7 @@
         top: 0;
         background: #787777;
         width: 5px;
-        height: 5px;
+        height: 100%;
     }
 }
 

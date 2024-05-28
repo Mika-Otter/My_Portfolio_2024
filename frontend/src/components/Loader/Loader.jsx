@@ -148,19 +148,19 @@ export default function Loader({ firstEnter }) {
         const tl = gsap.timeline();
         const { width, height } = loaderRef.current.getBoundingClientRect();
 
-        tl.to(loaderRef.current, { width: 330, duration: 1.3 })
+        tl.to(loaderRef.current, { width: "22%", duration: 1.3 })
             .to(loaderRef.current, {
-                width: 380,
+                width: "43%",
                 duration: 1,
             })
-            .to(loaderRef.current, { width: 450, duration: 0.3 })
-            .to(loaderRef.current, { width: 490, duration: 0.2 })
-            .to(loaderRef.current, { width: 570, duration: 0.1, delay: 0.3 })
-            .to(loaderRef.current, { width: 600, duration: 0.4, delay: 0.7 })
+            .to(loaderRef.current, { width: "55%", duration: 0.3 })
+            .to(loaderRef.current, { width: "69%", duration: 0.2 })
+            .to(loaderRef.current, { width: "78%", duration: 0.1, delay: 0.3 })
+            .to(loaderRef.current, { width: "100%", duration: 0.4, delay: 0.7 })
             .set(loaderRef.current, { transformOrigin: "center center" })
             .set(loaderbackRef.current, { opacity: 0 })
             .to(loaderRef.current, {
-                x: `300px`,
+                x: "25dvw",
                 width: 0,
                 duration: 0.6,
                 delay: 1,
