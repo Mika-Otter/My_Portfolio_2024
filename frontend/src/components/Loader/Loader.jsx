@@ -35,7 +35,7 @@ export default function Loader({ firstEnter }) {
     const [enter, setEnter] = useState(false);
     const [animation, setAnimation] = useState(false);
     const [loadingImg, setLoadingImg] = useState(false);
-    const [settingUp, setSettingUp] = useState("");
+    const [settingUp, setSettingUp] = useState("src/access");
     const settingUpRef = useRef(null);
 
     useEffect(() => {
@@ -94,42 +94,12 @@ export default function Loader({ firstEnter }) {
     }, []);
 
     useGSAP(() => {
-        // const rects = rectsRef.current;
-
-        // rects.forEach((rect, index) => {
-        //     gsap.set(rect, {
-        //         opacity: 0,
-        //     });
-        // });
-
-        // const indexes = Array.from({ length: rects.length }, (_, index) => index);
-
-        // // const shuffledIndexes = shuffleArray(indexes);
-
-        // const tl = gsap.timeline({
-        //     onComplete: () => {
-        //         tlSecond.play();
-        //     },
-        // });
-
         const tlSecond = gsap.timeline({
             paused: true,
             onComplete: () => {
                 setAnimation(false);
             },
         });
-        // indexes.forEach((index, i) => {
-        //     tl.to(
-        //         rects[index],
-        //         {
-        //             opacity: 1,
-        //             // duration: 0.3,
-        //             delay: i * 0.15,
-        //             ease: "power4.inOut",
-        //         },
-        //         0
-        //     );
-        // });
         tlSecond
             .to(logoRef.current, { y: -30, ease: "power3.inOut", delay: 0.5 }, 2)
             .to(textRef.current, { opacity: 1, delay: 0 }, 2)

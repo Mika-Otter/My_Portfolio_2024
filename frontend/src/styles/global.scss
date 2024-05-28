@@ -4,6 +4,19 @@
 html {
     box-sizing: border-box; //if box width is 300px and you add 20px of padding, the size of the box stay 300px instead 340px
     font-size: 100%;
+    // -webkit-user-select: none;
+    // user-select: none;
+}
+
+::-moz-selection {
+    /* Code for Firefox */
+    color: white;
+    background: rgb(158, 158, 158);
+}
+
+::selection {
+    color: white;
+    background: rgb(158, 158, 158);
 }
 
 body {

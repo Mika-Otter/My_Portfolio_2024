@@ -8,7 +8,7 @@
     top: clamp(4px, 0.2%, 7px);
     left: $nav-margin-right;
     padding-top: 35px;
-    height: 170px;
+    height: 175px;
     width: 35px;
     display: flex;
     align-items: center;
@@ -34,11 +34,12 @@
         display: flex;
         gap: 8px;
         align-items: center;
-        margin-left: 10px;
+        margin-left: 15px;
+        margin-right: 3px;
         margin-bottom: 5px;
+        // border: 2px solid blue;
 
         &__playview {
-            // border: 2px solid blue;
             margin-right: 20px;
         }
 

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import s from "./Contact.module.scss";
 import cn from "classnames";
 import { CrossSVG } from "../SVG/CrossSVG";
@@ -43,6 +43,26 @@ export default function Contact({ handleContact, contact }) {
                     <div className={s.contact__title}>
                         <h2>CONTACT</h2>
                     </div>
+                    <p>
+                        Hey ! I'd love to hear more about your project. Please fill in this form
+                        <br /> and "Send it !" <br />
+                        <br />
+                        <b>Timing.</b> As a creative independant I love to work with total
+                        dedication to my clients. This means that rushed timelines are not always
+                        compatible with inquiries.
+                        <br />
+                        <br />
+                        <b>Budget.</b> Budgets vary depending on the deadline, needs, the
+                        deliverables and where I live when I start the project. I'm more interested
+                        in projects over $2K because we can better explore the creativity and
+                        customisation of your project. Please don't be discouraged from sending me a
+                        message even if it's not your budget. I can be hipe if I have time and your
+                        project catch me out.
+                        <br />
+                        <br />
+                        If you have questions or are unsure if i'm a fit, please don't hesitate to
+                        reach out.
+                    </p>
                     <form className={s.contact__form} onSubmit={handleSubmit}>
                         <div className={s.contact__form__firstLine}>
                             <div className={s.contact__form__firstLine__name}>
@@ -130,13 +150,11 @@ export default function Contact({ handleContact, contact }) {
                                     value={formData.budget}
                                     readOnly
                                 />
-                                <div className={s.contact__form__lastLine__budget__button}>
-                                    <button
-                                        type="button"
-                                        onClick={() => setSelecting((prev) => !prev)}
-                                    >
-                                        {formData.budget}
-                                    </button>
+                                <div
+                                    className={s.contact__form__lastLine__budget__button}
+                                    onClick={() => setSelecting((prev) => !prev)}
+                                >
+                                    <button type="button">{formData.budget}</button>
                                     <span
                                         className={
                                             selecting
@@ -146,34 +164,47 @@ export default function Contact({ handleContact, contact }) {
                                     >
                                         ▴
                                     </span>
+                                    {selecting && (
+                                        <div
+                                            ref={selectRef}
+                                            className={s.contact__form__lastLine__budget__select}
+                                            onClick={() => {
+                                                setTimeout(() => {
+                                                    setSelecting(false);
+                                                }, 100);
+                                            }}
+                                        >
+                                            <span
+                                                onClick={() =>
+                                                    handleSelect("budget", "LESS THAN $2K")
+                                                }
+                                            >
+                                                LESS THAN $2K
+                                            </span>
+                                            <span
+                                                onClick={() =>
+                                                    handleSelect("budget", "MORE THAN $2K")
+                                                }
+                                            >
+                                                MORE THAN $2K
+                                            </span>
+                                            <span
+                                                onClick={() =>
+                                                    handleSelect("budget", "MORE THAN $5K")
+                                                }
+                                            >
+                                                MORE THAN $5K
+                                            </span>
+                                            <span
+                                                onClick={() =>
+                                                    handleSelect("budget", "MORE THAN $7K")
+                                                }
+                                            >
+                                                MORE THAN $7K
+                                            </span>
+                                        </div>
+                                    )}
                                 </div>
-                                {selecting && (
-                                    <div
-                                        ref={selectRef}
-                                        className={s.contact__form__lastLine__budget__select}
-                                    >
-                                        <span
-                                            onClick={() => handleSelect("budget", "LESS THAN $3K")}
-                                        >
-                                            LESS THAN $3K
-                                        </span>
-                                        <span
-                                            onClick={() => handleSelect("budget", "MORE THAN $3K")}
-                                        >
-                                            MORE THAN $3K
-                                        </span>
-                                        <span
-                                            onClick={() => handleSelect("budget", "MORE THAN $5K")}
-                                        >
-                                            MORE THAN $5K
-                                        </span>
-                                        <span
-                                            onClick={() => handleSelect("budget", "MORE THAN $7K")}
-                                        >
-                                            MORE THAN $7K
-                                        </span>
-                                    </div>
-                                )}
                             </div>
                             <div className={s.contact__form__lastLine__timeline}>
                                 <label htmlFor="timeline">TIMELINE EXPECTATIONS *</label>

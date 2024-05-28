@@ -12,7 +12,7 @@ export default function Dialog({ text, isDialog, secretText }) {
 
     let speeds = {
         longpause: 900,
-        pause: 800,
+        pause: 600,
         slow: 250,
         middle: 150,
         normal: 70,
@@ -20,9 +20,7 @@ export default function Dialog({ text, isDialog, secretText }) {
     };
     let CatTextlines = [
         { string: "The music is made by", speed: speeds.normal },
-        { string: ".", speed: speeds.slow },
-        { string: ".", speed: speeds.slow },
-        { string: ".", speed: speeds.pause },
+        { string: "...", speed: speeds.pause },
         { string: "LeChatNoir", speed: speeds.fast },
         { string: "!", speed: speeds.longpause },
         { string: "@lechatnoir_music", speed: speeds.normal },
@@ -33,7 +31,7 @@ export default function Dialog({ text, isDialog, secretText }) {
         { string: "01010110", speed: speeds.fast },
         { string: " ", speed: speeds.pause },
         { string: "01000101 ", speed: speeds.fast },
-        { string: ". . . ", speed: speeds.pause },
+        { string: "... ", speed: speeds.normal },
     ];
 
     let characters = [];
