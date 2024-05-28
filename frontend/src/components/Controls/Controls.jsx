@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import s from "./Controls.module.scss";
+import cn from "classnames";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ArrowSVG } from "../SVG/ArrowSVG";
+import { ArrowLetsTalkSVG } from "../SVG/ArrowLetsTalksSVG";
 
 export default function Controls({ handleControls, isControls }) {
     const videoRef = useRef(null);
@@ -446,8 +449,8 @@ export default function Controls({ handleControls, isControls }) {
     useGSAP(() => {
         timelineRef.current = gsap
             .timeline({ paused: true })
-            .to(projectWrapperRef.current, { height: "2%", width: "80%", duration: 0.2 })
-            .to(projectWrapperRef.current, { height: "70%", duration: 0.6 })
+            .to(projectWrapperRef.current, { height: "2%", width: "70%", duration: 0.2 })
+            .to(projectWrapperRef.current, { height: "60%", duration: 0.6 })
             .to(projectRef.current, { opacity: 1 });
 
         if (!isControls) {
@@ -502,13 +505,16 @@ export default function Controls({ handleControls, isControls }) {
                                         <div className={s.controls__key}>
                                             <div
                                                 className={s.controls__key__front}
-                                                ref={keyLeftRef}
+                                                ref={keyLeftArrowRef}
                                             >
-                                                {selectedKeyboard === "qwerty" ? (
-                                                    <span>A</span>
-                                                ) : (
-                                                    <span>Q</span>
-                                                )}
+                                                <div
+                                                    className={cn(
+                                                        s.controls__key__front__arrow,
+                                                        s.controls__key__front__arrow__left
+                                                    )}
+                                                >
+                                                    <ArrowLetsTalkSVG />
+                                                </div>
                                             </div>
                                             <div className={s.controls__key__back}></div>
                                         </div>
@@ -516,9 +522,13 @@ export default function Controls({ handleControls, isControls }) {
                                         <div className={s.controls__key}>
                                             <div
                                                 className={s.controls__key__front}
-                                                ref={keyLeftArrowRef}
+                                                ref={keyLeftRef}
                                             >
-                                                <span>{"<-"}</span>
+                                                {selectedKeyboard === "qwerty" ? (
+                                                    <span>A</span>
+                                                ) : (
+                                                    <span>Q</span>
+                                                )}
                                             </div>
                                             <div className={s.controls__key__back}></div>
                                         </div>
@@ -545,7 +555,7 @@ export default function Controls({ handleControls, isControls }) {
                                 <div className={s.controls__content__center__video}>
                                     <video
                                         ref={videoRef}
-                                        src="/video/controls.mp4"
+                                        src="./src/assets/video/controls.mp4"
                                         autoPlay
                                         loop
                                         muted
@@ -554,6 +564,7 @@ export default function Controls({ handleControls, isControls }) {
                                         style={{
                                             width: "100%",
                                             height: "100%",
+                                            borderRadius: "5px",
                                             objectFit: "cover",
                                             marginBottom: "0.7rem",
                                         }}
@@ -580,7 +591,14 @@ export default function Controls({ handleControls, isControls }) {
                                                 className={s.controls__key__front}
                                                 ref={keyRightArrowRef}
                                             >
-                                                <span>{"->"}</span>
+                                                <div
+                                                    className={cn(
+                                                        s.controls__key__front__arrow,
+                                                        s.controls__key__front__arrow__right
+                                                    )}
+                                                >
+                                                    <ArrowLetsTalkSVG />
+                                                </div>
                                             </div>
                                             <div className={s.controls__key__back}></div>
                                         </div>
@@ -599,7 +617,8 @@ export default function Controls({ handleControls, isControls }) {
                         </div>
                         <div className={s.controls__gotoplay}>
                             <button type="button" onClick={() => handleControls()}>
-                                GO TO PLAY !
+                                <span>GO TO PLAY !</span>
+                                <span>GO TO PLAY !</span>
                             </button>
                         </div>
                     </div>

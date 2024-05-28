@@ -141,7 +141,7 @@
             width: 95%;
             padding-top: 0%;
             // border: 2px solid purple;
-            height: 480%;
+            height: 117vw;
             display: flex;
             flex-direction: column;
 
@@ -199,13 +199,12 @@
         height: 70%;
         width: 50%;
         margin-top: 6%;
-        margin-left: 3%;
+        margin-left: 1%;
         margin-right: 8%;
         // border: 2px solid orange;
         display: flex;
         flex-direction: column;
         gap: 15px;
-        padding: 0px 25px;
 
         color: $primary-color-darkblue;
 
@@ -214,6 +213,7 @@
         letter-spacing: 1px;
         font-size: $fontsize-project;
         line-height: 1.3;
+        padding: 0px 55px;
 
         p {
             margin: 0;

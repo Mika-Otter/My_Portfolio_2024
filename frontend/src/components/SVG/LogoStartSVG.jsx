@@ -8,7 +8,47 @@ export const LogoStartSVG = ({ rectsRef }) => (
         fill="none"
     >
         <rect
-            y="36.7425"
+            x="60.0786"
+            y="62.2242"
+            width="12.874"
+            height="12.874"
+            fill="#171111"
+            ref={(ref) => rectsRef.current.push(ref)}
+        />
+        <rect
+            x="51.12"
+            y="62.3025"
+            width="12.874"
+            height="12.874"
+            fill="#171111"
+            ref={(ref) => rectsRef.current.push(ref)}
+        />
+        <rect
+            x="38.5278"
+            y="62.2242"
+            width="12.874"
+            height="12.874"
+            fill="#171111"
+            ref={(ref) => rectsRef.current.push(ref)}
+        />
+        <rect
+            x="25.6539"
+            y="62.2242"
+            width="12.874"
+            height="12.874"
+            fill="#171111"
+            ref={(ref) => rectsRef.current.push(ref)}
+        />
+        <rect
+            x="12.78"
+            y="62.2242"
+            width="12.874"
+            height="12.874"
+            fill="#171111"
+            ref={(ref) => rectsRef.current.push(ref)}
+        />
+        <rect
+            y="62.2242"
             width="12.874"
             height="12.874"
             fill="#171111"
@@ -22,13 +62,15 @@ export const LogoStartSVG = ({ rectsRef }) => (
             ref={(ref) => rectsRef.current.push(ref)}
         />
         <rect
-            y="24.495"
+            y="36.7425"
             width="12.874"
             height="12.874"
             fill="#171111"
             ref={(ref) => rectsRef.current.push(ref)}
         />
+
         <rect
+            y="24.495"
             width="12.874"
             height="12.874"
             fill="#171111"
@@ -41,6 +83,13 @@ export const LogoStartSVG = ({ rectsRef }) => (
             fill="#171111"
             ref={(ref) => rectsRef.current.push(ref)}
         />
+        <rect
+            width="12.874"
+            height="12.874"
+            fill="#171111"
+            ref={(ref) => rectsRef.current.push(ref)}
+        />
+
         <rect
             x="12.78"
             width="12.874"
@@ -69,30 +118,7 @@ export const LogoStartSVG = ({ rectsRef }) => (
             fill="#171111"
             ref={(ref) => rectsRef.current.push(ref)}
         />
-        <rect
-            x="38.5278"
-            y="62.2242"
-            width="12.874"
-            height="12.874"
-            fill="#171111"
-            ref={(ref) => rectsRef.current.push(ref)}
-        />
-        <rect
-            x="51.12"
-            y="62.3025"
-            width="12.874"
-            height="12.874"
-            fill="#171111"
-            ref={(ref) => rectsRef.current.push(ref)}
-        />
-        <rect
-            x="60.0786"
-            y="62.2242"
-            width="12.874"
-            height="12.874"
-            fill="#171111"
-            ref={(ref) => rectsRef.current.push(ref)}
-        />
+
         <rect
             x="60.0786"
             width="12.874"
@@ -128,29 +154,6 @@ export const LogoStartSVG = ({ rectsRef }) => (
             x="47.2046"
             y="17.1653"
             width="15.0196"
-            height="12.874"
-            fill="#171111"
-            ref={(ref) => rectsRef.current.push(ref)}
-        />
-        <rect
-            y="62.2242"
-            width="12.874"
-            height="12.874"
-            fill="#171111"
-            ref={(ref) => rectsRef.current.push(ref)}
-        />
-        <rect
-            x="12.78"
-            y="62.2242"
-            width="12.874"
-            height="12.874"
-            fill="#171111"
-            ref={(ref) => rectsRef.current.push(ref)}
-        />
-        <rect
-            x="25.6539"
-            y="62.2242"
-            width="12.874"
             height="12.874"
             fill="#171111"
             ref={(ref) => rectsRef.current.push(ref)}

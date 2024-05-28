@@ -198,7 +198,7 @@ export default function App() {
                 <div className="overlay-div" ref={overlayThreeRef}></div>
                 <div className="overlay-div" ref={overlayFourRef}></div>
             </div>
-            {/* {isLoading ? <Loader firstEnter={firstEnter} /> : null} */}
+            {isLoading ? <Loader firstEnter={firstEnter} /> : null}
             <PlayView
                 playMode={playMode}
                 viewMode={viewMode}

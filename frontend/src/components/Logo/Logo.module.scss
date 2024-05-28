@@ -1,9 +1,9 @@
 .logo {
     cursor: pointer;
     position: fixed;
-    top: 1%;
-    left: clamp(4px, 0.8vw, 13px);
-    width: clamp(15px, 15px + 0.7vw, 30px);
+    top: 10px;
+    left: 14px;
+    width: 22px;
     z-index: 6000;
     // mix-blend-mode: difference;
 }

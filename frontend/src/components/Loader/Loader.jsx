@@ -22,19 +22,21 @@ const imageSources = [
 ];
 
 export default function Loader({ firstEnter }) {
-    const bigBoxRef = useRef();
-    const smallBoxRef = useRef();
-    const logoRef = useRef();
-    const loaderRef = useRef();
-    const nameRef = useRef();
-    const developerRef = useRef();
-    const textRef = useRef();
-    const buttonRef = useRef();
-    const loaderbackRef = useRef();
+    const bigBoxRef = useRef(null);
+    const smallBoxRef = useRef(null);
+    const logoRef = useRef(null);
+    const loaderRef = useRef(null);
+    const nameRef = useRef(null);
+    const developerRef = useRef(null);
+    const textRef = useRef(null);
+    const buttonRef = useRef(null);
+    const loaderbackRef = useRef(null);
     const rectsRef = useRef([]);
     const [enter, setEnter] = useState(false);
     const [animation, setAnimation] = useState(false);
     const [loadingImg, setLoadingImg] = useState(false);
+    const [settingUp, setSettingUp] = useState("");
+    const settingUpRef = useRef(null);
 
     useEffect(() => {
         preloadImages(imageSources)
@@ -53,24 +55,62 @@ export default function Loader({ firstEnter }) {
         return array;
     }
 
-    useGSAP(() => {
-        const rects = rectsRef.current;
+    const settingUpList = [
+        { text: "src/assets/background.webp", duration: 100 },
+        { text: "src/assets/player.png", duration: 100 },
+        { text: "src/assets/slider.webp", duration: 500 },
+        { text: "src/assets/douceurideale.mp4", duration: 100 },
+        { text: "src/components", duration: 100 },
+        { text: "src/styles/global.scss", duration: 600 },
+        { text: "src/data", duration: 100 },
+        { text: "src/gameLogic/gameInit.js", duration: 100 },
+        { text: "src/gameLogic/gameInit.js", duration: 1500 },
+        { text: "src/gameLogic/playerInit.js", duration: 200 },
+        { text: "src/gameLogic/gameAnimate.js", duration: 200 },
+        { text: "src/gameLogic/gameAnimate.js", duration: 1300 },
+    ];
 
-        rects.forEach((rect, index) => {
-            gsap.set(rect, {
+    function chargementSettingUp(list) {
+        let totalDuration = 0;
+
+        list.forEach((setting, index) => {
+            totalDuration += setting.duration;
+
+            setTimeout(() => {
+                setSettingUp(setting.text);
+            }, totalDuration);
+        });
+
+        setTimeout(() => {
+            gsap.to(settingUpRef.current, {
                 opacity: 0,
+                ease: "none",
             });
-        });
+        }, totalDuration);
+    }
 
-        const indexes = Array.from({ length: rects.length }, (_, index) => index);
+    useEffect(() => {
+        chargementSettingUp(settingUpList);
+    }, []);
 
-        const shuffledIndexes = shuffleArray(indexes);
+    useGSAP(() => {
+        // const rects = rectsRef.current;
 
-        const tl = gsap.timeline({
-            onComplete: () => {
-                tlSecond.play();
-            },
-        });
+        // rects.forEach((rect, index) => {
+        //     gsap.set(rect, {
+        //         opacity: 0,
+        //     });
+        // });
+
+        // const indexes = Array.from({ length: rects.length }, (_, index) => index);
+
+        // // const shuffledIndexes = shuffleArray(indexes);
+
+        // const tl = gsap.timeline({
+        //     onComplete: () => {
+        //         tlSecond.play();
+        //     },
+        // });
 
         const tlSecond = gsap.timeline({
             paused: true,
@@ -78,26 +118,30 @@ export default function Loader({ firstEnter }) {
                 setAnimation(false);
             },
         });
-        shuffledIndexes.forEach((index, i) => {
-            tl.to(
-                rects[index],
-                {
-                    opacity: 1,
-                    duration: 2,
-                    delay: i * 0.18,
-                    ease: "power4.inOut",
-                },
-                0
-            );
-        });
+        // indexes.forEach((index, i) => {
+        //     tl.to(
+        //         rects[index],
+        //         {
+        //             opacity: 1,
+        //             // duration: 0.3,
+        //             delay: i * 0.15,
+        //             ease: "power4.inOut",
+        //         },
+        //         0
+        //     );
+        // });
         tlSecond
-            .to(logoRef.current, { y: -30, ease: "power3.inOut", delay: 0.5 }, 0)
-            .to(textRef.current, { opacity: 1, delay: 0 }, 0)
+            .to(logoRef.current, { y: -30, ease: "power3.inOut", delay: 0.5 }, 2)
+            .to(textRef.current, { opacity: 1, delay: 0 }, 2)
             .to(
                 buttonRef.current,
                 { opacity: 1, ease: "power3.inOut", duration: 0.3, delay: 0.8 },
-                0
+                2
             );
+
+        setTimeout(() => {
+            tlSecond.play();
+        }, 4000);
     }, []);
 
     useGSAP(() => {
@@ -157,12 +201,16 @@ export default function Loader({ firstEnter }) {
         <>
             <section className={s.loader} ref={bigBoxRef}>
                 <div ref={smallBoxRef} className={s.loader__box}>
-                    <div className={s.loader__box__ctn} ref={logoRef}>
+                    <div className={s.loader__box__logo} ref={logoRef}>
                         <LogoStartSVG rectsRef={rectsRef} />
                     </div>
                     <div className={s.loaderbar}>
                         <div className={s.loaderbar__back} ref={loaderbackRef}></div>
                         <div className={s.loaderbar__one} ref={loaderRef}></div>
+                    </div>
+                    <div className={s.settingUp} ref={settingUpRef}>
+                        <span>{settingUp}</span>
+                        <span>...</span>
                     </div>
 
                     {!animation ? (
@@ -173,8 +221,12 @@ export default function Loader({ firstEnter }) {
                                 </button>
                             </div>
                             <div className={s.texts} ref={textRef}>
-                                <h2 ref={nameRef}>REMI CROCE </h2>
-                                <h2 ref={developerRef}>CREATIVE DEVELOPER</h2>
+                                <h2 ref={nameRef} className={s.texts__remi}>
+                                    REMI CROCE{" "}
+                                </h2>
+                                <h2 ref={developerRef} className={s.texts__creative}>
+                                    CREATIVE DEVELOPER
+                                </h2>
                             </div>
                         </>
                     ) : null}
