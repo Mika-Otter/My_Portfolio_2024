@@ -29,40 +29,45 @@
         width: 95%;
         height: 100%;
         margin-inline: auto;
+        display: flex;
+        gap: 100px;
 
-        &__titletest {
-            position: absolute;
-            right: 0;
+        &__title {
+            // position: absolute;
+            // right: 0;
+            width: 50%;
+
             h2 {
-                font-family: "OktaNeue";
+                font-family: "OktaNeue-SemiBold";
                 text-transform: uppercase;
-                font-size: 3vw;
+                font-size: 1.3vw;
                 font-weight: 200;
-                text-align: center;
+                text-align: left;
                 margin: 0;
-                margin-top: 30px;
+                margin-top: 7vw;
                 // mix-blend-mode: difference;
                 color: $primary-color-darkblue;
             }
         }
 
         &__content {
-            // border: 2px solid blue;
-            height: 80%;
+            width: 50%;
+            // border: 2px solid red;
+            margin-left: 5%;
+
             display: flex;
+            flex-direction: column;
             position: relative;
 
             &__view {
-                width: 100%;
+                width: 50%;
                 height: 110%;
                 top: -5%;
-                // border: 2px solid purple;
                 &__ctn {
-                    // border: 2px solid green;
                     position: absolute;
                     top: 0;
                     left: 0;
-                    width: 95%;
+                    width: 70%;
                     height: 100%;
 
                     &__img {
@@ -93,10 +98,7 @@
                         padding: 0;
                         margin: 0;
                         padding-top: 1rem;
-                        width: 100%;
-                        margin-top: 20%;
-                        margin-right: 7%;
-                        margin-left: 33%;
+                        width: 80%;
                     }
                     li {
                         width: 100%;
@@ -106,37 +108,40 @@
                         list-style: none;
                         display: flex;
                         align-items: baseline;
-                        font-family: "NeueMontreal-Regular";
+                        font-family: "OktaNeue-SemiBold";
                         font-weight: 500;
-                        font-size: $fontsize-m;
+                        font-size: 1.5vw;
                         letter-spacing: 0.5px;
-                        color: #091940;
+                        color: rgb(166, 166, 166);
                         background-color: "transparent";
                         transition: 0.2s ease-in-out;
-                        height: calc($fontsize-projects + 2px);
+                        height: calc(1.5vw + 3px);
                     }
+
                     &__project {
                         width: 100%;
                         display: flex;
+                        justify-content: space-between;
                         gap: 5px;
                         text-transform: uppercase;
                         align-items: baseline;
+                        &__title {
+                            display: flex;
+                            align-items: center;
+                            height: calc(1.5vw + 3px);
+                        }
                         &__text {
+                            font-family: "OktaNeue-Normal";
                             text-transform: initial;
                             margin: 0;
                             font-size: $fontsize-m;
                         }
-
-                        &__year {
-                            font-size: $fontsize-s;
-                            font-family: "Nacelle-Regular";
-                            font-weight: 100;
-                        }
                     }
 
                     .liHover {
-                        color: rgb(166, 166, 166);
+                        color: $primary-color-darkblue;
                         transition: 0.2s ease-in-out;
+                        font-size: 1.65vw;
                     }
                 }
             }
@@ -149,8 +154,11 @@
             bottom: clamp(50px, 5vw, 80px);
             right: 1vw;
             // border: 2px solid red;
-            font-family: "Nacelle-Regular";
-            font-size: 22px;
+            font-family: "OktaNeue-SemiBold";
+            text-transform: uppercase;
+            font-size: 1.3vw;
+            font-weight: 200;
+            text-align: left;
             width: 12vw;
             min-width: 200px;
             display: flex;
@@ -161,13 +169,14 @@
             }
 
             &__wrapper {
-                height: 20px;
+                height: 1.7vw;
                 // border: 2px solid red;
                 display: flex;
                 flex-direction: column;
                 overflow: hidden;
                 &__ctn {
-                    height: 20px;
+                    font-size: 1.3vw;
+                    height: 1.7vw;
                     margin: 0;
                     transform: translateY(-100%);
                     transition: 0.3s ease-in-out;

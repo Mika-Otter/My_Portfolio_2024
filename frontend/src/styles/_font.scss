@@ -22,6 +22,18 @@
     font-family: "Nacelle-Regular";
     src: url("./font/Nacelle-Regular.otf");
 }
+@font-face {
+    font-family: "OktaNeue-Normal";
+    src: url("./font/OktaNeue-Normal.ttf");
+}
+@font-face {
+    font-family: "OktaNeue-Bold";
+    src: url("./font/OktaNeue-Bold.ttf");
+}
+@font-face {
+    font-family: "OktaNeue-SemiBold";
+    src: url("./font/OktaNeue-SemiBold.ttf");
+}
 
 $fontsize-title: 13vw;
 // $fontsize-title: clamp(f.rem(120), 13vw, f.rem(290));

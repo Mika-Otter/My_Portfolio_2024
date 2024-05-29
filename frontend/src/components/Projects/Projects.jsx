@@ -139,26 +139,27 @@ export default function Projects({
             <section className={s.projects}>
                 <div className={s.projects__box__wrapper} ref={projectsWrapperRef}>
                     <div className={s.projects__box} ref={projectsRef}>
-                        <div className={s.projects__box__title}>
-                            <h2>Latest Works</h2>
+                        <div className={s.projects__box__content__view}>
+                            <div className={s.projects__box__content__view__ctn}>
+                                {items.map((item, index) => (
+                                    <div
+                                        className={s.projects__box__content__view__ctn__img}
+                                        ref={viewRefs.current[index]}
+                                        key={index}
+                                    >
+                                        <Video
+                                            src={item.url}
+                                            index={index}
+                                            currentIndex={currentIndex}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
                         </div>
+
                         <div className={s.projects__box__content}>
-                            <div className={s.projects__box__content__view}>
-                                <div className={s.projects__box__content__view__ctn}>
-                                    {items.map((item, index) => (
-                                        <div
-                                            className={s.projects__box__content__view__ctn__img}
-                                            ref={viewRefs.current[index]}
-                                            key={index}
-                                        >
-                                            <Video
-                                                src={item.url}
-                                                index={index}
-                                                currentIndex={currentIndex}
-                                            />
-                                        </div>
-                                    ))}
-                                </div>
+                            <div className={s.projects__box__title}>
+                                <h2>Latest Works</h2>
                             </div>
                             <div className={s.projects__box__content__text}>
                                 <div className={s.projects__box__content__text__banner}></div>
@@ -177,7 +178,14 @@ export default function Projects({
                                                         s.projects__box__content__text__projects__project
                                                     }
                                                 >
-                                                    {item.title}
+                                                    <div
+                                                        className={
+                                                            s.projects__box__content__text__projects__project__title
+                                                        }
+                                                    >
+                                                        {item.title}
+                                                    </div>
+
                                                     <div
                                                         className={
                                                             s.projects__box__content__text__projects__project__text
@@ -186,13 +194,6 @@ export default function Projects({
                                                         <span>{item.smalltext}</span>
                                                     </div>
                                                 </div>
-                                                <span
-                                                    className={
-                                                        s.projects__box__content__text__projects__project__year
-                                                    }
-                                                >
-                                                    {item.year}
-                                                </span>
                                             </li>
                                         ))}
                                     </ul>
