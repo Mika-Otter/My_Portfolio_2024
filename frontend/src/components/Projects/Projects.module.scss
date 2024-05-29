@@ -164,12 +164,11 @@
             margin: 0;
             position: absolute;
             color: #091429;
-            bottom: clamp(50px, 5vw, 80px);
-            right: 1vw;
+            bottom: 4vw;
+            right: 0vw;
             // border: 2px solid red;
             font-family: "OktaNeue-SemiBold";
             text-transform: uppercase;
-            font-size: 1.3vw;
             font-weight: 200;
             text-align: left;
             width: 12vw;
@@ -188,8 +187,9 @@
                 flex-direction: column;
                 overflow: hidden;
                 &__ctn {
-                    font-size: 1.3vw;
-                    height: 1.7vw;
+                    font-size: 1.5vw;
+                    line-height: 1;
+                    height: 2vw;
                     margin: 0;
                     transform: translateY(-100%);
                     transition: 0.3s ease-in-out;

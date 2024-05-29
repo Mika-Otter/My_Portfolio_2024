@@ -130,12 +130,20 @@ export default function Project({
 
                         <div className={s.project__pic__title}>
                             <h2>{item.title}</h2>
-                            <span>
-                                Live Site{" "}
-                                <div className={s.project__pic__title__svg}>
-                                    <ArrowLiveSVG />
-                                </div>
-                            </span>
+                            <div className={s.project__pic__title__wrapper}>
+                                <span className={s.project__pic__title__live}>
+                                    Live Site
+                                    <div className={s.project__pic__title__svg}>
+                                        <ArrowLiveSVG />
+                                    </div>
+                                </span>
+                                <span className={s.project__pic__title__live}>
+                                    Live Site
+                                    <div className={s.project__pic__title__svg}>
+                                        <ArrowLiveSVG />
+                                    </div>
+                                </span>
+                            </div>
                         </div>
                     </div>
 
