@@ -9,7 +9,7 @@
     display: flex;
     justify-content: space-between;
     border-radius: 3px;
-    font-family: "Nacelle";
+    font-family: "OktaNeue-Bold";
     letter-spacing: 1px;
     font-size: $fontsize-s-nav;
     -webkit-backdrop-filter: blur(13px);
@@ -43,12 +43,10 @@
         width: 55%;
         transform: translate(-50%, -50%);
         transform: rotate(180deg);
-        // border: 2px solid red;
         &__playview {
             display: flex;
             justify-content: right;
             width: 50%;
-            // border: 2px solid red;
         }
 
         &__wrapper {
@@ -56,6 +54,8 @@
             height: $fontsize-s-nav;
             display: flex;
             flex-direction: column;
+            // border: 2px solid red;
+            padding: 0px 10px;
         }
 
         &__wrapper:hover .navbar__ctn__button {
@@ -65,12 +65,11 @@
             cursor: pointer;
             transform: translateY(-50%);
             transition: 0.3s ease-in-out;
-            // margin-right: 5px;
             display: flex;
             flex-direction: column;
             align-items: center;
             span {
-                line-height: 1.1;
+                line-height: 1;
                 height: $fontsize-s-nav;
                 margin: 0;
             }
