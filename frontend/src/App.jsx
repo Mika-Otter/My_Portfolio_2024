@@ -198,21 +198,25 @@ export default function App() {
                 <div className="overlay-div" ref={overlayThreeRef}></div>
                 <div className="overlay-div" ref={overlayFourRef}></div>
             </div>
-            {isLoading ? <Loader firstEnter={firstEnter} /> : null}
-            <PlayView
+            {/* {isLoading ? <Loader firstEnter={firstEnter} /> : null} */}
+            {/* <PlayView
                 playMode={playMode}
                 viewMode={viewMode}
                 isPlayed={isPlayed}
                 firstControls={firstControls}
                 handleControls={handleControls}
-            />
+            /> */}
             {isControls && <Controls handleControls={handleControls} />}
-            <Logo />
             <Navbar
                 activeSound={activeSound}
                 handleMenu={handleMenu}
                 handleTransition={() => handleTransition(setTransition)}
                 handleContact={handleContact}
+                playMode={playMode}
+                viewMode={viewMode}
+                isPlayed={isPlayed}
+                firstControls={firstControls}
+                handleControls={handleControls}
             />
             <Menu
                 isMenu={isMenu}

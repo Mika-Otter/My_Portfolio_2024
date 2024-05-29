@@ -1,9 +1,21 @@
 .logo {
     cursor: pointer;
-    position: fixed;
-    top: 10px;
-    left: 14px;
-    width: 22px;
+    width: 100%;
     z-index: 6000;
     // mix-blend-mode: difference;
+}
+
+.logo:hover {
+    animation: scaled 0.5s forwards;
+}
+@keyframes scaled {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

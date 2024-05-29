@@ -2,10 +2,8 @@
 @import "../../styles/font";
 
 .playView {
-    z-index: 8000;
     display: flex;
-    position: fixed;
-    top: 1%;
+    gap: 10px;
     right: clamp(30px, 2vw, 50px);
     mix-blend-mode: difference;
     height: 30px;
@@ -13,14 +11,11 @@
     width: clamp(80px, 6vw, 140px);
     padding: 0px 10px;
     justify-content: space-around;
-    // border: 2px solid red;
-    // background-color: rgba(241, 239, 239, 0.83);
-    // border-radius: 3px;
 
     button {
-        font-family: "NeueMontreal-Medium";
-        font-weight: 500;
-        font-size: $fontsize-l;
+        font-family: "Nacelle";
+        letter-spacing: 1px;
+        font-size: $fontsize-s-nav;
         cursor: pointer;
         border: none;
         background-color: transparent;
@@ -28,23 +23,39 @@
     }
 
     &__view {
-        color: rgb(185, 185, 185);
-        // color: $primary-color-darkblue;
+        color: rgb(255, 255, 255);
         transition: 0.3s ease-in-out;
+    }
+
+    &__view:hover,
+    &__play:hover,
+    &__playOff:hover,
+    &__viewOff:hover {
+        animation: scaled 0.5s forwards;
     }
     &__viewOff {
         color: rgba(188, 188, 188, 0.383);
-        // color: rgba(129, 127, 127, 0.59);
         transition: 0.3s ease-in-out;
     }
     &__playOff {
         color: rgba(188, 188, 188, 0.383);
-        // color: rgba(129, 127, 127, 0.59);
         transition: 0.3s ease-in-out;
     }
     &__play {
-        color: rgb(185, 185, 185);
+        color: rgb(255, 255, 255);
         // color: $primary-color-darkblue;
         transition: 0.3s ease-in-out;
+    }
+}
+
+@keyframes scaled {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
     }
 }

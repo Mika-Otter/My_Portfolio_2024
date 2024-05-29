@@ -2,56 +2,57 @@
 @import "../../styles/theme";
 
 .navbar {
-    // border: 2px solid red;
     z-index: 5000;
     position: fixed;
-    top: clamp(4px, 0.2%, 7px);
-    left: $nav-margin-right;
-    padding-top: 35px;
-    height: 175px;
-    width: 35px;
+    height: 35px;
+    width: 99vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     border-radius: 3px;
     font-family: "Nacelle";
     letter-spacing: 1px;
-    font-size: $fontsize-xs;
-    background-color: rgba(241, 239, 239, 0.83); //rgba(251, 247, 247, 0.835)
+    font-size: $fontsize-s-nav;
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
-    // mix-blend-mode: difference;
-    // color: white;
-    color: $primary-color-darkblue;
-    &__rotator {
-        // border: 2px solid blue;
-        transform: rotate(90deg);
-        display: flex;
+    mix-blend-mode: difference;
+    color: white;
+    transform: rotate(90deg);
+    transform-origin: left bottom;
+    top: -3%;
+
+    &__logo {
+        width: 30px;
+        height: 30px;
+        justify-content: center;
         align-items: center;
+        transform: translate(-50%, -50%);
+        transform: rotate(-90deg);
+    }
+
+    &__rotator {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
     }
 
     &__ctn {
         display: flex;
-        gap: 8px;
         align-items: center;
-        margin-left: 15px;
-        margin-right: 3px;
-        margin-bottom: 5px;
-        // border: 2px solid blue;
-
+        justify-content: left;
+        gap: 10%;
+        width: 60%;
+        transform: translate(-50%, -50%);
+        transform: rotate(180deg);
         &__playview {
-            margin-right: 20px;
+            display: flex;
+            width: 40%;
         }
 
         &__wrapper {
-            // border: 2px solid rgb(43, 176, 48);
             overflow: hidden;
-            height: $fontsize-m;
+            height: $fontsize-s-nav;
             display: flex;
             flex-direction: column;
-            transform: rotate(-180deg);
-
-            // transform-origin: left top;
         }
 
         &__wrapper:hover .navbar__ctn__button {
@@ -65,19 +66,15 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-
-            // clip-path: polygon(0 0, 100% 0, 100% 90%, 75% 100%, 0 100%);
-
             span {
                 line-height: 1.1;
-                height: $fontsize-m;
+                height: $fontsize-s-nav;
                 margin: 0;
             }
         }
     }
 
     &__sound {
-        // border: 2px solid purple;
         margin: 0;
         margin-left: 0px;
         width: 28px;
@@ -86,6 +83,7 @@
         align-items: center;
         justify-content: center;
         padding: 5px;
+        transform: translate(-50%, -50%);
         transform: rotate(-90deg);
     }
 }

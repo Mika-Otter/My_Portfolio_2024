@@ -26,10 +26,9 @@
 
         &__logo {
             position: absolute;
-            top: 35%;
+            top: 37%;
             width: 7vw;
             height: 50%;
-            // border: 2px solid red;
         }
     }
 }
@@ -42,20 +41,6 @@
     text-transform: uppercase;
     font-size: $fontsize-xs;
     font-weight: 700;
-}
-
-.counter__box {
-    position: fixed;
-    bottom: 30%;
-    left: 45%;
-    width: 20%;
-    display: flex;
-    justify-content: flex-end;
-    height: 20px;
-    border: 2px solid pink;
-    overflow: hidden;
-    font-family: "Nacelle";
-    font-size: 20px;
 }
 
 .loaderbar {
@@ -93,8 +78,6 @@
         font-family: "NeueMontreal-Medium";
         font-size: $fontsize-xl;
         z-index: 10;
-
-        // border: 2px solid red;
         transition: 0.3s ease-in-out;
     }
 
@@ -110,9 +93,7 @@
 .texts {
     opacity: 0;
     position: absolute;
-    // border: 2px solid blue;
     text-align: center;
-
     font-weight: 200;
     font-size: $fontsize-s;
     height: 98%;
