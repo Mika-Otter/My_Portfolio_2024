@@ -11,7 +11,7 @@
     min-width: 380px;
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
-    font-family: "NeueMontreal-Regular";
+    font-family: "OktaNeue-Normal";
     font-weight: 900;
     // border-radius: 5px;
     display: flex;
@@ -41,6 +41,7 @@
         margin-top: 15%;
         display: flex;
         flex-direction: column;
+        line-height: 1;
         gap: 3px;
         height: 35%;
         &__wrapper {
@@ -130,7 +131,7 @@
             position: relative;
             text-decoration: none;
             cursor: pointer;
-            font-family: "NeueMontreal-Regular";
+            font-family: "OktaNeue-Normal";
             font-weight: 100;
             // color: $primary-color-darkblue;
             color: $white-board-opac;
