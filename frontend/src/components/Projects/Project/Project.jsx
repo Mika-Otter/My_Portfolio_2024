@@ -9,6 +9,7 @@ import { CrossSVG } from "../../SVG/CrossSVG";
 import { ArrowSVG } from "../../SVG/ArrowSVG";
 import Video from "../../Video/Video";
 import ArrowLiveSVG from "../../SVG/ArrowLiveSVG";
+import { CrossBlackSVG } from "../../SVG/CrossBlackSVG";
 
 export default function Project({
     item,
@@ -167,7 +168,7 @@ export default function Project({
                     <div className={s.project__close} onClick={() => closingGSAP()}>
                         <span>CLOSE</span>
                         <div className={s.project__close__cross}>
-                            <CrossSVG />
+                            <CrossBlackSVG />
                         </div>
                     </div>
                     <div className={s.project__button}>

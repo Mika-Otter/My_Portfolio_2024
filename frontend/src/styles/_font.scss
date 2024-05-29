@@ -27,6 +27,10 @@
     src: url("./font/OktaNeue-Normal.ttf");
 }
 @font-face {
+    font-family: "OktaNeue-Medium";
+    src: url("./font/OktaNeue-Medium.ttf");
+}
+@font-face {
     font-family: "OktaNeue-Bold";
     src: url("./font/OktaNeue-Bold.ttf");
 }
@@ -52,4 +56,4 @@ $fontsize-l: clamp(f.rem(16), 12px + 0.5vw, f.rem(24));
 
 $fontsize-project: clamp(f.rem(15), 0.9vw, f.rem(22));
 $fontsize-projects: clamp(f.rem(17), 1.3vw, f.rem(24));
-$fontsize-menu: clamp(f.rem(55), 5vw, f.rem(80));
+$fontsize-menu: clamp(f.rem(55), 4.5vw, f.rem(80));

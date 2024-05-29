@@ -45,15 +45,14 @@
     justify-content: space-between;
 
     &__left {
-        width: 60%;
+        width: 65%;
         height: 100%;
-        margin-left: 5rem;
+        margin-left: 7vw;
         margin-top: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
         position: relative;
-        // border: 2px solid blue;
     }
 
     &__pic::-webkit-scrollbar {
@@ -62,8 +61,7 @@
     &__pic {
         position: relative;
         width: 100%;
-        height: 73%;
-        // border: 2px solid red;
+        height: 72%;
         display: flex;
         justify-content: center;
         overflow: hidden;
@@ -75,7 +73,7 @@
         &__wrapper {
             position: fixed;
             height: 3%;
-            width: 60%;
+            width: 45%;
             bottom: 16%; //pic height: 80% margin-top : 7%
             background: rgb(240, 238, 238);
             background: linear-gradient(0deg, rgb(240, 238, 238) 22%, rgba(248, 247, 247, 0) 100%);
@@ -83,7 +81,7 @@
         &__button {
             cursor: pointer;
             border: none;
-            font-family: "Nacelle";
+            font-family: "OktaNeue-Bold";
             font-size: 18px;
             background-color: #151818;
             color: white;
@@ -100,7 +98,7 @@
             display: flex;
             justify-content: space-between;
             height: 3.5rem;
-            font-family: "NeueMontreal-Regular";
+            font-family: "OktaNeue-SemiBold";
             font-style: normal;
             text-transform: uppercase;
             font-size: 0.7rem;
@@ -140,7 +138,6 @@
             position: relative;
             width: 95%;
             padding-top: 0%;
-            // border: 2px solid purple;
             height: 117vw;
             display: flex;
             flex-direction: column;
@@ -197,31 +194,32 @@
     }
     &__content {
         height: 70%;
-        width: 50%;
+        width: 45%;
         margin-top: 6%;
-        margin-left: 1%;
-        margin-right: 8%;
+        margin-left: 4%;
+        margin-right: 5%;
         // border: 2px solid orange;
         display: flex;
         flex-direction: column;
-        gap: 15px;
-
+        gap: 1%;
         color: $primary-color-darkblue;
 
         font-family: "NeueMontreal-Regular";
         font-weight: 200;
         letter-spacing: 1px;
-        font-size: $fontsize-project;
-        line-height: 1.3;
+        font-size: 1.1vw;
+        line-height: 1.2;
         padding: 0px 55px;
 
         p {
             margin: 0;
             padding: 0;
+            width: 100%;
+            // text-align: justify;
         }
         h3 {
-            font-family: "NeueMontreal-Medium";
-            font-size: $fontsize-project;
+            font-family: "OktaNeue-Medium";
+            font-size: 1.2vw;
             margin: 0;
             margin-top: 5px;
             margin-bottom: 7px;
@@ -233,17 +231,24 @@
             font-family: "NeueMontreal-Regular";
             font-weight: 200;
             letter-spacing: 1px;
-            font-size: $fontsize-project;
+            font-size: 1.1vw;
             width: 74%;
             margin: 0;
             line-height: 1.3;
         }
 
+        &__client {
+            width: 100%;
+            text-transform: uppercase;
+        }
+
         &__techno {
-            width: 75%;
+            width: 80%;
 
             &__text {
-                font-size: $fontsize-s;
+                // font-size: $fontsize-s;
+                font-weight: 200;
+                font-size: 1vw;
                 text-transform: uppercase;
             }
         }
@@ -254,13 +259,6 @@
             align-items: flex-end;
             width: 15%;
             // border: 2px solid red;
-        }
-        &__client {
-            width: 100%;
-        }
-
-        &__text {
-            text-transform: uppercase;
         }
 
         &__clientyear {
@@ -285,17 +283,13 @@
         position: absolute;
         top: 1.1rem;
         right: 2rem;
-        height: 30px;
-        // border: 2px solid blue;
-
         display: flex;
         align-items: center;
         gap: 3px;
-        font-family: "NeueMontreal-Regular";
+        font-family: "OktaNeue-Medium";
         color: $primary-color-darkblue;
         font-weight: 600;
-        font-size: 12px;
-        // line-height: 1.8;
+        font-size: $fontsize-s;
         cursor: pointer;
 
         span {
@@ -314,20 +308,19 @@
             width: 20px;
             height: 10px;
             z-index: 1000;
-            margin-top: -15px;
+            margin-top: 3px;
             transition: 0.3s ease-in-out;
         }
     }
 
     &__close:hover .project__close__cross {
-        transform: scale(0.8);
-        transition: 0.3s ease-in-out;
+        animation: scaledDown 0.3s forwards;
     }
 
     &__button {
         position: absolute;
         bottom: 9%;
-        right: 2.7vw;
+        right: 5.7vw;
         // border: 2px solid red;
         width: 10%;
         display: flex;
@@ -338,19 +331,25 @@
             width: 40%;
         }
         span {
-            font-family: "NeueMontreal-Regular";
-            font-weight: 600;
+            font-family: "OktaNeue-SemiBold";
+            text-transform: uppercase;
+            font-size: 1.3vw;
+            font-weight: 200;
             color: $primary-color-darkblue;
-            font-size: $fontsize-m;
             margin: 0;
         }
 
         &__prev {
             span {
+                color: #5d5c61cc;
                 font-weight: 200;
             }
         }
 
+        &__prev:hover,
+        &__btn:hover {
+            animation: scaledUp 0.3s forwards;
+        }
         &__btn {
             border: none;
             all: unset;
@@ -366,5 +365,29 @@
         &__svg {
             width: 25px;
         }
+    }
+}
+
+@keyframes scaledDown {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes scaledUp {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
     }
 }

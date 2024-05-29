@@ -7,10 +7,8 @@ export default function useContactAnimation(contactRef, contact) {
     useEffect(() => {
         tlContact.current = gsap.timeline({ paused: true, ease: "power3.out" });
         const { width } = contactRef.current.getBoundingClientRect();
-        const widthAdjust = width + 15;
         tlContact.current.to(contactRef.current, {
-            x: `-${widthAdjust}`,
-            xPercent: -1,
+            x: `-${width}`,
             duration: 3,
         });
     }, []);
