@@ -16,7 +16,6 @@
 
     background-color: rgba(236, 233, 233, 0.93);
     color: rgb(39, 38, 45);
-    // color: $primary-color-darkblue;
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
     font-family: "NeueMontreal-Regular";
@@ -25,7 +24,6 @@
     flex-direction: column;
     overflow: hidden;
     &__fade {
-        // border: 2px solid green;
         position: fixed;
         bottom: 0;
         left: 0;
@@ -56,7 +54,6 @@
         position: sticky;
         background: rgb(241, 239, 239);
         background: linear-gradient(0deg, rgba(241, 239, 239, 1) 0%, rgba(0, 212, 255, 0) 100%);
-
         bottom: 0;
         left: 0;
         right: 0;
@@ -66,34 +63,41 @@
         display: flex;
         align-items: center;
         cursor: pointer;
+        font-family: "OktaNeue-Medium";
+        color: $primary-color-darkblue;
+        font-weight: 600;
+        font-size: $fontsize-s;
         span {
             font-size: 14px;
             margin-bottom: 3px;
             font-weight: 700;
         }
         &__svg {
+            margin-top: 3px;
             width: 25px;
             transition: 0.3s ease-in-out;
         }
-
         &:hover &__svg {
-            transform: scale(0.85);
+            animation: scaledDown 0.3s forwards;
         }
     }
+
     label {
         text-transform: uppercase;
         font-size: $fontsize-s;
         font-weight: 500;
+        font-family: "NeueMontreal-Medium";
     }
     input {
         background: none;
-        border: none;
-        border-bottom: 1px solid rgb(44, 40, 40);
-        font-family: "NeueMontreal-Regular";
+        border: 1px solid rgb(44, 40, 40);
+        border-radius: 5px;
+        padding: 0px 5px;
+        font-family: "OktaNeue-Bold";
         font-size: $fontsize-m;
+        height: 1.5vw;
         text-transform: uppercase;
-        font-weight: 600;
-        padding-bottom: 4px;
+        padding-bottom: 5px;
         padding-top: 5px;
     }
 
@@ -104,6 +108,7 @@
     &__title {
         h2 {
             margin: 0;
+            font-family: "OktaNeue-Medium";
             font-size: $fontsize-menu;
         }
     }
@@ -142,11 +147,12 @@
 
                 label {
                     text-align: center;
-                    font-family: "NeueMontreal-Medium";
+                    font-family: "OktaNeue-Bold";
                     color: rgb(158, 158, 158);
                     transition: 0.3s ease-in-out;
                     cursor: pointer;
-                    font-size: $fontsize-l;
+                    line-height: 0.9;
+                    font-size: 1.5vw;
                 }
 
                 input[type="radio"] {
@@ -215,9 +221,8 @@
                     button {
                         background: none;
                         border: none;
-                        font-size: 16px;
-                        font-family: "NeueMontreal-Regular";
-                        font-weight: 700;
+                        font-size: $fontsize-m;
+                        font-family: "OktaNeue-Bold";
                         cursor: pointer;
                     }
 
@@ -250,7 +255,8 @@
                     gap: 5px;
                     text-transform: uppercase;
                     color: grey;
-                    font-family: "NeueMontreal-Medium";
+                    font-family: "OktaNeue-SemiBold";
+                    line-height: 1;
 
                     span {
                         cursor: pointer;
@@ -286,30 +292,43 @@
             display: flex;
             justify-content: center;
             margin-top: 30px;
-            margin-bottom: 70px;
-            height: 30px;
+            margin-bottom: 2vw;
+            height: 2.3vw;
+
             // border: 2px solid red;
             overflow: hidden;
             button {
                 cursor: pointer;
                 transform: translateY(0%);
-                height: 60px;
                 display: flex;
                 flex-direction: column;
                 border: none;
                 background: none;
-                font-size: 30px;
+                font-size: 1.8vw;
                 font-weight: 600;
-                font-family: "NeueMontreal-Regular";
+                font-family: "OktaNeue-SemiBold";
                 transition: 0.3s ease-in-out;
+                line-height: 1;
 
                 span {
-                    height: 30px;
+                    height: 2.3vw;
                 }
             }
             button:hover {
-                transform: translateY(-50%);
+                transform: translateY(-100%);
             }
         }
+    }
+}
+
+@keyframes scaledDown {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
     }
 }
