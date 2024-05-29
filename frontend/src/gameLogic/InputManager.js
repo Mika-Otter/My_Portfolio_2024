@@ -41,6 +41,7 @@ export class HandleInput {
                     }
 
                     break;
+
                 case "d":
                     if (this.keysTab.indexOf("d") == -1) {
                         this.keysTab.unshift("d");

@@ -40,6 +40,9 @@ export class ActivePlayer extends Player {
         this.isDialoging = false;
         this.testRef = testRef;
         this.handleContact = () => handleContact();
+        this.firstJump = false;
+        this.canDoubleJump = false;
+        this.hasDoubleJumped = false;
     }
 
     setTitle(title) {
@@ -71,14 +74,14 @@ export class ActivePlayer extends Player {
         return this;
     }
 
-    updatePlayer({ background, context, canvas, camera }) {
+    updatePlayer({ background, context, canvas, camera, firstJump }) {
         const now = performance.now();
-        const deltaTime = now - this.lastUpdateTime;
+        const deltaTime = (now - this.lastUpdateTime) / 1000;
         this.lastUpdateTime = now;
 
-        this.handleMovement({ canvas, camera, background })
+        this.handleMovement({ canvas, camera, background, deltaTime, firstJump })
             .updateCameraBox({ camera })
-            .update({ camera, canvas, background })
+            .update({ camera, canvas, background, deltaTime })
             .setState();
 
         if (this.sprite) {
@@ -89,7 +92,7 @@ export class ActivePlayer extends Player {
             this.cameraBox.height = 700;
             this.cameraBox.position.y = this.position.y - 300;
             if (camera.position.x > -440) {
-                camera.position.x -= 3;
+                camera.position.x -= 3 * deltaTime;
             }
 
             if (
@@ -113,28 +116,30 @@ export class ActivePlayer extends Player {
             this.launchStarship().activeSecrets();
         }
 
-        if (this.velocity.y !== 0) {
-            this.isJumping = true;
+        // Mise à jour des flags de saut
+        if (this.velocity.y === 0) {
+            this.isJumping = false;
+            this.hasDoubleJumped = false;
         }
 
         return this;
     }
 
-    handleMovement({ canvas, camera, background }) {
+    handleMovement({ canvas, camera, background, deltaTime }) {
         if (this.preventInput) return this;
 
         if (this.keysTab.includes(" ") && !this.collidedTop) {
             if (this.velocity.y === 0) {
-                this.velocity.y = -13 * this.scale;
+                this.velocity.y = -9.2 * this.scale;
                 this.jumping = true;
             }
         }
 
         if (this.keysTab[0] === "d" && !this.collidedRight) {
-            this.velocity.x = 3.7;
+            this.velocity.x = 3;
             this.shouldPanCameraToTheLeft({ canvas, camera, background });
         } else if (this.keysTab[0] === "q" && !this.collidedLeft && this.position.x > 0) {
-            this.velocity.x = -3.7;
+            this.velocity.x = -3;
             this.shouldPanCameraToTheRight({ camera });
         } else {
             this.velocity.x = 0;

@@ -11,10 +11,10 @@ export function gameAnimate({
     cloud,
 }) {
     let lastTime = 0;
+
     function animate(timeStamp) {
         // const deltaTime = timeStamp - lastTime;
         // lastTime = timeStamp;
-
         mainChangeLevel();
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -32,6 +32,7 @@ export function gameAnimate({
             context: ctx,
             canvas,
             camera,
+            firstJump,
         });
         water.draw(ctx, canvas);
         cloud.draw(ctx, canvas);
