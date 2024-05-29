@@ -40,12 +40,15 @@
         align-items: center;
         justify-content: left;
         gap: 10%;
-        width: 60%;
+        width: 55%;
         transform: translate(-50%, -50%);
         transform: rotate(180deg);
+        // border: 2px solid red;
         &__playview {
             display: flex;
-            width: 40%;
+            justify-content: right;
+            width: 50%;
+            // border: 2px solid red;
         }
 
         &__wrapper {

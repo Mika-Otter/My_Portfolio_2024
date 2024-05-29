@@ -27,10 +27,10 @@ export default function Projects({
     const [isHover, setIsHover] = useState(false);
 
     const [clickNextLevel, setClickNextLevel] = useState(false);
-    const projectsRef = useRef();
-    const projectsWrapperRef = useRef();
-
-    const intervalRef = useRef();
+    const projectsRef = useRef(null);
+    const projectsWrapperRef = useRef(null);
+    const projectVideoBackgroundRef = useRef(null);
+    const intervalRef = useRef(null);
 
     const handleClickNextLevel = () => {
         setClickNextLevel((prev) => !prev);
@@ -68,14 +68,27 @@ export default function Projects({
     useGSAP(() => {
         const currentElement = viewRefs.current[currentIndex].current;
         const parentElement = currentElement.parentElement;
-        const randomLarge = Math.floor(Math.random() * 24) + 1;
-        const randomTop = Math.floor(Math.random() * 40) + 4;
-        // const randomWidth = Math.floor(Math.random() * 5) + 42;
-        const randomWidth = 44;
-        const height = randomWidth / 0.6;
-        // const randomHeight = Math.floor(Math.random() * 15) + 35;
 
         viewRefs.current.forEach((ref, index) => {
+            switch (currentIndex) {
+                case 0:
+                    gsap.set(projectVideoBackgroundRef.current, { backgroundColor: "#1c1c1d" });
+                    break;
+                case 1:
+                    gsap.set(projectVideoBackgroundRef.current, { backgroundColor: "#dc86dc" });
+                    break;
+                case 2:
+                    gsap.set(projectVideoBackgroundRef.current, { backgroundColor: "#a0b0a8" });
+                    break;
+                case 3:
+                    gsap.set(projectVideoBackgroundRef.current, { backgroundColor: "#183829" });
+                    break;
+                case 4:
+                    gsap.set(projectVideoBackgroundRef.current, { backgroundColor: "#a0b0a8" });
+                    break;
+                default:
+                    break;
+            }
             if (index !== currentIndex)
                 gsap.set(ref.current, {
                     height: "0%",
@@ -84,16 +97,10 @@ export default function Projects({
             if (index === currentIndex) {
                 parentElement.appendChild(currentElement);
                 gsap.set(currentElement, {
-                    left: `${randomLarge}%`,
-                    top: `${randomTop}%`,
-                    height: "0%",
-                    width: `${randomWidth}%`,
+                    height: "100%",
+                    width: "100%",
                     opacity: 1,
-                    zIndex: -1,
-                });
-                gsap.to(currentElement, {
-                    height: `${height}%`,
-                    duration: 0.8,
+                    zIndex: 1,
                 });
             }
         });
@@ -139,11 +146,11 @@ export default function Projects({
             <section className={s.projects}>
                 <div className={s.projects__box__wrapper} ref={projectsWrapperRef}>
                     <div className={s.projects__box} ref={projectsRef}>
-                        <div className={s.projects__box__content__view}>
-                            <div className={s.projects__box__content__view__ctn}>
+                        <div className={s.projects__box__view} ref={projectVideoBackgroundRef}>
+                            <div className={s.projects__box__view__ctn}>
                                 {items.map((item, index) => (
                                     <div
-                                        className={s.projects__box__content__view__ctn__img}
+                                        className={s.projects__box__view__ctn__img}
                                         ref={viewRefs.current[index]}
                                         key={index}
                                     >
@@ -159,7 +166,7 @@ export default function Projects({
 
                         <div className={s.projects__box__content}>
                             <div className={s.projects__box__title}>
-                                <h2>Latest Works</h2>
+                                <h2>Latest works</h2>
                             </div>
                             <div className={s.projects__box__content__text}>
                                 <div className={s.projects__box__content__text__banner}></div>
