@@ -45,30 +45,6 @@
                 color: $primary-color-darkblue;
             }
         }
-        &__title {
-            position: absolute;
-            z-index: -1;
-            h2 {
-                font-family: "NeueMontreal-Medium";
-                text-transform: uppercase;
-                font-size: $fontsize-title-project;
-                font-weight: 200;
-                text-align: center;
-                margin: 0;
-                margin-top: 30px;
-                mix-blend-mode: difference;
-                color: $primary-color-darkblue;
-            }
-
-            &__latest {
-                top: -20px;
-                left: 50px;
-            }
-            &__works {
-                bottom: 50px;
-                left: 500px;
-            }
-        }
 
         &__content {
             // border: 2px solid blue;

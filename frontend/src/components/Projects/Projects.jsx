@@ -139,15 +139,9 @@ export default function Projects({
             <section className={s.projects}>
                 <div className={s.projects__box__wrapper} ref={projectsWrapperRef}>
                     <div className={s.projects__box} ref={projectsRef}>
-                        <div className={s.projects__box__titletest}>
+                        <div className={s.projects__box__title}>
                             <h2>Latest Works</h2>
                         </div>
-                        {/* <div className={cn(s.projects__box__title, s.projects__box__title__latest)}>
-                            <h2>Latest</h2>
-                        </div>
-                        <div className={cn(s.projects__box__title, s.projects__box__title__works)}>
-                            <h2>works</h2>
-                        </div> */}
                         <div className={s.projects__box__content}>
                             <div className={s.projects__box__content__view}>
                                 <div className={s.projects__box__content__view__ctn}>
