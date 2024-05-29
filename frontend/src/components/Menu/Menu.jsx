@@ -36,7 +36,6 @@ export default function Menu({
         const { width } = menuRef.current.getBoundingClientRect();
         tl.current.to(menuRef.current, {
             x: `-${width}`,
-            xPercent: -1,
             duration: 3,
         });
     }, []);
@@ -58,7 +57,7 @@ export default function Menu({
                     <div className={s.menu__close__cross}>
                         <CrossSVG />
                     </div>
-                    CLOSE
+                    <span>CLOSE</span>
                 </div>
 
                 <div className={s.menu__item}>
