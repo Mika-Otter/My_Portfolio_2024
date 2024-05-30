@@ -158,6 +158,7 @@ export default function Projects({
                                             src={item.url}
                                             index={index}
                                             currentIndex={currentIndex}
+                                            isOpenProject={isOpenProject}
                                         />
                                     </div>
                                 ))}
@@ -176,8 +177,16 @@ export default function Projects({
                                             <li
                                                 key={index}
                                                 className={index === currentIndex ? s.liHover : ""}
-                                                onMouseEnter={(e) => handleMouseEnter(e, index)}
-                                                onMouseLeave={(e) => handleMouseLeave(e, index)}
+                                                onMouseEnter={(e) => {
+                                                    isOpenProject
+                                                        ? null
+                                                        : handleMouseEnter(e, index);
+                                                }}
+                                                onMouseLeave={(e) => {
+                                                    isOpenProject
+                                                        ? null
+                                                        : handleMouseLeave(e, index);
+                                                }}
                                                 onClick={() => openProject()}
                                             >
                                                 <div

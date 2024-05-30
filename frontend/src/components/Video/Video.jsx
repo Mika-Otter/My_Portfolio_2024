@@ -1,13 +1,20 @@
 import React, { useEffect, useRef } from "react";
 import s from "./Video.module.scss";
 
-export default function Video({ src, index, currentIndex }) {
+export default function Video({ src, index, currentIndex, isOpenProject }) {
     const videoRef = useRef(null);
 
     useEffect(() => {
+        if (isOpenProject) {
+            setTimeout(() => {
+                videoRef.current.pause();
+            }, 700);
+
+            return;
+        }
         videoRef.current.pause();
         currentIndex === index && videoRef.current.play();
-    }, [currentIndex, index]);
+    }, [currentIndex, index, isOpenProject]);
 
     return (
         <>
