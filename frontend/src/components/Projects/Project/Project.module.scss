@@ -138,7 +138,7 @@
                 margin: 0;
                 padding: 0;
                 text-align: left;
-                font-size: $fontsize-xl;
+                font-size: 1.65vw;
             }
 
             &__ask {
@@ -168,6 +168,7 @@
                 justify-content: space-between;
                 gap: 15px;
                 border-radius: 7px;
+                background-color: rgb(235, 233, 233);
                 img {
                     width: 100%;
                 }
@@ -178,6 +179,7 @@
                     border-radius: 7px;
                     overflow: hidden;
                     // border: 2px solid red;
+                    background-color: rgb(235, 233, 233);
                 }
             }
             &__ctn__two {
