@@ -175,17 +175,17 @@ export default function App() {
     }, [transition]);
 
     const backgroundHeight = useBackgroundHeight();
-    useEffect(() => {
-        console.log("hello", backgroundHeight);
-    }, [backgroundHeight]);
+    // useEffect(() => {
+    //     console.log("hello", backgroundHeight);
+    // }, [backgroundHeight]);
 
-    useEffect(() => {
-        console.log("Initial isDialog:", isDialog);
-    }, []);
+    // useEffect(() => {
+    //     console.log("Initial isDialog:", isDialog);
+    // }, []);
 
-    useEffect(() => {
-        console.log("Render isDialog:", isDialog);
-    }, [isDialog]);
+    // useEffect(() => {
+    //     console.log("Render isDialog:", isDialog);
+    // }, [isDialog]);
 
     return (
         <>

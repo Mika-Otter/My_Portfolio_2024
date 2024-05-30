@@ -80,7 +80,7 @@ export class ActivePlayer extends Player {
         const now = performance.now();
         const deltaTime = now - this.lastUpdateTime;
         this.lastUpdateTime = now;
-        console.log(deltaTime);
+        // console.log(deltaTime);
 
         if (deltaTime >= 7 && deltaTime <= 8) {
             this.speedX = 3;

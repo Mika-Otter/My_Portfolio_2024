@@ -5,9 +5,9 @@ import s from "./BigBox.module.scss";
 export default function BigBox({ children }) {
     const backgroundheight = useBackgroundHeight();
 
-    useEffect(() => {
-        console.log(backgroundheight);
-    }, [backgroundheight]);
+    // useEffect(() => {
+    //     console.log(backgroundheight);
+    // }, [backgroundheight]);
     return (
         <>
             <div className={s.bigbox} style={{ height: `${backgroundheight}px` }}>

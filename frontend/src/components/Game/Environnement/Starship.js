@@ -1,29 +1,29 @@
 import { Stars } from "./Stars";
 
 export default class Starship {
-    constructor(canvas) {
-        this.canvas = canvas;
+    constructor({ scale, position }) {
         this.image = new Image();
         this.image.src = "./src/assets/img/starship.png";
+        this.loaded = false;
+        this.frameRate = 1;
+        this.scale = scale;
+        this.position = position;
+        this.position.x = position.x * this.scale;
+        this.position.y = position.y * this.scale;
+        // this.position = {
+        //     x: 870,
+        //     y: 1778,
+        // };
         this.image.onload = () => {
             this.loaded = true;
             this.width = this.image.width / this.frameRate;
             this.height = this.image.height;
         };
-
-        this.frameRate = 1;
-        this.position = {
-            x: 800,
-            y: 1780,
-        };
-
         this.spriteWidth = 96;
         this.spriteHeight = 224;
         this.starshipState = ["IDLE", "LAUNCH"];
-
         this.frameX = 0;
         this.frameY = 0;
-
         this.gameFrame = 0;
         this.staggerFrames = 20;
         this.spriteAnimations = [];
@@ -37,7 +37,6 @@ export default class Starship {
                 frames: 21,
             },
         ];
-
         this.launching = false;
         this.pause = false;
         this.speedStarship = 0.6;

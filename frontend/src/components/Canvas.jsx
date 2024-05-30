@@ -128,7 +128,7 @@ export default function Canvas({
             } = game.getAnimateObjects();
             playerRef.current = player;
             // setPlayer(player);
-            console.log("player", player);
+            // console.log("player", player);
 
             let lastTime = 0;
             window.scrollBy(0, -100);

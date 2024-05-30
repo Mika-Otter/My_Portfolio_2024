@@ -142,9 +142,13 @@ export class Game {
                         aspectRatio: 3200 / 3586,
                     });
                     this.scale = this.background.width / this.background.originalWidth;
+                    console.log(this.scale, "scaale");
                     this.starShip = new Starship({
-                        position: { x: 600, y: 1200 },
-                        autoplay: false,
+                        scale: this.scale,
+                        position: {
+                            x: 1300,
+                            y: 2850,
+                        },
                     });
 
                     // Parse collisions for level 2

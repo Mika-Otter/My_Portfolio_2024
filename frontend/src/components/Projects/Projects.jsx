@@ -34,7 +34,7 @@ export default function Projects({
 
     const handleClickNextLevel = () => {
         setClickNextLevel((prev) => !prev);
-        console.log(clickNextLevel);
+        // console.log(clickNextLevel);
     };
 
     const items = projectsData;
@@ -113,9 +113,9 @@ export default function Projects({
         return () => clearInterval(intervalRef.current);
     }, [isHover, isOpenProject]);
 
-    useEffect(() => {
-        console.log(currentIndex, "and last index :", lastIndex);
-    }, [currentIndex]);
+    // useEffect(() => {
+    //     console.log(currentIndex, "and last index :", lastIndex);
+    // }, [currentIndex]);
 
     useGSAP(() => {
         if (clickNextLevel) {
