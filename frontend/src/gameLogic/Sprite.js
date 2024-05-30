@@ -14,7 +14,11 @@ export class Sprite {
 
         //slow down the animation
         this.gameFrame = 0;
-        this.staggerFrames = 20;
+        this.staggerFrames = 2.5;
+
+        this.fps = 20;
+        this.frameInterval = 1000 / this.fps;
+        this.frameTimer = 0;
 
         this.spriteAnimations = [];
         this.animationStates = [
@@ -72,40 +76,47 @@ export class Sprite {
         );
     }
 
-    update(SPRITE_NAME) {
-        if (SPRITE_NAME === "TELEPORT" && !this.teleporting) {
-            this.teleporting = true;
-            this.teleportFrame = 0;
-            this.teleportDelay = 12;
-        }
+    update(SPRITE_NAME, deltaTime) {
+        // Update frameTimer with deltaTime
+        this.frameTimer += deltaTime;
 
-        if (this.teleporting) {
-            const totalFrames = this.spriteAnimations["TELEPORT"].loc.length;
+        if (this.frameTimer > this.frameInterval) {
+            this.frameTimer = 0;
 
-            // if all frames are appear
-            if (this.teleportFrame >= totalFrames * this.teleportDelay) {
-                // stop on last frame
-                this.frameX = (totalFrames - 1) * this.spriteWidth;
-                this.frameY = this.spriteAnimations["TELEPORT"].loc[totalFrames - 1].y;
-                setTimeout(() => (this.teleporting = false), 2000);
+            if (SPRITE_NAME === "TELEPORT" && !this.teleporting) {
+                this.teleporting = true;
+                this.teleportFrame = 0;
+                this.teleportDelay = 12;
+            }
+
+            if (this.teleporting) {
+                const totalFrames = this.spriteAnimations["TELEPORT"].loc.length;
+
+                // if all frames are appear
+                if (this.teleportFrame >= totalFrames * this.teleportDelay) {
+                    // stop on last frame
+                    this.frameX = (totalFrames - 1) * this.spriteWidth;
+                    this.frameY = this.spriteAnimations["TELEPORT"].loc[totalFrames - 1].y;
+                    setTimeout(() => (this.teleporting = false), 2000);
+                    return;
+                }
+                let position = Math.floor(this.teleportFrame / this.teleportDelay);
+                this.frameX = position * this.spriteWidth;
+                this.frameY = this.spriteAnimations["TELEPORT"].loc[position].y;
+                this.teleportFrame++;
                 return;
             }
-            let position = Math.floor(this.teleportFrame / this.teleportDelay);
-            this.frameX = position * this.spriteWidth;
-            this.frameY = this.spriteAnimations["TELEPORT"].loc[position].y;
-            this.teleportFrame++;
-            return;
-        }
 
-        let position =
-            Math.floor(this.gameFrame / this.staggerFrames) %
-            this.spriteAnimations[this.playerState[this.playerState.indexOf(SPRITE_NAME)]].loc
-                .length;
-        this.frameX = position * this.spriteWidth;
-        this.frameY =
-            this.spriteAnimations[this.playerState[this.playerState.indexOf(SPRITE_NAME)]].loc[
-                position
-            ].y;
-        this.gameFrame++;
+            let position =
+                Math.floor(this.gameFrame / this.staggerFrames) %
+                this.spriteAnimations[this.playerState[this.playerState.indexOf(SPRITE_NAME)]].loc
+                    .length;
+            this.frameX = position * this.spriteWidth;
+            this.frameY =
+                this.spriteAnimations[this.playerState[this.playerState.indexOf(SPRITE_NAME)]].loc[
+                    position
+                ].y;
+            this.gameFrame++;
+        }
     }
 }

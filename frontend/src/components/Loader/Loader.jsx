@@ -35,7 +35,7 @@ export default function Loader({ firstEnter }) {
     const [enter, setEnter] = useState(false);
     const [animation, setAnimation] = useState(false);
     const [loadingImg, setLoadingImg] = useState(false);
-    const [settingUp, setSettingUp] = useState("src/access");
+    const [settingUp, setSettingUp] = useState("We loading the game...");
     const settingUpRef = useRef(null);
 
     useEffect(() => {
@@ -56,18 +56,23 @@ export default function Loader({ firstEnter }) {
     }
 
     const settingUpList = [
-        { text: "src/assets/background.webp", duration: 100 },
-        { text: "src/assets/player.png", duration: 100 },
-        { text: "src/assets/slider.webp", duration: 500 },
-        { text: "src/assets/douceurideale.mp4", duration: 100 },
-        { text: "src/components", duration: 100 },
-        { text: "src/styles/global.scss", duration: 600 },
-        { text: "src/data", duration: 100 },
-        { text: "src/gameLogic/gameInit.js", duration: 100 },
-        { text: "src/gameLogic/gameInit.js", duration: 1500 },
-        { text: "src/gameLogic/playerInit.js", duration: 200 },
-        { text: "src/gameLogic/gameAnimate.js", duration: 200 },
-        { text: "src/gameLogic/gameAnimate.js", duration: 1300 },
+        { text: "We loading the game...", duration: 800 },
+        { text: "We calculate your FPS...", duration: 800 },
+        { text: "Media charging...", duration: 1600 },
+        { text: "Media charging...", duration: 800 },
+
+        // { text: "src/assets/background.webp", duration: 100 },
+        // { text: "src/assets/player.png", duration: 100 },
+        // { text: "src/assets/slider.webp", duration: 500 },
+        // { text: "src/assets/douceurideale.mp4", duration: 100 },
+        // { text: "src/components", duration: 100 },
+        // { text: "src/styles/global.scss", duration: 600 },
+        // { text: "src/data", duration: 100 },
+        // { text: "src/gameLogic/gameInit.js", duration: 100 },
+        // { text: "src/gameLogic/gameInit.js", duration: 1500 },
+        // { text: "src/gameLogic/playerInit.js", duration: 200 },
+        // { text: "src/gameLogic/gameAnimate.js", duration: 200 },
+        // { text: "src/gameLogic/gameAnimate.js", duration: 1300 },
     ];
 
     function chargementSettingUp(list) {
@@ -160,7 +165,7 @@ export default function Loader({ firstEnter }) {
             .set(loaderRef.current, { transformOrigin: "center center" })
             .set(loaderbackRef.current, { opacity: 0 })
             .to(loaderRef.current, {
-                x: "25dvw",
+                x: "12.5dvw",
                 width: 0,
                 duration: 0.6,
                 delay: 1,

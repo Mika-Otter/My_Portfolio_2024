@@ -19,7 +19,9 @@ export default function AudioPlayer({ activeSound }) {
             { x: 29, y: 35, width: 3, height: -5, color: "white", dy: 1, max: -8 },
         ];
         const animate = initializeCanvas(canvas, squares, speed);
-        animationRef.current = requestAnimationFrame(() => animate(playingAudio));
+        animationRef.current = requestAnimationFrame((timeStamp) =>
+            animate(playingAudio, timeStamp)
+        );
         return () => cancelAnimationFrame(animationRef.current);
     }, [playingAudio]);
 

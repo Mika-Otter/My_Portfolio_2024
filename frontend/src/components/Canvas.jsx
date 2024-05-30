@@ -133,8 +133,10 @@ export default function Canvas({
             let lastTime = 0;
             window.scrollBy(0, -100);
             function animate(timeStamp) {
-                // const deltaTime = timeStamp - lastTime;
-                // lastTime = timeStamp;
+                const deltaTime = timeStamp - lastTime;
+                lastTime = timeStamp;
+
+                console.log(deltaTime);
 
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.save();
@@ -160,6 +162,7 @@ export default function Canvas({
                     context: ctx,
                     canvas,
                     camera,
+                    deltaTime,
                 });
                 if (RoomLevel === 1) {
                     water.draw(ctx, canvas);

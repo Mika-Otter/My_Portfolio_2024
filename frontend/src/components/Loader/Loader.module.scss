@@ -39,7 +39,7 @@
     color: #787777;
     font-family: "NeueMontreal-Regular";
     text-transform: uppercase;
-    font-size: $fontsize-xs;
+    font-size: $fontsize-s;
     font-weight: 700;
 }
 
@@ -47,8 +47,8 @@
     position: absolute;
     top: 55%;
     left: 50%;
-    width: 50dvw;
-    height: 0.3vw;
+    width: 25dvw;
+    height: 0.5vw;
     transform: translate(-50%, -50%);
 
     &__back {

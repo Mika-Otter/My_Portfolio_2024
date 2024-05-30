@@ -13,8 +13,10 @@ export function gameAnimate({
     let lastTime = 0;
 
     function animate(timeStamp) {
-        // const deltaTime = timeStamp - lastTime;
-        // lastTime = timeStamp;
+        const deltaTime = timeStamp - lastTime;
+        lastTime = timeStamp;
+
+        console.log(deltaTime, "hehoheho");
         mainChangeLevel();
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);

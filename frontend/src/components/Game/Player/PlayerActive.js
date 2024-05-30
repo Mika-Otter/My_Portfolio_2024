@@ -43,8 +43,11 @@ export class ActivePlayer extends Player {
         this.firstJump = false;
         this.canDoubleJump = false;
         this.hasDoubleJumped = false;
-        this.speedX = 3;
-        this.speedY = 9.2;
+        this.speedX = 0.7;
+        this.speedY = 1.97;
+        this.fps = 20;
+        this.frameInterval = 1000 / this.fps;
+        this.frameTimer = 0;
     }
 
     setTitle(title) {
@@ -76,27 +79,14 @@ export class ActivePlayer extends Player {
         return this;
     }
 
-    updatePlayer({ background, context, canvas, camera, firstJump }) {
-        const now = performance.now();
-        const deltaTime = now - this.lastUpdateTime;
-        this.lastUpdateTime = now;
-        // console.log(deltaTime);
-
-        if (deltaTime >= 7 && deltaTime <= 8) {
-            this.speedX = 3;
-            this.speedY = 9.2;
-        } else if (deltaTime >= 13) {
-            this.speedX = 6;
-            this.speedY = 18.4;
-        }
-
-        this.handleMovement({ canvas, camera, background, deltaTime, firstJump })
+    updatePlayer({ background, context, canvas, camera, firstJump, deltaTime }) {
+        this.handleMovement({ canvas, camera, background, firstJump, deltaTime })
             .updateCameraBox({ camera })
             .update({ camera, canvas, background, deltaTime })
             .setState();
 
         if (this.sprite) {
-            this.sprite.update(this.SPRITE_NAME);
+            this.sprite.update(this.SPRITE_NAME, deltaTime);
         } else {
             this.position.y = this.starShip.position.y;
             this.cameraBox.y = this.starShip.position.y;
@@ -141,16 +131,16 @@ export class ActivePlayer extends Player {
 
         if (this.keysTab.includes(" ") && !this.collidedTop) {
             if (this.velocity.y === 0) {
-                this.velocity.y = -this.speedY * this.scale;
+                this.velocity.y = -this.speedY * this.scale * deltaTime;
                 this.jumping = true;
             }
         }
 
         if (this.keysTab[0] === "d" && !this.collidedRight) {
-            this.velocity.x = this.speedX;
+            this.velocity.x = this.speedX * this.scale * deltaTime;
             this.shouldPanCameraToTheLeft({ canvas, camera, background });
         } else if (this.keysTab[0] === "q" && !this.collidedLeft && this.position.x > 0) {
-            this.velocity.x = -this.speedX;
+            this.velocity.x = -this.speedX * this.scale * deltaTime;
             this.shouldPanCameraToTheRight({ camera });
         } else {
             this.velocity.x = 0;
