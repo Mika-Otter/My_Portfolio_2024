@@ -136,7 +136,7 @@ export default function Canvas({
                 const deltaTime = timeStamp - lastTime;
                 lastTime = timeStamp;
 
-                console.log(deltaTime);
+                console.log("delta !!! ", deltaTime);
 
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.save();

@@ -73,6 +73,7 @@ export default function Project({
             <div className={s.project__wrapper} ref={projectWrapperRef}>
                 <div className={s.project} ref={projectRef}>
                     <div className={s.project__left}>
+                        {item.img1 && <div className={s.project__left__wrapper}></div>}
                         <div className={s.project__pic} ref={projectPicRef}>
                             {item.img1 ? (
                                 <>
@@ -115,7 +116,6 @@ export default function Project({
                                             </div>
                                         </div>
                                     </div>
-                                    <div className={s.project__pic__wrapper}></div>
                                 </>
                             ) : (
                                 <div className={s.project__pic__box__ctn__alone}>

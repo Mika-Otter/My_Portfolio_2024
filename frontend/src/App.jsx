@@ -199,13 +199,7 @@ export default function App() {
                 <div className="overlay-div" ref={overlayFourRef}></div>
             </div>
             {isLoading ? <Loader firstEnter={firstEnter} /> : null}
-            {/* <PlayView
-                playMode={playMode}
-                viewMode={viewMode}
-                isPlayed={isPlayed}
-                firstControls={firstControls}
-                handleControls={handleControls}
-            /> */}
+
             {isControls && <Controls handleControls={handleControls} />}
             <Navbar
                 activeSound={activeSound}
