@@ -43,6 +43,8 @@ export class ActivePlayer extends Player {
         this.firstJump = false;
         this.canDoubleJump = false;
         this.hasDoubleJumped = false;
+        this.speedX = 3;
+        this.speedY = 9.2;
     }
 
     setTitle(title) {
@@ -76,8 +78,17 @@ export class ActivePlayer extends Player {
 
     updatePlayer({ background, context, canvas, camera, firstJump }) {
         const now = performance.now();
-        const deltaTime = (now - this.lastUpdateTime) / 1000;
+        const deltaTime = now - this.lastUpdateTime;
         this.lastUpdateTime = now;
+        console.log(deltaTime);
+
+        if (deltaTime >= 7 && deltaTime <= 8) {
+            this.speedX = 3;
+            this.speedY = 9.2;
+        } else if (deltaTime >= 13) {
+            this.speedX = 6;
+            this.speedY = 18.4;
+        }
 
         this.handleMovement({ canvas, camera, background, deltaTime, firstJump })
             .updateCameraBox({ camera })
@@ -92,7 +103,7 @@ export class ActivePlayer extends Player {
             this.cameraBox.height = 700;
             this.cameraBox.position.y = this.position.y - 300;
             if (camera.position.x > -440) {
-                camera.position.x -= 3 * deltaTime;
+                camera.position.x -= 3;
             }
 
             if (
@@ -130,16 +141,16 @@ export class ActivePlayer extends Player {
 
         if (this.keysTab.includes(" ") && !this.collidedTop) {
             if (this.velocity.y === 0) {
-                this.velocity.y = -9.2 * this.scale;
+                this.velocity.y = -this.speedY * this.scale;
                 this.jumping = true;
             }
         }
 
         if (this.keysTab[0] === "d" && !this.collidedRight) {
-            this.velocity.x = 3;
+            this.velocity.x = this.speedX;
             this.shouldPanCameraToTheLeft({ canvas, camera, background });
         } else if (this.keysTab[0] === "q" && !this.collidedLeft && this.position.x > 0) {
-            this.velocity.x = -3;
+            this.velocity.x = -this.speedX;
             this.shouldPanCameraToTheRight({ camera });
         } else {
             this.velocity.x = 0;
