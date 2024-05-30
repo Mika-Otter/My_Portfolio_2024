@@ -38,6 +38,10 @@ export default function Loader({ firstEnter }) {
     const [settingUp, setSettingUp] = useState("We loading the game...");
     const settingUpRef = useRef(null);
 
+    const videoUrls = ["./src/assets/video/controls.mp4", "./src/assets/video/DNSEP.mp4", 
+    "./src/assets/video/Platform.mp4", "./src/assets/video/Typpov-Low.mp4", 
+    "./src/assets/video/UnexpectedStudio.mp4", "./src/assets/video/UnexpectedStudio.mp4"];
+
     useEffect(() => {
         preloadImages(imageSources)
             .then(() => {
@@ -45,6 +49,12 @@ export default function Loader({ firstEnter }) {
             })
             .catch((err) => {
                 console.error("Failed to preload images", err);
+            });
+
+            videoUrls.forEach((url) => {
+                const video = document.createElement("video");
+                video.src = url;
+                video.load();
             });
     }, []);
     function shuffleArray(array) {

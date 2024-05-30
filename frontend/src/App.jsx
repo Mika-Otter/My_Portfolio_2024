@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import "./styles/global.scss";
 import Title from "./components/Title/Title";
 import { BackgroundHeightProvider, useBackgroundHeight } from "./context/BackgroundHeightContext";
@@ -87,92 +87,95 @@ export default function App() {
         setSecretText("robot");
     };
 
-    const handleIsDialog = () => {
+
+    const handleIsDialog = useCallback(() => {
         setIsDialog(true);
         setTimeout(() => {
             setIsDialog(false);
         }, 8500);
-    };
-
-    const handleControls = () => {
+    }, []);
+    
+    const handleControls = useCallback(() => {
         setIsControls((prev) => !prev);
         if (firstControls) {
             setFirstControls(false);
         }
-    };
-
-    const firstPlay = () => {
+    }, [firstControls]);
+    
+    const firstPlay = useCallback(() => {
         if (firstControls) {
             handleControls();
         }
-    };
-
-    const activePlay = () => {
+    }, [firstControls, handleControls]);
+    
+    const activePlay = useCallback(() => {
         setIsPlayed(true);
-    };
-
-    const openProject = () => {
+    }, []);
+    
+    const openProject = useCallback(() => {
         setIsOpenProject(true);
-    };
-
-    const closeProject = () => {
+    }, []);
+    const closeProject = useCallback(() => {
         setIsOpenProject(false);
-    };
-
-    const handleContact = () => {
+    }, []);
+    
+    const handleContact = useCallback(() => {
         setContact((prev) => !prev);
-    };
-
-    const handleNextLevel = () => {
+    }, []);
+    
+    const handleNextLevel = useCallback(() => {
         setNextLevel((prev) => !prev);
         handleTransition(setTransition);
-    };
-
-    const changeRoomOne = () => {
+    }, [handleTransition, setTransition]);
+    
+    const changeRoomOne = useCallback(() => {
         setRoomLevel(1);
         window.scrollTo(0, 0);
-    };
-
-    const changeRoom = () => {
+    }, []);
+    
+    const changeRoom = useCallback(() => {
         setRoomLevel(2);
-    };
+    }, []);
+    
 
-    const handleGoToHome = () => {
+    const firstEnter = useCallback(() => {
+        setActiveSound(true);
+    }, []);
+    
+    const handleMenu = useCallback(() => {
+        setIsMenu((prev) => !prev);
+    }, []);
+    
+    const playMode = useCallback(() => {
+        setIsPlayed(true);
+    }, []);
+    
+    const viewMode = useCallback(() => {
+        setIsPlayed(false);
+    }, []);
+    
+    const handleGoToHome = useCallback(() => {
         handleTransition(setTransition);
         setGoToHome((prev) => !prev);
         playMode();
         setTimeout(() => {
             viewMode();
         }, 2000);
-    };
+    }, [handleTransition, setTransition, playMode, viewMode]);
 
-    const firstEnter = () => {
-        setActiveSound(true);
-    };
 
-    const handleMenu = () => {
-        setIsMenu((prev) => !prev);
-    };
-
-    const playMode = () => {
-        setIsPlayed(true);
-    };
-
-    const viewMode = () => {
-        setIsPlayed(false);
-    };
-
-    const goToExp = () => {
+    const goToExp = useCallback(() => {
         setToExp(true);
-    };
-
-    const changetoExp = () => {
+    }, []);
+    
+    const changetoExp = useCallback(() => {
         setToExp(false);
-    };
+    }, []);
 
     useEffect(() => {
         startTransition(transition);
     }, [transition]);
+    
 
     const backgroundHeight = useBackgroundHeight();
     // useEffect(() => {

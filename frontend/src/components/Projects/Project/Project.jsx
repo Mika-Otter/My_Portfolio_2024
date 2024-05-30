@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import s from "./Project.module.scss";
 import cn from "classnames";
 
@@ -23,50 +23,40 @@ export default function Project({
     const [closing, setClosing] = useState(false);
     const timelineRef = useRef();
     const projectRef = useRef();
-    const projectPicRef = useRef(null);
-    const projectPicBoxRef = useRef(null);
 
-    // useGSAP(() => {
-    //     let smoother = ScrollSmoother.create({
-    //         wrapper: projectPicRef.current,
-    //         content: projectPicBoxRef.current,
-    //     });
-    // }, []);
-
-    useGSAP(() => {
-        timelineRef.current = gsap
-            .timeline({ paused: true })
-            .to(projectWrapperRef.current, { height: "2%", width: "100%", duration: 0.5 })
-            .to(projectWrapperRef.current, {
-                height: "100%",
-                duration: 0.6,
-                delay: 0.2,
-                borderRadius: "5px",
-            })
-            .to(projectRef.current, { opacity: 1 });
-
-        if (!closing) {
-            timelineRef.current.play();
-        } else {
-            console.log("YOOOOO");
-            timelineRef.current.reverse(true);
-            timelineRef.current.eventCallback("onReverseComplete", () => {
-                closeProject();
-            });
-        }
-    }, [closing]);
-
-    const closingGSAP = () => {
+    const closingGSAP = useCallback(() => {
         setClosing(true);
         setTimeout(() => {
             closeProject();
             setClosing(false);
         }, 1000);
-    };
+    }, [closeProject]);
+
+    useEffect(() => {
+        const timeline = gsap.timeline({ paused: true })
+            .to(projectWrapperRef.current, { height: "2%", width: "100%", duration: 0.5 })
+            .to(projectWrapperRef.current, {
+                height: "100%",
+                duration: 0.6,
+                stagger: 0.2,
+                borderRadius: "5px",
+            })
+            .to(projectRef.current, { opacity: 1 });
+
+        timelineRef.current = timeline;
+
+        if (!closing) {
+            timeline.play();
+        } else {
+            timeline.reverse(true);
+            timeline.eventCallback("onReverseComplete", closeProject);
+        }
+    }, [closing, closeProject]);
 
     useEffect(() => {
         console.log(window.innerWidth, window.innerHeight);
     }, [closing]);
+
 
     return (
         <div className={s.main}>
@@ -74,10 +64,10 @@ export default function Project({
                 <div className={s.project} ref={projectRef}>
                     <div className={s.project__left}>
                         {item.img1 && <div className={s.project__left__wrapper}></div>}
-                        <div className={s.project__pic} ref={projectPicRef}>
+                        <div className={s.project__pic}>
                             {item.img1 ? (
                                 <>
-                                    <div className={s.project__pic__box} ref={projectPicBoxRef}>
+                                    <div className={s.project__pic__box} >
                                         <div className={s.project__pic__box__ctn}>
                                             <Video
                                                 src={item.url}
