@@ -28,7 +28,7 @@ const imageSources = [
   "/starship.png",
 ];
 
-export default function Loader({ firstEnter }) {
+export default function Loader({ firstEnter}) {
   const bigBoxRef = useRef(null);
   const smallBoxRef = useRef(null);
   const logoRef = useRef(null);
@@ -54,28 +54,34 @@ export default function Loader({ firstEnter }) {
   const deltaTimeValuesRef = useRef([]);
   const choosedDeltaTimeValueRef = useRef(0);
 
+  //   useEffect(() => {
+//     console.log(deltaTimeValue, "deltaTime value in Loader");
+//   }, [deltaTimeValue]);
+
+  useEffect(() => {console.log(loadingEnd, "loadingEnd Loader")}, [loadingEnd])
   useEffect(() => {
-    // Add deltaTimeValue to the list
     deltaTimeValuesRef.current.push(deltaTimeValue);
   }, [deltaTimeValue]);
 
   useEffect(() => {
-    const minDeltaTimeValue = Math.min(...deltaTimeValuesRef.current);
+    console.log('loadingEnd:', loadingEnd);
+    console.log('deltaTimeValuesRef.current:', deltaTimeValuesRef.current);
+    const minDeltaTimeValue = Math.min(...deltaTimeValuesRef.current.filter(value => value > 0));
     choosedDeltaTimeValueRef.current = minDeltaTimeValue;
-    // Clean the list
-    deltaTimeValuesRef.current = [];
-  }, [loadingEnd]);
+    console.log('choosedDeltaTimeValueRef.current:', choosedDeltaTimeValueRef.current);
+    // deltaTimeValuesRef.current = [];
+}, [loadingEnd]);
 
-//   useEffect(() => {
-//     // console.log(deltaTimeValue, "deltaTime value in Loader");
-//   }, [deltaTimeValue]);
+  useEffect(() => {console.log(deltaTimeValuesRef.current, "deltaTimeValuesRef in Loader")}, [deltaTimeValuesRef.current]);
 
-//   useEffect(() => {
-//     console.log(
-//       choosedDeltaTimeValueRef.current,
-//       "choosedDeltaTimeValueRef in Loader"
-//     );
-//   }, [choosedDeltaTimeValueRef.current]);
+
+
+  useEffect(() => {
+    console.log(
+      choosedDeltaTimeValueRef.current,
+      "choosedDeltaTimeValueRef in Loader"
+    );
+  }, [choosedDeltaTimeValueRef.current]);
 
   const videoUrls = [
     controlsVideo,
@@ -126,7 +132,6 @@ export default function Loader({ firstEnter }) {
 
   function chargementSettingUp(list) {
     let totalDuration = 0;
-    console.log("chargementSettingUp");
 
     gsap.set(settingUpRef.current, {
       opacity: 1,
@@ -205,19 +210,21 @@ export default function Loader({ firstEnter }) {
   }, [deltaTimeValue]);
 
   useEffect(() => {
-    // console.log(key, "key");
     keyRef.current = key;
   }, [key]);
 
   useGSAP(() => {
-    // console.log(key, deltaTimeValue, isPlayable);
+    console.log(key, deltaTimeValue, isPlayable);
     const tl = gsap.timeline({
       onComplete: () => {
-        if (deltaTimeValueRef.current > 1 && deltaTimeValueRef.current < 17) {
+        if (
+          choosedDeltaTimeValueRef.current > 1 &&
+          choosedDeltaTimeValueRef.current < 100
+        ) {
           setDeltaTimeIsGood(true);
         } else {
           if (keyRef.current < 3) {
-            tlRef.current.restart();
+            tlRef.current.set(loaderRef.current, { width: "100%" });
             setSettingUp("Whoops ! We need more time for calcute your FPS...");
             // chargementSettingUp(calculateFPS);
             setKey((prev) => prev + 1);
@@ -229,15 +236,17 @@ export default function Loader({ firstEnter }) {
         }
       },
     });
-    tl.to(loaderRef.current, { width: "22%", duration: 1.3 })
+    tl.set(loaderRef.current, { width: "1%" })
+      .to(loaderRef.current, { width: "22%", duration: 1.3 })
       .to(loaderRef.current, {
         width: "43%",
         duration: 1,
       })
       .to(loaderRef.current, { width: "55%", duration: 0.3 })
       .to(loaderRef.current, { width: "69%", duration: 0.2 })
-      .to(loaderRef.current, { width: "78%", duration: 0.1, delay: 0.3 })
-      .to(loaderRef.current, { width: "100%", duration: 0.9, delay: 0.7 });
+      .to(loaderRef.current, { width: "78%", duration: 0.3, delay: 0.3 })
+      .to(loaderRef.current, { width: "100%", duration: 1.2, delay: 0.7 })
+      .set(loaderRef.current, { width: "100%" });
 
     tlRef.current = tl;
   }, []);

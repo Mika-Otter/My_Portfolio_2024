@@ -34,7 +34,6 @@ export default function Projects({
 
     const handleClickNextLevel = () => {
         setClickNextLevel((prev) => !prev);
-        // console.log(clickNextLevel);
     };
 
     const items = projectsData;

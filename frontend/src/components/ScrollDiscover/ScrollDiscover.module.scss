@@ -1,0 +1,49 @@
+@import "../../styles/theme";
+@import "../../styles/font";
+
+.scroll {
+    width: 20%;
+    height: 10%;
+    // border: 2px solid red;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    bottom: 3vh;
+    right: 0;
+
+    &__text {
+        font-family: "OktaNeue-Bold";
+        font-size: 1.3vw;
+        color: $primary-color-darkblue;
+    }
+
+    &__circle {
+        width: 1vw;
+        height: 1vw;
+        border-radius: 50%;
+        background-color: $primary-color-darkblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        margin-left: 1vw;
+        margin-top: 0.3vw;
+
+        animation: circleUpAndDown 2s infinite;
+
+
+    }
+}
+
+@keyframes circleUpAndDown {
+    0% {
+        transform: translateY(0.5vw);
+    }
+    50% {
+        transform: translateY(-0.5vw);
+    }
+    100% {
+        transform: translateY(0.5vw);
+    }
+    
+}

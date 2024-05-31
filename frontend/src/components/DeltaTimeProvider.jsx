@@ -7,15 +7,14 @@ export const DeltaTimeContext = React.createContext();
 export const DeltaTimeProvider = ({ children }) => {
   const [deltaTimeValue, setDeltaTimeValue] = useState(0);
   const [loadingEnd, setLoadingEnd] = useState(false);
-  const [reload, setReload] = useState(false);
 
+  useEffect(() => {console.log(loadingEnd, "loadingEnd")}, [loadingEnd]) 
   useEffect(() => {
     let lastTime = 0;
     let animationId = null;
 
     function animate(timeStamp) {
       const deltaTime = timeStamp - lastTime;
-      // const deltaTime = 18;
       lastTime = timeStamp;
       animationId = requestAnimationFrame(animate);
    
@@ -29,14 +28,11 @@ export const DeltaTimeProvider = ({ children }) => {
     const timeoutId = setTimeout(() => {
       if (animationId) {
         setTimeout(() => {
-          if (deltaTimeValue > 17) {
-            setReload((prev) => !prev);
-            return;
-          } else {
+       
             cancelAnimationFrame(animationId);
             setLoadingEnd(true);
-          }
-        }, 4500);
+          
+        }, 4000);
       }
     }, 1000);
     return () => {
@@ -45,7 +41,7 @@ export const DeltaTimeProvider = ({ children }) => {
         cancelAnimationFrame(animationId);
       }
     };
-  }, [reload]);
+  }, []);
 
 
   return (

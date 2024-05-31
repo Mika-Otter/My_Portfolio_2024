@@ -14,11 +14,9 @@ export function initializeCanvas(canvas, squares, speed) {
             square.dy *= -1;
         }
     }
-    let lastTime = 0;
-    function animate(playingAudio, timeStamp) {
-        const deltaTime = timeStamp - lastTime;
-        lastTime = timeStamp;
 
+    
+    function animate(playingAudio) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         squares.forEach(drawSquare);
         if (playingAudio) {
@@ -26,7 +24,7 @@ export function initializeCanvas(canvas, squares, speed) {
         } else {
             squares.forEach((square) => {
                 if (square.height <= -5) {
-                    square.height += 0.1 * deltaTime;
+                    square.height += 0.1;
                     square.color = "";
                 }
             });

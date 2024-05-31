@@ -29,23 +29,16 @@ export default function Canvas({
   handleContact,
 }) {
   const canvasRef = useRef(null);
-  const backgroundHeight = useBackgroundHeight();
   const setBackgroundHeight = useSetBackgroundHeight();
   const [keysTab, setKeysTab] = useState([]);
   const [lastKeysTab, setLastKeysTab] = useState([""]);
   const [inputHandler, setInputHandler] = useState(null);
   let handler;
-  const [firstGame, setFirstGame] = useState(true);
-  const [player, setPlayer] = useState(null);
-  const [changingLevel, setChangingLevel] = useState(false);
-  const ctxRef = useRef(null);
   let game = null;
   const [canvas, setCanvas] = useState(null);
   const [ctx, setCtx] = useState(null);
   const playerRef = useRef();
   const [reload, setReload] = useState(false);
-//   const [deltaTimeValue, setDeltaTimeValue] = useState(0);
-//   const [loadingEnd, setLoadingEnd] = useState(false);
 const {deltaTimeValue, loadingEnd} = useContext(DeltaTimeContext);
 
   useEffect(() => {
@@ -100,45 +93,11 @@ const {deltaTimeValue, loadingEnd} = useContext(DeltaTimeContext);
     setCtx(ctx);
   }, []);
 
-//   useEffect(() => {
-//     let lastTime = 0;
-//     let animationId = null;
 
-//     function animate(timeStamp) {
-//       const deltaTime = timeStamp - lastTime;
-//       lastTime = timeStamp;
-//       animationId = requestAnimationFrame(animate);
-//       setTimeout(() => {
-//         setDeltaTimeValue(deltaTime);
-//       }, 5000);
-//     }
-
-//     animate();
-
-//     // Stop the animation after 1 second
-//     const timeoutId = setTimeout(() => {
-//         if (animationId) {
-//           cancelAnimationFrame(animationId);
-//             setTimeout(() => {
-//             setLoadingEnd(true);
-//           }, 5000);
-//         }
-//       }, 1000);
-//     return () => {
-//       clearTimeout(timeoutId);
-//       if (animationId) {
-//         cancelAnimationFrame(animationId);
-//       }
-//     };
-//   }, []);
-
-  // useEffect(() => {
-  //   console.log("result", deltaTimeValue, loadingEnd);
-  // }, [deltaTimeValue, loadingEnd]);
 
   useEffect(() => {
     if (canvas && ctx && loadingEnd) {
-      console.log("result", deltaTimeValue);
+  
       let animation;
 
       canvas.width = window.innerWidth;
@@ -175,12 +134,19 @@ const {deltaTimeValue, loadingEnd} = useContext(DeltaTimeContext);
       playerRef.current = player;
 
       window.scrollBy(0, -100);
-      let lastTime = 0;
-      function animate(timeStamp) {
-        const deltaTime = timeStamp - lastTime ;
-        lastTime = timeStamp;
+      const frames_per_second = 60;
+      const frame_interval = 1000 / frames_per_second;
 
-        console.log("DeltaTime inside canvas", deltaTime)
+      let delta_time = 0;
+      let deltaTime = 1; //deltaTime multiplier
+
+      let previousTime = performance.now();
+
+      function animate(currentTime) {
+        delta_time = currentTime - previousTime;
+        deltaTime = delta_time / frame_interval;
+        previousTime = currentTime;
+
 
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);

@@ -46,8 +46,8 @@ export class ActivePlayer extends Player {
     this.canDoubleJump = false;
     this.hasDoubleJumped = false;
     this.deltaTime = deltaTime;
-    this.speedX = 0.7;
-    this.speedY = 1.7;
+    this.speedX = 10;
+    this.speedY = 22;
     this.scale = scale;
   }
 

@@ -22,6 +22,7 @@ import Dialog from "./components/Game/Dialog/Dialog";
 import MushroomEffect from "./components/MushroomEffect/MushroomEffect";
 import Canvas from "./components/Canvas";
 import { DeltaTimeProvider } from "./components/DeltaTimeProvider";
+import ScrollDiscover from "./components/ScrollDiscover/ScrollDiscover";
 
 export default function App() {
   const testRef = useRef(null);
@@ -264,8 +265,8 @@ export default function App() {
             <section className="main__section">
               <div className="title">
                 <Title />
+                <ScrollDiscover />
               </div>
-              <div className="wrapper"></div>
               <div className="content">
                 {!isPlayed && RoomLevel === 1 && !contact ? (
                   <Projects

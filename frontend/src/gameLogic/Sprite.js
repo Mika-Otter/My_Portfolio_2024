@@ -13,10 +13,10 @@ export class Sprite {
         this.frameY = 0;
 
         this.gameFrame = 0;
-        this.staggerFrames = 2.5;
+        this.staggerFrames = 2;
 
-        this.fps = 20;
-        this.frameInterval = 1000 / this.fps;
+        this.fps = 60;
+        this.frameInterval = 250 / this.fps;
         this.frameTimer = 0;
 
         this.spriteAnimations = [];
@@ -84,7 +84,7 @@ export class Sprite {
             if (SPRITE_NAME === "TELEPORT" && !this.teleporting) {
                 this.teleporting = true;
                 this.teleportFrame = 0;
-                this.teleportDelay = 0.15 * deltaTime;
+                this.teleportDelay = 1 * deltaTime;
             }
 
             if (this.teleporting) {
