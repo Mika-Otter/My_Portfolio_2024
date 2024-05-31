@@ -108,7 +108,7 @@ export default function Canvas({
       animationId = requestAnimationFrame(animate);
       setTimeout(() => {
         setDeltaTimeValue(deltaTime);
-      }, 3300);
+      }, 5000);
     }
 
     animate();
@@ -117,17 +117,11 @@ export default function Canvas({
     const timeoutId = setTimeout(() => {
         if (animationId) {
           cancelAnimationFrame(animationId);
-  
-          // Start the timeout to set loadingEnd to true when the animation ends
-          setTimeout(() => {
+            setTimeout(() => {
             setLoadingEnd(true);
-          }, 3300);
+          }, 5000);
         }
       }, 1000);
-
-
-
-    // Clean up on unmount
     return () => {
       clearTimeout(timeoutId);
       if (animationId) {
@@ -137,7 +131,7 @@ export default function Canvas({
   }, []);
 
   useEffect(() => {
-    // console.log("result", deltaTimeValue, loadingEnd);
+    console.log("result", deltaTimeValue, loadingEnd);
   }, [deltaTimeValue, loadingEnd]);
 
   useEffect(() => {
