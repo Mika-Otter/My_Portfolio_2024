@@ -170,6 +170,7 @@ export class Player {
     }
 
     shouldPanCameraToTheTop({ camera }) {
+        if (this.cameraBox.position.y <= 0) return this;
         if (this.cameraBox.position.y <= Math.abs(camera.position.y)) {
             camera.position.y -= this.velocity.y;
         }

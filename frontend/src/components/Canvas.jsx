@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useContext } from "react";
 import { HandleInput } from "../gameLogic/InputManager";
 import { gameAnimate } from "../gameLogic/GameAnimate";
 import {
@@ -6,6 +6,7 @@ import {
   useSetBackgroundHeight,
 } from "../context/BackgroundHeightContext";
 import { Game } from "../gameLogic/GameInit";
+import { DeltaTimeContext } from "./DeltaTimeProvider";
 
 export default function Canvas({
   isPlayed,
@@ -43,8 +44,9 @@ export default function Canvas({
   const [ctx, setCtx] = useState(null);
   const playerRef = useRef();
   const [reload, setReload] = useState(false);
-  const [deltaTimeValue, setDeltaTimeValue] = useState(0);
-  const [loadingEnd, setLoadingEnd] = useState(false);
+//   const [deltaTimeValue, setDeltaTimeValue] = useState(0);
+//   const [loadingEnd, setLoadingEnd] = useState(false);
+const {deltaTimeValue, loadingEnd} = useContext(DeltaTimeContext);
 
   useEffect(() => {
     handler = new HandleInput(keysTab, lastKeysTab, isPlayed);
@@ -98,41 +100,41 @@ export default function Canvas({
     setCtx(ctx);
   }, []);
 
-  useEffect(() => {
-    let lastTime = 0;
-    let animationId = null;
+//   useEffect(() => {
+//     let lastTime = 0;
+//     let animationId = null;
 
-    function animate(timeStamp) {
-      const deltaTime = timeStamp - lastTime;
-      lastTime = timeStamp;
-      animationId = requestAnimationFrame(animate);
-      setTimeout(() => {
-        setDeltaTimeValue(deltaTime);
-      }, 5000);
-    }
+//     function animate(timeStamp) {
+//       const deltaTime = timeStamp - lastTime;
+//       lastTime = timeStamp;
+//       animationId = requestAnimationFrame(animate);
+//       setTimeout(() => {
+//         setDeltaTimeValue(deltaTime);
+//       }, 5000);
+//     }
 
-    animate();
+//     animate();
 
-    // Stop the animation after 1 second
-    const timeoutId = setTimeout(() => {
-        if (animationId) {
-          cancelAnimationFrame(animationId);
-            setTimeout(() => {
-            setLoadingEnd(true);
-          }, 5000);
-        }
-      }, 1000);
-    return () => {
-      clearTimeout(timeoutId);
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
-    };
-  }, []);
+//     // Stop the animation after 1 second
+//     const timeoutId = setTimeout(() => {
+//         if (animationId) {
+//           cancelAnimationFrame(animationId);
+//             setTimeout(() => {
+//             setLoadingEnd(true);
+//           }, 5000);
+//         }
+//       }, 1000);
+//     return () => {
+//       clearTimeout(timeoutId);
+//       if (animationId) {
+//         cancelAnimationFrame(animationId);
+//       }
+//     };
+//   }, []);
 
-  useEffect(() => {
-    console.log("result", deltaTimeValue, loadingEnd);
-  }, [deltaTimeValue, loadingEnd]);
+  // useEffect(() => {
+  //   console.log("result", deltaTimeValue, loadingEnd);
+  // }, [deltaTimeValue, loadingEnd]);
 
   useEffect(() => {
     if (canvas && ctx && loadingEnd) {
@@ -173,7 +175,12 @@ export default function Canvas({
       playerRef.current = player;
 
       window.scrollBy(0, -100);
+      let lastTime = 0;
       function animate(timeStamp) {
+        const deltaTime = timeStamp - lastTime ;
+        lastTime = timeStamp;
+
+        console.log("DeltaTime inside canvas", deltaTime)
 
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -200,6 +207,7 @@ export default function Canvas({
           context: ctx,
           canvas,
           camera,
+          deltaTime,
         });
         if (RoomLevel === 1) {
           water.draw(ctx, canvas);
