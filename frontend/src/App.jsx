@@ -23,6 +23,7 @@ import MushroomEffect from "./components/MushroomEffect/MushroomEffect";
 import Canvas from "./components/Canvas";
 import { DeltaTimeProvider } from "./components/DeltaTimeProvider";
 import ScrollDiscover from "./components/ScrollDiscover/ScrollDiscover";
+import Location from "./components/Location/Location";
 
 export default function App() {
   const testRef = useRef(null);
@@ -226,6 +227,7 @@ export default function App() {
           handleControls={handleControls}
           activePlay={activePlay}
         />
+        <Location />
         <Contact handleContact={handleContact} contact={contact} />
         <Dialog text="yoooo" isDialog={isDialog} secretText={secretText} />
         <BackgroundHeightProvider>
@@ -263,6 +265,7 @@ export default function App() {
             </div>
 
             <section className="main__section">
+   
               <div className="title">
                 <Title />
                 <ScrollDiscover />

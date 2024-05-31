@@ -2,14 +2,15 @@
 @import "../../styles/font";
 
 .scroll {
-    width: 20%;
+    width: 400px;
     height: 10%;
     // border: 2px solid red;
     display: flex;
     position: absolute;
+    justify-content: end;
     align-items: center;
     bottom: 3vh;
-    right: 0;
+    right: 2vw;
 
     &__text {
         font-family: "OktaNeue-Bold";

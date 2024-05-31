@@ -1,0 +1,14 @@
+@import "../../styles/theme";
+@import "../../styles/font";
+
+.location {
+    position: fixed;
+    top: -1.5vh;
+    right: 2vw;
+    mix-blend-mode: difference;
+    color: white;
+    font-family: "OktaNeue-Bold";
+    font-size: $fontsize-s-nav;
+    text-transform: uppercase;
+    z-index: 10000;
+}
