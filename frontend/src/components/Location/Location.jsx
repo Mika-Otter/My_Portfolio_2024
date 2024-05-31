@@ -15,7 +15,7 @@ export default function Location() {
   }, []);
 
   const hours = time.getHours();
-  const minutes = time.getMinutes();
+  const minutes = String(time.getMinutes()).padStart(2, '0');
 
   return (
     <div className={s.location}>
