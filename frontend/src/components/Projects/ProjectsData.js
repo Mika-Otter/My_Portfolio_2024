@@ -51,7 +51,7 @@ const projectsData = [
     },
     {
         title: "Typpov ",
-        smalltext: " Sass",
+        smalltext: " Tool",
         year: "2024",
         url: "./src/assets/video/Typpov-Low.mp4",
         alt: "Typpov",

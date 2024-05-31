@@ -5,18 +5,24 @@ import { useGSAP } from "@gsap/react";
 import { LogoStartSVG } from "../SVG/LogoStartSVG";
 import cn from "classnames";
 import { preloadImages } from "../../gameLogic/PreloadImg";
+import controlsVideo from "../../assets/video/controls.mp4";
+import dnsepVideo from "../../assets/video/DNSEP.mp4";
+import platformVideo from "../../assets/video/Platform.mp4";
+import typpovVideo from "../../assets/video/Typpov-Low.mp4";
+import unexpectedStudioVideo from "../../assets/video/UnexpectedStudio.mp4";
+import variousGameVideo from "../../assets/video/VariousGame.mp4";
 
 gsap.registerPlugin();
 
 const imageSources = [
-    "./src/assets/img/home-map.png",
-    "./src/assets/img/contact-map.png",
-    "./src/assets/sprite-door/doorOpen.png",
-    "./src/assets/img/water.png",
-    "./src/assets/img/cloud.png",
-    "./src/assets/img/mushroom-Sheet.png",
-    "./src/assets/img/cat-Sheet.png",
-    "./src/assets/img/robot-Sheet.png",
+    "../../assets/img/home-map.png",
+    "../../assets/img/contact-map.png",
+    "../../assets/sprite-door/doorOpen.png",
+    "../../assets/img/water.png",
+    "../../assets/img/cloud.png",
+    "../../assets/img/mushroom-Sheet.png",
+    "../../assets/img/cat-Sheet.png",
+    "../../assets/img/robot-Sheet.png",
     "/flyingStars.png",
     "/starship.png",
 ];
@@ -38,51 +44,33 @@ export default function Loader({ firstEnter }) {
     const [settingUp, setSettingUp] = useState("We loading the game...");
     const settingUpRef = useRef(null);
 
-    const videoUrls = ["./src/assets/video/controls.mp4", "./src/assets/video/DNSEP.mp4", 
-    "./src/assets/video/Platform.mp4", "./src/assets/video/Typpov-Low.mp4", 
-    "./src/assets/video/UnexpectedStudio.mp4", "./src/assets/video/UnexpectedStudio.mp4"];
+    const videoUrls = [controlsVideo, dnsepVideo, platformVideo, typpovVideo, unexpectedStudioVideo, variousGameVideo];
 
     useEffect(() => {
-        preloadImages(imageSources)
+        const loadVideos = videoUrls.map((url) => {
+            return new Promise((resolve, reject) => {
+                const video = document.createElement("video");
+                video.src = url;
+                video.onloadeddata = resolve;
+                video.onerror = reject;
+                video.load();
+            });
+        });
+    
+        Promise.all([preloadImages(imageSources), ...loadVideos])
             .then(() => {
                 setLoadingImg(true);
             })
             .catch((err) => {
-                console.error("Failed to preload images", err);
-            });
-
-            videoUrls.forEach((url) => {
-                const video = document.createElement("video");
-                video.src = url;
-                video.load();
+                console.error("Failed to preload media", err);
             });
     }, []);
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-    }
 
     const settingUpList = [
         { text: "We loading the game...", duration: 800 },
         { text: "We calculate your FPS...", duration: 800 },
         { text: "Media charging...", duration: 1600 },
         { text: "Media charging...", duration: 800 },
-
-        // { text: "src/assets/background.webp", duration: 100 },
-        // { text: "src/assets/player.png", duration: 100 },
-        // { text: "src/assets/slider.webp", duration: 500 },
-        // { text: "src/assets/douceurideale.mp4", duration: 100 },
-        // { text: "src/components", duration: 100 },
-        // { text: "src/styles/global.scss", duration: 600 },
-        // { text: "src/data", duration: 100 },
-        // { text: "src/gameLogic/gameInit.js", duration: 100 },
-        // { text: "src/gameLogic/gameInit.js", duration: 1500 },
-        // { text: "src/gameLogic/playerInit.js", duration: 200 },
-        // { text: "src/gameLogic/gameAnimate.js", duration: 200 },
-        // { text: "src/gameLogic/gameAnimate.js", duration: 1300 },
     ];
 
     function chargementSettingUp(list) {
