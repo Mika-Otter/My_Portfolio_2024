@@ -7,7 +7,6 @@ import Logo from "../Logo/Logo";
 export default function Navbar({
     activeSound,
     handleMenu,
-    handleTest,
     handleContact,
     playMode,
     viewMode,
@@ -33,7 +32,6 @@ export default function Navbar({
                         className={s.navbar__ctn__wrapper}
                         onClick={() => {
                             handleMenu();
-                            handleTest();
                         }}
                     >
                         <div className={s.navbar__ctn__button}>

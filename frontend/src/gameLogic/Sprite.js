@@ -12,7 +12,6 @@ export class Sprite {
         this.frameX = 0;
         this.frameY = 0;
 
-        //slow down the animation
         this.gameFrame = 0;
         this.staggerFrames = 2.5;
 
@@ -45,7 +44,6 @@ export class Sprite {
         ];
         this.teleporting = false;
 
-        //make coordinate for spriteAnimations = []
         this.animationStates.forEach((state, index) => {
             let frames = {
                 loc: [],
@@ -86,15 +84,15 @@ export class Sprite {
             if (SPRITE_NAME === "TELEPORT" && !this.teleporting) {
                 this.teleporting = true;
                 this.teleportFrame = 0;
-                this.teleportDelay = 12;
+                this.teleportDelay = 0.15 * deltaTime;
             }
 
             if (this.teleporting) {
                 const totalFrames = this.spriteAnimations["TELEPORT"].loc.length;
 
-                // if all frames are appear
+                // if all frames are shown
                 if (this.teleportFrame >= totalFrames * this.teleportDelay) {
-                    // stop on last frame
+                    // stop on the last frame
                     this.frameX = (totalFrames - 1) * this.spriteWidth;
                     this.frameY = this.spriteAnimations["TELEPORT"].loc[totalFrames - 1].y;
                     setTimeout(() => (this.teleporting = false), 2000);

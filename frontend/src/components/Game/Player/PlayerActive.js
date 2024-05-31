@@ -19,6 +19,7 @@ export class ActivePlayer extends Player {
         testRef,
         eatingMushroomEffect,
         handleContact,
+        deltaTime
     }) {
         super({ collisionBlocks, background });
         this.canvas = canvas;
@@ -43,11 +44,10 @@ export class ActivePlayer extends Player {
         this.firstJump = false;
         this.canDoubleJump = false;
         this.hasDoubleJumped = false;
-        this.speedX = 0.7;
-        this.speedY = 1.97;
-        this.fps = 20;
-        this.frameInterval = 1000 / this.fps;
-        this.frameTimer = 0;
+        this.deltaTime = deltaTime;
+        this.speedX = 0.5 * this.deltaTime;
+        this.speedY = 1.6 * this.deltaTime;
+        
     }
 
     setTitle(title) {
@@ -79,14 +79,15 @@ export class ActivePlayer extends Player {
         return this;
     }
 
-    updatePlayer({ background, context, canvas, camera, firstJump, deltaTime }) {
-        this.handleMovement({ canvas, camera, background, firstJump, deltaTime })
+    updatePlayer({ background, context, canvas, camera, firstJump }) {
+
+        this.handleMovement({ canvas, camera, background, firstJump })
             .updateCameraBox({ camera })
-            .update({ camera, canvas, background, deltaTime })
+            .update({ camera, canvas, background, deltaTime: this.deltaTime})
             .setState();
 
         if (this.sprite) {
-            this.sprite.update(this.SPRITE_NAME, deltaTime);
+            this.sprite.update(this.SPRITE_NAME, this.deltaTime);
         } else {
             this.position.y = this.starShip.position.y;
             this.cameraBox.y = this.starShip.position.y;
@@ -126,21 +127,21 @@ export class ActivePlayer extends Player {
         return this;
     }
 
-    handleMovement({ canvas, camera, background, deltaTime }) {
+    handleMovement({ canvas, camera, background }) {
         if (this.preventInput) return this;
 
         if (this.keysTab.includes(" ") && !this.collidedTop) {
             if (this.velocity.y === 0) {
-                this.velocity.y = -this.speedY * this.scale * deltaTime;
+                this.velocity.y = -this.speedY * this.scale;
                 this.jumping = true;
             }
         }
 
         if (this.keysTab[0] === "d" && !this.collidedRight) {
-            this.velocity.x = this.speedX * this.scale * deltaTime;
+            this.velocity.x = this.speedX;
             this.shouldPanCameraToTheLeft({ canvas, camera, background });
         } else if (this.keysTab[0] === "q" && !this.collidedLeft && this.position.x > 0) {
-            this.velocity.x = -this.speedX * this.scale * deltaTime;
+            this.velocity.x = -this.speedX;
             this.shouldPanCameraToTheRight({ camera });
         } else {
             this.velocity.x = 0;

@@ -19,7 +19,7 @@ export class Player {
         this.height = 80 * this.scale;
         this.bottom = this.position.y + this.height;
 
-        this.gravity = 0.03;
+        this.gravity = 0.02 * this.scale;
 
         this.collisionBlocks = collisionBlocks;
         this.jumping = false;
@@ -43,7 +43,7 @@ export class Player {
         this.checkForHorizontalCollision();
 
         // Apply gravity
-        this.velocity.y += this.gravity * this.scale * deltaTime;
+        this.velocity.y += this.gravity * deltaTime;
 
         this.position.y += this.velocity.y;
         this.bottom = this.position.y + this.height;

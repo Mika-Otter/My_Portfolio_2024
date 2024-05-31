@@ -15,14 +15,14 @@ import variousGameVideo from "../../assets/video/VariousGame.mp4";
 gsap.registerPlugin();
 
 const imageSources = [
-    "../../assets/img/home-map.png",
-    "../../assets/img/contact-map.png",
-    "../../assets/sprite-door/doorOpen.png",
-    "../../assets/img/water.png",
-    "../../assets/img/cloud.png",
-    "../../assets/img/mushroom-Sheet.png",
-    "../../assets/img/cat-Sheet.png",
-    "../../assets/img/robot-Sheet.png",
+    "./src/assets/img/home-map.png",
+    "./src/assets/img/contact-map.png",
+    "./src/assets/sprite-door/doorOpen.png",
+    "./src/assets/img/water.png",
+    "./src/assets/img/cloud.png",
+    "./src/assets/img/mushroom-Sheet.png",
+    "./src/assets/img/cat-Sheet.png",
+    "./src/assets/img/robot-Sheet.png",
     "/flyingStars.png",
     "/starship.png",
 ];
@@ -159,7 +159,7 @@ export default function Loader({ firstEnter }) {
             .to(loaderRef.current, { width: "55%", duration: 0.3 })
             .to(loaderRef.current, { width: "69%", duration: 0.2 })
             .to(loaderRef.current, { width: "78%", duration: 0.1, delay: 0.3 })
-            .to(loaderRef.current, { width: "100%", duration: 0.4, delay: 0.7 })
+            .to(loaderRef.current, { width: "100%", duration: 0.9, delay: 0.7 })
             .set(loaderRef.current, { transformOrigin: "center center" })
             .set(loaderbackRef.current, { opacity: 0 })
             .to(loaderRef.current, {

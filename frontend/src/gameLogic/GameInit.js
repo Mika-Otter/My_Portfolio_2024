@@ -19,7 +19,8 @@ export class Game {
         activeRobotSecret,
         testRef,
         eatingMushroomEffect,
-        handleContact,
+        handleContact, 
+        deltaTime
     }) {
         this.canvas = canvas;
         this.keysTab = keysTab;
@@ -46,6 +47,7 @@ export class Game {
         this.testRef = testRef;
         this.eatingMushroomEffect = eatingMushroomEffect;
         this.handleContact = handleContact;
+        this.deltaTime = deltaTime;
     }
 
     initialize() {
@@ -128,6 +130,7 @@ export class Game {
                         activeRobotSecret: this.activeRobotSecret,
                         testRef: this.testRef,
                         eatingMushroomEffect: this.eatingMushroomEffect,
+                        deltaTime: this.deltaTime,
                     });
                 },
             },
@@ -142,13 +145,9 @@ export class Game {
                         aspectRatio: 3200 / 3586,
                     });
                     this.scale = this.background.width / this.background.originalWidth;
-                    console.log(this.scale, "scaale");
                     this.starShip = new Starship({
-                        scale: this.scale,
-                        position: {
-                            x: 1300,
-                            y: 2850,
-                        },
+                        position: { x: 600, y: 1200 },
+                        autoplay: false,
                     });
 
                     // Parse collisions for level 2
@@ -167,6 +166,7 @@ export class Game {
                         scale: this.scale,
                         starShip: this.starShip,
                         handleContact: this.handleContact,
+                        deltaTime: this.deltaTime,
                     });
                 },
             },
