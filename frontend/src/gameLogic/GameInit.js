@@ -20,7 +20,8 @@ export class Game {
         testRef,
         eatingMushroomEffect,
         handleContact, 
-        deltaTime
+        deltaTime, 
+        addFoundSecrets,
     }) {
         this.canvas = canvas;
         this.keysTab = keysTab;
@@ -48,6 +49,7 @@ export class Game {
         this.eatingMushroomEffect = eatingMushroomEffect;
         this.handleContact = handleContact;
         this.deltaTime = deltaTime;
+        this.addFoundSecrets = addFoundSecrets
     }
 
     initialize() {
@@ -131,6 +133,7 @@ export class Game {
                         testRef: this.testRef,
                         eatingMushroomEffect: this.eatingMushroomEffect,
                         deltaTime: this.deltaTime,
+                        addFoundSecrets: this.addFoundSecrets
                     });
                 },
             },
@@ -167,6 +170,7 @@ export class Game {
                         starShip: this.starShip,
                         handleContact: this.handleContact,
                         deltaTime: this.deltaTime,
+                        addFoundSecrets: this.addFoundSecrets
                     });
                 },
             },

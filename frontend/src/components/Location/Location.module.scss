@@ -11,4 +11,6 @@
     font-size: $fontsize-s-nav;
     text-transform: uppercase;
     z-index: 6000;
+    user-select: none;
+    -webkit-user-select: none;
 }

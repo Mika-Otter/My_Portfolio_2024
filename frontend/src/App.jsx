@@ -24,6 +24,7 @@ import Canvas from "./components/Canvas";
 import { DeltaTimeProvider } from "./components/DeltaTimeProvider";
 import ScrollDiscover from "./components/ScrollDiscover/ScrollDiscover";
 import Location from "./components/Location/Location";
+import SecretsFound from "./components/SecretsFound/SecretsFound";
 
 export default function App() {
   const testRef = useRef(null);
@@ -181,6 +182,12 @@ export default function App() {
 
   const backgroundHeight = useBackgroundHeight();
 
+  const [foundSecrets, setFoundSecrets] = useState(0);
+  const addFoundSecrets = useCallback(() => {
+    console.log("addFoundSecrets");
+    setFoundSecrets((prev) => prev + 1);
+  }, []);
+
   return (
     <>
       <DeltaTimeProvider>
@@ -195,7 +202,12 @@ export default function App() {
         </div>
         {isLoading ? <Loader firstEnter={firstEnter} /> : null}
 
-        {isControls && <Controls handleControls={handleControls} closeProject={closeProject}/>}
+        {isControls && (
+          <Controls
+            handleControls={handleControls}
+            closeProject={closeProject}
+          />
+        )}
         <Navbar
           activeSound={activeSound}
           handleMenu={handleMenu}
@@ -207,6 +219,7 @@ export default function App() {
           firstControls={firstControls}
           handleControls={handleControls}
           handleGoToHome={handleGoToHome}
+          foundSecrets={foundSecrets}
         />
         <Menu
           isMenu={isMenu}
@@ -218,6 +231,7 @@ export default function App() {
           activePlay={activePlay}
         />
         <Location />
+        {/* <SecretsFound /> */}
         <Contact handleContact={handleContact} contact={contact} />
         <Dialog text="yoooo" isDialog={isDialog} secretText={secretText} />
         <BackgroundHeightProvider>
@@ -251,11 +265,11 @@ export default function App() {
                 testRef={testRef}
                 eatingMushroomEffect={eatingMushroomEffect}
                 handleContact={handleContact}
+                addFoundSecrets={addFoundSecrets}
               />
             </div>
 
             <section className="main__section">
-   
               <div className="title">
                 <Title />
                 <ScrollDiscover />

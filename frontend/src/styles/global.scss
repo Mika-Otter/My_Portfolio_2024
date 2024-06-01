@@ -10,13 +10,15 @@ html {
 
 ::-moz-selection {
     /* Code for Firefox */
-    color: white;
-    background: rgb(158, 158, 158);
+    color: rgb(181, 234, 255);
+    background: rgb(245, 245, 245);
 }
 
 ::selection {
-    color: white;
-    background: rgb(158, 158, 158);
+    // color: white;
+    // background: rgb(158, 158, 158);
+    color: rgb(181, 234, 255);
+    background: rgb(245, 245, 245);
 }
 
 body {

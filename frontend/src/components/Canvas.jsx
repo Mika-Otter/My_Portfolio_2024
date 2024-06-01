@@ -27,6 +27,7 @@ export default function Canvas({
   testRef,
   eatingMushroomEffect,
   handleContact,
+  addFoundSecrets,
 }) {
   const canvasRef = useRef(null);
   const setBackgroundHeight = useSetBackgroundHeight();
@@ -117,7 +118,7 @@ const {deltaTimeValue, loadingEnd} = useContext(DeltaTimeContext);
         testRef,
         eatingMushroomEffect,
         handleContact,
-        deltaTime: deltaTimeValue
+        addFoundSecrets,
       });
       game.initialize();
       const {

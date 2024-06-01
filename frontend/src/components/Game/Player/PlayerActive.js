@@ -21,6 +21,7 @@ export class ActivePlayer extends Player {
     handleContact,
     deltaTime,
     scale,
+    addFoundSecrets,
   }) {
     super({ collisionBlocks, background });
     this.canvas = canvas;
@@ -35,13 +36,8 @@ export class ActivePlayer extends Player {
     this.starShip = starShip;
     this.secrets = secrets;
     this.lastUpdateTime = performance.now();
-    this.handleIsDialog = () => handleIsDialog();
-    this.activeCatSecret = () => activeCatSecret();
-    this.activeRobotSecret = () => activeRobotSecret();
-    this.eatingMushroomEffect = () => eatingMushroomEffect();
     this.isDialoging = false;
     this.testRef = testRef;
-    this.handleContact = () => handleContact();
     this.firstJump = false;
     this.canDoubleJump = false;
     this.hasDoubleJumped = false;
@@ -49,6 +45,16 @@ export class ActivePlayer extends Player {
     this.speedX = 10;
     this.speedY = 22;
     this.scale = scale;
+    this.handleIsDialog = () => handleIsDialog();
+    this.activeCatSecret = () => activeCatSecret();
+    this.activeRobotSecret = () => activeRobotSecret();
+    this.eatingMushroomEffect = () => eatingMushroomEffect();
+    this.addFoundSecrets = () => addFoundSecrets();
+    this.handleContact = () => handleContact();
+    this.catFound = false;
+    this.robotFound = false;
+    this.mushroomFound = false;
+    this.starShipFound = false;
   }
 
   setTitle(title) {
@@ -81,7 +87,6 @@ export class ActivePlayer extends Player {
   }
 
   updatePlayer({ background, context, canvas, camera, firstJump, deltaTime }) {
-
     this.handleMovement({ canvas, camera, background, firstJump, deltaTime })
       .updateCameraBox({ camera })
       .update({ camera, canvas, background, deltaTime })
@@ -117,6 +122,13 @@ export class ActivePlayer extends Player {
 
     if (this.keysTab.includes("z")) {
       this.launchStarship().activeSecrets();
+      if (this.starShip) {
+        if (this.starShipFound) return;
+        else {
+          this.starShipFound = true;
+          this.addFoundSecrets();
+        }
+      }
     }
 
     // Mise à jour des flags de saut
@@ -128,7 +140,7 @@ export class ActivePlayer extends Player {
     return this;
   }
 
-  handleMovement({ canvas, camera, background, deltaTime}) {
+  handleMovement({ canvas, camera, background, deltaTime }) {
     if (this.preventInput) return this;
 
     if (this.keysTab.includes(" ") && !this.collidedTop) {
@@ -139,7 +151,7 @@ export class ActivePlayer extends Player {
     }
 
     if (this.keysTab[0] === "d" && !this.collidedRight) {
-      this.velocity.x = this.speedX  * this.scale * deltaTime
+      this.velocity.x = this.speedX * this.scale * deltaTime;
       this.shouldPanCameraToTheLeft({ canvas, camera, background });
     } else if (
       this.keysTab[0] === "q" &&
@@ -232,6 +244,11 @@ export class ActivePlayer extends Player {
             setTimeout(() => {
               gsap.to(this.testRef.current, { opacity: 0, duration: 2 });
             }, 11000);
+            if (this.mushroomFound) return;
+            else {
+              this.mushroomFound = true;
+              this.addFoundSecrets();
+            }
             return;
           }
           if (this.isDialoging) return;
@@ -240,8 +257,18 @@ export class ActivePlayer extends Player {
 
           if (index === 1) {
             this.activeCatSecret();
+            if (this.catFound) return;
+            else {
+              this.catFound = true;
+              this.addFoundSecrets();
+            }
           } else if (index === 2) {
             this.activeRobotSecret();
+            if (this.robotFound) return;
+            else {
+              this.robotFound = true;
+              this.addFoundSecrets();
+            }
           }
         }
       });
