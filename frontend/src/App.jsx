@@ -87,12 +87,12 @@ export default function App() {
 
   useResize(setWindowWidth, setIsLoading);
 
-  const activeCatSecret = () => {
+  const activeCatSecret = useCallback(() => {
     setSecretText("cat");
-  };
-  const activeRobotSecret = () => {
+  }, []);
+  const activeRobotSecret = useCallback(() => {
     setSecretText("robot");
-  };
+  }, []);
 
   const handleIsDialog = useCallback(() => {
     setIsDialog(true);
@@ -183,10 +183,43 @@ export default function App() {
   const backgroundHeight = useBackgroundHeight();
 
   const [foundSecrets, setFoundSecrets] = useState(0);
-  const addFoundSecrets = useCallback(() => {
-    console.log("addFoundSecrets");
-    setFoundSecrets((prev) => prev + 1);
-  }, []);
+  const [robotNotFound, setRobotNotFound] = useState(true);
+  const [catNotFound, setCatNotFound] = useState(true);
+  const [mushroomNotFound, setMushroomNotFound] = useState(true);
+  const [starshipNotFound, setStarshipNotFound] = useState(true);
+  const addFoundSecrets = useCallback(
+    (name) => {
+      switch (name) {
+        case "robot":
+          if (robotNotFound) {
+            setRobotNotFound(false);
+            setFoundSecrets((prev) => prev + 1);
+          }
+          break;
+        case "cat":
+          if (catNotFound) {
+            setCatNotFound(false);
+            setFoundSecrets((prev) => prev + 1);
+          }
+          break;
+        case "mushroom":
+          if (mushroomNotFound) {
+            setMushroomNotFound(false);
+            setFoundSecrets((prev) => prev + 1);
+          }
+          break;
+        case "starship":
+          if (starshipNotFound) {
+            setStarshipNotFound(false);
+            setFoundSecrets((prev) => prev + 1);
+          }
+          break;
+        default:
+          break;
+      }
+    },
+    [robotNotFound, catNotFound, mushroomNotFound, starshipNotFound]
+  );
 
   return (
     <>

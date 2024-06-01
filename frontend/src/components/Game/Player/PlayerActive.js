@@ -49,12 +49,8 @@ export class ActivePlayer extends Player {
     this.activeCatSecret = () => activeCatSecret();
     this.activeRobotSecret = () => activeRobotSecret();
     this.eatingMushroomEffect = () => eatingMushroomEffect();
-    this.addFoundSecrets = () => addFoundSecrets();
+    this.addFoundSecrets = (name) => addFoundSecrets(name);
     this.handleContact = () => handleContact();
-    this.catFound = false;
-    this.robotFound = false;
-    this.mushroomFound = false;
-    this.starShipFound = false;
   }
 
   setTitle(title) {
@@ -122,13 +118,6 @@ export class ActivePlayer extends Player {
 
     if (this.keysTab.includes("z")) {
       this.launchStarship().activeSecrets();
-      if (this.starShip) {
-        if (this.starShipFound) return;
-        else {
-          this.starShipFound = true;
-          this.addFoundSecrets();
-        }
-      }
     }
 
     // Mise à jour des flags de saut
@@ -199,6 +188,7 @@ export class ActivePlayer extends Player {
         this.position.y <= starShip.position.y + starShip.spriteHeight * 1.5 &&
         this.position.y + this.height >= starShip.position.y
       ) {
+        this.addFoundSecrets("starship");
         starShip.launching = true;
         this.position.x = starShip.position.x;
         this.position.y = starShip.position.y;
@@ -244,11 +234,7 @@ export class ActivePlayer extends Player {
             setTimeout(() => {
               gsap.to(this.testRef.current, { opacity: 0, duration: 2 });
             }, 11000);
-            if (this.mushroomFound) return;
-            else {
-              this.mushroomFound = true;
-              this.addFoundSecrets();
-            }
+            this.addFoundSecrets("mushroom");
             return;
           }
           if (this.isDialoging) return;
@@ -257,18 +243,10 @@ export class ActivePlayer extends Player {
 
           if (index === 1) {
             this.activeCatSecret();
-            if (this.catFound) return;
-            else {
-              this.catFound = true;
-              this.addFoundSecrets();
-            }
+            this.addFoundSecrets("cat");
           } else if (index === 2) {
             this.activeRobotSecret();
-            if (this.robotFound) return;
-            else {
-              this.robotFound = true;
-              this.addFoundSecrets();
-            }
+            this.addFoundSecrets("robot");
           }
         }
       });
