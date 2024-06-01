@@ -10,10 +10,6 @@ export default class Starship {
         this.position = position;
         this.position.x = position.x * this.scale;
         this.position.y = position.y * this.scale;
-        // this.position = {
-        //     x: 870,
-        //     y: 1778,
-        // };
         this.image.onload = () => {
             this.loaded = true;
             this.width = this.image.width / this.frameRate;

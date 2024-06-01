@@ -10,7 +10,7 @@ export const useProjectAnimation = (
   closeProject,
   setVideoIsPlaying
 ) => {
-    const timelineRef = useRef(null);
+  const timelineRef = useRef(null);
   timelineRef.current = gsap.timeline();
 
   useEffect(() => {

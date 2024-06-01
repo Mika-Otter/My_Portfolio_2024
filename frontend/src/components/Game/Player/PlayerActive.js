@@ -97,9 +97,9 @@ export class ActivePlayer extends Player {
     } else {
       this.position.y = this.starShip.position.y;
       this.cameraBox.y = this.starShip.position.y;
-      this.cameraBox.height = 700;
-      this.cameraBox.position.y = this.position.y - 300;
-      if (camera.position.x > -440) {
+      this.cameraBox.height = 700 * this.scale;
+      this.cameraBox.position.y = this.position.y - 300 * this.scale;
+      if (camera.position.x > -640 * this.scale) {
         camera.position.x -= 3;
       }
 
