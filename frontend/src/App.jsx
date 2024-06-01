@@ -180,17 +180,6 @@ export default function App() {
   }, [transition]);
 
   const backgroundHeight = useBackgroundHeight();
-  // useEffect(() => {
-  //     console.log("hello", backgroundHeight);
-  // }, [backgroundHeight]);
-
-  // useEffect(() => {
-  //     console.log("Initial isDialog:", isDialog);
-  // }, []);
-
-  // useEffect(() => {
-  //     console.log("Render isDialog:", isDialog);
-  // }, [isDialog]);
 
   return (
     <>
@@ -206,7 +195,7 @@ export default function App() {
         </div>
         {isLoading ? <Loader firstEnter={firstEnter} /> : null}
 
-        {isControls && <Controls handleControls={handleControls} />}
+        {isControls && <Controls handleControls={handleControls} closeProject={closeProject}/>}
         <Navbar
           activeSound={activeSound}
           handleMenu={handleMenu}
