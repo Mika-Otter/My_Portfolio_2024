@@ -206,6 +206,7 @@ export default function App() {
           isPlayed={isPlayed}
           firstControls={firstControls}
           handleControls={handleControls}
+          handleGoToHome={handleGoToHome}
         />
         <Menu
           isMenu={isMenu}

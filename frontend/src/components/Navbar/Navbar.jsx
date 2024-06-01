@@ -13,12 +13,13 @@ export default function Navbar({
     isPlayed,
     firstControls,
     handleControls,
+    handleGoToHome,
 }) {
     return (
         <div className={s.navbar}>
             <div className={s.navbar__rotator}>
                 <div className={s.navbar__logo}>
-                    <Logo />
+                    <Logo handleGoToHome={handleGoToHome} />
                 </div>
 
                 <div className={s.navbar__ctn}>
