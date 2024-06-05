@@ -263,7 +263,7 @@ export default function App() {
           handleControls={handleControls}
           activePlay={activePlay}
         />
-        <Location />
+        {/* <Location /> */}
         {/* <SecretsFound /> */}
         <Contact handleContact={handleContact} contact={contact} />
         <Dialog text="yoooo" isDialog={isDialog} secretText={secretText} />

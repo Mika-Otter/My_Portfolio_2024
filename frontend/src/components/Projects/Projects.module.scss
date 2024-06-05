@@ -30,7 +30,7 @@
         height: 100%;
         margin-inline: auto;
         display: flex;
-        gap: 100px;
+        gap: 3vw;
         // border: 2px solid red;
 
         &__title {
@@ -53,6 +53,7 @@
         }
 
         &__view {
+            // border: 2px solid red;
             width: 50%;
             height: 80%;
             margin-top: 4vw;
@@ -63,7 +64,7 @@
             transition: 0.5s ease-in-out;
             border-radius: 7px;
             &__ctn {
-                // border: 2px solid red;
+                
                 top: 0;
                 left: 0;
                 width: 80%;
@@ -90,7 +91,8 @@
         }
 
         &__content {
-            width: 50%;
+            width: 56%;
+            // border: 2px solid red;
 
             margin-left: 1%;
 
@@ -99,6 +101,7 @@
             position: relative;
 
             &__text {
+                // border: 2px solid red;
                 width: 100%;
                 display: flex;
                 flex-direction: column;
@@ -111,7 +114,7 @@
                         padding: 0;
                         margin: 0;
                         padding-top: 1rem;
-                        width: 80%;
+                        width: 85%;
                     }
                     li {
                         width: 100%;
@@ -121,14 +124,14 @@
                         list-style: none;
                         display: flex;
                         align-items: baseline;
-                        font-family: "OktaNeue-SemiBold";
-                        font-weight: 500;
-                        font-size: 2.3vw;
+                        font-family: "OktaNeue-Medium";
+                        font-weight: 200;
+                        font-size: 2.7vw;
                         letter-spacing: 0.5px;
                         color: rgb(166, 166, 166);
                         background-color: "transparent";
                         transition: 0.2s ease-in-out;
-                        height: calc(2vw + 3px);
+                        height: calc(2.5vw + 3px);
                     }
 
                     &__project {
@@ -154,7 +157,7 @@
                     .liHover {
                         color: $primary-color-darkblue;
                         transition: 0.2s ease-in-out;
-                        font-size: 2.45vw;
+                        font-size: 2.6vw;
                     }
                 }
             }

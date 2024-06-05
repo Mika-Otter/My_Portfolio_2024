@@ -48,145 +48,154 @@ export default function Controls({ handleControls, isControls, closeProject }) {
       <section className={s.controls__blur}>
         <div className={s.controls__wrapper} ref={projectWrapperRef}>
           <div className={s.controls} ref={projectRef}>
-            <div className={s.controls__keyboard}>
-              <label htmlFor="keyboard">KEYBOARD : </label>
-              <div className={s.controls__keyboard__ctn}>
-                <div className={s.controls__keyboard__input}>
-                  <input
-                    type="radio"
-                    name="keyboard"
-                    id="qwerty"
-                    value="qwerty"
-                    checked={selectedKeyboard === "qwerty"}
-                    onChange={() => setSelectedKeyboard("qwerty")}
-                  />
-                  <label htmlFor="qwerty">QWERTY</label>
-                </div>
-                <div className={s.controls__keyboard__input}>
-                  <input
-                    type="radio"
-                    name="keyboard"
-                    id="azerty"
-                    value="azerty"
-                    checked={selectedKeyboard === "azerty"}
-                    onChange={() => setSelectedKeyboard("azerty")}
-                  />
-
-                  <label htmlFor="azerty">AZERTY</label>
-                </div>
+            <div className={s.controls__left}>
+              <div className={s.controls__title}>
+                <h2>CONTROLS</h2>
+                <p>Please read these instructions before playing.</p>
               </div>
-            </div>
+              <div className={s.controls__keyboard}>
+                <label htmlFor="keyboard">KEYBOARD : </label>
+                <div className={s.controls__keyboard__ctn}>
+                  <div className={s.controls__keyboard__input}>
+                    <input
+                      type="radio"
+                      name="keyboard"
+                      id="qwerty"
+                      value="qwerty"
+                      checked={selectedKeyboard === "qwerty"}
+                      onChange={() => setSelectedKeyboard("qwerty")}
+                    />
+                    <label htmlFor="qwerty">QWERTY</label>
+                  </div>
+                  <div className={s.controls__keyboard__input}>
+                    <input
+                      type="radio"
+                      name="keyboard"
+                      id="azerty"
+                      value="azerty"
+                      checked={selectedKeyboard === "azerty"}
+                      onChange={() => setSelectedKeyboard("azerty")}
+                    />
 
-            <div className={s.controls__content}>
-              <div className={s.controls__content__left}>
-                <div className={s.controls__content__left__runleft}>
-                  <span>Run to the left</span>
-                  <div className={s.controls__content__keys}>
-                    <div className={s.controls__key}>
-                      <div
-                        className={s.controls__key__front}
-                        ref={keyLeftArrowRef}
-                      >
-                        <div
-                          className={cn(
-                            s.controls__key__front__arrow,
-                            s.controls__key__front__arrow__left
-                          )}
-                        >
-                          <ArrowLetsTalkSVG />
-                        </div>
-                      </div>
-                      <div className={s.controls__key__back}></div>
-                    </div>
-                    <span>OR</span>
-                    <div className={s.controls__key}>
-                      <div className={s.controls__key__front} ref={keyLeftRef}>
-                        {selectedKeyboard === "qwerty" ? (
-                          <span>A</span>
-                        ) : (
-                          <span>Q</span>
-                        )}
-                      </div>
-                      <div className={s.controls__key__back}></div>
-                    </div>
+                    <label htmlFor="azerty">AZERTY</label>
                   </div>
                 </div>
-                <div className={s.controls__content__left__interact}>
-                  <span>Try to interact</span>
-                  <div className={s.controls__key}>
-                    <div
-                      className={s.controls__key__front}
-                      ref={keyInteractRef}
-                    >
+              </div>
+              <div className={s.controls__intructions}>
+                <div
+                  className={cn(
+                    s.controls__instructions__item,
+                    s.controls__instructions__item__runleft
+                  )}
+                >
+                  <div className={s.controls__instructions__keys}>
+                    <Key reference={keyLeftRef}>
+                      {selectedKeyboard === "qwerty" ? (
+                        <span>A</span>
+                      ) : (
+                        <span>Q</span>
+                      )}
+                    </Key>
+                    <span>OR</span>
+                    <Key reference={keyLeftArrowRef}>
+                      <div
+                        className={cn(
+                          s.controls__instructions__keys__arrow,
+                          s.controls__instructions__keys__arrow__left
+                        )}
+                      >
+                        <ArrowLetsTalkSVG />
+                      </div>
+                    </Key>
+                    <span>Run to the left</span>
+                  </div>
+                </div>
+                <div
+                  className={cn(
+                    s.controls__instructions__item,
+                    s.controls__instructions__item__runright
+                  )}
+                >
+                  <div className={s.controls__instructions__keys}>
+                    <Key reference={keyRightRef}>
+                      <span>D</span>
+                    </Key>
+                    <span>OR</span>
+                    <Key reference={keyRightArrowRef}>
+                      <div
+                        className={cn(
+                          s.controls__instructions__keys__arrow,
+                          s.controls__instructions__keys__arrow__right
+                        )}
+                      >
+                        <ArrowLetsTalkSVG />
+                      </div>
+                    </Key>
+                    <span>Run to the left</span>
+                  </div>
+                </div>
+                <div
+                  className={cn(
+                    s.controls__instructions__item,
+                    s.controls__instructions__item__jump
+                  )}
+                >
+                  <div className={s.controls__instructions__keys}>
+                    <Key reference={keySpaceRef} width={"large"}>
+                      SPACE
+                    </Key>
+                    <span>Jump</span>
+                  </div>
+                </div>
+                <div
+                  className={cn(
+                    s.controls__instructions__item,
+                    s.controls__instructions__item__trytointeract
+                  )}
+                >
+                  <div className={s.controls__instructions__keys}>
+                    <Key reference={keyInteractRef}>
                       {selectedKeyboard === "qwerty" ? (
                         <span>W</span>
                       ) : (
                         <span>Z</span>
                       )}
-                    </div>
-                    <div className={s.controls__key__back}></div>
-                  </div>
-                </div>
-              </div>
-              <div className={s.controls__content__center}>
-                <div className={s.controls__content__center__video}>
-                  <video
-                    ref={videoRef}
-                    src="./src/assets/video/controls.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    disablePictureInPicture
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      borderRadius: "5px",
-                      objectFit: "cover",
-                      marginBottom: "0.7rem",
-                    }}
-                    preload="auto"
-                  />
-                </div>
-              </div>
-              <div className={s.controls__content__right}>
-                <div className={s.controls__content__right__runright}>
-                  <span>Run to the right</span>
-                  <div className={s.controls__content__keys}>
-                    <div className={s.controls__key}>
-                      <div className={s.controls__key__front} ref={keyRightRef}>
-                        <span>D</span>
-                      </div>
-                      <div className={s.controls__key__back}></div>
-                    </div>
+                    </Key>
                     <span>OR</span>
-                    <div className={s.controls__key}>
+                    <Key reference={keyInteractRef}>
                       <div
-                        className={s.controls__key__front}
-                        ref={keyRightArrowRef}
+                        className={cn(
+                          s.controls__instructions__keys__arrow,
+                          s.controls__instructions__keys__arrow__top
+                        )}
                       >
-                        <div
-                          className={cn(
-                            s.controls__key__front__arrow,
-                            s.controls__key__front__arrow__right
-                          )}
-                        >
-                          <ArrowLetsTalkSVG />
-                        </div>
+                        <ArrowLetsTalkSVG />
                       </div>
-                      <div className={s.controls__key__back}></div>
-                    </div>
+                    </Key>
+                    <span>Try to interact</span>
                   </div>
                 </div>
-                <div className={s.controls__content__right__space}>
-                  <span>Jump</span>
-                  <div className={s.controls__space}>
-                    <div className={s.controls__space__front} ref={keySpaceRef}>
-                      <span>SPACE</span>
-                    </div>
-                    <div className={s.controls__space__back}></div>
-                  </div>
-                </div>
+              </div>
+            </div>
+            <div className={s.controls__video}>
+              <div className={s.controls__video__ctn}>
+                <video
+                  ref={videoRef}
+                  src="./src/assets/video/controls.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  disablePictureInPicture
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    borderRadius: "5px",
+                    objectFit: "cover",
+                    marginBottom: "0.7rem",
+                  }}
+                  preload="auto"
+                />
               </div>
             </div>
             <div className={s.controls__gotoplay}>
@@ -199,5 +208,25 @@ export default function Controls({ handleControls, isControls, closeProject }) {
         </div>
       </section>
     </>
+  );
+}
+
+function Key({ children, reference, width }) {
+  return (
+    <div className={width === "large" ? s.controls__space : s.controls__key}>
+      <div
+        className={
+          width === "large" ? s.controls__space__front : s.controls__key__front
+        }
+        ref={reference}
+      >
+        {children}
+      </div>
+      <div
+        className={
+          width === "large" ? s.controls__space__back : s.controls__key__back
+        }
+      ></div>
+    </div>
   );
 }
