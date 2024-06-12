@@ -28,7 +28,7 @@ const imageSources = [
   "/starship.png",
 ];
 
-export default function Loader({ firstEnter}) {
+export default function Loader({ firstEnter }) {
   const bigBoxRef = useRef(null);
   const smallBoxRef = useRef(null);
   const logoRef = useRef(null);
@@ -55,26 +55,33 @@ export default function Loader({ firstEnter}) {
   const choosedDeltaTimeValueRef = useRef(0);
 
   //   useEffect(() => {
-//     console.log(deltaTimeValue, "deltaTime value in Loader");
-//   }, [deltaTimeValue]);
+  //     console.log(deltaTimeValue, "deltaTime value in Loader");
+  //   }, [deltaTimeValue]);
 
-  useEffect(() => {console.log(loadingEnd, "loadingEnd Loader")}, [loadingEnd])
+  useEffect(() => {
+    console.log(loadingEnd, "loadingEnd Loader");
+  }, [loadingEnd]);
   useEffect(() => {
     deltaTimeValuesRef.current.push(deltaTimeValue);
   }, [deltaTimeValue]);
 
   useEffect(() => {
-    console.log('loadingEnd:', loadingEnd);
-    console.log('deltaTimeValuesRef.current:', deltaTimeValuesRef.current);
-    const minDeltaTimeValue = Math.min(...deltaTimeValuesRef.current.filter(value => value > 0));
+    console.log("loadingEnd:", loadingEnd);
+    console.log("deltaTimeValuesRef.current:", deltaTimeValuesRef.current);
+    const minDeltaTimeValue = Math.min(
+      ...deltaTimeValuesRef.current.filter((value) => value > 0)
+    );
     choosedDeltaTimeValueRef.current = minDeltaTimeValue;
-    console.log('choosedDeltaTimeValueRef.current:', choosedDeltaTimeValueRef.current);
+    console.log(
+      "choosedDeltaTimeValueRef.current:",
+      choosedDeltaTimeValueRef.current
+    );
     // deltaTimeValuesRef.current = [];
-}, [loadingEnd]);
+  }, [loadingEnd]);
 
-  useEffect(() => {console.log(deltaTimeValuesRef.current, "deltaTimeValuesRef in Loader")}, [deltaTimeValuesRef.current]);
-
-
+  useEffect(() => {
+    console.log(deltaTimeValuesRef.current, "deltaTimeValuesRef in Loader");
+  }, [deltaTimeValuesRef.current]);
 
   useEffect(() => {
     console.log(
@@ -268,6 +275,23 @@ export default function Loader({ firstEnter}) {
         });
     }
   }, [deltaTimeIsGood]);
+
+  useEffect(() => {
+    if (isPlayable) {
+      setTimeout(() => {
+        const handleKeyPress = (event) => {
+          if (event.key === "Enter") {
+            handleEnter();
+          }
+        };
+        window.addEventListener("keydown", handleKeyPress);
+      }, 1000);
+
+      return () => {
+        window.removeEventListener("keydown", handleKeyPress);
+      };
+    }
+  }, [isPlayable]);
 
   return (
     <>

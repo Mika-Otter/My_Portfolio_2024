@@ -40,7 +40,7 @@ export default function Canvas({
   const [ctx, setCtx] = useState(null);
   const playerRef = useRef();
   const [reload, setReload] = useState(false);
-const {deltaTimeValue, loadingEnd} = useContext(DeltaTimeContext);
+  const { deltaTimeValue, loadingEnd } = useContext(DeltaTimeContext);
 
   useEffect(() => {
     handler = new HandleInput(keysTab, lastKeysTab, isPlayed);
@@ -94,11 +94,8 @@ const {deltaTimeValue, loadingEnd} = useContext(DeltaTimeContext);
     setCtx(ctx);
   }, []);
 
-
-
   useEffect(() => {
     if (canvas && ctx && loadingEnd) {
-  
       let animation;
 
       canvas.width = window.innerWidth;
@@ -147,8 +144,7 @@ const {deltaTimeValue, loadingEnd} = useContext(DeltaTimeContext);
         delta_time = currentTime - previousTime;
         deltaTime = delta_time / frame_interval;
         previousTime = currentTime;
-
-
+        // console.log(deltaTime, "deltaTime");
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.save();
