@@ -42,8 +42,8 @@ export class ActivePlayer extends Player {
     this.canDoubleJump = false;
     this.hasDoubleJumped = false;
     this.deltaTime = deltaTime;
-    this.speedX = 10;
-    this.speedY = 22;
+    this.speedX = 11;
+    this.speedY = 20;
     this.scale = scale;
     this.handleIsDialog = () => handleIsDialog();
     this.activeCatSecret = () => activeCatSecret();

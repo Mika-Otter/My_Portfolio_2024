@@ -138,13 +138,27 @@ export default function Canvas({
       let delta_time = 0;
       let deltaTime = 1; //deltaTime multiplier
 
-      let previousTime = performance.now();
+      let msPrev = performance.now();
+      const fps = 60;
+      const msPerFrame = 1000 / fps;
+      let frames = 0;
 
-      function animate(currentTime) {
-        delta_time = currentTime - previousTime;
-        deltaTime = delta_time / frame_interval;
-        previousTime = currentTime;
+      function animate() {
+        animation = requestAnimationFrame(animate);
+        // delta_time = currentTime - previousTime;
+        // deltaTime = delta_time / frame_interval;
+        // previousTime = currentTime;
+        deltaTime = 1;
         // console.log(deltaTime, "deltaTime");
+
+        const msNow = performance.now();
+        const msPassed = msNow - msPrev;
+
+        if (msPassed < msPerFrame) return;
+
+        const excessTime = msPassed % msPerFrame;
+        msPrev = msNow - excessTime;
+        frames++;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.save();
@@ -186,9 +200,11 @@ export default function Canvas({
         ctx.fillStyle = "black";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.restore();
-        animation = requestAnimationFrame(animate);
       }
 
+      setInterval(() => {
+        console.log(frames);
+      }, 1000);
       background.onload = animate(0);
       setBackgroundHeight(background.height);
       return () => {

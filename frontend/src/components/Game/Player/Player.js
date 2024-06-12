@@ -19,7 +19,7 @@ export class Player {
     this.height = 80 * this.scale;
     this.bottom = this.position.y + this.height;
 
-    this.gravity = 0.22 * this.scale;
+    this.gravity = 0.45 * this.scale;
 
     this.collisionBlocks = collisionBlocks;
     this.jumping = false;
