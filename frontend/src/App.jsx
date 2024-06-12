@@ -21,7 +21,6 @@ import useResize from "./hooks/useResize";
 import Dialog from "./components/Game/Dialog/Dialog";
 import MushroomEffect from "./components/MushroomEffect/MushroomEffect";
 import Canvas from "./components/Canvas";
-import { DeltaTimeProvider } from "./components/DeltaTimeProvider";
 import ScrollDiscover from "./components/ScrollDiscover/ScrollDiscover";
 import Location from "./components/Location/Location";
 import SecretsFound from "./components/SecretsFound/SecretsFound";
@@ -223,105 +222,100 @@ export default function App() {
 
   return (
     <>
-      <DeltaTimeProvider>
-        <div className="test" ref={testRef}>
-          <MushroomEffect isEatMushroom={isEatMushroom} />
-        </div>
-        <div className="overlay" ref={overlayRef}>
-          <div className="overlay-div" ref={overlayOneRef}></div>
-          <div className="overlay-div" ref={overlayTwoRef}></div>
-          <div className="overlay-div" ref={overlayThreeRef}></div>
-          <div className="overlay-div" ref={overlayFourRef}></div>
-        </div>
-        {isLoading ? <Loader firstEnter={firstEnter} /> : null}
+      <div className="test" ref={testRef}>
+        <MushroomEffect isEatMushroom={isEatMushroom} />
+      </div>
+      <div className="overlay" ref={overlayRef}>
+        <div className="overlay-div" ref={overlayOneRef}></div>
+        <div className="overlay-div" ref={overlayTwoRef}></div>
+        <div className="overlay-div" ref={overlayThreeRef}></div>
+        <div className="overlay-div" ref={overlayFourRef}></div>
+      </div>
+      {isLoading ? <Loader firstEnter={firstEnter} /> : null}
 
-        {isControls && (
-          <Controls
-            handleControls={handleControls}
-            closeProject={closeProject}
-          />
-        )}
-        <Navbar
-          activeSound={activeSound}
-          handleMenu={handleMenu}
-          handleTransition={() => handleTransition(setTransition)}
-          handleContact={handleContact}
-          playMode={playMode}
-          viewMode={viewMode}
-          isPlayed={isPlayed}
-          firstControls={firstControls}
-          handleControls={handleControls}
-          handleGoToHome={handleGoToHome}
-          foundSecrets={foundSecrets}
-        />
-        <Menu
-          isMenu={isMenu}
-          handleMenu={handleMenu}
-          handleGoToHome={handleGoToHome}
-          handleTransition={() => handleTransition(setTransition)}
-          handleContact={handleContact}
-          handleControls={handleControls}
-          activePlay={activePlay}
-        />
-        {/* <Location /> */}
-        {/* <SecretsFound /> */}
-        <Contact handleContact={handleContact} contact={contact} />
-        <Dialog text="yoooo" isDialog={isDialog} secretText={secretText} />
-        <BackgroundHeightProvider>
-          <BigBox backgroundheight={backgroundHeight}>
-            {RoomLevel === 1 ? (
-              <div className="windcanvas">
-                <Wind />
-              </div>
-            ) : null}
-
-            <div className="canvas">
-              <Canvas
-                mapRow={mapRow}
-                setMapRow={setMapRow}
-                isPlayed={isPlayed}
-                toExp={toExp}
-                changetoExp={changetoExp}
-                RoomLevel={RoomLevel}
-                changeRoom={changeRoom}
-                nextLevel={nextLevel}
-                handleNextLevel={handleNextLevel}
-                goToHome={goToHome}
-                handleGoToHome={handleGoToHome}
-                changeRoomOne={changeRoomOne}
-                contact={contact}
-                isMenu={isMenu}
-                isOpenProject={isOpenProject}
-                handleIsDialog={handleIsDialog}
-                activeCatSecret={activeCatSecret}
-                activeRobotSecret={activeRobotSecret}
-                testRef={testRef}
-                eatingMushroomEffect={eatingMushroomEffect}
-                handleContact={handleContact}
-                addFoundSecrets={addFoundSecrets}
-              />
+      {isControls && (
+        <Controls handleControls={handleControls} closeProject={closeProject} />
+      )}
+      <Navbar
+        activeSound={activeSound}
+        handleMenu={handleMenu}
+        handleTransition={() => handleTransition(setTransition)}
+        handleContact={handleContact}
+        playMode={playMode}
+        viewMode={viewMode}
+        isPlayed={isPlayed}
+        firstControls={firstControls}
+        handleControls={handleControls}
+        handleGoToHome={handleGoToHome}
+        foundSecrets={foundSecrets}
+      />
+      <Menu
+        isMenu={isMenu}
+        handleMenu={handleMenu}
+        handleGoToHome={handleGoToHome}
+        handleTransition={() => handleTransition(setTransition)}
+        handleContact={handleContact}
+        handleControls={handleControls}
+        activePlay={activePlay}
+      />
+      {/* <Location /> */}
+      {/* <SecretsFound /> */}
+      <Contact handleContact={handleContact} contact={contact} />
+      <Dialog text="yoooo" isDialog={isDialog} secretText={secretText} />
+      <BackgroundHeightProvider>
+        <BigBox backgroundheight={backgroundHeight}>
+          {RoomLevel === 1 ? (
+            <div className="windcanvas">
+              <Wind />
             </div>
+          ) : null}
 
-            <section className="main__section">
-              <div className="title">
-                <Title />
-                <ScrollDiscover />
-              </div>
-              <div className="content">
-                {!isPlayed && RoomLevel === 1 && !contact ? (
-                  <Projects
-                    handleNextLevel={handleNextLevel}
-                    nextLevel={nextLevel}
-                    isOpenProject={isOpenProject}
-                    openProject={openProject}
-                    closeProject={closeProject}
-                  />
-                ) : null}
-              </div>
-            </section>
-          </BigBox>
-        </BackgroundHeightProvider>
-      </DeltaTimeProvider>
+          <div className="canvas">
+            <Canvas
+              mapRow={mapRow}
+              setMapRow={setMapRow}
+              isPlayed={isPlayed}
+              toExp={toExp}
+              changetoExp={changetoExp}
+              RoomLevel={RoomLevel}
+              changeRoom={changeRoom}
+              nextLevel={nextLevel}
+              handleNextLevel={handleNextLevel}
+              goToHome={goToHome}
+              handleGoToHome={handleGoToHome}
+              changeRoomOne={changeRoomOne}
+              contact={contact}
+              isMenu={isMenu}
+              isOpenProject={isOpenProject}
+              handleIsDialog={handleIsDialog}
+              activeCatSecret={activeCatSecret}
+              activeRobotSecret={activeRobotSecret}
+              testRef={testRef}
+              eatingMushroomEffect={eatingMushroomEffect}
+              handleContact={handleContact}
+              addFoundSecrets={addFoundSecrets}
+            />
+          </div>
+
+          <section className="main__section">
+            <div className="title">
+              <Title />
+              <ScrollDiscover />
+            </div>
+            <div className="content">
+              {!isPlayed && RoomLevel === 1 && !contact ? (
+                <Projects
+                  handleNextLevel={handleNextLevel}
+                  nextLevel={nextLevel}
+                  isOpenProject={isOpenProject}
+                  openProject={openProject}
+                  closeProject={closeProject}
+                />
+              ) : null}
+            </div>
+          </section>
+        </BigBox>
+      </BackgroundHeightProvider>
     </>
   );
 }

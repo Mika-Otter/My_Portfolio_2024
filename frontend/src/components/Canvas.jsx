@@ -6,7 +6,6 @@ import {
   useSetBackgroundHeight,
 } from "../context/BackgroundHeightContext";
 import { Game } from "../gameLogic/GameInit";
-import { DeltaTimeContext } from "./DeltaTimeProvider";
 
 export default function Canvas({
   isPlayed,
@@ -40,7 +39,6 @@ export default function Canvas({
   const [ctx, setCtx] = useState(null);
   const playerRef = useRef();
   const [reload, setReload] = useState(false);
-  const { deltaTimeValue, loadingEnd } = useContext(DeltaTimeContext);
 
   useEffect(() => {
     handler = new HandleInput(keysTab, lastKeysTab, isPlayed);
@@ -95,7 +93,7 @@ export default function Canvas({
   }, []);
 
   useEffect(() => {
-    if (canvas && ctx && loadingEnd) {
+    if (canvas && ctx) {
       let animation;
 
       canvas.width = window.innerWidth;
@@ -132,10 +130,7 @@ export default function Canvas({
       playerRef.current = player;
 
       window.scrollBy(0, -100);
-      const frames_per_second = 60;
-      const frame_interval = 1000 / frames_per_second;
 
-      let delta_time = 0;
       let deltaTime = 1; //deltaTime multiplier
 
       let msPrev = performance.now();
@@ -145,11 +140,6 @@ export default function Canvas({
 
       function animate() {
         animation = requestAnimationFrame(animate);
-        // delta_time = currentTime - previousTime;
-        // deltaTime = delta_time / frame_interval;
-        // previousTime = currentTime;
-        deltaTime = 1;
-        // console.log(deltaTime, "deltaTime");
 
         const msNow = performance.now();
         const msPassed = msNow - msPrev;
@@ -212,7 +202,7 @@ export default function Canvas({
         playerRef.current = null;
       };
     }
-  }, [canvas, ctx, RoomLevel, reload, loadingEnd]);
+  }, [canvas, ctx, RoomLevel, reload]);
 
   return <canvas ref={canvasRef} />;
 }

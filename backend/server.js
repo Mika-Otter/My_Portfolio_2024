@@ -11,11 +11,20 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.post("/api/send-email", (req, res) => {
-    //api define in the config of vite.config.js
-    const { name, email, company, need, description, budget, timeline, findMe, favorite } =
-        req.body;
-    // Construire le texte de l'email en incluant toutes les données du formulaire
-    const emailText = `
+  //api define in the config of vite.config.js
+  const {
+    name,
+    email,
+    company,
+    need,
+    description,
+    budget,
+    timeline,
+    findMe,
+    favorite,
+  } = req.body;
+  // Construire le texte de l'email en incluant toutes les données du formulaire
+  const emailText = `
         Name: ${name}
         Email: ${email}
         Company: ${company}
@@ -27,32 +36,32 @@ app.post("/api/send-email", (req, res) => {
         Favorite Food or Artist: ${favorite}
     `;
 
-    const transporter = nodemailer.createTransport({
-        service: "gmail",
-        host: "smtp.gmail.com",
-        port: 465,
-        secure: true,
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS,
-        },
-    });
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
 
-    const mailOptions = {
-        from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER,
-        subject: "Contact work",
-        text: emailText,
-    };
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
+    to: process.env.EMAIL_USER,
+    subject: "Contact work",
+    text: emailText,
+  };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return res.status(500).send(error.toString());
-        }
-        res.status(200).send("Email sent: " + info.response);
-    });
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return res.status(500).send(error.toString());
+    }
+    res.status(200).send("Email sent: " + info.response);
+  });
 });
 
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+  console.log(`Server running on port ${port}`);
 });

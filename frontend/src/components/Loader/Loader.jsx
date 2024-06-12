@@ -11,7 +11,6 @@ import platformVideo from "../../assets/video/Platform.mp4";
 import typpovVideo from "../../assets/video/Typpov-Low.mp4";
 import unexpectedStudioVideo from "../../assets/video/UnexpectedStudio.mp4";
 import variousGameVideo from "../../assets/video/VariousGame.mp4";
-import { DeltaTimeContext } from "../DeltaTimeProvider";
 
 gsap.registerPlugin();
 
@@ -44,51 +43,11 @@ export default function Loader({ firstEnter }) {
   const [loadingImg, setLoadingImg] = useState(false);
   const [settingUp, setSettingUp] = useState("We loading the game...");
   const settingUpRef = useRef(null);
-  const { deltaTimeValue, loadingEnd } = useContext(DeltaTimeContext);
   const [key, setKey] = useState(1);
   const [isPlayable, setIsPlayable] = useState(false);
-  const [deltaTimeIsGood, setDeltaTimeIsGood] = useState(false);
+  const [loadingEnd, setLoadingEnd] = useState(false);
   const tlRef = useRef();
-  const deltaTimeValueRef = useRef(deltaTimeValue);
   const keyRef = useRef(key);
-  const deltaTimeValuesRef = useRef([]);
-  const choosedDeltaTimeValueRef = useRef(0);
-
-  //   useEffect(() => {
-  //     console.log(deltaTimeValue, "deltaTime value in Loader");
-  //   }, [deltaTimeValue]);
-
-  useEffect(() => {
-    console.log(loadingEnd, "loadingEnd Loader");
-  }, [loadingEnd]);
-  useEffect(() => {
-    deltaTimeValuesRef.current.push(deltaTimeValue);
-  }, [deltaTimeValue]);
-
-  useEffect(() => {
-    console.log("loadingEnd:", loadingEnd);
-    console.log("deltaTimeValuesRef.current:", deltaTimeValuesRef.current);
-    const minDeltaTimeValue = Math.min(
-      ...deltaTimeValuesRef.current.filter((value) => value > 0)
-    );
-    choosedDeltaTimeValueRef.current = minDeltaTimeValue;
-    console.log(
-      "choosedDeltaTimeValueRef.current:",
-      choosedDeltaTimeValueRef.current
-    );
-    // deltaTimeValuesRef.current = [];
-  }, [loadingEnd]);
-
-  useEffect(() => {
-    console.log(deltaTimeValuesRef.current, "deltaTimeValuesRef in Loader");
-  }, [deltaTimeValuesRef.current]);
-
-  useEffect(() => {
-    console.log(
-      choosedDeltaTimeValueRef.current,
-      "choosedDeltaTimeValueRef in Loader"
-    );
-  }, [choosedDeltaTimeValueRef.current]);
 
   const videoUrls = [
     controlsVideo,
@@ -124,17 +83,6 @@ export default function Loader({ firstEnter }) {
     { text: "We calculate your FPS...", duration: 800 },
     { text: "Media charging...", duration: 1600 },
     { text: "Media charging...", duration: 800 },
-  ];
-
-  const calculateFPS = [
-    {
-      text: "Whoops ! We need more time for calcute your FPS...",
-      duration: 20,
-    },
-    {
-      text: "Whoops ! We need more time for calcute your FPS...",
-      duration: 2700,
-    },
   ];
 
   function chargementSettingUp(list) {
@@ -213,34 +161,13 @@ export default function Loader({ firstEnter }) {
   };
 
   useEffect(() => {
-    deltaTimeValueRef.current = deltaTimeValue;
-  }, [deltaTimeValue]);
-
-  useEffect(() => {
     keyRef.current = key;
   }, [key]);
 
   useGSAP(() => {
-    console.log(key, deltaTimeValue, isPlayable);
     const tl = gsap.timeline({
       onComplete: () => {
-        if (
-          choosedDeltaTimeValueRef.current > 1 &&
-          choosedDeltaTimeValueRef.current < 100
-        ) {
-          setDeltaTimeIsGood(true);
-        } else {
-          if (keyRef.current < 3) {
-            tlRef.current.set(loaderRef.current, { width: "100%" });
-            setSettingUp("Whoops ! We need more time for calcute your FPS...");
-            // chargementSettingUp(calculateFPS);
-            setKey((prev) => prev + 1);
-          } else if (keyRef.current === 3) {
-            setSettingUp(
-              "Sorry, your device is too slow for this site... Visit us with an other device <3"
-            );
-          }
-        }
+        setLoadingEnd(true);
       },
     });
     tl.set(loaderRef.current, { width: "1%" })
@@ -259,7 +186,7 @@ export default function Loader({ firstEnter }) {
   }, []);
 
   useGSAP(() => {
-    if (deltaTimeIsGood) {
+    if (loadingEnd) {
       const tl = gsap.timeline({
         onComplete: () => {
           setIsPlayable(true);
@@ -274,7 +201,7 @@ export default function Loader({ firstEnter }) {
           delay: 1,
         });
     }
-  }, [deltaTimeIsGood]);
+  }, [loadingEnd]);
 
   useEffect(() => {
     if (isPlayable) {
