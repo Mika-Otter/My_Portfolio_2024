@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import s from "./Audio.module.scss";
 import useAudioPlayer from "../../hooks/useAudioPlayer";
 import { initializeCanvas } from "./utils/animationAudio";
-import douceurIdealeMP3 from "../../assets/audio/douceuridealev12.mp3";
+import douceurIdealeMP3 from "../../assets/douceuridealev12.mp3";
 
 export default function AudioPlayer({ activeSound }) {
   const { audioPlayerRef, playingAudio, playMusic } = useAudioPlayer(
