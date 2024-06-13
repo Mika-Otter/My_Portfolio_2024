@@ -2,60 +2,60 @@
 @import "../../styles/font";
 
 .playView {
-    display: flex;
-    gap: 10px;
-    right: clamp(30px, 2vw, 50px);
-    mix-blend-mode: difference;
-    height: 30px;
-    align-items: center;
-    width: clamp(80px, 6vw, 140px);
-    padding: 0px 10px;
-    justify-content: space-around;
+  display: flex;
+  gap: 10px;
+  right: clamp(30px, 2vw, 50px);
+  mix-blend-mode: difference;
+  height: 30px;
+  align-items: center;
+  width: clamp(80px, 6vw, 140px);
+  padding: 0px 10px;
+  justify-content: space-around;
 
-    button {
-        font-family: "OktaNeue-SemiBold";
-        letter-spacing: 1px;
-        font-size: $fontsize-s-nav;
-        cursor: pointer;
-        border: none;
-        background-color: transparent;
-        margin: 0;
-    }
+  button {
+    font-family: "OktaNeue-SemiBold";
+    letter-spacing: 1px;
+    font-size: 1vw;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    margin: 0;
+  }
 
-    &__view {
-        color: rgb(255, 255, 255);
-        transition: 0.3s ease-in-out;
-    }
+  &__view {
+    color: rgb(255, 255, 255);
+    transition: 0.3s ease-in-out;
+  }
 
-    &__view:hover,
-    &__play:hover,
-    &__playOff:hover,
-    &__viewOff:hover {
-        animation: scaled 0.5s forwards;
-    }
-    &__viewOff {
-        color: rgba(188, 188, 188, 0.383);
-        transition: 0.3s ease-in-out;
-    }
-    &__playOff {
-        color: rgba(188, 188, 188, 0.383);
-        transition: 0.3s ease-in-out;
-    }
-    &__play {
-        color: rgb(255, 255, 255);
-        // color: $primary-color-darkblue;
-        transition: 0.3s ease-in-out;
-    }
+  &__view:hover,
+  &__play:hover,
+  &__playOff:hover,
+  &__viewOff:hover {
+    animation: scaled 0.5s forwards;
+  }
+  &__viewOff {
+    color: rgba(188, 188, 188, 0.383);
+    transition: 0.3s ease-in-out;
+  }
+  &__playOff {
+    color: rgba(188, 188, 188, 0.383);
+    transition: 0.3s ease-in-out;
+  }
+  &__play {
+    color: rgb(255, 255, 255);
+    // color: $primary-color-darkblue;
+    transition: 0.3s ease-in-out;
+  }
 }
 
 @keyframes scaled {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

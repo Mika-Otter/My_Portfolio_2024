@@ -1,200 +1,197 @@
 @import "../../styles/theme";
 @import "../../styles/font";
 
-
-
 .menu {
-    position: fixed;
-    z-index: 10000;
-    top: 0;
-    right: -33dvw; //10px;
-    height: 100vh;
-    width: 33dvw;
-    -webkit-backdrop-filter: blur(13px);
-    backdrop-filter: blur(13px);
-    font-family: "OktaNeue-Normal";
-    font-weight: 600;
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  right: -33dvw; //10px;
+  height: 100vh;
+  min-height: 550px;
+  width: 33dvw;
+  -webkit-backdrop-filter: blur(13px);
+  backdrop-filter: blur(13px);
+  font-family: "OktaNeue-Normal";
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $primary-color-darkblue;
+  color: $white-board-opac;
+  &__close {
+    margin-left: 8%;
+    margin-top: 1%;
+    display: flex;
+    font-size: $fontsize-s;
+    align-items: center;
+    cursor: pointer;
+    &__cross {
+      margin-top: 3px;
+      width: 25px;
+      transition: 0.3s ease-in-out;
+    }
+  }
+  &__close:hover &__close__cross {
+    animation: scaled 0.3s forwards;
+  }
+
+  &__item {
+    margin: 8% 8% 15% 8%;
+    margin-top: 15%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    background-color: $primary-color-darkblue;
-    color: $white-board-opac;
-    &__close {
-        margin-left: 8%;
-        margin-top: 1%;
-        display: flex;
-        font-size: $fontsize-s;
-        align-items: center;
-        cursor: pointer;
-        &__cross {
-            margin-top: 3px;
-            width: 25px;
-            transition: 0.3s ease-in-out;
-        }
-    }
-    &__close:hover &__close__cross {
-        animation: scaled 0.3s forwards;
+    line-height: 1;
+    gap: 3px;
+    height: 35%;
+
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      font-size: 4.5vw;
+      overflow: hidden;
+      height: 4.5vw;
+      width: 100%;
+      text-align: left;
     }
 
-    &__item {
-        margin: 8% 8% 15% 8%;
-        margin-top: 15%;
-        display: flex;
-        flex-direction: column;
-        line-height: 1;
-        gap: 3px;
-        height: 35%;
-        
-        &__wrapper {
-            display: flex;
-            flex-direction: column;
-            font-size: $fontsize-menu;
-            overflow: hidden;
-            height: $fontsize-menu;
-            width: 100%;
-            text-align: left;
-        }
+    &__span {
+      display: flex;
+      flex-direction: column;
 
-        &__span {
-            display: flex;
-            flex-direction: column;
-
-            transition: 0.5s ease-in-out;
-            cursor: pointer;
-            margin: 0;
-            margin-bottom: 0;
-            padding: 0;
-            transform: translateY(-50%);
-            margin-top: -15px;
-            span {
-                margin: 0;
-                margin-top: 2px;
-                padding: 0;
-                height: $fontsize-menu;
-            }
-        }
-        &__span:hover {
-            transform: translateY(0%);
-        }
+      transition: 0.5s ease-in-out;
+      cursor: pointer;
+      margin: 0;
+      margin-bottom: 0;
+      padding: 0;
+      transform: translateY(-50%);
+      margin-top: -15px;
+      span {
+        margin: 0;
+        margin-top: 2px;
+        padding: 0;
+        height: 4.5vw;
+      }
     }
-
-    &__location {
-        font-family: "NeueMontreal-Regular";
-        font-weight: 100;
-        display: flex;
-        flex-direction: column;
-        margin-left: 8%;
-        height: 60%;
-  
-        p {
-            margin: 0;
-        }
-        &__wrapper {
-            display: flex;
-            flex-direction: column;
-            font-size: 17px;
-            overflow: hidden;
-            height: 20px;
-            width: 93%;
-            text-align: left;
-        }
-        &__phone,
-        &__mail {
-            position: relative;
-            text-decoration: none;
-            cursor: pointer;
-            font-family: "NeueMontreal-Regular";
-            font-weight: 100;
-            // color: $primary-color-darkblue;
-            color: $white-board-opac;
-            width: 50%;
-            display: flex;
-            flex-direction: column;
-
-            transform: translateY(-50%);
-            transition: 0.3s ease-in-out;
-        }
-        &__phone:hover,
-        &__mail:hover {
-            transform: translateY(0%);
-        }
+    &__span:hover {
+      transform: translateY(0%);
     }
+  }
 
-    &__social {
-        margin: 8%;
-        margin-bottom: 5vh;
-        display: flex;
-        flex-direction: column;
-        gap: 9px;
-        font-size: 14px;
-        
+  &__location {
+    font-family: "NeueMontreal-Regular";
+    font-weight: 100;
+    display: flex;
+    flex-direction: column;
+    margin-left: 8%;
+    height: 60%;
 
-        a {
-            position: relative;
-            text-decoration: none;
-            cursor: pointer;
-            font-family: "OktaNeue-Normal";
-            font-weight: 100;
-            // color: $primary-color-darkblue;
-            color: $white-board-opac;
-        }
-        a::after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            transform: scaleX(0);
-            border-radius: 5px;
-            height: 0.08em;
-            bottom: 0;
-            left: 0;
-            background: currentcolor;
-            transform-origin: bottom right;
-            transition: transform 0.6s ease-out;
-        }
-        a:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
-        &__other {
-            display: flex;
-            gap: 14px;
-        }
+    &__text {
+      font-size: 1.1vw;
+      margin: 0;
+      height: 1.3vw;
     }
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      font-size: 1.1vw;
+      overflow: hidden;
+      height: 1.3vw;
+      width: 93%;
+      text-align: left;
+    }
+    &__phone,
+    &__mail {
+      position: relative;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: "NeueMontreal-Regular";
+      font-weight: 100;
+      color: $white-board-opac;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+
+      transform: translateY(-50%);
+      transition: 0.3s ease-in-out;
+    }
+    &__phone:hover,
+    &__mail:hover {
+      transform: translateY(0%);
+    }
+  }
+
+  &__social {
+    margin: 8%;
+    margin-bottom: 5vh;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    font-size: 0.9vw;
+
+    a {
+      position: relative;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: "OktaNeue-Normal";
+      font-weight: 100;
+      // color: $primary-color-darkblue;
+      color: $white-board-opac;
+    }
+    a::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      border-radius: 5px;
+      height: 0.08em;
+      bottom: 0;
+      left: 0;
+      background: currentcolor;
+      transform-origin: bottom right;
+      transition: transform 0.6s ease-out;
+    }
+    a:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+    &__other {
+      display: flex;
+      gap: 14px;
+    }
+  }
 }
 
 @keyframes scaled {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(0.8);
-    }
-    100% {
-        transform: scale(1);
-    }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
-
 
 @media screen and (max-width: 1000px) {
-    .menu {
-        width: 40dvw;
-        right: -40vw;
-    }
+  .menu {
+    width: 40dvw;
+    right: -40vw;
+  }
 }
 
-@media  screen and (max-width: 900px){
-    .menu {
-        width: 100dvw;
-        right: -100vw;
-        height: 100vh;
+@media screen and (max-width: 900px) {
+  .menu {
+    width: 100dvw;
+    right: -100vw;
+    height: 100vh;
 
-        &__item {
-            margin-top: 5vh;
-        }
+    &__item {
+      margin-top: 5vh;
+    }
 
-        &__close {
-            font-size: 10px;
-        }
-    }   
-    
+    &__close {
+      font-size: 10px;
+    }
+  }
 }
