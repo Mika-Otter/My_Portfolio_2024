@@ -192,9 +192,6 @@ export default function Canvas({
         ctx.restore();
       }
 
-      setInterval(() => {
-        console.log(frames);
-      }, 1000);
       background.onload = animate(0);
       setBackgroundHeight(background.height);
       return () => {
