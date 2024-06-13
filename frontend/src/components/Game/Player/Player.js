@@ -1,4 +1,5 @@
 import { Sprite } from "../../../gameLogic/Sprite";
+import playerSprite from "../../../assets/img/sprite/final-char.png";
 
 export class Player {
   constructor({ collisionBlocks = [], background, canvas }) {
@@ -24,10 +25,7 @@ export class Player {
     this.collisionBlocks = collisionBlocks;
     this.jumping = false;
 
-    this.sprite = new Sprite(
-      "./src/assets/img/sprite/final-char.png",
-      this.scale
-    );
+    this.sprite = new Sprite(playerSprite, this.scale);
     this.SPRITE_NAME = "IDLE_R";
     this.scrolledToBottom = false;
   }
