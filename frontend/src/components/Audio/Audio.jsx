@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import s from "./Audio.module.scss";
 import useAudioPlayer from "../../hooks/useAudioPlayer";
 import { initializeCanvas } from "./utils/animationAudio";
+import douceurIdealeMP3 from "../../assets/audio/douceuridealev12.mp3";
 
 export default function AudioPlayer({ activeSound }) {
   const { audioPlayerRef, playingAudio, playMusic } = useAudioPlayer(
@@ -32,7 +33,7 @@ export default function AudioPlayer({ activeSound }) {
         ref={audioPlayerRef}
         controls
         loop
-        src="./src/assets/douceuridealev12.mp3"
+        src={douceurIdealeMP3}
         className={s.audioplayer__player}
       ></audio>
       <canvas ref={canvasRef} onClick={playMusic}></canvas>
