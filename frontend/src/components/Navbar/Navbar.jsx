@@ -59,7 +59,7 @@ export default function Navbar({
             <SecretsFound foundSecrets={foundSecrets} />
           </div>
           <div className={s.navbar__sound}>
-            <AudioPlayer activeSound={activeSound} />
+            <AudioPlayer activeSound={activeSound} color={"#FFF"} />
           </div>
         </div>
       </div>

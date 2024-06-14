@@ -335,7 +335,7 @@ export default function App() {
       ) : (
         <>
           <Loader firstEnter={firstEnter} isMobile={isMobile} />
-          <MobileNavbar />
+          <MobileNavbar activeSound={activeSound} />
           <MobileTitle />
         </>
       )}

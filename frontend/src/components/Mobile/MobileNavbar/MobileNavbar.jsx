@@ -4,7 +4,7 @@ import { LogoSVG } from "../../SVG/LogoSVG";
 import AudioPlayer from "../../Audio/Audio";
 import Logo from "../../Logo/Logo";
 
-export default function MobileNavbar() {
+export default function MobileNavbar({ activeSound }) {
   return (
     <>
       <nav className={s.navbar}>
@@ -18,7 +18,7 @@ export default function MobileNavbar() {
           <span>Contact</span>
         </div>
         <div className={s.audio}>
-          <AudioPlayer color={"#091429"} />
+          <AudioPlayer color={"#091429"} activeSound={activeSound} />
         </div>
       </nav>
     </>
