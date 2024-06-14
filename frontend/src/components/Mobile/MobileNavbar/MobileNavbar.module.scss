@@ -1,0 +1,44 @@
+@import "../../../styles/theme";
+@import "../../../styles/font";
+
+.navbar {
+  width: 80%;
+  top: 2dvw;
+  left: 10%;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  font-family: "OktaNeue-Bold";
+  text-transform: uppercase;
+  padding: 1vw 2vw;
+  font-size: 3.5vw;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  //rgb(230, 228, 228, 0.835); // rgb(230, 228, 228, 0.835)
+  background-color: $white-board;
+}
+
+.logo {
+  margin-top: 0.5vw;
+  width: 25px;
+}
+
+.audio {
+  margin-right: 1vw;
+  display: flex;
+  align-items: center;
+  width: 7vw;
+}
+
+.menu,
+.contact {
+  //   border: 2px solid blue;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  span {
+    margin: 0;
+    padding: 0;
+    margin-top: 0.5vw;
+  }
+}

@@ -25,6 +25,7 @@ import ScrollDiscover from "./components/ScrollDiscover/ScrollDiscover";
 import Location from "./components/Location/Location";
 import SecretsFound from "./components/SecretsFound/SecretsFound";
 import MobileTitle from "./components/Mobile/MobileTitle/MobileTitle";
+import MobileNavbar from "./components/Mobile/MobileNavbar/MobileNavbar";
 
 export default function App() {
   const testRef = useRef(null);
@@ -326,6 +327,7 @@ export default function App() {
       ) : (
         <>
           <Loader firstEnter={firstEnter} />
+          <MobileNavbar />
           <MobileTitle />
         </>
       )}

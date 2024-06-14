@@ -21,7 +21,7 @@ export default function Navbar({
     <div className={s.navbar}>
       <div className={s.navbar__rotator}>
         <div className={s.navbar__logo}>
-          <Logo handleGoToHome={handleGoToHome} />
+          <Logo handleGoToHome={handleGoToHome} color={"#FFF"} />
         </div>
         <div className={s.navbar__ctn}>
           <div className={s.navbar__ctn__wrapper}>
@@ -59,10 +59,9 @@ export default function Navbar({
             <SecretsFound foundSecrets={foundSecrets} />
           </div>
           <div className={s.navbar__sound}>
-          <AudioPlayer activeSound={activeSound} />
+            <AudioPlayer activeSound={activeSound} />
+          </div>
         </div>
-        </div>
-       
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import useAudioPlayer from "../../hooks/useAudioPlayer";
 import { initializeCanvas } from "./utils/animationAudio";
 import douceurIdealeMP3 from "../../assets/douceuridealev12.mp3";
 
-export default function AudioPlayer({ activeSound }) {
+export default function AudioPlayer({ activeSound, color }) {
   const { audioPlayerRef, playingAudio, playMusic } = useAudioPlayer(
     0.2,
     activeSound
@@ -16,11 +16,11 @@ export default function AudioPlayer({ activeSound }) {
     const canvas = canvasRef.current;
     const speed = 0.07;
     const squares = [
-      { x: 9, y: 35, width: 3, height: -5, color: "white", dy: 0.7, max: -6 },
-      { x: 14, y: 35, width: 3, height: -5, color: "white", dy: 2, max: -13 },
-      { x: 19, y: 35, width: 3, height: -5, color: "white", dy: 3, max: -15 },
-      { x: 24, y: 35, width: 3, height: -5, color: "white", dy: 1.6, max: -16 },
-      { x: 29, y: 35, width: 3, height: -5, color: "white", dy: 1, max: -8 },
+      { x: 9, y: 35, width: 3, height: -5, color: color, dy: 0.7, max: -6 },
+      { x: 14, y: 35, width: 3, height: -5, color: color, dy: 2, max: -13 },
+      { x: 19, y: 35, width: 3, height: -5, color: color, dy: 3, max: -15 },
+      { x: 24, y: 35, width: 3, height: -5, color: color, dy: 1.6, max: -16 },
+      { x: 29, y: 35, width: 3, height: -5, color: color, dy: 1, max: -8 },
     ];
     const animate = initializeCanvas(canvas, squares, speed);
     animationRef.current = requestAnimationFrame(() => animate(playingAudio));
