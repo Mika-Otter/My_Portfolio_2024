@@ -66,6 +66,8 @@ export default function App() {
     setSecretText,
   } = useAppState();
 
+  const [isMobile, setIsMobile] = useState(false);
+
   const [isEatMushroom, setIsEatMushroom] = useState(false);
 
   const eatingMushroomEffect = () => {
@@ -222,6 +224,12 @@ export default function App() {
     [robotNotFound, catNotFound, mushroomNotFound, starshipNotFound]
   );
 
+  useEffect(() => {
+    if (windowWidth < 900) {
+      setIsMobile(true);
+    }
+  }, [windowWidth]);
+
   return (
     <>
       {windowWidth > 900 ? (
@@ -326,7 +334,7 @@ export default function App() {
         </>
       ) : (
         <>
-          <Loader firstEnter={firstEnter} />
+          <Loader firstEnter={firstEnter} isMobile={isMobile} />
           <MobileNavbar />
           <MobileTitle />
         </>

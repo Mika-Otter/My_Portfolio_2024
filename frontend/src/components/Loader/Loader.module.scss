@@ -2,122 +2,243 @@
 @import "../../styles/theme";
 
 .loader {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 30000;
-    background-color: $primary-color-darkblue;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 30000;
+  background-color: $primary-color-darkblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__box {
+    position: relative;
+    width: 80%;
+    height: 100%;
+    // border: 2px solid blue;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
-    &__box {
-        position: relative;
-        width: 80%;
-        height: 100%;
-        // border: 2px solid blue;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-
-        &__logo {
-            position: absolute;
-            top: 37%;
-            width: 7vw;
-            height: 50%;
-        }
+    &__logo {
+      position: absolute;
+      top: 37%;
+      width: 7vw;
+      height: 50%;
     }
+  }
 }
 
 .settingUp {
-    position: absolute;
-    top: 58vh;
-    color: #787777;
-    font-family: "NeueMontreal-Regular";
-    text-transform: uppercase;
-    font-size: $fontsize-m;
-    font-weight: 700;
+  position: absolute;
+  top: 58vh;
+  color: #787777;
+  font-family: "NeueMontreal-Regular";
+  text-transform: uppercase;
+  font-size: $fontsize-m;
+  font-weight: 700;
 }
 
 .loaderbar {
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    width: 25dvw;
-    height: 0.5vw;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  width: 25dvw;
+  height: 0.5vw;
+  transform: translate(-50%, -50%);
 
-    &__back {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: #787777;
-    }
-    &__one {
-        position: absolute;
-        left: 0;
-        top: 0;
-        background: $white-board-opac;
-        width: 5px;
-        height: 100%;
-    }
+  &__back {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #787777;
+  }
+  &__one {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: $white-board-opac;
+    width: 5px;
+    height: 100%;
+  }
 }
 
-.buttons {
-    opacity: 0;
-    button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-family: "OktaNeue-Bold";
-        font-size: 2.5vw;
-        z-index: 10;
-        transition: 0.3s ease-in-out;
-        color: $white-board-opac;
-    }
+.button {
+  opacity: 0;
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: "OktaNeue-Bold";
+    font-size: 2.5vw;
+    z-index: 10;
+    transition: 0.3s ease-in-out;
+    color: $white-board-opac;
+  }
 
-    button:hover {
-        color: #787777;
-    }
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 3%;
+  button:hover {
+    color: #787777;
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 3%;
 }
 
 .texts {
-    opacity: 0;
-    position: absolute;
-    text-align: center;
-    font-weight: 200;
-    font-size: $fontsize-s;
-    height: 98%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: $white-board-opac;
+  opacity: 0;
+  position: absolute;
+  text-align: center;
+  font-weight: 200;
+  font-size: $fontsize-s;
+  height: 98%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: $white-board-opac;
 
-    h2 {
-        font-family: "OktaNeue-Normal";
-        font-weight: 200;
-        margin: 0;
-    }
+  h2 {
+    font-family: "OktaNeue-Normal";
+    font-weight: 200;
+    margin: 0;
+  }
 }
 
 @keyframes scaledUp {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+// MOBILE VERSION //////////////////////////////////////////////////////////
+
+.loader__mobile {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 30000;
+  background-color: $primary-color-darkblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__box {
+    position: relative;
+    width: 80%;
+    height: 100%;
+    // border: 2px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+.loader__mobile__logo {
+  width: 25vw;
+  margin-top: -30vw;
+}
+
+.loaderbar__mobile {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 55%;
+  left: 50%;
+  width: 70dvw;
+  height: 1.5vw;
+  transform: translate(-50%, -50%);
+
+  &__back {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #787777;
+  }
+  &__one {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: $white-board-opac;
+    width: 5px;
+    height: 100%;
+  }
+}
+
+.settingUp__mobile {
+  margin-top: 3vw;
+  color: #787777;
+  font-family: "NeueMontreal-Regular";
+  text-transform: uppercase;
+  font-size: 3vw;
+  font-weight: 700;
+}
+
+.mobile__advertise {
+  font-family: "OktaNeue-Normal";
+  color: $white-board-opac;
+  margin-top: 15vw;
+  text-align: center;
+  font-size: 3vw;
+  opacity: 0.5;
+}
+
+.button__mobile {
+  opacity: 0;
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: "OktaNeue-Bold";
+    font-size: 7vw;
+    z-index: 10;
+    transition: 0.3s ease-in-out;
+    color: $white-board-opac;
+  }
+
+  button:hover {
+    color: #787777;
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 3%;
+}
+
+.texts__mobile {
+  opacity: 0;
+  position: absolute;
+  text-align: center;
+  font-weight: 200;
+  height: 98%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: $white-board-opac;
+  font-family: "OktaNeue-Normal";
+  font-size: 2vw;
+
+  &__title {
+    font-family: "OktaNeue-Normal";
+    font-weight: 200;
+    margin: 0;
+  }
 }

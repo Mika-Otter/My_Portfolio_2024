@@ -59,6 +59,10 @@ export default function Loader({ firstEnter, isMobile }) {
   ];
 
   useEffect(() => {
+    console.log(isMobile, "isMobile");
+  }, [isMobile]);
+
+  useEffect(() => {
     const loadVideos = videoUrls.map((url) => {
       return new Promise((resolve, reject) => {
         const video = document.createElement("video");
@@ -152,6 +156,7 @@ export default function Loader({ firstEnter, isMobile }) {
         duration: 0.5,
         ease: "power3.inOut",
       });
+      gsap.set(bigBoxRef.current, { zIndex: -3000, delay: 1 });
     }
   }, [enter]);
 
@@ -192,14 +197,26 @@ export default function Loader({ firstEnter, isMobile }) {
           setIsPlayable(true);
         },
       });
-      tl.set(loaderRef.current, { transformOrigin: "center center" })
-        .set(loaderbackRef.current, { opacity: 0 })
-        .to(loaderRef.current, {
-          x: "12.5dvw",
-          width: 0,
-          duration: 0.6,
-          delay: 1,
-        });
+
+      if (isMobile) {
+        tl.set(loaderRef.current, { transformOrigin: "center center" })
+          .set(loaderbackRef.current, { opacity: 0 })
+          .to(loaderRef.current, {
+            x: "35dvw",
+            width: 0,
+            duration: 0.6,
+            delay: 1,
+          });
+      } else {
+        tl.set(loaderRef.current, { transformOrigin: "center center" })
+          .set(loaderbackRef.current, { opacity: 0 })
+          .to(loaderRef.current, {
+            x: "12.5dvw",
+            width: 0,
+            duration: 0.6,
+            delay: 1,
+          });
+      }
     }
   }, [loadingEnd]);
 
@@ -222,32 +239,72 @@ export default function Loader({ firstEnter, isMobile }) {
 
   return (
     <>
-      <section className={s.loader} ref={bigBoxRef} key={key}>
-        <div ref={smallBoxRef} className={s.loader__box}>
-          <div className={s.loader__box__logo} ref={logoRef}>
+      <section
+        className={isMobile ? s.loader__mobile : s.loader}
+        ref={bigBoxRef}
+        key={key}
+      >
+        <div
+          ref={smallBoxRef}
+          className={isMobile ? s.loader__mobile__box : s.loader__box}
+        >
+          <div
+            className={isMobile ? s.loader__mobile__logo : s.loader__box__logo}
+            ref={logoRef}
+          >
             <LogoStartSVG rectsRef={rectsRef} />
           </div>
-          <div className={s.loaderbar}>
-            <div className={s.loaderbar__back} ref={loaderbackRef}></div>
-            <div className={s.loaderbar__one} ref={loaderRef}></div>
-          </div>
-          <div className={s.settingUp} ref={settingUpRef}>
-            <span>{settingUp}</span>
-            <span>...</span>
+          <div className={isMobile ? s.loaderbar__mobile : s.loaderbar}>
+            <div
+              className={
+                isMobile ? s.loaderbar__mobile__back : s.loaderbar__back
+              }
+              ref={loaderbackRef}
+            ></div>
+            <div
+              className={isMobile ? s.loaderbar__mobile__one : s.loaderbar__one}
+              ref={loaderRef}
+            ></div>
+            <div
+              className={isMobile ? s.settingUp__mobile : s.settingUp}
+              ref={settingUpRef}
+            >
+              <span>{settingUp}</span>
+              <span>...</span>
+            </div>
+
+            {isMobile && (
+              <span className={s.mobile__advertise}>
+                You are on mobile version. Please go to desktop or full screen
+                for full experiences...
+              </span>
+            )}
           </div>
 
           {!animation ? (
             <>
-              <div className={s.buttons} ref={buttonRef}>
+              <div
+                className={isMobile ? s.button__mobile : s.button}
+                ref={buttonRef}
+              >
                 <button type="button" onClick={() => handleEnter()}>
                   ENTER
                 </button>
               </div>
-              <div className={s.texts} ref={textRef}>
-                <h2 ref={nameRef} className={s.texts__remi}>
+              <div
+                className={isMobile ? s.texts__mobile : s.texts}
+                ref={textRef}
+              >
+                <h2
+                  ref={nameRef}
+                  className={isMobile ? s.texts__title : s.texts__remi}
+                >
                   REMI CROCE{" "}
                 </h2>
-                <h2 ref={developerRef} className={s.texts__creative}>
+                <h2
+                  ref={developerRef}
+                  className={isMobile ? s.texts__title : s.texts__creative}
+                >
                   CREATIVE DEVELOPER
                 </h2>
               </div>
