@@ -1,0 +1,35 @@
+@import "../../../styles/theme";
+@import "../../../styles/font";
+
+.title {
+  display: flex;
+  flex-direction: column;
+  &__one,
+  &__two {
+    margin: 0;
+    padding: 0;
+    height: 20vw;
+    width: 100%;
+    font-family: "OktaNeue-Medium";
+    font-size: 20vw;
+    font-weight: 600;
+    color: $primary-color-darkblue;
+    text-align: center;
+  }
+
+  &__line {
+    margin-top: 15vw;
+    margin-left: 7vw;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    font-size: 4vw;
+    font-family: "OktaNeue-Normal";
+
+    &__text {
+      margin: 0;
+      padding: 0;
+      height: 5vw;
+    }
+  }
+}

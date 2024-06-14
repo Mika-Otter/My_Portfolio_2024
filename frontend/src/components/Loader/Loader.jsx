@@ -27,7 +27,7 @@ const imageSources = [
   "/starship.png",
 ];
 
-export default function Loader({ firstEnter }) {
+export default function Loader({ firstEnter, isMobile }) {
   const bigBoxRef = useRef(null);
   const smallBoxRef = useRef(null);
   const logoRef = useRef(null);
