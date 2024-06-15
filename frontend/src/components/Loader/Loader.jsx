@@ -161,6 +161,7 @@ export default function Loader({ firstEnter, isMobile }) {
   }, [enter]);
 
   const handleEnter = () => {
+    document.body.style.overflow = "visible";
     setEnter(true);
     firstEnter();
   };
@@ -175,6 +176,7 @@ export default function Loader({ firstEnter, isMobile }) {
         setLoadingEnd(true);
       },
     });
+    document.body.style.overflow = "hidden";
     tl.set(loaderRef.current, { width: "1%" })
       .to(loaderRef.current, { width: "22%", duration: 1.3 })
       .to(loaderRef.current, {
