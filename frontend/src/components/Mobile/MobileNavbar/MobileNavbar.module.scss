@@ -2,20 +2,21 @@
 @import "../../../styles/font";
 
 .navbar {
-  width: 80%;
-  top: 2dvw;
-  left: 10%;
+  width: 100%;
+  // top: 2dvw;
+  // left: 10%;
   position: fixed;
   display: flex;
   justify-content: space-between;
   font-family: "OktaNeue-Bold";
   text-transform: uppercase;
-  padding: 1vw 2vw;
+  padding: 2vw 2vw;
+  padding-top: 2.5vw;
   font-size: 3.5vw;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   //rgb(230, 228, 228, 0.835); // rgb(230, 228, 228, 0.835)
-  background-color: $white-board;
+  // background-color: $white-board;
 }
 
 .logo {
@@ -24,7 +25,7 @@
 }
 
 .audio {
-  margin-right: 1vw;
+  margin-right: 5vw;
   display: flex;
   align-items: center;
   width: 7vw;

@@ -349,8 +349,13 @@ export default function App() {
         <>
           <Loader firstEnter={firstEnter} isMobile={isMobile} />
           <MobileNavbar activeSound={activeSound} />
-          <MobileTitle />
           <MobileVideo />
+          <section className="mobile">
+            <div className="mobile__section__first">
+              <MobileTitle />
+            </div>
+            <div className="mobile__section__second">a</div>
+          </section>
         </>
       )}
     </>
