@@ -50,6 +50,10 @@ export default function Menu({
     };
   }, [isMenu]);
 
+  useEffect(() => {
+    console.log(isMenu, "isMenu");
+  }, [isMenu]);
+
   return (
     <>
       <div className={s.menu} ref={menuRef}>

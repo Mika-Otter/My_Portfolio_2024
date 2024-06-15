@@ -26,6 +26,7 @@ import Location from "./components/Location/Location";
 import SecretsFound from "./components/SecretsFound/SecretsFound";
 import MobileTitle from "./components/Mobile/MobileTitle/MobileTitle";
 import MobileNavbar from "./components/Mobile/MobileNavbar/MobileNavbar";
+import MobileVideo from "./components/Mobile/MobileVideo/MobileVideo";
 
 export default function App() {
   const testRef = useRef(null);
@@ -183,6 +184,14 @@ export default function App() {
     startTransition(transition);
   }, [transition]);
 
+  const closeMenu = useCallback(() => {
+    setIsMenu(false);
+  });
+
+  const closeContact = useCallback(() => {
+    setContact(false);
+  });
+
   const backgroundHeight = useBackgroundHeight();
 
   const [foundSecrets, setFoundSecrets] = useState(0);
@@ -263,6 +272,10 @@ export default function App() {
             handleControls={handleControls}
             handleGoToHome={handleGoToHome}
             foundSecrets={foundSecrets}
+            closeMenu={closeMenu}
+            closeContact={closeContact}
+            isMenu={isMenu}
+            contact={contact}
           />
           <Menu
             isMenu={isMenu}
@@ -337,6 +350,7 @@ export default function App() {
           <Loader firstEnter={firstEnter} isMobile={isMobile} />
           <MobileNavbar activeSound={activeSound} />
           <MobileTitle />
+          <MobileVideo />
         </>
       )}
     </>

@@ -7,6 +7,10 @@ import SecretsFound from "../SecretsFound/SecretsFound";
 
 export default function Navbar({
   activeSound,
+  isMenu,
+  contact,
+  closeMenu,
+  closeContact,
   handleMenu,
   handleContact,
   playMode,
@@ -27,7 +31,10 @@ export default function Navbar({
           <div className={s.navbar__ctn__wrapper}>
             <div
               className={s.navbar__ctn__button}
-              onClick={() => handleContact()}
+              onClick={() => {
+                handleContact();
+                isMenu && closeMenu();
+              }}
             >
               <span>CONTACT </span>
               <span>CONTACT </span>
@@ -37,6 +44,7 @@ export default function Navbar({
             className={s.navbar__ctn__wrapper}
             onClick={() => {
               handleMenu();
+              contact && closeContact();
             }}
           >
             <div className={s.navbar__ctn__button}>
