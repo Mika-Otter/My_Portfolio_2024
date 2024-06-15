@@ -328,7 +328,7 @@ export default function App() {
               <section className="main__section">
                 <div className="title">
                   <Title />
-                  <ScrollDiscover />
+                  <ScrollDiscover isMobile={isMobile} />
                 </div>
                 <div className="content">
                   {!isPlayed && RoomLevel === 1 && !contact ? (

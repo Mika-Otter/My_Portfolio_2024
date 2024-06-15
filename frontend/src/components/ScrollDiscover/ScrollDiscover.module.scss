@@ -37,18 +37,18 @@
 // MOBILE ////////////////////////////////////////////////////////////////
 
 .scroll__mobile {
-  width: 400px;
-  // border: 2px solid red;
+  width: 100%;
+  //   border: 2px solid red;
   display: flex;
   position: absolute;
-  justify-content: end;
+  justify-content: center;
   align-items: center;
-  bottom: 2vh;
+  bottom: 10dvh;
   right: 2vw;
 
   &__text {
     font-family: "OktaNeue-Bold";
-    font-size: 3vw;
+    font-size: 3.4vw;
     color: $primary-color-darkblue;
   }
   &__circle {

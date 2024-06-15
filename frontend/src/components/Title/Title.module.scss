@@ -2,70 +2,70 @@
 @import "../../styles/font";
 
 .title {
-    position: absolute;
-    width: 94%;
-    margin-left: 5%;
-    margin-top: 0%;
+  position: absolute;
+  width: 94%;
+  margin-left: 5%;
+  margin-top: 0%;
+  // border: 2px solid red;
+  display: flex;
+  flex-wrap: wrap;
+
+  &__first,
+  &__second {
+    width: 100%;
+    font-family: "OktaNeue-Medium";
+    color: $primary-color-darkblue;
+    font-size: 13vw;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+    height: 11.5vw;
     // border: 2px solid red;
     display: flex;
-    flex-wrap: wrap;
+    align-items: end;
+    letter-spacing: -0.1rem;
+    line-height: 1.1;
+  }
+  &__second {
+    width: 100%;
+    font-family: "OktaNeue-Medium";
+    height: calc($fontsize-title - 30px);
+    display: flex;
+    align-items: center;
 
-    &__first,
-    &__second {
-        width: 100%;
-        font-family: "OktaNeue-Medium";
-        color: $primary-color-darkblue;
-        font-size: 13vw;
-        font-weight: 500;
-        margin: 0;
-        padding: 0;
-        height: 11.5vw;
-        // border: 2px solid red;
-        display: flex;
-        align-items: end;
-        letter-spacing: -0.1rem;
-        line-height: 1.1;
+    &__text {
+      font-family: "OktaNeue-Medium";
+      color: $primary-color-darkblue;
+      font-size: 13vw;
+      font-weight: 500;
+      line-height: 1.2;
+      margin: 0;
+      height: calc($fontsize-title - 30px);
+      display: flex;
+      align-items: end;
+      letter-spacing: -0.1rem;
     }
-    &__second {
-        width: 100%;
-        font-family: "OktaNeue-Medium";
-        height: calc($fontsize-title - 30px);
-        display: flex;
-        align-items: center;
-
-        &__text {
-            font-family: "OktaNeue-Medium";
-            color: $primary-color-darkblue;
-            font-size: 13vw;
-            font-weight: 500;
-            line-height: 1.2;
-            margin: 0;
-            height: calc($fontsize-title - 30px);
-            display: flex;
-            align-items: end;
-            letter-spacing: -0.1rem;
-        }
-    }
+  }
 }
 
 .smalltext {
-    display: flex;
-    flex-direction: column;
-    font-family: "NeueMontreal-Regular";
-    // font-family: "OktaNeue-Normal";
-    // text-transform: uppercase;
-    font-weight: 200;
-    letter-spacing: 1px;
-    font-size: 1.5vw;
-    // text-transform: uppercase;
-    color: $primary-color-darkblue;
-    // border: 2px solid blue;
-    margin-top: -0.5vw;
-    margin-left: 1vw;
-    height: 87%;
+  display: flex;
+  flex-direction: column;
+  font-family: "NeueMontreal-Regular";
+  // font-family: "OktaNeue-Normal";
+  // text-transform: uppercase;
+  font-weight: 200;
+  letter-spacing: 1px;
+  font-size: 1.5vw;
+  // text-transform: uppercase;
+  color: $primary-color-darkblue;
+  // border: 2px solid blue;
+  margin-top: -0.5vw;
+  margin-left: 1vw;
+  height: 87%;
 
-    span {
-        margin: 0;
-        margin-bottom: -5px;
-    }
+  span {
+    margin: 0;
+    margin-bottom: -5px;
+  }
 }

@@ -2,16 +2,18 @@
 @import "../../../styles/font";
 
 .navbar {
-  width: 100%;
+  width: 100dvw;
+  // border: 2px solid red;
   // top: 2dvw;
   // left: 10%;
+  box-sizing: border-box;
   position: fixed;
   display: flex;
   justify-content: space-between;
   font-family: "OktaNeue-Bold";
   text-transform: uppercase;
   padding: 2vw 2vw;
-  padding-top: 2.5vw;
+  padding-top: 2dvh;
   font-size: 3.5vw;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
@@ -20,12 +22,12 @@
 }
 
 .logo {
-  margin-top: 0.5vw;
   width: 25px;
 }
 
 .audio {
-  margin-right: 5vw;
+  // border: 2px solid red;
+  margin-right: 2vw;
   display: flex;
   align-items: center;
   width: 7vw;
@@ -34,12 +36,12 @@
 .menu,
 .contact {
   //   border: 2px solid blue;
+  font-size: 3.5vw;
   display: flex;
   align-items: center;
   height: 100%;
   span {
     margin: 0;
     padding: 0;
-    margin-top: 0.5vw;
   }
 }
