@@ -8,7 +8,7 @@
   &__one,
   &__two {
     margin: 0;
-    margin-top: -10vw;
+    margin-top: -5vw;
     padding: 0;
     height: 20vw;
     width: 100%;
@@ -24,19 +24,20 @@
   }
 
   &__line {
-    margin-top: 7vw;
+    margin-top: 3vw;
     margin-left: 7vw;
-    width: 90%;
+    width: 85%;
     display: flex;
     flex-direction: column;
-    font-size: 8vw;
-    font-family: "OktaNeue-SemiBold";
+    text-align: left;
+    font-size: 5.5vw;
+    font-family: "OktaNeue-Normal";
 
     &__text {
       margin: 0;
-      margin-top: 3.5vw;
+      margin-top: 4vw;
       padding: 0;
-      height: 5vw;
+      height: 2vw;
     }
   }
 }

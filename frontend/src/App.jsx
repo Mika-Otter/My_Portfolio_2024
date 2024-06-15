@@ -353,6 +353,9 @@ export default function App() {
           <section className="mobile">
             <div className="mobile__section__first">
               <MobileTitle />
+              <div className="mobile__section__first__scroll">
+                <ScrollDiscover isMobile={isMobile} />
+              </div>
             </div>
             <div className="mobile__section__second">a</div>
           </section>
