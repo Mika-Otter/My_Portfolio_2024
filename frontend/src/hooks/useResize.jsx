@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default function useResize(setWindowWidth, setIsLoading, isMobile) {
+export default function useResize(setWindowWidth, setIsLoading) {
   useEffect(() => {
     const handleResize = () => {
       const newWidth = window.innerWidth;

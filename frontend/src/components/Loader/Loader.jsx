@@ -277,22 +277,25 @@ export default function Loader({ firstEnter, isMobile }) {
 
             {isMobile && (
               <span className={s.mobile__advertise}>
-                You are on mobile version. Please go to desktop or full screen
-                for full experiences...
+                Sorry, the mobile version or the reduced size is still under
+                construction... Please visit the desktop version or enlarge your
+                screen. {"<"}3
               </span>
             )}
           </div>
 
           {!animation ? (
             <>
-              <div
-                className={isMobile ? s.button__mobile : s.button}
-                ref={buttonRef}
-              >
-                <button type="button" onClick={() => handleEnter()}>
-                  ENTER
-                </button>
-              </div>
+              {isMobile ? null : (
+                <div
+                  className={isMobile ? s.button__mobile : s.button}
+                  ref={buttonRef}
+                >
+                  <button type="button" onClick={() => handleEnter()}>
+                    ENTER
+                  </button>
+                </div>
+              )}
               <div
                 className={isMobile ? s.texts__mobile : s.texts}
                 ref={textRef}
