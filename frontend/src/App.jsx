@@ -98,11 +98,14 @@ export default function App() {
     setSecretText("robot");
   }, []);
 
-  const handleIsDialog = useCallback(() => {
+  const handleIsDialog = useCallback((duration) => {
     setIsDialog(true);
-    setTimeout(() => {
-      setIsDialog(false);
-    }, 8500);
+    setTimeout(
+      () => {
+        setIsDialog(false);
+      },
+      duration ? duration : 8500
+    );
   }, []);
 
   const handleControls = useCallback(() => {

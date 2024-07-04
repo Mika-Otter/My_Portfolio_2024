@@ -277,9 +277,9 @@ export default function Loader({ firstEnter, isMobile }) {
 
             {isMobile && (
               <span className={s.mobile__advertise}>
-                Sorry, the mobile version or the reduced size is still under
-                construction... Please visit the desktop version or enlarge your
-                screen. {"<"}3
+                Sorry, the mobile version or the reduced size is still in the
+                laboratory, experiments are in progress... Please visit the
+                desktop version or enlarge your screen. {"<"}3
               </span>
             )}
           </div>
