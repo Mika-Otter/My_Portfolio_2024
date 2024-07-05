@@ -83,10 +83,10 @@ export default function Loader({ firstEnter, isMobile }) {
   }, []);
 
   const settingUpList = [
-    { text: "We loading the game...", duration: 800 },
-    { text: "We calculate your FPS...", duration: 800 },
-    { text: "Media charging...", duration: 1600 },
-    { text: "Media charging...", duration: 800 },
+    { text: "We loading the game", duration: 800 },
+    { text: "We calculate your FPS", duration: 800 },
+    { text: "Media charging", duration: 1600 },
+    { text: "Media charging", duration: 800 },
   ];
 
   function chargementSettingUp(list) {

@@ -38,7 +38,7 @@ export const useProjectAnimation = (
         width: "70vw",
         duration: 0.2,
       })
-      .to(projectWrapperRef.current, { height: "100vh", duration: 0.6 })
+      .to(projectWrapperRef.current, { height: "75vh", duration: 0.6 })
       .to(projectRef.current, { opacity: 1 });
 
     if (!isControls) {

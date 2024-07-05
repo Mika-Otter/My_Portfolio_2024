@@ -7,7 +7,8 @@ export default function FirstActionListener() {
     const handleFirstAction = () => {
       setFirstAction(true);
     };
-    window.addEventListener("scroll", handleFirstAction);
+    window.addEventListener("wheel", handleFirstAction);
+    window.addEventListener("keydown", handleFirstAction);
     return () => {
       window.removeEventListener("click", handleFirstAction);
     };
