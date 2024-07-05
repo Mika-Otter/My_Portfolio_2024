@@ -14,7 +14,7 @@
   &__second {
     width: 100%;
     font-family: "OktaNeue-Medium";
-    color: $primary-color-darkblue;
+    color: $dark-text;
     font-size: 13vw;
     font-weight: 500;
     margin: 0;
@@ -35,7 +35,7 @@
 
     &__text {
       font-family: "OktaNeue-Medium";
-      color: $primary-color-darkblue;
+      color: $dark-text;
       font-size: 13vw;
       font-weight: 500;
       line-height: 1.2;
@@ -58,7 +58,7 @@
   letter-spacing: 1px;
   font-size: 1.5vw;
   // text-transform: uppercase;
-  color: $primary-color-darkblue;
+  color: $dark-text;
   // border: 2px solid blue;
   margin-top: -0.5vw;
   margin-left: 1vw;

@@ -104,7 +104,7 @@ export default function App() {
       () => {
         setIsDialog(false);
       },
-      duration ? duration : 8500
+      duration ? duration : 6500
     );
   }, []);
 

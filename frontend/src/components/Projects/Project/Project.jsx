@@ -34,25 +34,29 @@ export default function Project({
 
   useGSAP(() => {
     timelineRef.current = gsap
-        .timeline({ paused: true })
-        .to(projectWrapperRef.current, { height: "2%", width: "100%", duration: 0.5 })
-        .to(projectWrapperRef.current, {
-            height: "100%",
-            duration: 0.6,
-            delay: 0.2,
-            borderRadius: "5px",
-        })
-        .to(projectRef.current, { opacity: 1 });
+      .timeline({ paused: true })
+      .to(projectWrapperRef.current, {
+        height: "2%",
+        width: "100%",
+        duration: 0.5,
+      })
+      .to(projectWrapperRef.current, {
+        height: "100%",
+        duration: 0.6,
+        delay: 0.2,
+        borderRadius: "5px",
+      })
+      .to(projectRef.current, { opacity: 1 });
     if (!closing) {
-        timelineRef.current.play();
+      timelineRef.current.play();
     } else {
-        console.log("YOOOOO");
-        timelineRef.current.reverse(true);
-        timelineRef.current.eventCallback("onReverseComplete", () => {
-            closeProject();
-        });
+      console.log("YOOOOO");
+      timelineRef.current.reverse(true);
+      timelineRef.current.eventCallback("onReverseComplete", () => {
+        closeProject();
+      });
     }
-}, [closing]);
+  }, [closing]);
 
   useEffect(() => {
     console.log(window.innerWidth, window.innerHeight);
@@ -121,7 +125,7 @@ export default function Project({
             </div>
 
             <div className={s.project__pic__title}>
-              <h2>{item.title}</h2>
+              <h2 className={s.project__pic__title__title}>{item.title}</h2>
               <div className={s.project__pic__title__wrapper}>
                 <span className={s.project__pic__title__live}>
                   Live Site

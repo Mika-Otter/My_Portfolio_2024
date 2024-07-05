@@ -11,11 +11,11 @@ export default function Dialog({ text, isDialog, secretText }) {
   const textRef = useRef(null);
 
   let speeds = {
-    longpause: 900,
-    pause: 600,
-    slow: 250,
-    middle: 150,
-    normal: 70,
+    longpause: 300,
+    pause: 500,
+    slow: 300,
+    middle: 60,
+    normal: 40,
     fast: 40,
   };
 
@@ -89,11 +89,16 @@ export default function Dialog({ text, isDialog, secretText }) {
 
   useGSAP(() => {
     timelineDialogRef.current
-      .to(dialogRef.current, { opacity: 1, duration: 1, ease: "power3.inOut" })
+      .to(dialogRef.current, {
+        bottom: "2vw",
+        opacity: 1,
+        duration: 0.7,
+        ease: "power3.inOut",
+      })
 
       // .to(dialogRef.current, { height: "3%", width: "80%", duration: 0.3 })
       // .to(dialogRef.current, { height: "100%", width: "80%", duration: 0.5 })
-      .to(textRef.current, { opacity: 1 }, ">");
+      .to(textRef.current, { opacity: 1 }, "<");
   }, []);
 
   useEffect(() => {
@@ -106,7 +111,7 @@ export default function Dialog({ text, isDialog, secretText }) {
           textReveal(RobotTextlines);
         }
         revealOneCharacter(characters);
-      }, 1500);
+      }, 500);
     } else {
       timelineDialogRef.current.reverse();
       setTimeout(() => {

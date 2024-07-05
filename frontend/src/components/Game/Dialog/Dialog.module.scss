@@ -1,52 +1,52 @@
 .box__dialog {
-    width: 70%;
-    height: 15%;
-    // border: 2px solid red;
-    position: fixed;
-    left: 15%;
-    bottom: 5%;
+  width: 70%;
+  height: 15%;
+  // border: 2px solid red;
+  position: fixed;
+  left: 15%;
+  bottom: -1vw;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .dialog {
-    position: relative;
-    width: 70%;
-    height: 90%;
-    background-color: rgba(29, 28, 28, 0.804);
-    // border: 1px solid white;
-    border-radius: 8px;
-    -webkit-backdrop-filter: blur(7px);
-    backdrop-filter: blur(7px);
-    z-index: 7000;
+  position: relative;
+  width: 70%;
+  height: 90%;
+  background-color: rgba(29, 28, 28, 0.973);
+  border: 2px solid white;
+  border-radius: 5px;
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+  z-index: 7000;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+
+  &__text {
+    font-family: "VCR_OSD";
+    font-size: 20px;
+    width: 90%;
+    height: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0;
+    color: white;
+    p {
+      // text-align: center;
+      opacity: 0;
 
-    &__text {
-        font-family: "NeueMontreal-Regular";
-        font-size: 20px;
-        width: 90%;
-        height: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        p {
-            // text-align: center;
-            opacity: 0;
+      span {
+        opacity: 0;
+      }
 
-            span {
-                opacity: 0;
-            }
-
-            span.revealed {
-                opacity: 1;
-            }
-        }
+      span.revealed {
+        opacity: 1;
+      }
     }
+  }
 }

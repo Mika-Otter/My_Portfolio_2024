@@ -214,7 +214,7 @@ export class ActivePlayer extends Player {
     this.isDialoging = true;
     setTimeout(() => {
       this.isDialoging = false;
-    }, 10000);
+    }, 5000);
   }
 
   activeSecrets() {

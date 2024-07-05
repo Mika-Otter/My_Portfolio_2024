@@ -17,7 +17,7 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: $primary-color-darkblue;
-  color: $white-board-opac;
+  color: $white-text;
   &__close {
     margin-left: 8%;
     margin-top: 1%;
@@ -26,8 +26,8 @@
     align-items: center;
     cursor: pointer;
     &__cross {
-      margin-top: 3px;
-      width: 2vw;
+      margin-top: 5px;
+      width: 1.5vw;
       transition: 0.3s ease-in-out;
     }
   }
@@ -41,7 +41,7 @@
     display: flex;
     flex-direction: column;
     line-height: 1;
-    gap: 3px;
+    gap: 2px;
     height: 35%;
 
     &__wrapper {
@@ -107,7 +107,7 @@
       cursor: pointer;
       font-family: "NeueMontreal-Regular";
       font-weight: 100;
-      color: $white-board-opac;
+      color: $white-text;
       width: 50%;
       display: flex;
       flex-direction: column;
@@ -136,7 +136,7 @@
       font-family: "OktaNeue-Normal";
       font-weight: 100;
       // color: $primary-color-darkblue;
-      color: $white-board-opac;
+      color: $white-text;
     }
     a::after {
       content: "";
