@@ -10,20 +10,28 @@ import typpovVideo from "../../assets/video/Typpov-Low.mp4";
 import unexpectedStudioVideo from "../../assets/video/UnexpectedStudio.mp4";
 import variousGameVideo from "../../assets/video/VariousGame.mp4";
 import { LogoSVG } from "../SVG/LogoSVG";
+import homeMap from "../../assets/img/home-map.png";
+import contactMap from "../../assets/img/contact-map.png";
+import water from "../../assets/img/water.png";
+import cloud from "../../assets/img/cloud.png";
+import mushroomSheet from "../../assets/img/mushroom-Sheet.png";
+import catSheet from "../../assets/img/cat-Sheet.png";
+import robotSheet from "../../assets/img/robot-Sheet.png";
+import flyingStars from "../../assets/img/flyingStars.png";
+import starship from "../../assets/img/starship.png";
 
 gsap.registerPlugin();
 
 const imageSources = [
-  "./src/assets/img/home-map.png",
-  "./src/assets/img/contact-map.png",
-  "./src/assets/sprite-door/doorOpen.png",
-  "./src/assets/img/water.png",
-  "./src/assets/img/cloud.png",
-  "./src/assets/img/mushroom-Sheet.png",
-  "./src/assets/img/cat-Sheet.png",
-  "./src/assets/img/robot-Sheet.png",
-  "/flyingStars.png",
-  "/starship.png",
+  homeMap,
+  contactMap,
+  water,
+  cloud,
+  mushroomSheet,
+  catSheet,
+  robotSheet,
+  flyingStars,
+  starship,
 ];
 
 export default function Loader({ firstEnter, isMobile }) {

@@ -1,11 +1,10 @@
 import React, { useRef, useState } from "react";
 import s from "./Controls.module.scss";
 import cn from "classnames";
-
 import { ArrowKeysSVG } from "../SVG/ArrowKeysSVG";
-
 import { useKeyInteractAnimation } from "./hooks/useKeyInteractAnimation";
 import { useProjectAnimation } from "./hooks/useProjectAnimation";
+import controlsVideo from "../../assets/video/controls.mp4";
 
 export default function Controls({ handleControls, isControls, closeProject }) {
   const videoRef = useRef(null);
@@ -178,7 +177,7 @@ export default function Controls({ handleControls, isControls, closeProject }) {
               <div className={s.controls__video__ctn}>
                 <video
                   ref={videoRef}
-                  src="./src/assets/video/controls.mp4"
+                  src={controlsVideo}
                   autoPlay
                   loop
                   muted
