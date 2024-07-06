@@ -1,9 +1,7 @@
-import React, { useRef, useState, useEffect, useContext } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import s from "./Loader.module.scss";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { LogoStartSVG } from "../SVG/LogoStartSVG";
-import cn from "classnames";
 import { preloadImages } from "../../gameLogic/PreloadImg";
 import controlsVideo from "../../assets/video/controls.mp4";
 import dnsepVideo from "../../assets/video/DNSEP.mp4";

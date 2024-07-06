@@ -1,10 +1,6 @@
 import React, { useRef, useEffect, useState, useContext } from "react";
 import { HandleInput } from "../gameLogic/InputManager";
-import { gameAnimate } from "../gameLogic/GameAnimate";
-import {
-  useBackgroundHeight,
-  useSetBackgroundHeight,
-} from "../context/BackgroundHeightContext";
+import { useSetBackgroundHeight } from "../context/BackgroundHeightContext";
 import { Game } from "../gameLogic/GameInit";
 
 export default function Canvas({

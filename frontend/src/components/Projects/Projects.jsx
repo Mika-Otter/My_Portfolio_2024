@@ -1,15 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import s from "./Projects.module.scss";
-import cn from "classnames";
-import { ProjectsBoxSVG } from "../SVG/ProjectsBoxSVG";
-import { GoToExpSVG } from "../SVG/GoToExpSVG";
-import { CrossSVG } from "../SVG/CrossSVG";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/all";
 import Project from "./Project/Project";
-import { ArrowSVG } from "../SVG/ArrowSVG";
 import Video from "../Video/Video";
 import projectsData from "./ProjectsData";
 

@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import s from "./Contact.module.scss";
-import cn from "classnames";
-import { CrossSVG } from "../SVG/CrossSVG";
 import useForm from "../../hooks/useForm";
 import useContactAnimation from "../../hooks/useContactAnimation";
-import { CrossBlackSVG } from "../SVG/CrossBlackSVG";
+import { CrossSVG } from "../SVG/CrossSVG";
 import SmallArrowDownSVG from "../SVG/SmallArrowDownSVG";
 
 const initialState = {
@@ -38,7 +36,7 @@ export default function Contact({ handleContact, contact }) {
         <div className={s.contact}>
           <div className={s.contact__close} onClick={handleContact}>
             <div className={s.contact__close__svg}>
-              <CrossBlackSVG />
+              <CrossSVG />
             </div>
             <span>CLOSE</span>
           </div>

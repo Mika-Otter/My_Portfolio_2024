@@ -1,11 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import s from "./Controls.module.scss";
 import cn from "classnames";
 
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ArrowSVG } from "../SVG/ArrowSVG";
-import { ArrowLetsTalkSVG } from "../SVG/ArrowLetsTalksSVG";
+import { ArrowKeysSVG } from "../SVG/ArrowKeysSVG";
 
 import { useKeyInteractAnimation } from "./hooks/useKeyInteractAnimation";
 import { useProjectAnimation } from "./hooks/useProjectAnimation";
@@ -104,7 +101,7 @@ export default function Controls({ handleControls, isControls, closeProject }) {
                           s.controls__instructions__keys__arrow__left
                         )}
                       >
-                        <ArrowLetsTalkSVG />
+                        <ArrowKeysSVG />
                       </div>
                     </Key>
                     <span>Run to the left</span>
@@ -128,7 +125,7 @@ export default function Controls({ handleControls, isControls, closeProject }) {
                           s.controls__instructions__keys__arrow__right
                         )}
                       >
-                        <ArrowLetsTalkSVG />
+                        <ArrowKeysSVG />
                       </div>
                     </Key>
                     <span>Run to the left</span>
@@ -169,7 +166,7 @@ export default function Controls({ handleControls, isControls, closeProject }) {
                           s.controls__instructions__keys__arrow__top
                         )}
                       >
-                        <ArrowLetsTalkSVG />
+                        <ArrowKeysSVG />
                       </div>
                     </Key>
                     <span>Try to interact</span>

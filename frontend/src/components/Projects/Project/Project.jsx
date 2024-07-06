@@ -4,12 +4,9 @@ import cn from "classnames";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CrossSVG } from "../../SVG/CrossSVG";
-import { ArrowSVG } from "../../SVG/ArrowSVG";
 import Video from "../../Video/Video";
 import ArrowLiveSVG from "../../SVG/ArrowLiveSVG";
-import { CrossBlackSVG } from "../../SVG/CrossBlackSVG";
 
 export default function Project({
   item,
@@ -174,7 +171,7 @@ export default function Project({
           <div className={s.project__close} onClick={() => closingGSAP()}>
             <span>CLOSE</span>
             <div className={s.project__close__cross}>
-              <CrossBlackSVG />
+              <CrossSVG color={"#061022"} />
             </div>
           </div>
           <div className={s.project__button}>
@@ -184,9 +181,7 @@ export default function Project({
               onClick={() => prevProject()}
             >
               <span>PREV</span>
-              <div className={s.project__button__svg}>
-                {/* <ArrowSVG color={"#091429"} /> */}
-              </div>
+              <div className={s.project__button__svg}></div>
             </button>
             <button
               type="button"
@@ -194,9 +189,7 @@ export default function Project({
               onClick={() => nextProject()}
             >
               <span>NEXT</span>
-              <div className={s.project__button__svg}>
-                {/* <ArrowSVG color={"#091429"} /> */}
-              </div>
+              <div className={s.project__button__svg}></div>
             </button>
           </div>
         </div>

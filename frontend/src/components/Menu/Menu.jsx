@@ -4,7 +4,6 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import cn from "classnames";
 import { CrossSVG } from "../SVG/CrossSVG";
-import Contact from "../Contact/Contact";
 
 export default function Menu({
   isMenu,
