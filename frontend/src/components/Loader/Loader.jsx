@@ -11,6 +11,7 @@ import platformVideo from "../../assets/video/Platform.mp4";
 import typpovVideo from "../../assets/video/Typpov-Low.mp4";
 import unexpectedStudioVideo from "../../assets/video/UnexpectedStudio.mp4";
 import variousGameVideo from "../../assets/video/VariousGame.mp4";
+import { LogoSVG } from "../SVG/LogoSVG";
 
 gsap.registerPlugin();
 
@@ -204,7 +205,7 @@ export default function Loader({ firstEnter, isMobile }) {
         tl.set(loaderRef.current, { transformOrigin: "center center" })
           .set(loaderbackRef.current, { opacity: 0 })
           .to(loaderRef.current, {
-            x: "35dvw",
+            x: "20vw",
             width: 0,
             duration: 0.6,
             delay: 1,
@@ -213,7 +214,7 @@ export default function Loader({ firstEnter, isMobile }) {
         tl.set(loaderRef.current, { transformOrigin: "center center" })
           .set(loaderbackRef.current, { opacity: 0 })
           .to(loaderRef.current, {
-            x: "12.5dvw",
+            x: "20vw",
             width: 0,
             duration: 0.6,
             delay: 1,
@@ -254,7 +255,7 @@ export default function Loader({ firstEnter, isMobile }) {
             className={isMobile ? s.loader__mobile__logo : s.loader__box__logo}
             ref={logoRef}
           >
-            <LogoStartSVG rectsRef={rectsRef} />
+            <LogoSVG rectsRef={rectsRef} color={"rgb(243, 243, 243)"} />
           </div>
           <div className={isMobile ? s.loaderbar__mobile : s.loaderbar}>
             <div
