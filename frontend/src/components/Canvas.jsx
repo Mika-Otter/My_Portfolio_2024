@@ -43,10 +43,8 @@ export default function Canvas({
   useEffect(() => {
     handler = new HandleInput(keysTab, lastKeysTab, isPlayed);
     setInputHandler(handler);
-
-    if (!isPlayed) {
-      handler.initializeWheelListener();
-    } else {
+    handler.initializeWheelListener();
+    if (isPlayed) {
       handler.initializeKeyListener();
     }
     if (contact || isOpenProject) {
