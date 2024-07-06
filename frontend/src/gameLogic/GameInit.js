@@ -1,7 +1,6 @@
-import { parseCollisions, changeLevel } from "./CollisionLevel";
+import { parseCollisions } from "./CollisionLevel";
 import { ActivePlayer } from "../components/Game/Player/PlayerActive";
 import Background from "../components/Game/Environnement/Background";
-import Cloud from "../components/Game/Environnement/Cloud";
 import Starship from "../components/Game/Environnement/Starship";
 import Secret from "./Secrets";
 import Clouds from "../components/Game/Environnement/Cloud";
