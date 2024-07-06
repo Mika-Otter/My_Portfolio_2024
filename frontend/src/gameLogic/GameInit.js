@@ -65,10 +65,9 @@ export class Game {
   }
 
   initializeRoomsLevel() {
-    const RoomLevel = this.RoomLevel;
     const canvas = this.canvas;
 
-    // Initialisation du niveau spécifique en fonction de la valeur de RoomLevel
+    // Init level relate to the roomlevel
     const RoomsLevels = {
       1: {
         init: () => {
