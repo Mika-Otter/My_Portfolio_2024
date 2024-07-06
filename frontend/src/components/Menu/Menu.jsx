@@ -135,9 +135,6 @@ export default function Menu({
           </div>
         </div>
         <div className={s.menu__social}>
-          {/* <div className={s.menu__social__mail}>
-            <a href="mailto:mi.otter.side@gmail.com">MAIL</a>
-          </div> */}
           <div className={s.menu__social__other}>
             <a href="https://github.com/Mika-Otter" target="_blank">
               GITHUB

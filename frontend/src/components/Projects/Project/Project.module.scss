@@ -62,7 +62,7 @@
       z-index: 1000;
       height: 2%;
       width: 50%;
-      bottom: 17%; //pic height: 80% margin-top : 7%
+      bottom: 14%; //pic height: 80% margin-top : 7%
       background: rgb(240, 238, 238);
       background: linear-gradient(
         0deg,
@@ -78,7 +78,7 @@
   &__pic {
     position: relative;
     width: 100%;
-    height: 63vh;
+    height: 66vh;
     display: flex;
     justify-content: center;
     overflow: hidden;
@@ -91,7 +91,8 @@
       position: relative;
       width: 95%;
       padding-top: 0%;
-      height: 117vw;
+      height: fit-content;
+
       display: flex;
       flex-direction: column;
 
@@ -171,8 +172,8 @@
       text-transform: uppercase;
       margin: 0;
       padding: 0;
-      margin-top: 20px;
-      //   border: 2px solid red;
+      margin-top: 10px;
+      // border: 2px solid red;
 
       &__title {
         font-size: 1vw;
@@ -232,7 +233,7 @@
 
     font-family: "NeueMontreal-Regular";
     font-weight: 200;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     font-size: 1.1vw;
     line-height: 1.2;
 
@@ -256,7 +257,7 @@
     &__year {
       font-family: "NeueMontreal-Regular";
       font-weight: 200;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
       font-size: 1.1vw;
       width: 74%;
       margin: 0;

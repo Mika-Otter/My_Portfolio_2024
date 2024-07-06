@@ -124,7 +124,7 @@ const projectsData = [
       "I produced a proposal for the redesign of the Unexpected Studio website. I followed their graphic guidelines" +
       " to come up with something that suited their world and the market. I loved working on a real project.  ",
     techno: "Figma, Adobe Illustrator, Adobe Photoshop",
-    client: "Personnal project to be sent to UNEXPECTEDStudio ",
+    client: "PROPOSITION FOR UNEXPECTEDStudio ",
     type: "website",
     img1: unexpected1,
     img2: unexpected2,
