@@ -28,28 +28,30 @@ export default function Navbar({
           <Logo handleGoToHome={handleGoToHome} color={"#FFF"} />
         </div>
         <div className={s.navbar__ctn}>
-          <div className={s.navbar__ctn__wrapper}>
+          <div className={s.navbar__ctn__menus}>
+            <div className={s.navbar__ctn__wrapper}>
+              <div
+                className={s.navbar__ctn__button}
+                onClick={() => {
+                  handleContact();
+                  isMenu && closeMenu();
+                }}
+              >
+                <span>CONTACT </span>
+                <span>CONTACT </span>
+              </div>
+            </div>
             <div
-              className={s.navbar__ctn__button}
+              className={s.navbar__ctn__wrapper}
               onClick={() => {
-                handleContact();
-                isMenu && closeMenu();
+                handleMenu();
+                contact && closeContact();
               }}
             >
-              <span>CONTACT </span>
-              <span>CONTACT </span>
-            </div>
-          </div>
-          <div
-            className={s.navbar__ctn__wrapper}
-            onClick={() => {
-              handleMenu();
-              contact && closeContact();
-            }}
-          >
-            <div className={s.navbar__ctn__button}>
-              <span>MENU</span>
-              <span>MENU</span>
+              <div className={s.navbar__ctn__button}>
+                <span>MENU</span>
+                <span>MENU</span>
+              </div>
             </div>
           </div>
           <div className={s.navbar__ctn__playview}>

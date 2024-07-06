@@ -24,7 +24,6 @@
 
   &__soundsecrets {
     width: 35%;
-    // border: 2px solid red;
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -43,6 +42,8 @@
     align-items: center;
     transform: translate(-50%, -50%);
     transform: rotate(-90deg);
+    position: absolute;
+    z-index: 5100;
   }
 
   &__rotator {
@@ -54,15 +55,21 @@
   &__ctn {
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: space-between;
     gap: 0.3vh;
-    width: 55%;
+    width: 60%;
     transform: translate(-50%, -50%);
     transform: rotate(180deg);
+
+    &__menus {
+      display: flex;
+      gap: 0.3vw;
+    }
     &__playview {
       display: flex;
-      justify-content: right;
-      width: 50%;
+      justify-content: center;
+      width: 42%;
+      // border: 2px solid red;
     }
 
     &__wrapper {
@@ -70,7 +77,6 @@
       height: 1vw;
       display: flex;
       flex-direction: column;
-      // border: 2px solid red;
       padding: 0px 10px;
     }
 

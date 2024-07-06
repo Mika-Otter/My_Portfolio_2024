@@ -120,12 +120,13 @@ export default function Menu({
           <p className={s.menu__location__text}>
             South of France / {formattedTime}
           </p>
-          <div className={s.menu__location__wrapper}>
+          {/* <div className={s.menu__location__wrapper}>
             <a className={s.menu__location__phone} href="tel:+33670493700">
               <span>+336 70 49 37 00</span>
               <span>+336 70 49 37 00</span>
             </a>
-          </div>
+          </div> */}
+          {/* <p className={s.menu__location__text}>Prefer the contact menu</p> */}
           <div className={s.menu__location__wrapper}>
             <a href="mailto:aaaaa@gmail.com" className={s.menu__location__mail}>
               <span>mi.otter.side@gmail.com</span>
@@ -134,12 +135,12 @@ export default function Menu({
           </div>
         </div>
         <div className={s.menu__social}>
-          <div className={s.menu__social__mail}>
+          {/* <div className={s.menu__social__mail}>
             <a href="mailto:mi.otter.side@gmail.com">MAIL</a>
-          </div>
+          </div> */}
           <div className={s.menu__social__other}>
-            <a href="https://www.instagram.com/mi.otter/" target="_blank">
-              INSTAGRAM
+            <a href="https://github.com/Mika-Otter" target="_blank">
+              GITHUB
             </a>
             <a
               href="https://linkedin.com/in/rémi-croce-320499254"
@@ -147,8 +148,8 @@ export default function Menu({
             >
               LINKEDIN
             </a>
-            <a href="https://github.com/Mika-Otter" target="_blank">
-              GITHUB
+            <a href="https://www.instagram.com/mi.otter/" target="_blank">
+              INSTAGRAM
             </a>
           </div>
         </div>
