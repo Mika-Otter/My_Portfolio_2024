@@ -36,7 +36,7 @@ export default function Contact({ handleContact, contact }) {
         <div className={s.contact}>
           <div className={s.contact__close} onClick={handleContact}>
             <div className={s.contact__close__svg}>
-              <CrossSVG />
+              <CrossSVG color={"#061022"} />
             </div>
             <span>CLOSE</span>
           </div>
