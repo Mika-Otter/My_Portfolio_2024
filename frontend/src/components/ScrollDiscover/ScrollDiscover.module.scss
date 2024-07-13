@@ -3,7 +3,7 @@
 
 .scroll {
   width: 400px;
-  height: 10%;
+  height: 7%;
   // border: 2px solid red;
   display: flex;
   position: absolute;
@@ -14,15 +14,15 @@
 
   &__text {
     font-family: "OktaNeue-Bold";
-    font-size: 1.3vw;
-    color: $primary-color-darkblue;
+    font-size: 1.1vw;
+    color: $primary-color-mediumblue;
   }
 
   &__circle {
     width: 1vw;
     height: 1vw;
     border-radius: 50%;
-    background-color: $primary-color-darkblue;
+    background-color: $primary-color-mediumblue;
     display: flex;
     justify-content: center;
     align-items: center;
