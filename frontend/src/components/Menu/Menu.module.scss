@@ -4,9 +4,9 @@
 .menu {
   position: fixed;
   z-index: 10000;
-  top: 1vh;
+  top: 0.5vh;
   right: -33dvw; //10px;
-  height: 98vh;
+  height: 99vh;
   border-radius: 10px;
   min-height: 550px;
   width: 33dvw;
@@ -27,14 +27,14 @@
     align-items: center;
 
     cursor: pointer;
+    span {
+      font-family: "OktaNeue-Medium";
+      font-size: 0.8vw;
+    }
     &__cross {
-      margin-top: 5px;
+      margin-top: 0.4vw;
       width: 1.1vw;
       transition: 0.3s ease-in-out;
-
-      span {
-        font-family: "OktaNeue-SemiBold";
-      }
     }
   }
   &__close:hover &__close__cross {

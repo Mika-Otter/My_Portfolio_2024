@@ -23,7 +23,7 @@
   }
 
   &__view {
-    color: #cfb49a;
+    color: #e4e4e4;
     transition: 0.3s ease-in-out;
   }
 
@@ -34,15 +34,15 @@
     animation: scaled 0.5s forwards;
   }
   &__viewOff {
-    color: rgba(188, 188, 188, 0.383);
+    color: rgba(255, 255, 255, 0.342);
     transition: 0.3s ease-in-out;
   }
   &__playOff {
-    color: rgba(188, 188, 188, 0.383);
+    color: rgba(255, 255, 255, 0.342);
     transition: 0.3s ease-in-out;
   }
   &__play {
-    color: #cfb49a;
+    color: #e4e4e4;
     // color: $primary-color-darkblue;
     transition: 0.3s ease-in-out;
   }

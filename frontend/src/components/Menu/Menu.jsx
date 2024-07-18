@@ -34,7 +34,7 @@ export default function Menu({
     tl.current = gsap.timeline({ paused: true, ease: "power3.out" });
     const { width } = menuRef.current.getBoundingClientRect();
     tl.current.to(menuRef.current, {
-      x: `-${width + width / 70}`,
+      x: `-${width + width / 120}`,
       duration: 3,
     });
   }, []);
