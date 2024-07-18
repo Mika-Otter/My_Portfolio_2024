@@ -186,14 +186,17 @@ export default function Projects({
                       <li
                         key={index}
                         className={index === currentIndex ? s.liHover : ""}
-                        onMouseEnter={(e) => {
-                          isOpenProject ? null : handleMouseEnter(e, index);
-                        }}
-                        onMouseLeave={(e) => {
-                          isOpenProject ? null : handleMouseLeave(e, index);
-                        }}
                         onClick={() => openProject()}
                       >
+                        <div
+                          className={s.wrapper__hover}
+                          onMouseEnter={(e) => {
+                            isOpenProject ? null : handleMouseEnter(e, index);
+                          }}
+                          onMouseLeave={(e) => {
+                            isOpenProject ? null : handleMouseLeave(e, index);
+                          }}
+                        ></div>
                         <div
                           className={
                             s.projects__box__content__text__projects__project

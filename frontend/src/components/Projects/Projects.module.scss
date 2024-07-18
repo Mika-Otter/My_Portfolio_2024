@@ -1,6 +1,13 @@
 @import "../../styles/theme";
 @import "../../styles/font";
 
+.wrapper__hover {
+  position: absolute;
+  width: 100%;
+  height: 57%;
+  top: 1%;
+}
+
 .projects {
   display: flex;
   flex-direction: column;
@@ -118,6 +125,8 @@
             width: 85%;
           }
           li {
+            position: relative;
+            margin-top: 3px;
             width: 100%;
             box-sizing: border-box;
             cursor: pointer;
@@ -132,7 +141,7 @@
             color: rgb(178, 178, 182);
             background-color: "transparent";
             transition: 0.2s ease-in-out;
-            height: calc(2.5vw + 10px);
+            height: 3vw;
           }
 
           &__project {
