@@ -76,12 +76,12 @@ export default function Menu({
               <span>HOME</span>
             </div>
           </div>
-          <div className={s.menu__item__wrapper}>
+          {/* <div className={s.menu__item__wrapper}>
             <div className={cn(s.menu__item__span)}>
               <span>PROJECTS</span>
               <span>PROJECTS</span>
             </div>
-          </div>
+          </div> */}
           {/* <div className={s.menu__item__wrapper}>
                         <div className={cn(s.menu__item__span)}>
                             <span>ABOUT</span>
