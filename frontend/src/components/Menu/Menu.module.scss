@@ -20,8 +20,9 @@
   background-color: $primary-color-menu;
   color: $white-text;
   &__close {
-    margin-left: 8%;
-    margin-top: 1%;
+    position: absolute;
+    right: 2vw;
+    top: 1vw;
     display: flex;
     font-size: $fontsize-s;
     align-items: center;
@@ -33,7 +34,7 @@
     }
     &__cross {
       margin-top: 0.4vw;
-      width: 1.1vw;
+      width: 1.2vw;
       transition: 0.3s ease-in-out;
     }
   }
@@ -43,7 +44,7 @@
 
   &__item {
     margin: 8% 8% 15% 8%;
-    margin-top: 6%;
+    margin-top: 13%;
     display: flex;
     flex-direction: column;
     line-height: 1;
