@@ -47,7 +47,7 @@ export default function Controls({ handleControls, isControls, closeProject }) {
             <div className={s.controls__left}>
               <div className={s.controls__title}>
                 <h2>CONTROLS</h2>
-                <p>Please read these instructions before playing.</p>
+                <p>Please read these instructions before playing {"<"}3</p>
               </div>
               <div className={s.controls__keyboard}>
                 <label htmlFor="keyboard">KEYBOARD : </label>

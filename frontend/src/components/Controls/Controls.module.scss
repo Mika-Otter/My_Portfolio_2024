@@ -59,6 +59,7 @@
     p {
       margin-top: 0;
       margin-bottom: 2vw;
+      font-size: 0.8vw;
     }
   }
   &__left {
@@ -74,7 +75,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 20%;
+    width: 100%;
     min-width: 270px;
     color: $primary-color-darkblue;
 
