@@ -72,8 +72,8 @@ export default class Starship {
       this.spriteHeight,
       this.position.x,
       this.position.y,
-      96 * 1.7,
-      224 * 1.7
+      96 * 2.3 * this.scale,
+      224 * 2.3 * this.scale
     );
     if (!this.launching) {
       this.update("IDLE");

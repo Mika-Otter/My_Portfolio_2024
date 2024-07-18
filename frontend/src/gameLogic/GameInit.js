@@ -155,8 +155,8 @@ export class Game {
           });
           this.scale = this.background.width / this.background.originalWidth;
           this.starShip = new Starship({
+            position: { x: 1170, y: 2950 },
             scale: this.scale,
-            position: { x: 1170, y: 2850 },
           });
 
           // Parse collisions for level 2
