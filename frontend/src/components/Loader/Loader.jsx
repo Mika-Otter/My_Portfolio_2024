@@ -48,7 +48,7 @@ export default function Loader({ firstEnter, isMobile }) {
   const [enter, setEnter] = useState(false);
   const [animation, setAnimation] = useState(false);
   const [loadingImg, setLoadingImg] = useState(false);
-  const [settingUp, setSettingUp] = useState("We loading the game...");
+  const [settingUp, setSettingUp] = useState("");
   const settingUpRef = useRef(null);
   const [key, setKey] = useState(1);
   const [isPlayable, setIsPlayable] = useState(false);
@@ -90,10 +90,10 @@ export default function Loader({ firstEnter, isMobile }) {
   }, []);
 
   const settingUpList = [
-    { text: "We loading the game", duration: 800 },
-    { text: "We calculate your FPS", duration: 800 },
-    { text: "Media charging", duration: 1600 },
-    { text: "Media charging", duration: 800 },
+    { text: "We loading the game...", duration: 1200 },
+    { text: "We calculate your FPS...", duration: 900 },
+    { text: "Media charging...", duration: 1600 },
+    { text: "Media charging...", duration: 600 },
   ];
 
   function chargementSettingUp(list) {
@@ -279,7 +279,6 @@ export default function Loader({ firstEnter, isMobile }) {
               ref={settingUpRef}
             >
               <span>{settingUp}</span>
-              <span>...</span>
             </div>
 
             {isMobile && (
