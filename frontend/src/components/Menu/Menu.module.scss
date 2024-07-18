@@ -25,11 +25,16 @@
     display: flex;
     font-size: $fontsize-s;
     align-items: center;
+
     cursor: pointer;
     &__cross {
       margin-top: 5px;
-      width: 1.5vw;
+      width: 1.1vw;
       transition: 0.3s ease-in-out;
+
+      span {
+        font-family: "OktaNeue-SemiBold";
+      }
     }
   }
   &__close:hover &__close__cross {
