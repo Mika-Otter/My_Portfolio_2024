@@ -41,7 +41,7 @@ export default function Project({
         height: "100%",
         duration: 0.6,
         delay: 0.2,
-        borderRadius: "5px",
+        borderRadius: "10px",
       })
       .to(projectRef.current, { opacity: 1 });
     if (!closing) {

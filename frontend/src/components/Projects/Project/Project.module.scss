@@ -11,7 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  // border: 2px solid blue;
+
   min-height: 400px;
 }
 
@@ -22,7 +22,8 @@
   background-color: $white-board-opac;
   display: flex;
   justify-content: center;
-
+  // border: 2px solid blue;
+  border-radius: 10px;
   top: 0%;
   left: 50%;
   width: 0%;
@@ -49,13 +50,12 @@
 
   &__left {
     width: 60%;
-    height: 100%;
+    height: calc(100% - 3vh);
     margin-top: 2vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-    // border: 2px solid red;
 
     &__wrapper {
       position: fixed;
@@ -78,7 +78,7 @@
   &__pic {
     position: relative;
     width: 100%;
-    height: 66vh;
+    height: 61vh;
     display: flex;
     justify-content: center;
     overflow: hidden;
@@ -86,7 +86,7 @@
     margin-top: 5dvh;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* Internet Explorer 10+ */
-
+    // border: 2px solid red;
     &__box {
       position: relative;
       width: 95%;
@@ -107,7 +107,7 @@
         overflow: hidden;
         justify-content: space-between;
         gap: 15px;
-        border-radius: 7px;
+
         background-color: rgb(235, 233, 233);
         img {
           width: 100%;
