@@ -69,7 +69,7 @@ export default function Project({
               {item.img1 ? (
                 <>
                   <div className={s.project__pic__box}>
-                    <div className={s.project__pic__box__ctn}>
+                    <div className={s.project__pic__box__ctn__video}>
                       <Video
                         key={item.url}
                         src={item.url}
