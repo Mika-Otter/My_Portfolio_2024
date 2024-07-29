@@ -3,9 +3,9 @@
 
 .playView {
   display: flex;
-  gap: 10px;
+  gap: 3px;
   right: clamp(30px, 2vw, 50px);
-  mix-blend-mode: difference;
+  // mix-blend-mode: difference;
   height: 30px;
   align-items: center;
   width: clamp(80px, 6vw, 140px);
@@ -15,7 +15,7 @@
   button {
     font-family: "OktaNeue-Medium";
     letter-spacing: 1px;
-    font-size: 0.9vw;
+    font-size: 0.8vw;
     cursor: pointer;
     border: none;
     background-color: transparent;
@@ -23,7 +23,8 @@
   }
 
   &__view {
-    color: #e4e4e4;
+    // color: #e4e4e4;
+    color: $primary-color-darkblue;
     transition: 0.3s ease-in-out;
   }
 
@@ -38,12 +39,13 @@
     transition: 0.3s ease-in-out;
   }
   &__playOff {
-    color: rgba(255, 255, 255, 0.342);
+    // color: rgba(255, 255, 255, 0.342);
+    color: rgba(114, 108, 108, 0.575);
     transition: 0.3s ease-in-out;
   }
   &__play {
-    color: #e4e4e4;
-    // color: $primary-color-darkblue;
+    // color: #e4e4e4;
+    color: $primary-color-darkblue;
     transition: 0.3s ease-in-out;
   }
 }

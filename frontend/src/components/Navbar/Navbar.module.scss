@@ -4,24 +4,29 @@
 .navbar {
   z-index: 5000;
   position: fixed;
-  height: 35px;
+  height: 32px;
+  padding-top: 3px;
+  // padding-bottom: 5px;
   width: 100dvh;
   min-width: 550px;
   display: flex;
   justify-content: space-between;
-  border-radius: 3px;
+  // border-radius: 3px;
   font-family: "OktaNeue-Medium";
   font-weight: 500;
   letter-spacing: 1px;
-  font-size: 0.9vw;
-  mix-blend-mode: difference;
-  color: #e4e4e4;
+  font-size: 0.8vw;
+  // mix-blend-mode: difference;
+  // color: #e4e4e4;
+  color: $primary-color-darkblue;
   transform-origin: left top;
   transform: rotate(90deg);
   top: 0;
-  left: 35px;
+  left: 34px;
   user-select: none;
   -webkit-user-select: none;
+  background-color: rgb(243, 243, 243);
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
 
   &__soundsecrets {
     width: 35%;
@@ -36,9 +41,11 @@
   }
 
   &__logo {
-    width: 30px;
-    height: 30px;
-    margin-left: 0.3vw;
+    width: 27px;
+    height: 27px;
+    // margin-left: 0.5vw;
+    top: 4px;
+    left: 4px;
     justify-content: center;
     align-items: center;
     transform: translate(-50%, -50%);
@@ -61,6 +68,8 @@
     width: 60%;
     transform: translate(-50%, -50%);
     transform: rotate(180deg);
+    // border: 2px solid red;
+    margin-bottom: 3px;
 
     &__menus {
       display: flex;
@@ -71,6 +80,7 @@
       justify-content: center;
       width: 42%;
       // border: 2px solid red;
+      margin-bottom: 1px;
     }
 
     &__wrapper {
@@ -102,7 +112,7 @@
   &__sound {
     // border: 2px solid red;
     margin: 0;
-    margin-left: 0px;
+    margin-bottom: 3px;
     width: 28px;
     height: 20px;
     display: flex;
