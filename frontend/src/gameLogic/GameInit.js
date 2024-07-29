@@ -72,7 +72,7 @@ export class Game {
       1: {
         init: () => {
           this.background = new Background({
-            position: { x: 0, y: 5 },
+            position: { x: 0, y: 6 },
             imageSrc: homeMap,
             canvas,
             originalWidth: 70 * 32,
@@ -146,7 +146,7 @@ export class Game {
       2: {
         init: () => {
           this.background = new Background({
-            position: { x: 0, y: 0 },
+            position: { x: 0, y: 2 },
             imageSrc: contactMap,
             canvas,
             originalWidth: 100 * 32,

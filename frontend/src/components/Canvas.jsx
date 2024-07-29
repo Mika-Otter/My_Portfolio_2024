@@ -91,7 +91,7 @@ export default function Canvas({
       let animation;
 
       canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.height = window.innerHeight + 2;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       game = new Game({

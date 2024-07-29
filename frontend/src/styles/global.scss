@@ -21,6 +21,13 @@ html {
   background: rgb(245, 245, 245);
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -57,11 +64,11 @@ body {
 .canvas {
   position: fixed;
   top: 0;
-  left: 0;
   background-color: #c3e6f4;
-  z-index: -2;
+  z-index: 1;
   margin: 0;
   padding: 0;
+  outline: none;
 }
 
 .wind__canvas {
