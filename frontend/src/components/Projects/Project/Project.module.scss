@@ -37,7 +37,7 @@
 }
 
 .project {
-  width: 85%;
+  width: 90%;
   height: 100%;
   opacity: 0;
   background-color: #f8f8f800;
@@ -46,7 +46,7 @@
   // clip-path: polygon(5% 0, 95% 0, 100% 9%, 100% 91%, 95% 100%, 5% 100%, 0 91%, 0 9%);
   display: flex;
   justify-content: left;
-  //   border: 2px solid blue;
+  // border: 2px solid blue;
 
   &__left {
     width: 60%;
@@ -56,12 +56,13 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+    // border: 2px solid blue;
 
     &__wrapper {
       position: fixed;
       z-index: 1000;
       height: 3%;
-      width: 50%;
+      width: 60%;
       bottom: 14%; //pic height: 80% margin-top : 7%
       background: rgb(240, 238, 238);
       background: linear-gradient(
@@ -355,11 +356,12 @@
   &__button {
     position: absolute;
     bottom: 7.5%;
-    right: 2vw;
+    right: 5vw;
     // border: 2px solid red;
     width: 10%;
     display: flex;
     justify-content: flex-end;
+    gap: 10px;
 
     button {
       margin: 0;
