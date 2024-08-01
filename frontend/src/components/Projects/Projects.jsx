@@ -66,35 +66,35 @@ export default function Projects({
     const parentElement = currentElement.parentElement;
 
     viewRefs.current.forEach((ref, index) => {
-      switch (currentIndex) {
-        case 0:
-          gsap.set(projectVideoBackgroundRef.current, {
-            backgroundColor: "#1c1c1d",
-          });
-          break;
-        case 1:
-          gsap.set(projectVideoBackgroundRef.current, {
-            backgroundColor: "#dc86dc",
-          });
-          break;
-        case 2:
-          gsap.set(projectVideoBackgroundRef.current, {
-            backgroundColor: "#a0b0a8",
-          });
-          break;
-        case 3:
-          gsap.set(projectVideoBackgroundRef.current, {
-            backgroundColor: "#183829",
-          });
-          break;
-        case 4:
-          gsap.set(projectVideoBackgroundRef.current, {
-            backgroundColor: "#a0b0a8",
-          });
-          break;
-        default:
-          break;
-      }
+      // switch (currentIndex) {
+      //   case 0:
+      //     gsap.set(projectVideoBackgroundRef.current, {
+      //       backgroundColor: "#1c1c1d",
+      //     });
+      //     break;
+      //   case 1:
+      //     gsap.set(projectVideoBackgroundRef.current, {
+      //       backgroundColor: "#dc86dc",
+      //     });
+      //     break;
+      //   case 2:
+      //     gsap.set(projectVideoBackgroundRef.current, {
+      //       backgroundColor: "#a0b0a8",
+      //     });
+      //     break;
+      //   case 3:
+      //     gsap.set(projectVideoBackgroundRef.current, {
+      //       backgroundColor: "#183829",
+      //     });
+      //     break;
+      //   case 4:
+      //     gsap.set(projectVideoBackgroundRef.current, {
+      //       backgroundColor: "#a0b0a8",
+      //     });
+      //     break;
+      //   default:
+      //     break;
+      // }
       if (index !== currentIndex)
         gsap.set(ref.current, {
           height: "0%",
