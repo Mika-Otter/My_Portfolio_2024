@@ -21,9 +21,9 @@
   &__box__wrapper {
     // border: 2px solid green;
     width: 86vw;
-    height: 80%;
+    height: 70%;
     position: absolute;
-    top: 2vw;
+    top: 4vw;
     overflow: hidden;
 
     -webkit-backdrop-filter: blur(15px);
@@ -31,7 +31,7 @@
     //rgb(230, 228, 228, 0.835); // rgb(230, 228, 228, 0.835)
     background-color: rgba(240, 238, 238, 0.37);
     // border-radius: 0px 0px 5px 5px;
-    border-radius: 10px;
+    border-radius: 20px;
   }
 
   &__box {
@@ -76,8 +76,8 @@
       &__ctn {
         top: 0;
         left: 0;
-        width: 80%;
-        height: 60%;
+        width: 90%;
+        height: 74%;
         display: flex;
         justify-content: center;
         align-items: center;
