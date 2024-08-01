@@ -22,7 +22,6 @@
   background-color: $white-board-opac;
   display: flex;
   justify-content: center;
-  // border: 2px solid blue;
   border-radius: 10px;
   top: 0%;
   left: 50%;
@@ -46,24 +45,22 @@
   // clip-path: polygon(5% 0, 95% 0, 100% 9%, 100% 91%, 95% 100%, 5% 100%, 0 91%, 0 9%);
   display: flex;
   justify-content: left;
-  // border: 2px solid blue;
 
   &__left {
     width: 60%;
-    height: calc(100% - 5vh);
-    margin-top: 1.5vh;
+    height: 85%;
+    margin-top: 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-    // border: 2px solid blue;
 
     &__wrapper {
       position: fixed;
       z-index: 1000;
       height: 3%;
       width: 60%;
-      bottom: 14%; //pic height: 80% margin-top : 7%
+      bottom: 12%; //pic height: 80% margin-top : 7%
       background: rgb(240, 238, 238);
       background: linear-gradient(
         0deg,
@@ -79,15 +76,14 @@
   &__pic {
     position: relative;
     width: 100%;
-    height: 61vh;
+    height: 90%;
     display: flex;
     justify-content: center;
     overflow: hidden;
     overflow-y: scroll;
-    margin-top: 5dvh;
+    // margin-top: 5%;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* Internet Explorer 10+ */
-    // border: 2px solid red;
     &__box {
       position: relative;
       width: 95%;
@@ -99,7 +95,6 @@
 
       row-gap: 0px;
       gap: 15px;
-
       &__ctn {
         position: relative;
         width: 100%;
