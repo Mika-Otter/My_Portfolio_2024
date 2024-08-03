@@ -22,10 +22,8 @@ export default function Contact({ handleContact, contact }) {
   const selectRef = useRef();
   const [selecting, setSelecting] = useState(false);
 
-  const { formData, handleChange, handleSelect, handleSubmit } = useForm(
-    initialState,
-    "/api/send-email"
-  );
+  const { formData, handleChange, handleSelect, handleSubmit, errors } =
+    useForm(initialState, "/api/send-email");
 
   useContactAnimation(contactRef, contact);
 
@@ -75,6 +73,7 @@ export default function Contact({ handleContact, contact }) {
                   value={formData.name}
                   onChange={handleChange}
                 />
+                {errors.name && <span className={s.error}>{errors.name}</span>}
               </div>
               <div className={s.contact__form__firstLine__email}>
                 <label htmlFor="email">YOUR EMAIL *</label>
@@ -85,6 +84,7 @@ export default function Contact({ handleContact, contact }) {
                   value={formData.email}
                   onChange={handleChange}
                 />
+                {errors.name && <span className={s.error}>{errors.email}</span>}
               </div>
             </div>
             <div className={s.contact__form__company}>
@@ -96,6 +96,7 @@ export default function Contact({ handleContact, contact }) {
                 value={formData.company}
                 onChange={handleChange}
               />
+              {errors.name && <span className={s.error}>{errors.company}</span>}
             </div>
             <div className={s.contact__form__need}>
               <label htmlFor="need">NEED *</label>
@@ -131,6 +132,7 @@ export default function Contact({ handleContact, contact }) {
                 <label htmlFor="design-only">
                   I DESIGN <br /> YOU DEVELOP
                 </label>
+                {errors.need && <span className={s.error}>{errors.need}</span>}
               </div>
             </div>
             <div className={s.contact__form__description}>
@@ -141,6 +143,9 @@ export default function Contact({ handleContact, contact }) {
                 value={formData.description}
                 onChange={handleChange}
               ></textarea>
+              {errors.description && (
+                <span className={s.error}>{errors.description}</span>
+              )}
             </div>
             <div className={s.contact__form__lastLine}>
               <div className={s.contact__form__lastLine__budget}>
@@ -197,6 +202,9 @@ export default function Contact({ handleContact, contact }) {
                       </span>
                     </div>
                   )}
+                  {errors.budget && (
+                    <span className={s.error}>{errors.budget}</span>
+                  )}
                 </div>
               </div>
               <div className={s.contact__form__lastLine__timeline}>
@@ -210,6 +218,9 @@ export default function Contact({ handleContact, contact }) {
                     onChange={handleChange}
                   />
                 </div>
+                {errors.timeline && (
+                  <span className={s.error}>{errors.timeline}</span>
+                )}
               </div>
             </div>
             <div className={s.contact__form__bonus}>
@@ -223,6 +234,9 @@ export default function Contact({ handleContact, contact }) {
                   value={formData.findMe}
                   onChange={handleChange}
                 />
+                {errors.findMe && (
+                  <span className={s.error}>{errors.findMe}</span>
+                )}
               </div>
               <div className={s.contact__form__bonus__favorite}>
                 <label htmlFor="favorite">FAVORITE FOOD OR ARTIST</label>
