@@ -297,8 +297,9 @@ export default function Loader({ firstEnter, isMobile }) {
                   className={isMobile ? s.button__mobile : s.button}
                   ref={buttonRef}
                 >
-                  <button type="button" onClick={() => handleEnter()}>
-                    ENTER
+                  <button type="button">
+                    Whoops a V02 is coming very soon... The entry is currently
+                    closed.
                   </button>
                 </div>
               )}
